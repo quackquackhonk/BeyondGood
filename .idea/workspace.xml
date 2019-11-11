@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="013926d2-f87d-4d22-a068-7b9fcc73e8c6" name="Default Changelist" comment="" />
+    <list default="true" id="013926d2-f87d-4d22-a068-7b9fcc73e8c6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/META-INF/Asn5 Starter.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/BeyondGood.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/BeyondGood.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/Asn5 Starter/edu/cs3500/spreadsheets/model/PRODUCTTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/Asn5 Starter/edu/cs3500/spreadsheets/model/PRODUCTTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/Asn5 Starter/edu/cs3500/spreadsheets/model/SUMTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/Asn5 Starter/edu/cs3500/spreadsheets/model/SUMTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/Asn5 Starter/edu/cs3500/spreadsheets/model/SexpVisitParserTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/Asn5 Starter/edu/cs3500/spreadsheets/model/SexpVisitParserTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/Asn5 Starter/edu/cs3500/spreadsheets/view/SpreadsheetTextualViewTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/Asn5 Starter/edu/cs3500/spreadsheets/view/SpreadsheetTextualViewTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/edu/cs3500/spreadsheets/model/PRODUCTTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/edu/cs3500/spreadsheets/model/PRODUCTTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/edu/cs3500/spreadsheets/model/SUMTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/edu/cs3500/spreadsheets/model/SUMTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/edu/cs3500/spreadsheets/model/SexpVisitParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/edu/cs3500/spreadsheets/model/SexpVisitParserTest.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,12 +30,16 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1Sq9hOOwWkErbF8ru1HGFLY76Gh" />
   <component name="PropertiesComponent">
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
@@ -54,7 +70,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.SpreadsheetTextualViewTest">
+  <component name="RunManager" selected="JUnit.edu.cs3500.spreadsheets in Asn5 Starter">
     <configuration name="Unnamed" type="AndroidJUnit" nameIsGenerated="true">
       <module name="Asn5 Starter" />
       <option name="MAIN_CLASS_NAME" value="" />
@@ -97,6 +113,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="All in Asn5 Starter" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Asn5 Starter" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PRODUCTTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Asn5 Starter" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="uniqueId" />
+      <uniqueIds>
+        <uniqueId value="[engine:junit-vintage]/[runner:edu.cs3500.spreadsheets.model.PRODUCTTest]" />
+      </uniqueIds>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SpreadsheetTextualViewTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Asn5 Starter" />
       <extension name="coverage">
@@ -112,49 +147,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SpreadsheetTextualViewTest.testRender" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="edu.cs3500.spreadsheets in Asn5 Starter" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Asn5 Starter" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="edu.cs3500.spreadsheets.view.*" />
+          <option name="PATTERN" value="edu.cs3500.spreadsheets.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="edu.cs3500.spreadsheets.view" />
-      <option name="MAIN_CLASS_NAME" value="edu.cs3500.spreadsheets.view.SpreadsheetTextualViewTest" />
-      <option name="METHOD_NAME" value="testRender" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SpreadsheetTextualViewTest.testRenderFormulaRangeRef" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Asn5 Starter" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="edu.cs3500.spreadsheets.view.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="edu.cs3500.spreadsheets.view" />
-      <option name="MAIN_CLASS_NAME" value="edu.cs3500.spreadsheets.view.SpreadsheetTextualViewTest" />
-      <option name="METHOD_NAME" value="testRenderFormulaRangeRef" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="WorkSheetModelTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Asn5 Starter" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="edu.cs3500.spreadsheets.model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="edu.cs3500.spreadsheets.model" />
-      <option name="MAIN_CLASS_NAME" value="edu.cs3500.spreadsheets.model.WorkSheetModelTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="edu.cs3500.spreadsheets" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -179,19 +181,19 @@
       <item itemvalue="Application.testSaveOrder" />
       <item itemvalue="Application.openSaved" />
       <item itemvalue="Application.testEvalGood" />
-      <item itemvalue="JUnit.WorkSheetModelTest" />
-      <item itemvalue="JUnit.edu.cs3500.spreadsheets.model in Asn5 Starter" />
       <item itemvalue="JUnit.SpreadsheetTextualViewTest" />
-      <item itemvalue="JUnit.SpreadsheetTextualViewTest.testRender" />
-      <item itemvalue="JUnit.SpreadsheetTextualViewTest.testRenderFormulaRangeRef" />
+      <item itemvalue="JUnit.All in Asn5 Starter" />
+      <item itemvalue="JUnit.PRODUCTTest" />
+      <item itemvalue="JUnit.edu.cs3500.spreadsheets.model in Asn5 Starter" />
+      <item itemvalue="JUnit.edu.cs3500.spreadsheets in Asn5 Starter" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.SpreadsheetTextualViewTest" />
-        <item itemvalue="JUnit.SpreadsheetTextualViewTest.testRenderFormulaRangeRef" />
-        <item itemvalue="JUnit.WorkSheetModelTest" />
-        <item itemvalue="JUnit.SpreadsheetTextualViewTest.testRender" />
+        <item itemvalue="JUnit.edu.cs3500.spreadsheets in Asn5 Starter" />
         <item itemvalue="JUnit.edu.cs3500.spreadsheets.model in Asn5 Starter" />
+        <item itemvalue="JUnit.PRODUCTTest" />
+        <item itemvalue="JUnit.All in Asn5 Starter" />
+        <item itemvalue="JUnit.SpreadsheetTextualViewTest" />
       </list>
     </recent_temporary>
   </component>
@@ -207,6 +209,17 @@
       <updated>1572280376618</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
