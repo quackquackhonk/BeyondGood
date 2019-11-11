@@ -1,8 +1,7 @@
 package edu.cs3500.spreadsheets.view;
 
-import edu.cs3500.spreadsheets.model.CellContents;
 import edu.cs3500.spreadsheets.model.Coord;
-import edu.cs3500.spreadsheets.model.IWorkSheetModel;
+import edu.cs3500.spreadsheets.model.IWriteWorkSheetModel;
 
 import java.io.IOException;
 import java.util.HashSet;
@@ -12,7 +11,7 @@ import java.util.function.Consumer;
  * Textual view for ISpreadSheetModels.
  */
 public class SpreadsheetTextualView implements IView{
-    IWorkSheetModel model;
+    IWriteWorkSheetModel model;
     Appendable out;
 
     /**
@@ -20,7 +19,7 @@ public class SpreadsheetTextualView implements IView{
      * @param model model to render
      * @param out render to this.
      */
-    public SpreadsheetTextualView(IWorkSheetModel model, Appendable out) {
+    public SpreadsheetTextualView(IWriteWorkSheetModel model, Appendable out) {
         this.model = model;
         this.out = out;
     }

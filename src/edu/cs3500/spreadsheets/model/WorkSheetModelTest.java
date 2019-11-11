@@ -17,7 +17,7 @@ public class WorkSheetModelTest {
     builder.createCell(1, 1, "=A2");
     builder.createCell(1, 2, "=A3");
     builder.createCell(1, 3, "=A1");
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     model.evaluateCell("A1");
   }
@@ -27,7 +27,7 @@ public class WorkSheetModelTest {
   public void checkBuildAdjListHasCycleSelf() {
     WorkSheetModel.SheetBuilder builder = new WorkSheetModel.SheetBuilder();
     builder.createCell(1, 1, "=A1");
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     model.evaluateCell("A1");
   }
@@ -40,7 +40,7 @@ public class WorkSheetModelTest {
     builder.createCell(1, 2, "4");
     builder.createCell(1, 3, "4");
 
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     model.evaluateCell("A1");
   }
@@ -53,7 +53,7 @@ public class WorkSheetModelTest {
     builder.createCell(1, 2, "4");
     builder.createCell(1, 3, "4");
 
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     model.evaluateCell("A1");
   }
@@ -67,7 +67,7 @@ public class WorkSheetModelTest {
     builder.createCell(1, 3, "4");
     builder.createCell(1, 4, "=(SUM A1 1)");
 
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     model.evaluateCell("A1");
   }
@@ -79,7 +79,7 @@ public class WorkSheetModelTest {
     builder.createCell(1, 1, "=(SUM A2:A3)");
     builder.createCell(1, 2, "1");
     builder.createCell(1, 3, "2");
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     assertEquals("3.000000", model.evaluateCell("A1"));
   }
@@ -91,7 +91,7 @@ public class WorkSheetModelTest {
     builder.createCell(1, 1, "=A2");
     builder.createCell(1, 2, "=(PRODUCT A3 2)");
     builder.createCell(1, 3, "=A1");
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     assertEquals("3.000000", model.evaluateCell("A1"));
   }
@@ -102,7 +102,7 @@ public class WorkSheetModelTest {
     WorkSheetModel.SheetBuilder builder = new WorkSheetModel.SheetBuilder();
     builder.createCell(1, 1, "=A2");
     builder.createCell(1, 2, "=A1");
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     assertEquals("3.000000", model.evaluateCell("A1"));
   }
@@ -120,7 +120,7 @@ public class WorkSheetModelTest {
     builder.createCell(6, 5, "=D5");
     builder.createCell(4, 5, "5");
 
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     assertEquals("3.000000", model.evaluateCell("A1"));
   }
@@ -137,7 +137,7 @@ public class WorkSheetModelTest {
     builder.createCell(4, 5, "5");
     builder.createCell(7, 5, "=A5");
 
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     model.evaluateCell("A1");
   }
@@ -151,7 +151,7 @@ public class WorkSheetModelTest {
     builder.createCell(1, 2, "=A3");
     builder.createCell(1, 3, "2");
 
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     assertEquals("2.000000", model.evaluateCell("A1"));
   }
@@ -162,7 +162,7 @@ public class WorkSheetModelTest {
   public void testSumEval() {
     WorkSheetModel.SheetBuilder builder = new WorkSheetModel.SheetBuilder();
     builder.createCell(1, 1, "=(SUM 1 2)");
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     model.evaluateCell("A1");
     assertEquals("3.000000", model.evaluateCell("A1"));
@@ -172,7 +172,7 @@ public class WorkSheetModelTest {
   public void testSumEval2() {
     WorkSheetModel.SheetBuilder builder = new WorkSheetModel.SheetBuilder();
     builder.createCell(1, 1, "=(SUM 1)");
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     model.evaluateCell("A1");
     assertEquals("1.000000", model.evaluateCell("A1"));
@@ -182,7 +182,7 @@ public class WorkSheetModelTest {
   public void testSumEvalNest() {
     WorkSheetModel.SheetBuilder builder = new WorkSheetModel.SheetBuilder();
     builder.createCell(1, 1, "=(SUM (SUM 1 2) 3)");
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     model.evaluateCell("A1");
     assertEquals("6.000000", model.evaluateCell("A1"));
@@ -192,7 +192,7 @@ public class WorkSheetModelTest {
   public void testSumEvalNestNest() {
     WorkSheetModel.SheetBuilder builder = new WorkSheetModel.SheetBuilder();
     builder.createCell(1, 1, "=(SUM (SUM 1 2) (SUM 1 (SUM 1 2)))");
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     model.evaluateCell("A1");
     assertEquals("7.000000", model.evaluateCell("A1"));
@@ -202,7 +202,7 @@ public class WorkSheetModelTest {
   public void testSumEvalError() {
     WorkSheetModel.SheetBuilder builder = new WorkSheetModel.SheetBuilder();
     builder.createCell(1, 1, "=(SUM (SUM true 2) (SUM 1 (SUM 1 2)))");
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     model.evaluateCell("A1");
   }
@@ -212,7 +212,7 @@ public class WorkSheetModelTest {
     WorkSheetModel.SheetBuilder builder = new WorkSheetModel.SheetBuilder();
     builder.createCell(1, 1, "=(SUM A10000000)");
     builder.createCell(1, 10000000, "2");
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     model.evaluateCell("A1");
     assertEquals("2.000000", model.evaluateCell("A1"));
@@ -222,7 +222,7 @@ public class WorkSheetModelTest {
   public void testSumEvalStr() {
     WorkSheetModel.SheetBuilder builder = new WorkSheetModel.SheetBuilder();
     builder.createCell(1, 1, "=(SUM (SUM \"hi\" 2) (SUM 1 (SUM 1 2)))");
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     model.evaluateCell("A1");
   }
@@ -232,7 +232,7 @@ public class WorkSheetModelTest {
     WorkSheetModel.SheetBuilder builder = new WorkSheetModel.SheetBuilder();
     builder.createCell(1, 1, "=(SUM A2 1)");
     builder.createCell(1, 2, "1");
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     model.evaluateCell("A1");
     assertEquals("2.000000", model.evaluateCell("A1"));
@@ -247,7 +247,7 @@ public class WorkSheetModelTest {
     builder.createCell(1, 4, "=A5");
     builder.createCell(1, 5, "1");
 
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     model.evaluateCell("A1");
     assertEquals("2.000000", model.evaluateCell("A1"));
@@ -266,7 +266,7 @@ public class WorkSheetModelTest {
     builder.createCell(1, 8, "=A9");
     builder.createCell(1, 9, "1");
 
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     model.evaluateCell("A1");
     assertEquals("2.000000", model.evaluateCell("A1"));
@@ -281,7 +281,7 @@ public class WorkSheetModelTest {
     builder.createCell(1, 4, "1");
     builder.createCell(1, 5, "1");
 
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     model.evaluateCell("A1");
   }
@@ -294,7 +294,7 @@ public class WorkSheetModelTest {
     builder.createCell(1, 4, "=A2:A3");
     builder.createCell(1, 2, "1");
     builder.createCell(1, 3, "2");
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     assertEquals("3.000000", model.evaluateCell("A1"));
   }
@@ -313,7 +313,7 @@ public class WorkSheetModelTest {
     builder.createCell(1, 8, "=A9");
     builder.createCell(1, 9, "1");
 
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     model.evaluateCell("A1");
     assertEquals("1.000000", model.evaluateCell("A1"));
@@ -327,7 +327,7 @@ public class WorkSheetModelTest {
     builder.createCell(1, 3, "2");
     builder.createCell(1, 4, "2");
 
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     model.evaluateCell("A1");
     assertEquals("8.000000", model.evaluateCell("A1"));
@@ -341,7 +341,7 @@ public class WorkSheetModelTest {
     builder.createCell(1, 3, "2");
     builder.createCell(1, 4, "2");
 
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     model.evaluateCell("A1");
     assertEquals("8.000000", model.evaluateCell("A1"));
@@ -355,7 +355,7 @@ public class WorkSheetModelTest {
     builder.createCell(1, 3, "2");
     builder.createCell(1, 4, "2");
 
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     model.evaluateCell("A1");
     assertEquals("32.000000", model.evaluateCell("A1"));
@@ -369,7 +369,7 @@ public class WorkSheetModelTest {
     builder.createCell(1, 3, "2");
     builder.createCell(1, 4, "2");
 
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     model.evaluateCell("A1");
     assertEquals("2.000000", model.evaluateCell("A1"));
@@ -383,7 +383,7 @@ public class WorkSheetModelTest {
     builder.createCell(1, 3, "2");
     builder.createCell(1, 4, "2");
 
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     model.evaluateCell("A1");
     assertEquals("4.000000", model.evaluateCell("A1"));
@@ -397,7 +397,7 @@ public class WorkSheetModelTest {
     builder.createCell(1, 3, "2");
     builder.createCell(1, 4, "2");
 
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     model.evaluateCell("A1");
     assertEquals("3.000000", model.evaluateCell("A1"));
@@ -411,7 +411,7 @@ public class WorkSheetModelTest {
     builder.createCell(1, 3, "2");
     builder.createCell(1, 4, "2");
 
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     model.evaluateCell("A1");
     assertEquals("10.000000", model.evaluateCell("A1"));
@@ -426,7 +426,7 @@ public class WorkSheetModelTest {
     builder.createCell(1, 3, "2");
     builder.createCell(1, 4, "2");
 
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     model.evaluateCell("A1");
     assertEquals("true", model.evaluateCell("A1"));
@@ -440,7 +440,7 @@ public class WorkSheetModelTest {
     builder.createCell(1, 3, "2");
     builder.createCell(1, 4, "2");
 
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     model.evaluateCell("A1");
     assertEquals("false", model.evaluateCell("A1"));
@@ -454,7 +454,7 @@ public class WorkSheetModelTest {
     builder.createCell(1, 3, "2");
     builder.createCell(1, 4, "2");
 
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     model.evaluateCell("A1");
     assertEquals("false", model.evaluateCell("A1"));
@@ -468,7 +468,7 @@ public class WorkSheetModelTest {
     builder.createCell(1, 3, "2");
     builder.createCell(1, 4, "2");
 
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     model.evaluateCell("A1");
   }
@@ -481,7 +481,7 @@ public class WorkSheetModelTest {
     builder.createCell(1, 3, "2");
     builder.createCell(1, 4, "2");
 
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     model.evaluateCell("A1");
   }
@@ -495,7 +495,7 @@ public class WorkSheetModelTest {
     builder.createCell(1, 3, "2");
     builder.createCell(1, 4, "2");
 
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     model.evaluateCell("A1");
     assertEquals("false", model.evaluateCell("A1"));
@@ -509,7 +509,7 @@ public class WorkSheetModelTest {
     builder.createCell(1, 3, "2");
     builder.createCell(1, 4, "2");
 
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     model.evaluateCell("A1");
     assertEquals("true", model.evaluateCell("A1"));
@@ -523,7 +523,7 @@ public class WorkSheetModelTest {
     builder.createCell(1, 3, "2");
     builder.createCell(1, 4, "2");
 
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     model.evaluateCell("A1");
     assertEquals("false", model.evaluateCell("A1"));
@@ -537,7 +537,7 @@ public class WorkSheetModelTest {
     builder.createCell(1, 3, "2");
     builder.createCell(1, 4, "2");
 
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     model.evaluateCell("A1");
   }
@@ -549,7 +549,7 @@ public class WorkSheetModelTest {
     WorkSheetModel.SheetBuilder builder = new WorkSheetModel.SheetBuilder();
     builder.createCell(1, 1, "1");
 
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     model.setCell(1, 1, "2");
     String evaled = model.evaluateCell("A1");
@@ -562,7 +562,7 @@ public class WorkSheetModelTest {
     WorkSheetModel.SheetBuilder builder = new WorkSheetModel.SheetBuilder();
     builder.createCell(1, 1, "1");
 
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     model.setCell(1, 1, "A1");
   }
@@ -572,7 +572,7 @@ public class WorkSheetModelTest {
     WorkSheetModel.SheetBuilder builder = new WorkSheetModel.SheetBuilder();
     builder.createCell(1, 1, "=(SUM A2:A3)");
 
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     model.setCell(1, 2, "=(SUM 1 2)");
     assertEquals("3.000000", model.evaluateCell("A2"));
@@ -583,7 +583,7 @@ public class WorkSheetModelTest {
     WorkSheetModel.SheetBuilder builder = new WorkSheetModel.SheetBuilder();
     builder.createCell(1, 1, "=(SUM A2)");
 
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     assertEquals("0.000000", model.evaluateCell("A1"));
   }
 
@@ -591,7 +591,7 @@ public class WorkSheetModelTest {
   @Test
   public void testEmptySheet() {
     WorkSheetModel.SheetBuilder builder = new WorkSheetModel.SheetBuilder();
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
     assertEquals(0, model.activeCells().size());
   }
@@ -604,14 +604,14 @@ public class WorkSheetModelTest {
     builder.createCell(1, 3, "2");
     builder.createCell(1, 4, "2");
 
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     assertEquals(model.activeCells().size(), 4);
   }
 
   @Test
   public void addedBlankCells() {
     WorkSheetModel.SheetBuilder builder = new WorkSheetModel.SheetBuilder();
-    IWorkSheetModel model = builder.createWorksheet();
+    IWriteWorkSheetModel model = builder.createWorksheet();
     model.setCell(1, 1, null);
     assertEquals(model.activeCells().size(), 1);
   }

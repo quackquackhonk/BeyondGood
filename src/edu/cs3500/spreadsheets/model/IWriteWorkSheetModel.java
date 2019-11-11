@@ -5,7 +5,7 @@ import java.util.HashSet;
 /**
  * To represent a model for a worksheet. Maintains state and enforces class invariants.
  */
-public interface IWorkSheetModel<CellContents> {
+public interface IWriteWorkSheetModel<CellContents> extends IReadWorkSheetModel<CellContents> {
 
     /**
      * Replaces cell at the given location with the cell created from the provided value.
@@ -16,38 +16,11 @@ public interface IWorkSheetModel<CellContents> {
     void updateCell(Coord location, String value);
 
     /**
-     * Returns the set of Coords initiated or depended on by other Coords.
-     *
-     * @return active Coords
-     */
-    HashSet<Coord> activeCells();
-
-    /**
-     * Prints result of evaluated cell at given coordinate.
-     *
-     * @param coord represents a String coordinate
-     */
-    String evaluateCell(String coord);
-
-    /**
-     * Returns the raw text of the cell at given Coordinate.
-     *
-     * @param coord is a coordinate
-     */
-    String getCellText(Coord coord);
-
-
-    /**
      * Prints result of evaluated cell at given coordinate.
      *
      * @param coord is string coordinate
      */
     void evaluateIndCell(String coord);
-
-    /**
-     * Does the model have any cells in error.
-     */
-    Boolean hasErrors();
 
     /**
      * Shifts given cell contents based on x and y axis.
@@ -65,18 +38,6 @@ public interface IWorkSheetModel<CellContents> {
      * @param finish ending coordinate
      */
     void dragChange(Coord start, Coord finish);
-
-
-    /**
-     * Return cell at a provided location.
-     *
-     * @param location is the coordinates of the cell
-     * @return the {@Cell} at the provided location
-     * @throws IllegalStateException    if the model was not checked
-     * @throws IllegalArgumentException if the location of the cell is invalid
-     */
-    CellContents getCell(Coord location) throws IllegalStateException;
-
 
     /**
      * Checks the validity of the model.
@@ -99,17 +60,4 @@ public interface IWorkSheetModel<CellContents> {
      */
     void setCell(int col, int row, String s);
 
-    /**
-     * Returns the width of the row.
-     *
-     * @return the width of the row
-     */
-    int getRowWidth();
-
-    /**
-     * Returns the height of the col.
-     *
-     * @return the height of the col
-     */
-    int getColHeight();
 }

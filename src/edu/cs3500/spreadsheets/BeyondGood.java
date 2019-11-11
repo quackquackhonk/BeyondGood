@@ -1,6 +1,6 @@
 package edu.cs3500.spreadsheets;
 
-import edu.cs3500.spreadsheets.model.IWorkSheetModel;
+import edu.cs3500.spreadsheets.model.IWriteWorkSheetModel;
 import edu.cs3500.spreadsheets.model.WorkSheetModel;
 import edu.cs3500.spreadsheets.model.WorksheetReader;
 import edu.cs3500.spreadsheets.model.WorksheetReader.WorksheetBuilder;
@@ -32,8 +32,8 @@ public class BeyondGood {
             // Use WorksheetReader.read() to build model
             try {
                 Readable fileReader = new FileReader(file);
-                WorksheetBuilder<IWorkSheetModel> builder = new WorkSheetModel.SheetBuilder();
-                IWorkSheetModel model = WorksheetReader.read(builder, fileReader);
+                WorksheetBuilder<IWriteWorkSheetModel> builder = new WorkSheetModel.SheetBuilder();
+                IWriteWorkSheetModel model = WorksheetReader.read(builder, fileReader);
                 System.out.println("model Made");
                 if(!model.hasErrors()) {
                     if(args.length == 4) {

@@ -9,7 +9,7 @@ import java.util.*;
 /**
  * Model class for working with spreadsheets.
  */
-public class WorkSheetModel implements IWorkSheetModel<CellContents> {
+public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
 
     HashMap<Coord, CellContents> sheet;
     HashMap<Coord, ArrayList<HashSet<Coord>>> adjList;
@@ -78,6 +78,12 @@ public class WorkSheetModel implements IWorkSheetModel<CellContents> {
 
     }
 
+    @Override
+    public String evaluateCell(int col, int row) {
+        Coord c = new Coord(col, row);
+        return this.evaluateCell(c.toString());
+    }
+
     /**
      * Returns the raw text of the cell at given Coordinate.
      * coord
@@ -90,6 +96,12 @@ public class WorkSheetModel implements IWorkSheetModel<CellContents> {
         } else {
             return cell.getRaw();
         }
+    }
+
+    @Override
+    public String getCellText(int col, int row) {
+        Coord c = new Coord(col, row);
+        return this.getCellText(c);
     }
 
     @Override
@@ -426,15 +438,15 @@ public class WorkSheetModel implements IWorkSheetModel<CellContents> {
      * A factory class to build model.
      */
     public static final class SheetBuilder implements
-            WorksheetReader.WorksheetBuilder<IWorkSheetModel> {
+            WorksheetReader.WorksheetBuilder<IWriteWorkSheetModel> {
 
-        IWorkSheetModel model;
+        IWriteWorkSheetModel model;
 
         /**
          * A factory class to build model.
          * model represent a worksheet model
          */
-        public SheetBuilder(IWorkSheetModel model) {
+        public SheetBuilder(IWriteWorkSheetModel model) {
             this.model = model;
         }
 
@@ -498,7 +510,7 @@ public class WorkSheetModel implements IWorkSheetModel<CellContents> {
 
 
         @Override
-        public IWorkSheetModel createWorksheet() {
+        public IWriteWorkSheetModel createWorksheet() {
             this.model.setupModel();
             return this.model;
         }

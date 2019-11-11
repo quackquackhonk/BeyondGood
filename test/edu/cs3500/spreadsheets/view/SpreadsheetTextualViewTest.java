@@ -1,8 +1,7 @@
 package edu.cs3500.spreadsheets.view;
 
-import edu.cs3500.spreadsheets.model.IWorkSheetModel;
+import edu.cs3500.spreadsheets.model.IWriteWorkSheetModel;
 import edu.cs3500.spreadsheets.model.WorkSheetModel;
-import edu.cs3500.spreadsheets.model.WorksheetReader;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -21,7 +20,7 @@ public class SpreadsheetTextualViewTest {
         WorkSheetModel.SheetBuilder builder = new WorkSheetModel.SheetBuilder();
         builder.createCell(1,1, "2");
         builder.createCell(1,2,"3");
-        IWorkSheetModel model = builder.createWorksheet();
+        IWriteWorkSheetModel model = builder.createWorksheet();
 
         StringBuilder log = new StringBuilder();
         IView view = new SpreadsheetTextualView(model, log);
@@ -36,7 +35,7 @@ public class SpreadsheetTextualViewTest {
         builder.createCell(1,1, "2");
         builder.createCell(1,2,"3");
         builder.createCell(1,3,"=(SUM 1 2 3)");
-        IWorkSheetModel model = builder.createWorksheet();
+        IWriteWorkSheetModel model = builder.createWorksheet();
 
         StringBuilder log = new StringBuilder();
         IView view = new SpreadsheetTextualView(model, log);
@@ -53,7 +52,7 @@ public class SpreadsheetTextualViewTest {
         builder.createCell(1,1, "2");
         builder.createCell(1,2,"3");
         builder.createCell(1,3,"=(SUM A1 A2 3)");
-        IWorkSheetModel model = builder.createWorksheet();
+        IWriteWorkSheetModel model = builder.createWorksheet();
 
         StringBuilder log = new StringBuilder();
         IView view = new SpreadsheetTextualView(model, log);
@@ -70,7 +69,7 @@ public class SpreadsheetTextualViewTest {
         builder.createCell(1,1, "2");
         builder.createCell(1,2,"3");
         builder.createCell(1,3,"=(SUM A1:A2)");
-        IWorkSheetModel model = builder.createWorksheet();
+        IWriteWorkSheetModel model = builder.createWorksheet();
 
         StringBuilder log = new StringBuilder();
         IView view = new SpreadsheetTextualView(model, log);
@@ -87,7 +86,7 @@ public class SpreadsheetTextualViewTest {
         builder.createCell(1,1, "2.000000");
         builder.createCell(1,2,"3.000000");
         builder.createCell(1,3,"=(SUM A1:A2)");
-        IWorkSheetModel model = builder.createWorksheet();
+        IWriteWorkSheetModel model = builder.createWorksheet();
 
         StringBuilder log = new StringBuilder();
         IView view = new SpreadsheetTextualView(model, log);

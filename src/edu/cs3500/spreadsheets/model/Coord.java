@@ -3,7 +3,7 @@ package edu.cs3500.spreadsheets.model;
 import java.util.Objects;
 
 /**
- * A value type representing coordinates in a {@link IWorkSheetModel}.
+ * A value type representing coordinates in a {@link IWriteWorkSheetModel}.
  */
 public class Coord {
 
