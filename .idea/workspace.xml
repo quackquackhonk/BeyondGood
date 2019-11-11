@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="013926d2-f87d-4d22-a068-7b9fcc73e8c6" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit5 Test Class" />
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="JUnit4 Test Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1Sq9hOOwWkErbF8ru1HGFLY76Gh" />
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="edu.cs3500.spreadsheets.view" />
+      <recent name="edu.cs3500.spreadsheets.model" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="edu.cs3500.spreadsheets.model" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="JUnit.SpreadsheetTextualViewTest">
+    <configuration name="Unnamed" type="AndroidJUnit" nameIsGenerated="true">
+      <module name="Asn5 Starter" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="openSaved" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="edu.cs3500.spreadsheets.BeyondGood" />
+      <module name="Asn5 Starter" />
+      <option name="PROGRAM_PARAMETERS" value="-in good1Saved -eval A1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="testEvalGood" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="edu.cs3500.spreadsheets.BeyondGood" />
+      <module name="Asn5 Starter" />
+      <option name="PROGRAM_PARAMETERS" value="-in good1.txt -eval A1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="testSave" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="edu.cs3500.spreadsheets.BeyondGood" />
+      <module name="Asn5 Starter" />
+      <option name="PROGRAM_PARAMETERS" value="-in good1.txt -save good1Saved" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="testSaveOrder" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="edu.cs3500.spreadsheets.BeyondGood" />
+      <module name="Asn5 Starter" />
+      <option name="PROGRAM_PARAMETERS" value="-in orderTest.txt -save outputOrder" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpreadsheetTextualViewTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Asn5 Starter" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.cs3500.spreadsheets.view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.cs3500.spreadsheets.view" />
+      <option name="MAIN_CLASS_NAME" value="edu.cs3500.spreadsheets.view.SpreadsheetTextualViewTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpreadsheetTextualViewTest.testRender" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Asn5 Starter" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.cs3500.spreadsheets.view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.cs3500.spreadsheets.view" />
+      <option name="MAIN_CLASS_NAME" value="edu.cs3500.spreadsheets.view.SpreadsheetTextualViewTest" />
+      <option name="METHOD_NAME" value="testRender" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpreadsheetTextualViewTest.testRenderFormulaRangeRef" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Asn5 Starter" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.cs3500.spreadsheets.view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.cs3500.spreadsheets.view" />
+      <option name="MAIN_CLASS_NAME" value="edu.cs3500.spreadsheets.view.SpreadsheetTextualViewTest" />
+      <option name="METHOD_NAME" value="testRenderFormulaRangeRef" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WorkSheetModelTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Asn5 Starter" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.cs3500.spreadsheets.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.cs3500.spreadsheets.model" />
+      <option name="MAIN_CLASS_NAME" value="edu.cs3500.spreadsheets.model.WorkSheetModelTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="edu.cs3500.spreadsheets.model in Asn5 Starter" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Asn5 Starter" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.cs3500.spreadsheets.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.cs3500.spreadsheets.model" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Android JUnit.Unnamed" />
+      <item itemvalue="Application.testSave" />
+      <item itemvalue="Application.testSaveOrder" />
+      <item itemvalue="Application.openSaved" />
+      <item itemvalue="Application.testEvalGood" />
+      <item itemvalue="JUnit.WorkSheetModelTest" />
+      <item itemvalue="JUnit.edu.cs3500.spreadsheets.model in Asn5 Starter" />
+      <item itemvalue="JUnit.SpreadsheetTextualViewTest" />
+      <item itemvalue="JUnit.SpreadsheetTextualViewTest.testRender" />
+      <item itemvalue="JUnit.SpreadsheetTextualViewTest.testRenderFormulaRangeRef" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.SpreadsheetTextualViewTest" />
+        <item itemvalue="JUnit.SpreadsheetTextualViewTest.testRenderFormulaRangeRef" />
+        <item itemvalue="JUnit.WorkSheetModelTest" />
+        <item itemvalue="JUnit.SpreadsheetTextualViewTest.testRender" />
+        <item itemvalue="JUnit.edu.cs3500.spreadsheets.model in Asn5 Starter" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="013926d2-f87d-4d22-a068-7b9fcc73e8c6" name="Default Changelist" comment="" />
+      <created>1572280376618</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1572280376618</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/WorkSheetModel.java</url>
+          <line>342</line>
+          <properties class="edu.cs3500.spreadsheets.model.WorkSheetModel" method="buildAdjList">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

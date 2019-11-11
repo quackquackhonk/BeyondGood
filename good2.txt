@@ -1,0 +1,5 @@
+A1 =(SUM 1 2 3 4 A2)
+A2 =(SUM 1 2 3 (PRODUCT 1 B1 C1) 4)
+B1 4
+C1 =SUM(D1 2)
+D1 12
