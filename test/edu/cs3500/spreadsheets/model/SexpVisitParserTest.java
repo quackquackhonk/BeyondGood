@@ -13,7 +13,7 @@ import static org.junit.Assert.assertEquals;
  * Also tests:
  * CellContent
  * - evaluate()
- * - getRaw()
+ * - stringParams()
  */
 public class SexpVisitParserTest {
     SexpVisitParser sexpParser = new SexpVisitParser();
@@ -158,12 +158,12 @@ public class SexpVisitParserTest {
     }
 
 
-    // getRaw() testing ------------------------------------------------------
+    // stringParams() testing ------------------------------------------------------
     @Test
     public void visitStringTestRaw() {
         Sexp parsed = parse("\"hi\"");
         CellContents dbl = parsed.accept(sexpParser);
-        assertEquals("\"hi\"", dbl.getRaw());
+        assertEquals("\"hi\"", dbl.stringParams());
     }
 
     // Test construction of Bool using visitor pattern
@@ -171,7 +171,7 @@ public class SexpVisitParserTest {
     public void visitBooleanTestRaw() {
         Sexp parsed = parse("true");
         CellContents bool = parsed.accept(sexpParser);
-        assertEquals("true", bool.getRaw());
+        assertEquals("true", bool.stringParams());
     }
 
     // Creation of Dbl
@@ -179,7 +179,7 @@ public class SexpVisitParserTest {
     public void visitNumberTestRaw() {
         Sexp parsed = parse("4");
         CellContents dbl = parsed.accept(sexpParser);
-        assertEquals("4.000000", dbl.getRaw());
+        assertEquals("4.000000", dbl.stringParams());
     }
 
     // Creation of RefCell
@@ -190,7 +190,7 @@ public class SexpVisitParserTest {
         Coord coord = new Coord(1, 1);
         ArrayList<Coord> coordList = new ArrayList<>();
         coordList.add(coord);
-        assertEquals("A1", ref.getRaw());
+        assertEquals("A1", ref.stringParams());
     }
 
     // Create RefCell w/ArrayList of all Coords between two given Coords.
@@ -200,7 +200,7 @@ public class SexpVisitParserTest {
         Sexp parsed = parse("C2:A2");
         CellContents dbl = parsed.accept(sexpParser);
 
-        assertEquals("A2 B2 C2", dbl.getRaw());
+        assertEquals("A2 B2 C2", dbl.stringParams());
     }
 
     // Create RefCell w/ArrayList of all Coords between two given Coords
@@ -209,7 +209,7 @@ public class SexpVisitParserTest {
         Sexp parsed = parse("A1:C2");
         CellContents dbl = parsed.accept(sexpParser);
 
-        assertEquals("A1 A2 B1 B2 C1 C2", dbl.getRaw());
+        assertEquals("A1 A2 B1 B2 C1 C2", dbl.stringParams());
     }
 
     // Create RefCell w/ArrayList of all Coords between two given Coords
@@ -218,6 +218,6 @@ public class SexpVisitParserTest {
         Sexp parsed = parse("AA1:AC2");
         CellContents dbl = parsed.accept(sexpParser);
 
-        assertEquals("AA1 AA2 AB1 AB2 AC1 AC2", dbl.getRaw());
+        assertEquals("AA1 AA2 AB1 AB2 AC1 AC2", dbl.stringParams());
     }
 }
