@@ -55,6 +55,14 @@ public class BeyondGood {
                         IView guiView = ViewCreator.create(ViewCreator.ViewType.GUI, model);
                         guiView.render();
                         guiView.makeVisible();
+                    } else if (args.length == 1) {
+                        System.out.println("making blank gui");
+                        file.createNewFile();
+                        fileReader = new FileReader(file);
+                        model = WorksheetReader.read(builder, fileReader);
+                        IView guiView = ViewCreator.create(ViewCreator.ViewType.GUI, model);
+                        guiView.render();
+                        guiView.makeVisible();
                     }
                 }
             } catch (FileNotFoundException e) {

@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="013926d2-f87d-4d22-a068-7b9fcc73e8c6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/ViewCreator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/GridPanel.java" afterDir="false" />
+    <list default="true" id="013926d2-f87d-4d22-a068-7b9fcc73e8c6" name="Default Changelist" comment="-">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/BeyondGood.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/BeyondGood.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/view/SpreadsheetTextualView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/view/SpreadsheetTextualView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/Asn5 Starter/edu/cs3500/spreadsheets/view/SpreadsheetTextualViewTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/Asn5 Starter/edu/cs3500/spreadsheets/view/SpreadsheetTextualViewTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel$EvalVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel$EvalVisitor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel$SheetBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel$SheetBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/BeyondGood.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/BeyondGood.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/IReadWorkSheetModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/IReadWorkSheetModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/IWriteWorkSheetModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/IWriteWorkSheetModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/WorkSheetModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/WorkSheetModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/GridPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/GridPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetGUIView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetGUIView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetTextualView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetTextualView.java" afterDir="false" />
     </list>
@@ -197,10 +200,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in Asn5 Starter" />
         <item itemvalue="JUnit.edu.cs3500.spreadsheets in Asn5 Starter" />
         <item itemvalue="JUnit.edu.cs3500.spreadsheets.model in Asn5 Starter" />
         <item itemvalue="JUnit.PRODUCTTest" />
-        <item itemvalue="JUnit.All in Asn5 Starter" />
         <item itemvalue="JUnit.SpreadsheetTextualViewTest" />
       </list>
     </recent_temporary>
@@ -223,7 +226,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573484804770</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="- Added IView factory class for the main method to use&#10;- Lerner says using ScrollPane is bad idea and to make custom &#10;  stuff&#10;     - Can go over how we want to approach tomorrow&#10;     &#10;- Basic idea is one static panel draws the grid, and a second &#10;  panel contains two scrollbars and the static panel. The second&#10;  panel moves the static panel based on the scroll bar movements.&#10;  &#10;- I'm working on just rendering the static panel right now, will&#10;  probably grind away at it a little more tonight">
+      <created>1573532805840</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1573532805840</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -241,20 +251,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added GUI class" />
-    <option name="LAST_COMMIT_MESSAGE" value="added GUI class" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/WorkSheetModel.java</url>
-          <line>354</line>
-          <properties class="edu.cs3500.spreadsheets.model.WorkSheetModel" method="buildAdjList">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="- Added IView factory class for the main method to use&#10;- Lerner says using ScrollPane is bad idea and to make custom &#10;  stuff&#10;     - Can go over how we want to approach tomorrow&#10;     &#10;- Basic idea is one static panel draws the grid, and a second &#10;  panel contains two scrollbars and the static panel. The second&#10;  panel moves the static panel based on the scroll bar movements.&#10;  &#10;- I'm working on just rendering the static panel right now, will&#10;  probably grind away at it a little more tonight" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Added IView factory class for the main method to use&#10;- Lerner says using ScrollPane is bad idea and to make custom &#10;  stuff&#10;     - Can go over how we want to approach tomorrow&#10;     &#10;- Basic idea is one static panel draws the grid, and a second &#10;  panel contains two scrollbars and the static panel. The second&#10;  panel moves the static panel based on the scroll bar movements.&#10;  &#10;- I'm working on just rendering the static panel right now, will&#10;  probably grind away at it a little more tonight" />
   </component>
 </project>

@@ -16,6 +16,10 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
     boolean isValid;
     int numRow;
     int numCol;
+    int maxRow;
+    int minRow;
+    int maxCol;
+    int minCol;
 
     /**
      * Creates a WorkSheetModel for evaluating and editing spreadsheets.
@@ -23,6 +27,10 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
     public WorkSheetModel() {
         this.sheet = new HashMap<>();
         this.adjList = new HashMap<>();
+        maxRow = 0;
+        minRow = 0;
+        maxCol = 0;
+        minCol = 0;
     }
 
     protected HashMap<Coord, ArrayList<HashSet<Coord>>> getAdjList() {
@@ -32,10 +40,48 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
     // Returns whether or not model has problematic cells in model.
     @Override
     public Boolean hasErrors() {
-        Boolean publicVal = !this.isValid;
-        return publicVal;
+        return !this.isValid;
     }
 
+    /**
+     * Returns the max width of sheet.
+     *
+     * @return the width of the row
+     */
+    @Override
+    public int getMaxRowWidth() {
+        return maxRow;
+    }
+
+    /**
+     * Returns the min width of sheet.
+     *
+     * @return the width of the row
+     */
+    @Override
+    public int getMinRowWidth() {
+        return minRow;
+    }
+
+    /**
+     * Returns the min height of sheet.
+     *
+     * @return the height of the col
+     */
+    @Override
+    public int getMinColHeight() {
+        return minCol;
+    }
+
+    /**
+     * Returns the max height of the sheet.
+     *
+     * @return the height of the col
+     */
+    @Override
+    public int getMaxColHeight() {
+        return maxCol;
+    }
 
     @Override
     public void shiftCells(CellContents c, int x, int y) {
@@ -63,7 +109,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
      */
     @Override
     public String evaluateCell(String coord) {
-        if(!this.isValid) {
+        if (!this.isValid) {
             throw new IllegalArgumentException("Model has incorrect cells");
         }
         try {
@@ -78,6 +124,13 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
 
     }
 
+    /**
+     * Evaluates the give cell and returns result in String form.
+     *
+     * @param col col in sheet
+     * @param row row in sheet
+     * @return String result
+     */
     @Override
     public String evaluateCell(int col, int row) {
         Coord c = new Coord(col, row);
@@ -125,7 +178,6 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
         } catch (NullPointerException e) {
             return null;
         }
-
     }
 
     /**
@@ -158,7 +210,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
                 if (getCell(c) != null) {
                     evaluateCell(c.toString());
                 } else {
-                    if(this.sheet.get(c) == null) {
+                    if (this.sheet.get(c) == null) {
                         String strCoord = c.toString();
                         SexpVisitParser coordParser = new SexpVisitParser();
                         String[] coordComps = coordParser.checkCoord(strCoord);
@@ -220,7 +272,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
         HashSet<Coord> output = new HashSet<>();
         Stack<Coord> todo = new Stack<>();
 
-        if(this.sheet.get(origin).stringParams().equals("")) {
+        if (this.sheet.get(origin).stringParams().equals("")) {
             return output;
         }
 
@@ -264,6 +316,11 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
      */
     @Override
     public void buildCell(int col, int row, CellContents cont) {
+        minCol = Math.min(col, minCol);
+        maxCol = Math.max(col, maxCol);
+        minRow = Math.min(col, minRow);
+        maxRow = Math.max(col, maxRow);
+
         Coord coord = new Coord(col, row);
         this.sheet.put(coord, cont);
         ArrayList<HashSet<Coord>> childDeps = new ArrayList<>();
@@ -339,16 +396,6 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
                 throw new IllegalArgumentException("New cell has a cycle");
             }
         }
-    }
-
-    @Override
-    public int getRowWidth() {
-        return 0;
-    }
-
-    @Override
-    public int getColHeight() {
-        return 0;
     }
 
     // Builds adjacency list for all cells in sheet.
@@ -556,7 +603,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
             ArrayList<CellContents> cells = new ArrayList<>();
             for (Coord c : coords) {
                 CellContents cellComp = WorkSheetModel.this.getCell(c);
-                if(cellComp != null) {
+                if (cellComp != null) {
                     cells.add(cellComp);
                 }
             }
@@ -653,13 +700,13 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
         public Dbl visitSUM(SUM s) {
             double total = 0;
             ArrayList<CellContents> cont = s.getInnerCells();
-            if(cont.isEmpty()) {
+            if (cont.isEmpty()) {
                 throw new IllegalArgumentException("Can't sum 0 arguments");
             }
             if (cont.size() == 1) {
                 CellContents single = cont.get(0);
                 ArrayList<CellContents> singleCont = single.forOps(this);
-                if(singleCont.size() == 0) {
+                if (singleCont.size() == 0) {
                     return new Dbl(0);
                 }
                 if (singleCont.size() == 1) {
@@ -692,7 +739,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
             double total = 1;
             ArrayList<CellContents> cont = s.getInnerCells();
 
-            if(cont.isEmpty()) {
+            if (cont.isEmpty()) {
                 throw new IllegalArgumentException("Can't multiply 0 arguments");
             }
             if (cont.size() == 1) {
@@ -700,7 +747,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
                 CellContents single = cont.get(0);
                 ArrayList<CellContents> singleCont = single.forOps(this);
 
-                if(singleCont.size() == 0) {
+                if (singleCont.size() == 0) {
                     return new Dbl(1);
                 }
 

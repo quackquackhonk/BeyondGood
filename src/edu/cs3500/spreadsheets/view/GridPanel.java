@@ -42,5 +42,18 @@ public class GridPanel extends JPanel {
         g2d.setColor(Color.pink);
         this.revalidate();
         g2d.fillRect(0, 0, prefSize.width,prefSize.height);
+
+        for(int i = 0; i < 10; i++) {
+            for(int j = 0; j < 10; j++) {
+                g2d.setColor(Color.black);
+                g2d.fillRect(i*50, j*25, 50, 25);
+                g2d.setColor(Color.pink);
+                g2d.drawLine(i*50, j*25, i*50+50, j*25);
+                g2d.drawLine(i*50, j*25+25, i*50+50, j*25+25);
+                g2d.drawLine(i*50, j*25, i*50, j*25+25);
+                g2d.drawLine(i*50+50, j*25, i*50+50, j*25+25);
+                g2d.drawString("f.", i*50+5, j*25+15);
+            }
+        }
     }
 }

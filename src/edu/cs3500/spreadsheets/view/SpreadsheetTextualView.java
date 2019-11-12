@@ -2,7 +2,6 @@ package edu.cs3500.spreadsheets.view;
 
 import edu.cs3500.spreadsheets.model.Coord;
 import edu.cs3500.spreadsheets.model.IReadWorkSheetModel;
-import edu.cs3500.spreadsheets.model.IWriteWorkSheetModel;
 
 import java.io.IOException;
 import java.util.HashSet;
@@ -11,14 +10,15 @@ import java.util.function.Consumer;
 /**
  * Textual view for ISpreadSheetModels.
  */
-public class SpreadsheetTextualView implements IView{
+public class SpreadsheetTextualView implements IView {
     IReadWorkSheetModel model;
     Appendable out;
 
     /**
      * Constructs a view class.
+     *
      * @param model model to render
-     * @param out render to this.
+     * @param out   render to this.
      */
     public SpreadsheetTextualView(IReadWorkSheetModel model, Appendable out) {
         this.model = model;
@@ -31,9 +31,9 @@ public class SpreadsheetTextualView implements IView{
     @Override
     public void render() throws IOException {
         HashSet<Coord> allCells = model.activeCells();
-        for(Coord c : allCells) {
+        for (Coord c : allCells) {
             String cellText = model.getCellText(c);
-            if(!cellText.equals("")) {
+            if (!cellText.equals("")) {
                 String toAdd = c.toString() + " " + cellText;
                 out.append(toAdd);
                 out.append("\n");

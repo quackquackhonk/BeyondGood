@@ -59,5 +59,4 @@ public interface IWriteWorkSheetModel<CellContents> extends IReadWorkSheetModel<
      * Sets a cell given raw String containing a coordinate and raw cell contents.
      */
     void setCell(int col, int row, String s);
-
 }

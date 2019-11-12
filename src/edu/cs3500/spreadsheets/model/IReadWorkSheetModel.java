@@ -55,17 +55,31 @@ public interface IReadWorkSheetModel<CellContents> {
     Boolean hasErrors();
 
     /**
-     * Returns the width of the row.
+     * Returns the max width of sheet.
      *
      * @return the width of the row
      */
-    int getRowWidth();
+    int getMaxRowWidth();
 
     /**
-     * Returns the height of the col.
+     * Returns the min width of sheet.
+     *
+     * @return the width of the row
+     */
+    int getMinRowWidth();
+
+    /**
+     * Returns the min height of sheet.
      *
      * @return the height of the col
      */
-    int getColHeight();
+    int getMinColHeight();
+
+    /**
+     * Returns the max height of the sheet.
+     *
+     * @return the height of the col
+     */
+    int getMaxColHeight();
 
 }

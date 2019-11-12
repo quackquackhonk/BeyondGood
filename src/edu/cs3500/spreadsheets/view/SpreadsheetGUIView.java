@@ -1,11 +1,13 @@
 package edu.cs3500.spreadsheets.view;
 
+import edu.cs3500.spreadsheets.model.Coord;
 import edu.cs3500.spreadsheets.model.IReadWorkSheetModel;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.function.Consumer;
 
 /**
@@ -18,10 +20,17 @@ public class SpreadsheetGUIView extends JFrame implements IView {
     private JTextField formText;
     private JPanel colHeadPanel;
     private JPanel rowHeadPanel;
-    private int rowMin;
-    private int rowMax;
-    private int colMax;
-    private int colMin;
+    private int rowMinGrid;
+    private int rowMaxGrid;
+    private int colMaxGrid;
+    private int colMinGrid;
+    private int rowMinFrame;
+    private int rowMaxFrame;
+    private int colMaxFrame;
+    private int colMinFrame;
+
+    private int cellWidth;
+    private int cellHeight;
 
     /**
      * Constructs a GUI view for IReadWorkSheetModel.
@@ -30,21 +39,37 @@ public class SpreadsheetGUIView extends JFrame implements IView {
         super();
         this.model = model;
         this.setTitle("Beyond gOOD Editor");
-        this.rowMin = 0;
-        this.colMin = 0;
-        this.rowMax = this.model.getRowWidth();
-        this.colMax = this.model.getColHeight();
+        this.rowMinGrid = 0;
+        this.colMinGrid = 0;
+        this.cellWidth = 20;
+        this.cellHeight = 8;
+
+        // Get active model cells, draw them
+        HashSet<Coord> modelCells = model.activeCells();
+        HashMap<Coord, String> stringCells = new HashMap<>();
+
+        for(Coord c: modelCells) {
+            String cellResult = model.evaluateCell(c.toString());
+            stringCells.put(c, cellResult);
+        }
 
         this.setLayout(new BorderLayout());
         this.setSize(this.getPreferredSize());
         gridPanel = new GridPanel();
-        gridPanel.setLayout(new GridLayout(10,10));
-        gridPanel.setPreferredSize(new Dimension(500, 500));
+        // Size the grid panel to be as wide/tall as the furthest out cells + some buffer.
+        // If this size is smaller than the Frame size, use the frame size instead.
+        int initPanelWidth = Math.max(getPreferredSize().width, model.getMaxRowWidth() * cellWidth);
+        int initPanelHeight = Math.max(getPreferredSize().height, model.getMaxColHeight() * cellHeight);
+
+        // Three cell buffer
+        gridPanel.setPreferredSize(
+                new Dimension(initPanelWidth + 3 * cellWidth, initPanelHeight + 3 * cellHeight));
         this.add(gridPanel, BorderLayout.CENTER);
 
+        // Add FormulaPanel, currently not editable.
         this.formulaBarPanel = new JPanel();
         formulaBarPanel.setLayout(new FlowLayout());
-        formText = new JTextField( "Default formula",20);
+        formText = new JTextField("Default formula", 20);
         formText.setEditable(false);
         formulaBarPanel.add(formText);
         this.add(formulaBarPanel, BorderLayout.NORTH);
@@ -67,7 +92,7 @@ public class SpreadsheetGUIView extends JFrame implements IView {
      */
     @Override
     public Dimension getPreferredSize() {
-        return new Dimension(1000,600);
+        return new Dimension(1000, 600);
     }
 
     /**
