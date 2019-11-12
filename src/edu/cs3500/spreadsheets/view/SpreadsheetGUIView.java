@@ -20,6 +20,8 @@ public class SpreadsheetGUIView extends JFrame implements IView {
     private JTextField formText;
     private JPanel colHeadPanel;
     private JPanel rowHeadPanel;
+    private JScrollPane scrollPane;
+
     private int rowMinGrid;
     private int rowMaxGrid;
     private int colMaxGrid;
@@ -41,8 +43,8 @@ public class SpreadsheetGUIView extends JFrame implements IView {
         this.setTitle("Beyond gOOD Editor");
         this.rowMinGrid = 0;
         this.colMinGrid = 0;
-        this.cellWidth = 20;
-        this.cellHeight = 8;
+        this.cellWidth = 80;
+        this.cellHeight = (int) (cellWidth/2.5);
 
         // Get active model cells, draw them
         HashSet<Coord> modelCells = model.activeCells();
@@ -55,16 +57,24 @@ public class SpreadsheetGUIView extends JFrame implements IView {
 
         this.setLayout(new BorderLayout());
         this.setSize(this.getPreferredSize());
-        gridPanel = new GridPanel();
+
         // Size the grid panel to be as wide/tall as the furthest out cells + some buffer.
         // If this size is smaller than the Frame size, use the frame size instead.
         int initPanelWidth = Math.max(getPreferredSize().width, model.getMaxRowWidth() * cellWidth);
         int initPanelHeight = Math.max(getPreferredSize().height, model.getMaxColHeight() * cellHeight);
 
+        // Determine number of rows and columns GridPanel needs to display given Frame dimensions
+        int numRow = this.getPreferredSize().width / cellWidth;
+        int numCol = this.getPreferredSize().height / cellHeight;
+        System.out.println(numRow);
+        gridPanel = new GridPanel(numRow, numCol, cellWidth, cellHeight);
+        this.scrollPane = new JScrollPane(gridPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+                JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+
         // Three cell buffer
         gridPanel.setPreferredSize(
                 new Dimension(initPanelWidth + 3 * cellWidth, initPanelHeight + 3 * cellHeight));
-        this.add(gridPanel, BorderLayout.CENTER);
+        this.add(scrollPane, BorderLayout.CENTER);
 
         // Add FormulaPanel, currently not editable.
         this.formulaBarPanel = new JPanel();
