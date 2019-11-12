@@ -51,6 +51,9 @@ public class GridPanel extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
+        numRow = this.getWidth() / cw + 3;
+        numCol = this.getHeight() / ch + 3;
+
         Font font = new Font("Arial", Font.PLAIN, (int) Math.floor(ch / 1.5));
         int yOffset = (int) (font.getSize() * 1.1);
         Dimension prefSize = this.getPreferredSize();
