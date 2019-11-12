@@ -58,7 +58,7 @@ public class GridPanel extends JPanel {
         g2d.setFont(font);
         g2d.setColor(Color.pink);
         g2d.fillRect(0, 0, this.getWidth(), this.getHeight());
-
+        System.out.println(this.getWidth());
 
         for (int i = 0; i < numRow; i++) {
             for (int j = 0; j < numCol; j++) {

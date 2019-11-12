@@ -46,7 +46,7 @@ public class SpreadsheetGUIView extends JFrame implements IView {
         this.setTitle("Beyond gOOD Editor");
         //this.rowMinGrid = 0;
         //this.colMinGrid = 0;
-        this.cellWidth = 66;
+        this.cellWidth = 80;
         this.cellHeight = (int) (cellWidth/2.5);
 
         // Get active model cells, draw them
@@ -67,15 +67,15 @@ public class SpreadsheetGUIView extends JFrame implements IView {
         int initPanelHeight = Math.max(getPreferredSize().height, model.getMaxColHeight() * cellHeight);
 
         // Determine number of rows and columns GridPanel needs to display given Frame dimensions
-        int numRow = this.getPreferredSize().width / cellWidth;
-        int numCol = this.getPreferredSize().height / cellHeight;
-        System.out.println(numRow);
+        int numRow = this.getPreferredSize().width / cellWidth + 3;
+        int numCol = this.getPreferredSize().height / cellHeight + 3;
+        //System.out.println(numRow);
         gridPanel = new GridPanel(numRow, numCol, cellWidth, cellHeight);
         this.scrollPane = new JScrollPane(gridPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
                 JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         colHeader = new ColHeader(cellWidth, cellHeight, numCol);
         //colHeader.setPreferredSize(new Dimension(15, initPanelHeight + 3 * cellHeight));
-        //rowHeader = new RowHeader(cellWidth, cellHeight, numRow);
+        rowHeader = new RowHeader(cellWidth, cellHeight, numRow);
 
 
         //scrollPane.setColumnHeaderView();

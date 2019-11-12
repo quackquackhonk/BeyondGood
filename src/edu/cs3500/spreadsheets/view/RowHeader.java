@@ -34,16 +34,18 @@ public class RowHeader extends JPanel {
         Dimension prefSize = this.getPreferredSize();
         Graphics2D g2d = (Graphics2D) g;
         g2d.setFont(font);
+        g2d.setColor(Color.black);
+        g2d.fillRect(0,0, cw, this.getHeight());
 
-
-        for (int i = 0; i < nr; i++) {
+        for (int i = 0; i < nr+10; i++) {
             g2d.setColor(Color.black);
-            g2d.fillRect(i * cw, 10 * ch, cw, ch);
+            g2d.fillRect(cw, 10 * ch, cw, ch);
 
-            g2d.drawLine(i * cw, 10 * ch, i * cw + cw, 10 * ch);
-            g2d.drawLine(i * cw, 10 * ch + ch, i * cw + cw, 10 * ch + ch);
-            g2d.drawLine(i * cw, 10 * ch, i * cw, 10 * ch + ch);
-            g2d.drawLine(i * cw + cw, 10 * ch, i * cw + cw, 10 * ch + ch);
+            g2d.setColor(Color.white);
+            g2d.drawLine(0, i * ch, cw, i * ch);
+            g2d.drawLine(0, i * ch + ch, cw, i * ch + ch);
+            g2d.drawLine(0,i*ch,0,i*ch+ch);
+            g2d.drawLine(cw, i * ch, cw, i * ch + ch);
 
             System.out.println(i);
         }
