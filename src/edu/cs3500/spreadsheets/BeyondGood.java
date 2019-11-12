@@ -1,11 +1,11 @@
 package edu.cs3500.spreadsheets;
 
 import edu.cs3500.spreadsheets.model.IWriteWorkSheetModel;
+import edu.cs3500.spreadsheets.model.ViewCreator;
 import edu.cs3500.spreadsheets.model.WorkSheetModel;
 import edu.cs3500.spreadsheets.model.WorksheetReader;
 import edu.cs3500.spreadsheets.model.WorksheetReader.WorksheetBuilder;
 import edu.cs3500.spreadsheets.view.IView;
-import edu.cs3500.spreadsheets.view.SpreadsheetTextualView;
 
 import java.io.*;
 
@@ -35,22 +35,26 @@ public class BeyondGood {
                 WorksheetBuilder<IWriteWorkSheetModel> builder = new WorkSheetModel.SheetBuilder();
                 IWriteWorkSheetModel model = WorksheetReader.read(builder, fileReader);
                 System.out.println("model Made");
-                if(!model.hasErrors()) {
-                    if(args.length == 4) {
+                if (!model.hasErrors()) {
+                    if (args.length == 4) {
                         System.out.println("4");
-                        if(args[2].equals("-eval") && !model.hasErrors()) {
+                        if (args[2].equals("-eval") && !model.hasErrors()) {
                             model.evaluateIndCell(args[3]);
-                        } else if(args[2].equals("-save")) {
+                        } else if (args[2].equals("-save")) {
                             System.out.println("saved");
                             File outputFile = new File(args[3]);
                             outputFile.createNewFile();
                             PrintWriter writer = new PrintWriter(outputFile);
-                            IView textView = new SpreadsheetTextualView(model, writer);
+                            IView textView = ViewCreator.create(ViewCreator.ViewType.TEXT, model, writer);
                             textView.render();
                             writer.close();
                         }
-                    } else if(args.length == 3) {
-
+                        // GUI called
+                    } else if (args.length == 3) {
+                        System.out.println("making gui");
+                        IView guiView = ViewCreator.create(ViewCreator.ViewType.GUI, model);
+                        guiView.render();
+                        guiView.makeVisible();
                     }
                 }
             } catch (FileNotFoundException e) {
