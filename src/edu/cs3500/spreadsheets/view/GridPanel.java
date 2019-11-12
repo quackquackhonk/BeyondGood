@@ -27,7 +27,7 @@ public class GridPanel extends JPanel {
      * Constructs GUI JPanel
      * mensionsensions
      */
-    public GridPanel(int numRow, int numCol, int cw, int ch) {
+    public GridPanel(int numRow, int numCol, int cw, int ch, HashMap<Coord, String> cells) {
         super();
         /*
         this.rowMin = rowMin;
@@ -36,10 +36,19 @@ public class GridPanel extends JPanel {
         this.colMin = colMin;
         this.grid = grid;
          */
+        this.grid = cells;
         this.numRow = numRow;
         this.numCol = numCol;
         this.cw = cw;
         this.ch = ch;
+    }
+
+    /**
+     * Sets the HashMap of Coord -> String that this Panel uses to render cell text to cells.
+     * @param cells the new HashMap
+     */
+    public void setCells(HashMap<Coord, String> cells) {
+        this.grid = cells;
     }
 
     /**
@@ -54,7 +63,7 @@ public class GridPanel extends JPanel {
         numRow = this.getWidth() / cw + 3;
         numCol = this.getHeight() / ch + 3;
 
-        Font font = new Font("Arial", Font.PLAIN, (int) Math.floor(ch / 1.5));
+        Font font = new Font("Arial", Font.PLAIN, (int) Math.floor(ch / 2));
         int yOffset = (int) (font.getSize() * 1.1);
         Dimension prefSize = this.getPreferredSize();
         Graphics2D g2d = (Graphics2D) g;
@@ -63,16 +72,17 @@ public class GridPanel extends JPanel {
         g2d.fillRect(0, 0, this.getWidth(), this.getHeight());
         System.out.println(this.getWidth());
 
-        for (int i = 0; i < numRow; i++) {
-            for (int j = 0; j < numCol; j++) {
+        for (int row = 0; row < numRow; row++) {
+            for (int col = 0; col < numCol; col++) {
+                String cellText = grid.getOrDefault(new Coord(row + 1, col + 1), "");
                 g2d.setColor(Color.black);
-                g2d.fillRect(i * cw, j * ch, cw, ch);
+                g2d.fillRect(row * cw, col * ch, cw, ch);
                 g2d.setColor(Color.pink);
-                g2d.drawLine(i * cw, j * ch, i * cw + cw, j * ch);
-                g2d.drawLine(i * cw, j * ch + ch, i * cw + cw, j * ch + ch);
-                g2d.drawLine(i * cw, j * ch, i * cw, j * ch + ch);
-                g2d.drawLine(i * cw + cw, j * ch, i * cw + cw, j * ch + ch);
-                g2d.drawString("death.", i * cw + 1, j * ch + yOffset);
+                g2d.drawLine(row * cw, col * ch, row * cw + cw, col * ch);
+                g2d.drawLine(row * cw, col * ch + ch, row * cw + cw, col * ch + ch);
+                g2d.drawLine(row * cw, col * ch, row * cw, col * ch + ch);
+                g2d.drawLine(row * cw + cw, col * ch, row * cw + cw, col * ch + ch);
+                g2d.drawString(cellText, row * cw + 1, col * ch + yOffset);
             }
         }
         this.revalidate();

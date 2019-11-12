@@ -318,8 +318,8 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
     public void buildCell(int col, int row, CellContents cont) {
         minCol = Math.min(col, minCol);
         maxCol = Math.max(col, maxCol);
-        minRow = Math.min(col, minRow);
-        maxRow = Math.max(col, maxRow);
+        minRow = Math.min(row, minRow);
+        maxRow = Math.max(row, maxRow);
 
         Coord coord = new Coord(col, row);
         this.sheet.put(coord, cont);
@@ -545,7 +545,13 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
         public SheetBuilder createCell(int col, int row, String contents) {
             try {
                 CellContents cell = cellFromString(contents);
+                System.out.println("Adding cell at (" + col + "," + row + ").");
+                System.out.print("Former maxCol: " + this.model.getMaxColHeight() + ", ");
+                System.out.println("Former maxRow: " + this.model.getMaxRowWidth() + ".");
                 this.model.buildCell(col, row, cell);
+                System.out.print("New maxCol: " + this.model.getMaxColHeight() + ", ");
+                System.out.println("New maxRow: " + this.model.getMaxRowWidth() + ".");
+
 
             } catch (IllegalArgumentException e) {
                 // Catch IAE thrown by parser

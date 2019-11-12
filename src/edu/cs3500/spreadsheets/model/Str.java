@@ -32,6 +32,12 @@ public class Str implements Value<String> {
     }
 
     @Override
+    public String toString() {
+        // this should be formatted to have escape characters.
+        return this.str;
+    }
+
+    @Override
     public String stringParams() {
         return this.getRaw();
     }
