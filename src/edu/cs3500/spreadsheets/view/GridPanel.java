@@ -51,13 +51,14 @@ public class GridPanel extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        Font font = new Font("Arial", Font.PLAIN, (int) Math.floor(ch / 2));
-        int yOffset = (int) (font.getSize() * 1.4);
+        Font font = new Font("Arial", Font.PLAIN, (int) Math.floor(ch / 1.5));
+        int yOffset = (int) (font.getSize() * 1.1);
         Dimension prefSize = this.getPreferredSize();
         Graphics2D g2d = (Graphics2D) g;
         g2d.setFont(font);
         g2d.setColor(Color.pink);
         g2d.fillRect(0, 0, this.getWidth(), this.getHeight());
+
 
         for (int i = 0; i < numRow; i++) {
             for (int j = 0; j < numCol; j++) {

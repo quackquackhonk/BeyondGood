@@ -21,7 +21,12 @@ public class SpreadsheetGUIView extends JFrame implements IView {
     private JPanel colHeadPanel;
     private JPanel rowHeadPanel;
     private JScrollPane scrollPane;
+    private JPanel colHeader;
+    private JPanel rowHeader;
+    private int cellWidth;
+    private int cellHeight;
 
+    /*
     private int rowMinGrid;
     private int rowMaxGrid;
     private int colMaxGrid;
@@ -30,9 +35,7 @@ public class SpreadsheetGUIView extends JFrame implements IView {
     private int rowMaxFrame;
     private int colMaxFrame;
     private int colMinFrame;
-
-    private int cellWidth;
-    private int cellHeight;
+     */
 
     /**
      * Constructs a GUI view for IReadWorkSheetModel.
@@ -41,9 +44,9 @@ public class SpreadsheetGUIView extends JFrame implements IView {
         super();
         this.model = model;
         this.setTitle("Beyond gOOD Editor");
-        this.rowMinGrid = 0;
-        this.colMinGrid = 0;
-        this.cellWidth = 80;
+        //this.rowMinGrid = 0;
+        //this.colMinGrid = 0;
+        this.cellWidth = 66;
         this.cellHeight = (int) (cellWidth/2.5);
 
         // Get active model cells, draw them
@@ -70,7 +73,13 @@ public class SpreadsheetGUIView extends JFrame implements IView {
         gridPanel = new GridPanel(numRow, numCol, cellWidth, cellHeight);
         this.scrollPane = new JScrollPane(gridPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
                 JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        colHeader = new ColHeader(cellWidth, cellHeight, numCol);
+        //colHeader.setPreferredSize(new Dimension(15, initPanelHeight + 3 * cellHeight));
+        //rowHeader = new RowHeader(cellWidth, cellHeight, numRow);
 
+
+        //scrollPane.setColumnHeaderView();
+        scrollPane.setRowHeaderView(rowHeader);
         // Three cell buffer
         gridPanel.setPreferredSize(
                 new Dimension(initPanelWidth + 3 * cellWidth, initPanelHeight + 3 * cellHeight));
