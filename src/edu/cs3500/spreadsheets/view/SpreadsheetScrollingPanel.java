@@ -3,9 +3,7 @@ package edu.cs3500.spreadsheets.view;
 import edu.cs3500.spreadsheets.model.Coord;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
 
 public class SpreadsheetScrollingPanel extends JPanel {
@@ -150,7 +148,8 @@ public class SpreadsheetScrollingPanel extends JPanel {
             int y = verticalScroll.getValue();
             grid.setBounds(-x, -y, innerComponentSize.width,
                     innerComponentSize.height);
-            System.out.println(grid.getBounds());
+            System.out.println(grid.getBounds() + " grid bounds");
+            System.out.println(getSize() + " viewport size");
         }
     }
 
@@ -173,8 +172,8 @@ public class SpreadsheetScrollingPanel extends JPanel {
         public void paintComponent(Graphics g) {
             super.paintComponent(g);
             this.setSize(new Dimension(grid.getWidth(), cellHeight));
-            Font font = new Font("Arial", Font.PLAIN, (int) Math.floor(cellHeight / 2.0));
-            int yOffset = (int) (font.getSize() * 1.1);
+            Font font = new Font("Arial", Font.PLAIN, (int) Math.floor(cellHeight / 2.4));
+            int yOffset = (int) (font.getSize() * 1.65);
             Graphics2D g2d = (Graphics2D) g;
             int numCols = grid.getWidth() / cellWidth;
             g2d.setFont(font);
@@ -183,8 +182,9 @@ public class SpreadsheetScrollingPanel extends JPanel {
             g2d.setColor(Color.black);
             for (int col = 0; col < numCols + 1; col++) {
                 g2d.drawLine(col * cellWidth, 0, col * cellWidth, cellHeight);
+                g2d.drawLine(col * cellWidth, cellHeight, col * cellWidth, cellHeight);
                 String colName = Coord.colIndexToName(col + 1);
-                g2d.drawString(colName, col * cellWidth + 1, yOffset);
+                g2d.drawString(colName, col * cellWidth + 3, yOffset);
             }
             this.revalidate();
         }
@@ -209,8 +209,8 @@ public class SpreadsheetScrollingPanel extends JPanel {
         public void paintComponent(Graphics g) {
             super.paintComponent(g);
             this.setSize(new Dimension(cellWidth, grid.getHeight()));
-            Font font = new Font("Arial", Font.PLAIN, (int) Math.floor(cellHeight / 2.0));
-            int yOffset = (int) (font.getSize() * 1.1);
+            Font font = new Font("Arial", Font.PLAIN, (int) Math.floor(cellHeight / 2.4));
+            int yOffset = (int) (font.getSize() * 1.65);
             Graphics2D g2d = (Graphics2D) g;
             int numRows = grid.getHeight() / cellHeight;
             g2d.setFont(font);
@@ -218,8 +218,9 @@ public class SpreadsheetScrollingPanel extends JPanel {
             g2d.fillRect(0, 0, this.getWidth(), this.getHeight());
             g2d.setColor(Color.black);
             for (int row = 0; row < numRows + 1; row++) {
+               // g2d.drawLine(0, row * cellHeight+cellHeight, cellWidth, row * cellHeight+cellHeight);
                 g2d.drawLine(0, row * cellHeight, cellWidth, row * cellHeight);
-                g2d.drawString(Integer.toString(row + 1), 1, row * cellHeight + yOffset);
+                g2d.drawString(Integer.toString(row + 1), 3, row * cellHeight + yOffset);
             }
             this.revalidate();
         }

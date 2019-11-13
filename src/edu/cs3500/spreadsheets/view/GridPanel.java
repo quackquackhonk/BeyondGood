@@ -64,16 +64,17 @@ public class GridPanel extends JPanel {
         numCol = this.getPreferredSize().height / ch + 3;
 
         Font font = new Font("Arial", Font.PLAIN, (int) Math.floor(ch / 2));
-        int yOffset = (int) (font.getSize() * 1.1);
+        int yOffset = (int) (font.getSize() * 1.4);
         Dimension prefSize = this.getPreferredSize();
         Graphics2D g2d = (Graphics2D) g;
         g2d.setFont(font);
         g2d.setColor(Color.pink);
-        g2d.fillRect(0, 0, this.getWidth(), this.getHeight());
-        System.out.println(this.getWidth());
+        g2d.fillRect(0, 0, this.getPreferredSize().width, this.getPreferredSize().height);
+        System.out.println(this.getPreferredSize() + " grids pref size");
 
         for (int row = 0; row < numRow; row++) {
             for (int col = 0; col < numCol; col++) {
+
                 String cellText = grid.getOrDefault(new Coord(row + 1, col + 1), "");
                 g2d.setColor(Color.black);
                 g2d.fillRect(row * cw, col * ch, cw, ch);
@@ -82,7 +83,7 @@ public class GridPanel extends JPanel {
                 g2d.drawLine(row * cw, col * ch + ch, row * cw + cw, col * ch + ch);
                 g2d.drawLine(row * cw, col * ch, row * cw, col * ch + ch);
                 g2d.drawLine(row * cw + cw, col * ch, row * cw + cw, col * ch + ch);
-                g2d.drawString(cellText, row * cw + 1, col * ch + yOffset);
+                g2d.drawString(cellText, row * cw + 3, col * ch + yOffset);
             }
         }
         this.revalidate();
