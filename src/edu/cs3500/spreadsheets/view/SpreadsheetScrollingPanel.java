@@ -6,6 +6,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.AdjustmentListener;
 
+/**
+ * Custom ScrollPane for spreadsheets.
+ */
 public class SpreadsheetScrollingPanel extends JPanel {
 
     private final int cellWidth;
@@ -22,28 +25,19 @@ public class SpreadsheetScrollingPanel extends JPanel {
     private JPanel colHead;
     private JPanel rowHead;
 
+    /**
+     * Constructs custom scroll panel.
+     *
+     * @param view       grid view to move around based on scroll and window events.
+     * @param cellWidth  width of a rendered cell
+     * @param cellHeight height of a rendered cell
+     */
     public SpreadsheetScrollingPanel(JPanel view, int cellWidth, int cellHeight) {
 
         super();
 
         this.cellWidth = cellWidth;
         this.cellHeight = cellHeight;
-
-//        this.setLayout(new BorderLayout());
-//        this.grid = view;
-//        this.gridViewport.add(this.grid);
-//
-//        this.verticalScroll.setUnitIncrement(cellHeight);
-//        this.horizontalScroll.setUnitIncrement(cellWidth);
-//
-//        this.colHead = new SpreadsheetScrollingColumnHeader();
-//        this.rowHead = new SpreadsheetScrollingRowHeader();
-//        this.add(this.verticalScroll, BorderLayout.EAST);
-//        this.add(this.horizontalScroll, BorderLayout.SOUTH);
-//        this.add(this.colHead, BorderLayout.NORTH);
-//        this.add(this.rowHead, BorderLayout.WEST);
-//        this.add(this.gridViewport, BorderLayout.CENTER);
-
         this.setLayout(new GridBagLayout());
         this.grid = view;
         this.gridViewport.add(this.grid);
@@ -104,6 +98,9 @@ public class SpreadsheetScrollingPanel extends JPanel {
         this.horizontalScroll.addAdjustmentListener(scrollListener);
     }
 
+    /**
+     * Sets the bounds and layout for the grid, viewport, and two scrollbars.
+     */
     public void doLayout() {
         Dimension size = getSize();
         Dimension gridSize = grid.getPreferredSize();
@@ -134,23 +131,31 @@ public class SpreadsheetScrollingPanel extends JPanel {
 
     }
 
-
+    /**
+     * Viewport for the client. Moves grid based on scroll and window resize events.
+     */
     protected class ScrollingViewPort extends JPanel {
 
+        /**
+         * Constructs ScrollingViewPort.
+         */
         public ScrollingViewPort() {
             setLayout(null);
         }
 
-
+        /**
+         * Recalculates layout based on scroll event. Moves grid accordingly.
+         */
         public void doLayout() {
             int x = horizontalScroll.getValue();
             int y = verticalScroll.getValue();
             Dimension gridSize = new Dimension(grid.getPreferredSize());
-            if(gridSize.width-cellWidth*3 < this.getWidth()) {
-                gridSize.setSize(this.getWidth()+cellWidth*3, gridSize.height);
+            //gridSize.setSize(Math.max(this.getWidth(), grid.getWidth()), Math.max(this.getHeight(), grid.getHeight()));
+            if (gridSize.width - cellWidth * 3 < this.getWidth()) {
+                gridSize.setSize(this.getWidth() + cellWidth * 3, gridSize.height);
             }
-            if(gridSize.height-cellHeight*3 < this.getHeight()) {
-                gridSize.setSize(gridSize.width, this.getHeight()+cellHeight*3);
+            if (gridSize.height - cellHeight * 3 < this.getHeight()) {
+                gridSize.setSize(gridSize.width, this.getHeight() + cellHeight * 3);
             }
             grid.setPreferredSize(gridSize);
             grid.setBounds(-x, -y, gridSize.width,
@@ -160,8 +165,14 @@ public class SpreadsheetScrollingPanel extends JPanel {
         }
     }
 
+    /**
+     * Sticky column header.
+     */
     public class SpreadsheetScrollingColumnHeader extends JPanel {
 
+        /**
+         * Constructs sticky column header.
+         */
         public SpreadsheetScrollingColumnHeader() {
             super();
             this.setPreferredSize(new Dimension(grid.getPreferredSize().width, cellHeight));
@@ -170,11 +181,19 @@ public class SpreadsheetScrollingPanel extends JPanel {
             this.repaint();
         }
 
+        /**
+         * Calculates bounds based on scroll event.
+         */
         public void doLayout() {
             int x = horizontalScroll.getValue();
             this.setBounds(-x + cellWidth, this.getY(), this.getWidth(), this.getHeight());
         }
 
+        /**
+         * Draw this component.
+         *
+         * @param g Graphics to draw
+         */
         @Override
         public void paintComponent(Graphics g) {
             super.paintComponent(g);
@@ -197,8 +216,14 @@ public class SpreadsheetScrollingPanel extends JPanel {
         }
     }
 
+    /**
+     * Sticky row side header. Scrolls with grid vertically but not horizontally.
+     */
     public class SpreadsheetScrollingRowHeader extends JPanel {
 
+        /**
+         * Constructs sticky rowheader.
+         */
         public SpreadsheetScrollingRowHeader() {
             super();
             this.setPreferredSize(new Dimension(cellWidth, grid.getPreferredSize().height));
@@ -207,11 +232,19 @@ public class SpreadsheetScrollingPanel extends JPanel {
             this.repaint();
         }
 
+        /**
+         * Recalculates bounds based on scroll event.
+         */
         public void doLayout() {
             int y = verticalScroll.getValue();
             this.setBounds(this.getX(), -y + cellHeight, this.getWidth(), this.getHeight());
         }
 
+        /**
+         * Renders this component.
+         *
+         * @param g Graphics used to render component
+         */
         @Override
         public void paintComponent(Graphics g) {
             super.paintComponent(g);
@@ -225,7 +258,7 @@ public class SpreadsheetScrollingPanel extends JPanel {
             g2d.fillRect(0, 0, this.getWidth(), this.getHeight());
             g2d.setColor(Color.black);
             for (int row = 0; row < numRows + 1; row++) {
-               // g2d.drawLine(0, row * cellHeight+cellHeight, cellWidth, row * cellHeight+cellHeight);
+                // g2d.drawLine(0, row * cellHeight+cellHeight, cellWidth, row * cellHeight+cellHeight);
                 g2d.drawLine(0, row * cellHeight, cellWidth, row * cellHeight);
                 g2d.drawString(Integer.toString(row + 1), 3, row * cellHeight + yOffset);
             }

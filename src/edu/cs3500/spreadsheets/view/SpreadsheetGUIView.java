@@ -18,25 +18,10 @@ public class SpreadsheetGUIView extends JFrame implements IView {
     private JPanel gridPanel;
     private JPanel formulaBarPanel;
     private JTextField formText;
-    private JPanel colHeadPanel;
-    private JPanel rowHeadPanel;
     //private JScrollPane scrollPane;
     private JPanel scrollPane;
-    private JPanel colHeader;
-    private JPanel rowHeader;
     private int cellWidth;
     private int cellHeight;
-
-    /*
-    private int rowMinGrid;
-    private int rowMaxGrid;
-    private int colMaxGrid;
-    private int colMinGrid;
-    private int rowMinFrame;
-    private int rowMaxFrame;
-    private int colMaxFrame;
-    private int colMinFrame;
-     */
 
     /**
      * Constructs a GUI view for IReadWorkSheetModel.
@@ -48,13 +33,13 @@ public class SpreadsheetGUIView extends JFrame implements IView {
         //this.rowMinGrid = 0;
         //this.colMinGrid = 0;
         this.cellWidth = 80;
-        this.cellHeight = (int) (cellWidth/2.5);
+        this.cellHeight = (int) (cellWidth / 2.5);
 
         // Get active model cells, draw them
         HashSet<Coord> modelCells = model.activeCells();
         HashMap<Coord, String> stringCells = new HashMap<>();
 
-        for(Coord c: modelCells) {
+        for (Coord c : modelCells) {
             String cellResult = model.evaluateCell(c.toString());
             stringCells.put(c, cellResult);
         }
@@ -74,15 +59,10 @@ public class SpreadsheetGUIView extends JFrame implements IView {
         int numCol = this.getPreferredSize().height / cellHeight + 3;
         //System.out.println(numRow);
         gridPanel = new GridPanel(numRow, numCol, cellWidth, cellHeight, stringCells);
-        //this.scrollPane = new JScrollPane(gridPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-        //        JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         this.scrollPane = new SpreadsheetScrollingPanel(gridPanel, cellWidth, cellHeight);
         this.scrollPane.setPreferredSize(new Dimension(initPanelWidth + 3 * cellWidth,
                 initPanelHeight + 3 * cellHeight));
 
-
-        //scrollPane.setColumnHeaderView();
-        //scrollPane.setRowHeaderView(rowHeader);
         // Three cell buffer
         gridPanel.setPreferredSize(
                 new Dimension(initPanelWidth + 3 * cellWidth, initPanelHeight + 3 * cellHeight));
@@ -110,7 +90,7 @@ public class SpreadsheetGUIView extends JFrame implements IView {
     /**
      * Default size of the frame.
      *
-     * @return dimension
+     * @return dimensions of the frame.
      */
     @Override
     public Dimension getPreferredSize() {
