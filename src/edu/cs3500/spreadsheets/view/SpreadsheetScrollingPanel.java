@@ -16,16 +16,17 @@ public class SpreadsheetScrollingPanel extends JPanel {
     private ScrollingViewPort gridViewport = new ScrollingViewPort();
     private JComponent grid;
 
-    public SpreadsheetScrollingPanel(JPanel view, int cellWidth, int cellHeight) {
+    public SpreadsheetScrollingPanel(JPanel view, int cellWidth, int cellHeight, Dimension initSize) {
 
         this.cellWidth = cellWidth;
         this.cellHeight = cellHeight;
 
-        setLayout(null);
+        setLayout(new GridBagLayout());
 
         add(this.gridViewport);
 
         this.grid = view;
+        grid.setPreferredSize(initSize);
         this.gridViewport.add(this.grid);
 
         this.verticalScroll.setUnitIncrement(cellHeight);
@@ -42,8 +43,9 @@ public class SpreadsheetScrollingPanel extends JPanel {
         this.horizontalScroll.addAdjustmentListener(scrollListener);
     }
 
+
     public void doLayout() {
-        Dimension size = getSize();
+        Dimension size = this.getSize();
         Dimension gridSize = grid.getPreferredSize();
         Dimension verticalBarSize = this.verticalScroll.getPreferredSize();
         Dimension horizontalBarSize = this.horizontalScroll.getPreferredSize();
@@ -66,12 +68,13 @@ public class SpreadsheetScrollingPanel extends JPanel {
 
         this.horizontalScroll.setVisibleAmount(this.horizontalScroll.getBlockIncrement());
         this.verticalScroll.setVisibleAmount(this.verticalScroll.getBlockIncrement());
-
     }
 
     @Override
     public void paintComponent(Graphics g) {
-
+        System.out.println(this.getSize());
+        grid.setPreferredSize(new Dimension(SpreadsheetScrollingPanel.this.getWidth(),
+                SpreadsheetScrollingPanel.this.getHeight()));
     }
 
     public class ScrollingViewPort extends JPanel {

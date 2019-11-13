@@ -20,8 +20,7 @@ public class SpreadsheetGUIView extends JFrame implements IView {
     private JTextField formText;
     private JPanel colHeadPanel;
     private JPanel rowHeadPanel;
-    private JScrollPane scrollPane;
-    //private JPanel scrollPane;
+    private JPanel scrollPane;
     private JPanel colHeader;
     private JPanel rowHeader;
     private int cellWidth;
@@ -64,21 +63,19 @@ public class SpreadsheetGUIView extends JFrame implements IView {
 
         // Size the grid panel to be as wide/tall as the furthest out cells + some buffer.
         // If this size is smaller than the Frame size, use the frame size instead.
-        System.out.println(model.getMaxRowWidth());
-        int initPanelWidth = Math.max(getPreferredSize().width, model.getMaxColHeight() * cellWidth);
-        System.out.println(initPanelWidth);
-        int initPanelHeight = Math.max(getPreferredSize().height, model.getMaxRowWidth() * cellHeight);
+        int initPanelWidth = Math.max(getPreferredSize().width, model.getMaxRowWidth() * cellWidth);
+        int initPanelHeight = Math.max(getPreferredSize().height, model.getMaxColHeight() * cellHeight);
 
         // Determine number of rows and columns GridPanel needs to display given Frame dimensions
         int numRow = this.getPreferredSize().width / cellWidth + 3;
         int numCol = this.getPreferredSize().height / cellHeight + 3;
         //System.out.println(numRow);
-        gridPanel = new GridPanel(numRow, numCol, cellWidth, cellHeight, stringCells);
-        this.scrollPane = new JScrollPane(gridPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-                JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        //this.scrollPane = new SpreadsheetScrollingPanel(gridPanel, cellWidth, cellHeight);
-        //this.scrollPane.setPreferredSize(new Dimension(initPanelWidth + 3 * cellWidth,
-        //        initPanelHeight + 3 * cellHeight));
+        gridPanel = new GridPanel(numRow, numCol, cellWidth, cellHeight);
+        //this.scrollPane = new JScrollPane(gridPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+        //        JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        this.scrollPane = new SpreadsheetScrollingPanel(gridPanel, cellWidth, cellHeight);
+        this.scrollPane.setPreferredSize(new Dimension(initPanelWidth + 3 * cellWidth,
+                initPanelHeight + 3 * cellHeight));
         colHeader = new ColHeader(cellWidth, cellHeight, numCol);
         //colHeader.setPreferredSize(new Dimension(15, initPanelHeight + 3 * cellHeight));
         rowHeader = new RowHeader(cellWidth, cellHeight, numRow);

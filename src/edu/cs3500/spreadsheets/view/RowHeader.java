@@ -29,7 +29,7 @@ public class RowHeader extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        Font font = new Font("Arial", Font.PLAIN, (int) Math.floor(ch / 1.5));
+        Font font = new Font("Arial", Font.PLAIN, (int) Math.floor(ch / 3));
         int yOffset = (int) (font.getSize() * 1.1);
         Dimension prefSize = this.getPreferredSize();
         Graphics2D g2d = (Graphics2D) g;
@@ -42,6 +42,7 @@ public class RowHeader extends JPanel {
             g2d.fillRect(cw, 10 * ch, cw, ch);
 
             g2d.setColor(Color.white);
+            g2d.drawString(Integer.toString(i), 1, i * ch + yOffset);
             g2d.drawLine(0, i * ch, cw, i * ch);
             g2d.drawLine(0, i * ch + ch, cw, i * ch + ch);
             g2d.drawLine(0,i*ch,0,i*ch+ch);
