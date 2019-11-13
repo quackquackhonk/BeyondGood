@@ -3,22 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="013926d2-f87d-4d22-a068-7b9fcc73e8c6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/BeyondGood.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/BeyondGood.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/Str.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/Str.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel$EvalVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel$EvalVisitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel$SheetBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel$SheetBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/BeyondGood.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/BeyondGood.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/Str.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/Str.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/WorkSheetModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/WorkSheetModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/GridPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/GridPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/largeSheetGuiTest" beforeDir="false" afterPath="$PROJECT_DIR$/largeSheetGuiTest" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetGUIView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetGUIView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetScrollingPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetScrollingPanel.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="Asn5 Starter" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -41,6 +37,8 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
@@ -71,7 +69,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.blankSheetGui">
+  <component name="RunManager" selected="Application.largeSheetTest">
     <configuration name="Unnamed" type="AndroidJUnit" nameIsGenerated="true">
       <module name="Asn5 Starter" />
       <option name="MAIN_CLASS_NAME" value="" />
@@ -235,6 +233,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1572280376618</updated>
+      <workItem from="1573610484128" duration="6190000" />
     </task>
     <task id="LOCAL-00001" summary="added GUI class">
       <created>1573484804770</created>
@@ -278,8 +277,18 @@
       <option name="project" value="LOCAL" />
       <updated>1573599329570</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Updated the GridPanel to render the values of the cells from the model. Also fixed a bug with the model not printing the value of String cells">
+      <created>1573602932034</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1573602932034</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -300,6 +309,7 @@
     <MESSAGE value="- Drew grid" />
     <MESSAGE value="- font auto-sizing/spacing" />
     <MESSAGE value="Added SpreadsheetScrollingPanel" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added SpreadsheetScrollingPanel" />
+    <MESSAGE value="Updated the GridPanel to render the values of the cells from the model. Also fixed a bug with the model not printing the value of String cells" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated the GridPanel to render the values of the cells from the model. Also fixed a bug with the model not printing the value of String cells" />
   </component>
 </project>

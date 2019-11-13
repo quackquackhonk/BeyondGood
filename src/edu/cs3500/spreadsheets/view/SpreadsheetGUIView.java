@@ -20,8 +20,8 @@ public class SpreadsheetGUIView extends JFrame implements IView {
     private JTextField formText;
     private JPanel colHeadPanel;
     private JPanel rowHeadPanel;
-    private JScrollPane scrollPane;
-    //private JPanel scrollPane;
+    //private JScrollPane scrollPane;
+    private JPanel scrollPane;
     private JPanel colHeader;
     private JPanel rowHeader;
     private int cellWidth;
@@ -74,11 +74,11 @@ public class SpreadsheetGUIView extends JFrame implements IView {
         int numCol = this.getPreferredSize().height / cellHeight + 3;
         //System.out.println(numRow);
         gridPanel = new GridPanel(numRow, numCol, cellWidth, cellHeight, stringCells);
-        this.scrollPane = new JScrollPane(gridPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-                JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        //this.scrollPane = new SpreadsheetScrollingPanel(gridPanel, cellWidth, cellHeight);
-        //this.scrollPane.setPreferredSize(new Dimension(initPanelWidth + 3 * cellWidth,
-        //        initPanelHeight + 3 * cellHeight));
+        //this.scrollPane = new JScrollPane(gridPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+        //        JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        this.scrollPane = new SpreadsheetScrollingPanel(gridPanel, cellWidth, cellHeight);
+        this.scrollPane.setPreferredSize(new Dimension(initPanelWidth + 3 * cellWidth,
+                initPanelHeight + 3 * cellHeight));
         colHeader = new ColHeader(cellWidth, cellHeight, numCol);
         //colHeader.setPreferredSize(new Dimension(15, initPanelHeight + 3 * cellHeight));
         rowHeader = new RowHeader(cellWidth, cellHeight, numRow);
