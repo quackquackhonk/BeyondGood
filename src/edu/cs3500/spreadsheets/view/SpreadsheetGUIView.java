@@ -70,10 +70,10 @@ public class SpreadsheetGUIView extends JFrame implements IView {
         int numRow = this.getPreferredSize().width / cellWidth + 3;
         int numCol = this.getPreferredSize().height / cellHeight + 3;
         //System.out.println(numRow);
-        gridPanel = new GridPanel(numRow, numCol, cellWidth, cellHeight);
+        gridPanel = new GridPanel(numRow, numCol, cellWidth, cellHeight, stringCells);
         //this.scrollPane = new JScrollPane(gridPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
         //        JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        this.scrollPane = new SpreadsheetScrollingPanel(gridPanel, cellWidth, cellHeight);
+        this.scrollPane = new SpreadsheetScrollingPanel(gridPanel, cellWidth, cellHeight, this.getPreferredSize());
         this.scrollPane.setPreferredSize(new Dimension(initPanelWidth + 3 * cellWidth,
                 initPanelHeight + 3 * cellHeight));
         colHeader = new ColHeader(cellWidth, cellHeight, numCol);
