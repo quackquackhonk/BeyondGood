@@ -143,11 +143,18 @@ public class SpreadsheetScrollingPanel extends JPanel {
 
 
         public void doLayout() {
-            Dimension innerComponentSize = grid.getPreferredSize();
             int x = horizontalScroll.getValue();
             int y = verticalScroll.getValue();
-            grid.setBounds(-x, -y, innerComponentSize.width,
-                    innerComponentSize.height);
+            Dimension gridSize = new Dimension(grid.getPreferredSize());
+            if(gridSize.width-cellWidth*3 < this.getWidth()) {
+                gridSize.setSize(this.getWidth()+cellWidth*3, gridSize.height);
+            }
+            if(gridSize.height-cellHeight*3 < this.getHeight()) {
+                gridSize.setSize(gridSize.width, this.getHeight()+cellHeight*3);
+            }
+            grid.setPreferredSize(gridSize);
+            grid.setBounds(-x, -y, gridSize.width,
+                    gridSize.height);
             System.out.println(grid.getBounds() + " grid bounds");
             System.out.println(getSize() + " viewport size");
         }
