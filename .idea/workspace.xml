@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="013926d2-f87d-4d22-a068-7b9fcc73e8c6" name="Default Changelist" comment="">
+    <list default="true" id="013926d2-f87d-4d22-a068-7b9fcc73e8c6" name="Default Changelist" comment="Success.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/largeSheetGuiTest" beforeDir="false" afterPath="$PROJECT_DIR$/largeSheetGuiTest" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetGUIView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetGUIView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetScrollingPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetScrollingPanel.java" afterDir="false" />
     </list>
@@ -69,7 +68,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.largeSheetTest">
+  <component name="RunManager" selected="Application.blankSheetGui">
     <configuration name="Unnamed" type="AndroidJUnit" nameIsGenerated="true">
       <module name="Asn5 Starter" />
       <option name="MAIN_CLASS_NAME" value="" />
@@ -233,7 +232,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1572280376618</updated>
-      <workItem from="1573610484128" duration="6190000" />
+      <workItem from="1573610484128" duration="7571000" />
     </task>
     <task id="LOCAL-00001" summary="added GUI class">
       <created>1573484804770</created>
@@ -284,7 +283,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573602932034</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Success.">
+      <created>1573616911826</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1573616911826</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -310,6 +316,7 @@
     <MESSAGE value="- font auto-sizing/spacing" />
     <MESSAGE value="Added SpreadsheetScrollingPanel" />
     <MESSAGE value="Updated the GridPanel to render the values of the cells from the model. Also fixed a bug with the model not printing the value of String cells" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated the GridPanel to render the values of the cells from the model. Also fixed a bug with the model not printing the value of String cells" />
+    <MESSAGE value="Success." />
+    <option name="LAST_COMMIT_MESSAGE" value="Success." />
   </component>
 </project>

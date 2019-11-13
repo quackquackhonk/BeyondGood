@@ -79,10 +79,6 @@ public class SpreadsheetGUIView extends JFrame implements IView {
         this.scrollPane = new SpreadsheetScrollingPanel(gridPanel, cellWidth, cellHeight);
         this.scrollPane.setPreferredSize(new Dimension(initPanelWidth + 3 * cellWidth,
                 initPanelHeight + 3 * cellHeight));
-        colHeader = new ColHeader(cellWidth, cellHeight, numCol);
-        //colHeader.setPreferredSize(new Dimension(15, initPanelHeight + 3 * cellHeight));
-        rowHeader = new RowHeader(cellWidth, cellHeight, numRow);
-        //this.scrollPane.setRowHeaderView(rowHeader);
 
 
         //scrollPane.setColumnHeaderView();

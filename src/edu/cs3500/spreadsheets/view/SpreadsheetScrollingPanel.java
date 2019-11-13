@@ -150,6 +150,7 @@ public class SpreadsheetScrollingPanel extends JPanel {
             int y = verticalScroll.getValue();
             grid.setBounds(-x, -y, innerComponentSize.width,
                     innerComponentSize.height);
+            System.out.println(grid.getBounds());
         }
     }
 
