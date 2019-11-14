@@ -46,7 +46,7 @@ public class SpreadsheetGUIView extends JFrame implements IView {
                 stringCells.put(c, cellResult);
             } catch (IllegalArgumentException e) {
                 String msg = e.getMessage();
-                System.out.println(msg + " "+ c.toString());
+                //System.out.println(msg + " "+ c.toString());
                 if(msg.contains("cycle")) {
                     stringCells.put(c, "#REF!");
                 } else if(msg.contains("Formula")) {
@@ -60,9 +60,9 @@ public class SpreadsheetGUIView extends JFrame implements IView {
 
         // Size the grid panel to be as wide/tall as the furthest out cells + some buffer.
         // If this size is smaller than the Frame size, use the frame size instead.
-        System.out.println(model.getMaxRow());
+        //System.out.println(model.getMaxRow());
         int initPanelWidth = Math.max(getPreferredSize().width, model.getMaxCol() * cellWidth);
-        System.out.println(initPanelWidth);
+        //System.out.println(initPanelWidth);
         int initPanelHeight = Math.max(getPreferredSize().height, model.getMaxRow() * cellHeight);
 
         // Determine number of rows and columns GridPanel needs to display given Frame dimensions

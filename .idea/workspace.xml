@@ -3,19 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="013926d2-f87d-4d22-a068-7b9fcc73e8c6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bad.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bgInputs.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/final 5.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/good1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/good1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/good1Saved" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/good2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/good2.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/BeyondGood.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/BeyondGood.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel$EvalVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel$EvalVisitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel$SheetBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel$SheetBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/BeyondGood.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/BeyondGood.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/WorkSheetModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/WorkSheetModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wtf/production/Asn5 Starter/META-INF/Asn5 Starter.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetGUIView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetGUIView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetScrollingPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetScrollingPanel.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -60,6 +51,9 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../NEU Fall 2019/OOD/Asn5 Starter" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -90,13 +84,21 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.SpreadsheetTextualViewTest">
+  <component name="RunManager" selected="Application.blankSheetGui">
     <configuration name="Unnamed" type="AndroidJUnit" nameIsGenerated="true">
       <module name="Asn5 Starter" />
       <option name="MAIN_CLASS_NAME" value="" />
       <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
       <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="blankSheetGui" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="edu.cs3500.spreadsheets.BeyondGood" />
+      <module name="Asn5 Starter" />
+      <option name="PROGRAM_PARAMETERS" value="-gui" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -120,7 +122,7 @@
     <configuration name="guiTest" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="edu.cs3500.spreadsheets.BeyondGood" />
       <module name="Asn5 Starter" />
-      <option name="PROGRAM_PARAMETERS" value="-in good3.txt -save good3saved.txt" />
+      <option name="PROGRAM_PARAMETERS" value="-in good1.txt -gui" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -137,14 +139,6 @@
       <option name="MAIN_CLASS_NAME" value="edu.cs3500.spreadsheets.BeyondGood" />
       <module name="Asn5 Starter" />
       <option name="PROGRAM_PARAMETERS" value="-in good1Saved -eval A1" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="testBadSave" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="edu.cs3500.spreadsheets.BeyondGood" />
-      <module name="Asn5 Starter" />
-      <option name="PROGRAM_PARAMETERS" value="-in bad.txt -save badSaved.txt" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -241,7 +235,7 @@
       <item itemvalue="Application.largeSheetTest" />
       <item itemvalue="Application.cycleGui" />
       <item itemvalue="Application.good2Gui" />
-      <item itemvalue="Application.testBadSave" />
+      <item itemvalue="Application.blankSheetGui" />
       <item itemvalue="Application.testSave" />
       <item itemvalue="Application.testSaveOrder" />
       <item itemvalue="Application.openSaved" />
@@ -254,11 +248,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.SpreadsheetTextualViewTest" />
         <item itemvalue="JUnit.edu.cs3500.spreadsheets in Asn5 Starter" />
         <item itemvalue="JUnit.edu.cs3500.spreadsheets.model in Asn5 Starter" />
         <item itemvalue="JUnit.PRODUCTTest" />
         <item itemvalue="JUnit.All in Asn5 Starter" />
+        <item itemvalue="JUnit.SpreadsheetTextualViewTest" />
       </list>
     </recent_temporary>
   </component>
@@ -273,7 +267,7 @@
       <option name="presentableId" value="Default" />
       <updated>1572280376618</updated>
       <workItem from="1573610484128" duration="7571000" />
-      <workItem from="1573701647364" duration="586000" />
+      <workItem from="1573701647364" duration="1074000" />
     </task>
     <task id="LOCAL-00001" summary="added GUI class">
       <created>1573484804770</created>
@@ -380,7 +374,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573701375723</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Fixed bug where -gui wasn't working">
+      <created>1573702259991</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1573702259991</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -437,6 +438,7 @@
     <MESSAGE value="Added window maximize listener" />
     <MESSAGE value="Fixed bug where resizing the window will offset the grid." />
     <MESSAGE value="Updated documentation for createScrollPane" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated documentation for createScrollPane" />
+    <MESSAGE value="Fixed bug where -gui wasn't working" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug where -gui wasn't working" />
   </component>
 </project>

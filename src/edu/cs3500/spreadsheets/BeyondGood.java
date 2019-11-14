@@ -22,7 +22,7 @@ public class BeyondGood {
     public static void main(String[] args) {
         try {
             if (args[0].equals("-gui") && args.length == 1) {
-                System.out.println("making blank gui");
+                //System.out.println("making blank gui");
                 File file = new File("newSpreadsheet.txt");
                 file.createNewFile();
                 Readable fileReader = new FileReader(file);
@@ -33,8 +33,7 @@ public class BeyondGood {
                 IView guiView = ViewCreator.create(ViewCreator.ViewType.GUI, model);
                 guiView.render();
                 guiView.makeVisible();
-            }
-            if (validArgs(args)) {
+            } else if (validArgs(args)) {
                 File file = new File(args[1]);
                 // Use WorksheetReader.read() to build model
                 Readable fileReader = new FileReader(file);
@@ -53,7 +52,7 @@ public class BeyondGood {
                     }
                     // GUI called
                 } else if (args.length == 3) {
-                    System.out.println("making gui");
+                    //System.out.println("making gui");
                     IView guiView = ViewCreator.create(ViewCreator.ViewType.GUI, model);
                     guiView.render();
                     guiView.makeVisible();
@@ -62,7 +61,7 @@ public class BeyondGood {
         } catch (FileNotFoundException e) {
             System.out.println("No file provided");
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("IOexception occured.");
         }
     }
 
