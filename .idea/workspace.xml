@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="013926d2-f87d-4d22-a068-7b9fcc73e8c6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/BeyondGood.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/BeyondGood.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/BeyondGood.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/BeyondGood.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetGUIView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetGUIView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetScrollingPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetScrollingPanel.java" afterDir="false" />
-    </list>
+    <list default="true" id="013926d2-f87d-4d22-a068-7b9fcc73e8c6" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +78,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.blankSheetGui">
+  <component name="RunManager" selected="JUnit.WorkSheetModelTest">
     <configuration name="Unnamed" type="AndroidJUnit" nameIsGenerated="true">
       <module name="Asn5 Starter" />
       <option name="MAIN_CLASS_NAME" value="" />
@@ -186,16 +180,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SpreadsheetTextualViewTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="WorkSheetModelTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Asn5 Starter" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="edu.cs3500.spreadsheets.view.*" />
+          <option name="PATTERN" value="edu.cs3500.spreadsheets.model.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="edu.cs3500.spreadsheets.view" />
-      <option name="MAIN_CLASS_NAME" value="edu.cs3500.spreadsheets.view.SpreadsheetTextualViewTest" />
+      <option name="PACKAGE_NAME" value="edu.cs3500.spreadsheets.model" />
+      <option name="MAIN_CLASS_NAME" value="edu.cs3500.spreadsheets.model.WorkSheetModelTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -240,19 +234,19 @@
       <item itemvalue="Application.testSaveOrder" />
       <item itemvalue="Application.openSaved" />
       <item itemvalue="Application.testEvalGood" />
-      <item itemvalue="JUnit.SpreadsheetTextualViewTest" />
       <item itemvalue="JUnit.All in Asn5 Starter" />
       <item itemvalue="JUnit.PRODUCTTest" />
       <item itemvalue="JUnit.edu.cs3500.spreadsheets.model in Asn5 Starter" />
       <item itemvalue="JUnit.edu.cs3500.spreadsheets in Asn5 Starter" />
+      <item itemvalue="JUnit.WorkSheetModelTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.WorkSheetModelTest" />
+        <item itemvalue="JUnit.All in Asn5 Starter" />
         <item itemvalue="JUnit.edu.cs3500.spreadsheets in Asn5 Starter" />
         <item itemvalue="JUnit.edu.cs3500.spreadsheets.model in Asn5 Starter" />
         <item itemvalue="JUnit.PRODUCTTest" />
-        <item itemvalue="JUnit.All in Asn5 Starter" />
-        <item itemvalue="JUnit.SpreadsheetTextualViewTest" />
       </list>
     </recent_temporary>
   </component>
