@@ -28,10 +28,8 @@ SpreadsheetScrollingRowHeader
 
 SpreadsheetTextualView
     - Saves the input spreadsheet file in text form.
-
-
-
-
+    - Incorrect cells are still saved for future use.
+    - Previously saved files can be opened and resaved.
 
 *** MODEL ****************************************************************************************
 
