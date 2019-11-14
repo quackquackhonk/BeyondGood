@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="013926d2-f87d-4d22-a068-7b9fcc73e8c6" name="Default Changelist" comment="">
+    <list default="true" id="013926d2-f87d-4d22-a068-7b9fcc73e8c6" name="Default Changelist" comment="Added window maximize listener">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel$SheetBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel$SheetBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetGUIView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetGUIView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetScrollingPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetScrollingPanel.java" afterDir="false" />
     </list>
@@ -50,6 +48,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../NEU Fall 2019/OOD/Asn5 Starter" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -62,6 +61,11 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="blankSheetGui" />
+    </option>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -343,7 +347,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573692674764</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Added window maximize listener">
+      <created>1573698098555</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1573698098555</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -352,6 +363,30 @@
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
+        <entry key="1">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="range">
+                    <value>
+                      <list>
+                        <option value="HEAD..origin/master" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
         <entry key="MAIN">
           <value>
             <State>
@@ -373,6 +408,7 @@
     <MESSAGE value="- Drag to full screen works&#10;- Jump to full screen still has horizontal gap" />
     <MESSAGE value="- JavDocs, removed unused classes" />
     <MESSAGE value="Updated the name of getMaxRowWidth and getMaxColHeight to make more sense in the context of the model" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated the name of getMaxRowWidth and getMaxColHeight to make more sense in the context of the model" />
+    <MESSAGE value="Added window maximize listener" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added window maximize listener" />
   </component>
 </project>

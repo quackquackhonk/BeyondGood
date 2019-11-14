@@ -20,14 +20,12 @@ public class SpreadsheetScrollingPanel extends JPanel {
     private JScrollBar verticalScroll = new JScrollBar(JScrollBar.VERTICAL, 0, 0, 0, 0);
     private JScrollBar horizontalScroll = new JScrollBar(JScrollBar.HORIZONTAL, 0, 0, 0, 0);
 
-    private ScrollingViewPort gridViewport = new ScrollingViewPort();
+    private ScrollingViewPort gridViewport;
     private JComponent grid;
     private JPanel colHead;
     private JPanel rowHead;
     private JPanel topLeftCorner;
     private JPanel bottomRightCorner;
-
-    private Rectangle prevGridBounds;
 
     /**
      * Constructs custom scroll panel.
@@ -37,25 +35,25 @@ public class SpreadsheetScrollingPanel extends JPanel {
      * @param cellHeight height of a rendered cell
      */
     public SpreadsheetScrollingPanel(JPanel view, int cellWidth, int cellHeight) {
-
         super();
 
         this.cellWidth = cellWidth;
         this.cellHeight = cellHeight;
+
         this.setLayout(new GridBagLayout());
         this.grid = view;
+        this.gridViewport = new ScrollingViewPort();
         this.gridViewport.add(this.grid);
         this.verticalScroll.setUnitIncrement(cellHeight);
         this.horizontalScroll.setUnitIncrement(cellWidth);
         this.colHead = new SpreadsheetScrollingColumnHeader();
         this.rowHead = new SpreadsheetScrollingRowHeader();
         // corners
-        this.topLeftCorner = new TLCPanel();
+        this.topLeftCorner = new JPanel();
         this.bottomRightCorner = new JPanel();
         this.bottomRightCorner.setPreferredSize(new Dimension(SCROLL_BAR_THICKNESS, SCROLL_BAR_THICKNESS));
         this.bottomRightCorner.setSize(bottomRightCorner.getPreferredSize());
 
-        this.prevGridBounds = this.grid.getBounds();
 
         GridBagConstraints tlcc = new GridBagConstraints();
         tlcc.gridx = 0;
@@ -107,7 +105,6 @@ public class SpreadsheetScrollingPanel extends JPanel {
         gc.fill = GridBagConstraints.BOTH;
         this.add(this.gridViewport, gc);
 
-
         AdjustmentListener scrollListener = e -> {
             gridViewport.doLayout();
             colHead.doLayout();
@@ -121,7 +118,6 @@ public class SpreadsheetScrollingPanel extends JPanel {
      * Sets the bounds and layout for the grid, viewport, and two scrollbars.
      */
     public void doLayout() {
-        this.prevGridBounds = this.grid.getBounds();
         Dimension size = getSize();
         Dimension gridSize = grid.getPreferredSize();
         Dimension verticalBarSize = this.verticalScroll.getPreferredSize();
@@ -151,26 +147,6 @@ public class SpreadsheetScrollingPanel extends JPanel {
     }
 
     /**
-     * Handles the repositioning of objects in the SpreadsheetScrollingPanel in the event
-     * that the window was resized.
-     */
-    public void windowMaximizedHandler() {
-        Dimension gridSize = new Dimension(grid.getPreferredSize());
-        //gridSize.setSize(Math.max(this.getWidth(), grid.getWidth()), Math.max(this.getHeight(), grid.getHeight()));
-        if (gridSize.width - cellWidth * 3 < this.getWidth()) {
-            gridSize.setSize(this.getWidth() + cellWidth * 3, gridSize.height);
-        }
-        if (gridSize.height - cellHeight * 3 < this.getHeight()) {
-            gridSize.setSize(gridSize.width, this.getHeight() + cellHeight * 3);
-        }
-        grid.setPreferredSize(gridSize);
-
-        this.grid.setBounds(0, 0,
-                grid.getPreferredSize().width, grid.getPreferredSize().height);
-    }
-
-
-    /**
      * Viewport for the client. Moves grid based on scroll and window resize events.
      */
     protected class ScrollingViewPort extends JPanel {
@@ -198,10 +174,8 @@ public class SpreadsheetScrollingPanel extends JPanel {
                 gridSize.setSize(gridSize.width, this.getHeight() + cellHeight * 3);
             }
             grid.setPreferredSize(gridSize);
-            prevGridBounds = grid.getBounds();
             grid.setBounds(-x, -y, gridSize.width,
                     gridSize.height);
-            System.out.println(prevGridBounds + " prevGridBounds");
             System.out.println(grid.getBounds() + " grid bounds");
             System.out.println(getSize() + " viewport size");
         }
@@ -305,26 +279,6 @@ public class SpreadsheetScrollingPanel extends JPanel {
                 g2d.drawString(Integer.toString(row + 1), 3, row * cellHeight + yOffset);
             }
             this.revalidate();
-        }
-
-    }
-
-    public class TLCPanel extends JPanel {
-
-        public TLCPanel() {
-            super();
-            this.setLayout(null);
-            this.setPreferredSize(new Dimension(cellWidth, cellHeight));
-            this.setSize(this.getPreferredSize());
-        }
-
-        @Override
-        public void paintComponent(Graphics g) {
-            super.paintComponent(g);
-            Graphics2D g2d = (Graphics2D) g;
-            g2d.setColor(Color.green);
-            g2d.fillRect(this.getX(), this.getY(),
-                    this.getWidth(), this.getHeight());
         }
 
     }
