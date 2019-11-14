@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="013926d2-f87d-4d22-a068-7b9fcc73e8c6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetGUIView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetGUIView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/BeyondGood.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/BeyondGood.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/BeyondGood.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/BeyondGood.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetScrollingPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetScrollingPanel.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -92,7 +94,7 @@
     <configuration name="blankSheetGui" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="edu.cs3500.spreadsheets.BeyondGood" />
       <module name="Asn5 Starter" />
-      <option name="PROGRAM_PARAMETERS" value="-in blankSheet.txt -gui" />
+      <option name="PROGRAM_PARAMETERS" value="-gui" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -261,6 +263,7 @@
       <option name="presentableId" value="Default" />
       <updated>1572280376618</updated>
       <workItem from="1573610484128" duration="7571000" />
+      <workItem from="1573701647364" duration="586000" />
     </task>
     <task id="LOCAL-00001" summary="added GUI class">
       <created>1573484804770</created>
@@ -360,7 +363,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573701242429</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Updated documentation for createScrollPane">
+      <created>1573701375723</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1573701375723</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -416,6 +426,7 @@
     <MESSAGE value="Updated the name of getMaxRowWidth and getMaxColHeight to make more sense in the context of the model" />
     <MESSAGE value="Added window maximize listener" />
     <MESSAGE value="Fixed bug where resizing the window will offset the grid." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug where resizing the window will offset the grid." />
+    <MESSAGE value="Updated documentation for createScrollPane" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated documentation for createScrollPane" />
   </component>
 </project>
