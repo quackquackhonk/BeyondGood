@@ -5,6 +5,8 @@ import edu.cs3500.spreadsheets.model.IReadWorkSheetModel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowStateListener;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -19,7 +21,7 @@ public class SpreadsheetGUIView extends JFrame implements IView {
     private JPanel formulaBarPanel;
     private JTextField formText;
     //private JScrollPane scrollPane;
-    private JPanel scrollPane;
+    private SpreadsheetScrollingPanel scrollPane;
     private int cellWidth;
     private int cellHeight;
 
@@ -87,6 +89,23 @@ public class SpreadsheetGUIView extends JFrame implements IView {
         formulaBarPanel.add(formText);
         this.add(formulaBarPanel, BorderLayout.NORTH);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.addWindowStateListener(new WindowStateListener() {
+            @Override
+            public void windowStateChanged(WindowEvent we) {
+                this.frameWindowStateChanged(we);
+            }
+
+            /**
+             *  Handles the events for when the frame is resized.
+             * @param we the WindowEvent
+             */
+            private void frameWindowStateChanged(WindowEvent we) {
+                if ((we.getNewState() & Frame.MAXIMIZED_BOTH) == Frame.MAXIMIZED_BOTH){
+                    System.out.println("maximized");
+                    scrollPane.windowMaximizedHandler();
+                }
+            }
+        });
         this.pack();
     }
 
