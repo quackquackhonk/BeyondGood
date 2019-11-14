@@ -568,14 +568,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
         public SheetBuilder createCell(int col, int row, String contents) {
             try {
                 CellContents cell = cellFromString(contents);
-                System.out.println("Adding cell at (" + col + "," + row + ").");
-                System.out.print("Former maxCol: " + this.model.getMaxCol() + ", ");
-                System.out.println("Former maxRow: " + this.model.getMaxRow() + ".");
                 this.model.buildCell(col, row, cell);
-                System.out.print("New maxCol: " + this.model.getMaxCol() + ", ");
-                System.out.println("New maxRow: " + this.model.getMaxRow() + ".");
-
-
             } catch (IllegalArgumentException e) {
                 // Catch IAE thrown by parser
                 System.out.println("Error in cell " +

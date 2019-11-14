@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="013926d2-f87d-4d22-a068-7b9fcc73e8c6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Asn5_Starter_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/BeyondGood.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/BeyondGood.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/BeyondGood.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/BeyondGood.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetGUIView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetGUIView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetScrollingPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetScrollingPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/WorkSheetModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/WorkSheetModel.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -65,6 +64,9 @@
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\potat\Desktop\NU\CS\3500\Asn5 Starter\" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -267,7 +269,8 @@
       <option name="presentableId" value="Default" />
       <updated>1572280376618</updated>
       <workItem from="1573610484128" duration="7571000" />
-      <workItem from="1573701647364" duration="1074000" />
+      <workItem from="1573701647364" duration="2318000" />
+      <workItem from="1573704652057" duration="28000" />
     </task>
     <task id="LOCAL-00001" summary="added GUI class">
       <created>1573484804770</created>
@@ -381,7 +384,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573702259991</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Removed print statements">
+      <created>1573702762885</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1573702762885</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -439,6 +449,7 @@
     <MESSAGE value="Fixed bug where resizing the window will offset the grid." />
     <MESSAGE value="Updated documentation for createScrollPane" />
     <MESSAGE value="Fixed bug where -gui wasn't working" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug where -gui wasn't working" />
+    <MESSAGE value="Removed print statements" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed print statements" />
   </component>
 </project>
