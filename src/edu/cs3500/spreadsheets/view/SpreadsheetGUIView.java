@@ -136,7 +136,7 @@ public class SpreadsheetGUIView extends JFrame implements IView {
 
     /**
      * Make the view visible. This is usually called
-     * after the view is constructed
+     * after the view is constructed.
      */
     @Override
     public void makeVisible() {
@@ -151,17 +151,17 @@ public class SpreadsheetGUIView extends JFrame implements IView {
      */
     @Override
     public void setCommandCallback(Consumer<String> callback) {
-
+        // Implemented in future assignments.
     }
 
     /**
      * Transmit an error message to the view, in case
-     * the command could not be processed correctly
+     * the command could not be processed correctly.
      *
      * @param error message.
      */
     @Override
     public void showErrorMessage(String error) {
-
+        // Implemented in future assignments.
     }
 }

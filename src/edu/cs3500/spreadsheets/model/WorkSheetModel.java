@@ -605,13 +605,15 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
         }
     }
 
-    /*
-    Visitor for evaluating CellContents.
+    /**
+     * Visitor for evaluating CellContents.
      */
     public final class EvalVisitor implements IEvalVisitor<Value> {
 
-        /*
-        Returns this CellContents as an ArrayList.
+        /**
+         * Returns this CellContents as an ArrayList.
+         * @param b Bool
+         * @return ArrayList of CellContents
          */
         public ArrayList<CellContents> getContentBool(Bool b) {
             ArrayList<CellContents> arr = new ArrayList<>();
@@ -619,8 +621,10 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
             return arr;
         }
 
-        /*
+        /**
          * Returns this CellContents as an ArrayList.
+         * @param b Str
+         * @return list of contents
          */
         public ArrayList<CellContents> getContentStr(Str b) {
             ArrayList<CellContents> arr = new ArrayList<>();
@@ -628,8 +632,10 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
             return arr;
         }
 
-        /*
+        /**
          * Returns this CellContents as an ArrayList.
+         * @param b Dbl
+         * @return Arraylist
          */
         public ArrayList<CellContents> getContentDbl(Dbl b) {
             ArrayList<CellContents> arr = new ArrayList<>();
@@ -637,8 +643,10 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
             return arr;
         }
 
-        /*
+        /**
          * Returns this CellContents as an ArrayList.
+         * @param b RefCell to evaluate
+         * @return Arraylist
          */
         public ArrayList<CellContents> getContentRefCell(ReferenceCell b) {
             ArrayList<Coord> coords = b.evaluate();
@@ -652,8 +660,10 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
             return cells;
         }
 
-        /*
+        /**
          * Returns this CellContents as an ArrayList.
+         * @param b CellContents
+         * @return List
          */
         public ArrayList<CellContents> getContentSum(SUM b) {
             ArrayList<CellContents> evaled = new ArrayList<>();
@@ -661,8 +671,10 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
             return evaled;
         }
 
-        /*
+        /**
          * Returns this CellContents as an ArrayList.
+         * @param b CellContents
+         * @return List
          */
         public ArrayList<CellContents> getContentProduct(PRODUCT b) {
             ArrayList<CellContents> evaled = new ArrayList<>();
@@ -670,8 +682,10 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
             return evaled;
         }
 
-        /*
+        /**
          * Returns this CellContents as an ArrayList.
+         * @param b CellContents
+         * @return List
          */
         public ArrayList<CellContents> getContentLess(LESSTHAN b) {
             ArrayList<CellContents> evaled = new ArrayList<>();
@@ -679,8 +693,10 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
             return evaled;
         }
 
-        /*
+        /**
          * Returns this CellContents as an ArrayList.
+         * @param b CellContents
+         * @return List
          */
         public ArrayList<CellContents> getContentGreater(GREATERTHAN b) {
             ArrayList<CellContents> evaled = new ArrayList<>();

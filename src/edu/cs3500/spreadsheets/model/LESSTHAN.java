@@ -9,9 +9,9 @@ import java.util.ArrayList;
 public class LESSTHAN extends Ops {
 
     /**
-     * Constructs a LESSTHAN cell that stores a ArrayList<CellContents>.
+     * Constructs a LESSTHAN cell that stores a ArrayList of CellContents.
      *
-     * @param params - ArrayList<CellContents> to store
+     * @param params - CellContents to store.
      */
     public LESSTHAN(ArrayList<CellContents> params) {
         super(params);

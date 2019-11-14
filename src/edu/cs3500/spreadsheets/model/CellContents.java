@@ -13,8 +13,6 @@ public interface CellContents<K> {
      * - Blanks throw an error
      * - Ops (Functions) can't evaluate by themselves, throw an error.
      * - ReferenceCells return their list of Coords
-     * <p>
-     * boolean.
      */
     K evaluate();
 

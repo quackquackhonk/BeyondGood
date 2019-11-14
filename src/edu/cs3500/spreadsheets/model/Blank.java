@@ -2,13 +2,17 @@ package edu.cs3500.spreadsheets.model;
 
 import java.util.ArrayList;
 
+/**
+ * Blank cells don't store anything and evaluate to null.
+ * Returns empty string when asked for String evaluation.
+ */
 public class Blank implements Value {
 
     /**
      * Creates new Blank cell.
      */
     public Blank() {
-
+        // Blank cell contains nothing.
     }
 
     /**

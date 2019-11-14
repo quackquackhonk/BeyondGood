@@ -44,7 +44,7 @@ public class SpreadsheetTextualView implements IView {
 
     /**
      * Make the view visible. This is usually called
-     * after the view is constructed
+     * after the view is constructed.
      */
     @Override
     public void makeVisible() {
