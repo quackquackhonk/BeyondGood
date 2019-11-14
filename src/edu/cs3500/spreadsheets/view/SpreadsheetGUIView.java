@@ -8,7 +8,6 @@ import java.awt.*;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.IllformedLocaleException;
 import java.util.function.Consumer;
 
 /**
@@ -61,10 +60,10 @@ public class SpreadsheetGUIView extends JFrame implements IView {
 
         // Size the grid panel to be as wide/tall as the furthest out cells + some buffer.
         // If this size is smaller than the Frame size, use the frame size instead.
-        System.out.println(model.getMaxRowWidth());
-        int initPanelWidth = Math.max(getPreferredSize().width, model.getMaxColHeight() * cellWidth);
+        System.out.println(model.getMaxRow());
+        int initPanelWidth = Math.max(getPreferredSize().width, model.getMaxCol() * cellWidth);
         System.out.println(initPanelWidth);
-        int initPanelHeight = Math.max(getPreferredSize().height, model.getMaxRowWidth() * cellHeight);
+        int initPanelHeight = Math.max(getPreferredSize().height, model.getMaxRow() * cellHeight);
 
         // Determine number of rows and columns GridPanel needs to display given Frame dimensions
         int numRow = this.getPreferredSize().width / cellWidth + 3;

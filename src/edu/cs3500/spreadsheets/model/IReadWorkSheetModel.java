@@ -67,7 +67,7 @@ public interface IReadWorkSheetModel<CellContents> {
      *
      * @return the width of the row
      */
-    int getMaxRowWidth();
+    int getMaxRow();
 
     /**
      * Returns the min width of sheet.
@@ -88,6 +88,6 @@ public interface IReadWorkSheetModel<CellContents> {
      *
      * @return the height of the col
      */
-    int getMaxColHeight();
+    int getMaxCol();
 
 }

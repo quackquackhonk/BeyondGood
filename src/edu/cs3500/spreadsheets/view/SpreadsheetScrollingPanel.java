@@ -114,7 +114,7 @@ public class SpreadsheetScrollingPanel extends JPanel {
         this.verticalScroll.setBounds(width, cellHeight,
                 verticalBarSize.width, height - SCROLL_BAR_THICKNESS);
         this.horizontalScroll.setBounds(cellWidth, height + 2,
-                size.width - 2 * SCROLL_BAR_THICKNESS, horizontalBarSize.height);
+                size.width - 3 * SCROLL_BAR_THICKNESS, horizontalBarSize.height);
 
         int maxWidth = Math.max(gridSize.width, 0);
         this.horizontalScroll.setMaximum(gridSize.width - size.width + horizontalScroll.getVisibleAmount());

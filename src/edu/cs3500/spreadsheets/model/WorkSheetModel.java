@@ -49,7 +49,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
      * @return the width of the row
      */
     @Override
-    public int getMaxRowWidth() {
+    public int getMaxRow() {
         return maxRow;
     }
 
@@ -79,7 +79,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
      * @return the height of the col
      */
     @Override
-    public int getMaxColHeight() {
+    public int getMaxCol() {
         return maxCol;
     }
 
@@ -569,11 +569,11 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
             try {
                 CellContents cell = cellFromString(contents);
                 System.out.println("Adding cell at (" + col + "," + row + ").");
-                System.out.print("Former maxCol: " + this.model.getMaxColHeight() + ", ");
-                System.out.println("Former maxRow: " + this.model.getMaxRowWidth() + ".");
+                System.out.print("Former maxCol: " + this.model.getMaxCol() + ", ");
+                System.out.println("Former maxRow: " + this.model.getMaxRow() + ".");
                 this.model.buildCell(col, row, cell);
-                System.out.print("New maxCol: " + this.model.getMaxColHeight() + ", ");
-                System.out.println("New maxRow: " + this.model.getMaxRowWidth() + ".");
+                System.out.print("New maxCol: " + this.model.getMaxCol() + ", ");
+                System.out.println("New maxRow: " + this.model.getMaxRow() + ".");
 
 
             } catch (IllegalArgumentException e) {
