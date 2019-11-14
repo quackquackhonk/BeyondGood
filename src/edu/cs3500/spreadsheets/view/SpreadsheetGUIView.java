@@ -2,23 +2,25 @@ package edu.cs3500.spreadsheets.view;
 
 import edu.cs3500.spreadsheets.model.Coord;
 import edu.cs3500.spreadsheets.model.IReadWorkSheetModel;
-
-import javax.swing.*;
-
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.function.Consumer;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  * GUI view for IReadWorkSheetModels.
  */
 public class SpreadsheetGUIView extends JFrame implements IView {
+
   private IReadWorkSheetModel model;
-  private JPanel gridPanel;
-  private JPanel formulaBarPanel;
-  private JTextField formText;
+  private GridPanel gridPanel;
+
   //private JScrollPane scrollPane;
   private SpreadsheetScrollingPanel scrollPane;
   private int cellWidth;
@@ -70,20 +72,25 @@ public class SpreadsheetGUIView extends JFrame implements IView {
     int numRow = this.getPreferredSize().width / cellWidth + 3;
     int numCol = this.getPreferredSize().height / cellHeight + 3;
     //System.out.println(numRow);
-    gridPanel = new GridPanel(numRow, numCol, cellWidth, cellHeight, stringCells);
+
+    int colEnd = this.getWidth() / cellWidth + 3;
+    int rowEnd = this.getHeight() / cellWidth + 3;
+
+    gridPanel = new GridPanel(numRow, numCol, cellWidth, cellHeight,
+        stringCells, 0, colEnd, 0, rowEnd);
     this.scrollPane = new SpreadsheetScrollingPanel(gridPanel, cellWidth, cellHeight);
     this.scrollPane.setPreferredSize(new Dimension(initPanelWidth + 3 * cellWidth,
-            initPanelHeight + 3 * cellHeight));
+        initPanelHeight + 3 * cellHeight));
 
     // Three cell buffer
     gridPanel.setPreferredSize(
-            new Dimension(initPanelWidth + 3 * cellWidth, initPanelHeight + 3 * cellHeight));
+        new Dimension(initPanelWidth + 3 * cellWidth, initPanelHeight + 3 * cellHeight));
     this.add(scrollPane, BorderLayout.CENTER);
 
     // Add FormulaPanel, currently not editable.
-    this.formulaBarPanel = new JPanel();
+    JPanel formulaBarPanel = new JPanel();
     formulaBarPanel.setLayout(new FlowLayout());
-    formText = new JTextField("Default formula", 20);
+    JTextField formText = new JTextField("Default formula", 20);
     formText.setEditable(false);
     formulaBarPanel.add(formText);
     this.add(formulaBarPanel, BorderLayout.NORTH);
@@ -106,13 +113,21 @@ public class SpreadsheetGUIView extends JFrame implements IView {
     int currPanelWidth = Math.max(currentSize.width, model.getMaxCol() * cellWidth);
     int currPanelHeight = Math.max(currentSize.height, model.getMaxRow() * cellHeight);
 
-    gridPanel = new GridPanel(numRow, numCol, cellWidth, cellHeight, stringCells);
+    int colStart = gridPanel.getColStart();
+    int colEnd = gridPanel.getColEnd();
+
+    int rowStart = gridPanel.getRowStart();
+    int rowEnd = gridPanel.getRowEnd();
+
+    gridPanel = new GridPanel(numRow, numCol, cellWidth,
+        cellHeight, stringCells, colStart, colEnd, rowStart, rowEnd);
     scrollPane = new SpreadsheetScrollingPanel(gridPanel, cellWidth, cellHeight);
     this.scrollPane.setPreferredSize(new Dimension(currPanelWidth + 3 * cellWidth,
-            currPanelHeight + 3 * cellHeight));
+        currPanelHeight + 3 * cellHeight));
     // Three cell buffer
     gridPanel.setPreferredSize(
-            new Dimension(currPanelWidth + 3 * cellWidth, currPanelHeight + 3 * cellHeight));
+        new Dimension(currPanelWidth + 3 * cellWidth,
+            currPanelHeight + 3 * cellHeight));
     this.add(scrollPane, BorderLayout.CENTER);
   }
 
@@ -149,16 +164,16 @@ public class SpreadsheetGUIView extends JFrame implements IView {
    */
   @Override
   public void setCommandCallback(Consumer<String> callback) {
-
+    // Implemented in the future.
   }
 
   /**
-   * Transmit an error message to the view, in case the command could not be processed correctly
+   * Transmit an error message to the view, in case the command could not be processed correctly.
    *
    * @param error message.
    */
   @Override
   public void showErrorMessage(String error) {
-
+    // Implemented in the future.
   }
 }

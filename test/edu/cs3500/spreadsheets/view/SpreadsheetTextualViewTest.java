@@ -1,13 +1,12 @@
 package edu.cs3500.spreadsheets.view;
 
+
+import static org.junit.Assert.assertEquals;
+
 import edu.cs3500.spreadsheets.model.IWriteWorkSheetModel;
 import edu.cs3500.spreadsheets.model.WorkSheetModel;
-
-import org.junit.Test;
-
 import java.io.IOException;
-
-import static org.junit.Assert.*;
+import org.junit.Test;
 
 /**
  * Test class for textual view.

@@ -60,7 +60,7 @@ public class SpreadsheetTextualView implements IView {
   }
 
   /**
-   * Transmit an error message to the view, in case the command could not be processed correctly
+   * Transmit an error message to the view, in case the command could not be processed correctly.
    *
    * @param error message.
    */

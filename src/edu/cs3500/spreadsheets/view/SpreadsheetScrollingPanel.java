@@ -1,11 +1,16 @@
 package edu.cs3500.spreadsheets.view;
 
 import edu.cs3500.spreadsheets.model.Coord;
-
-import javax.swing.*;
-
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.AdjustmentListener;
+import javax.swing.JPanel;
+import javax.swing.JScrollBar;
 
 /**
  * Custom ScrollPane for spreadsheets.
@@ -14,19 +19,15 @@ public class SpreadsheetScrollingPanel extends JPanel {
 
   private final int cellWidth;
   private final int cellHeight;
-  // this is a hardcoded value, and I don't know if it is dependent on the screen size or screen resolution
-  // (it probably is ).
   private final int SCROLL_BAR_THICKNESS = 30;
 
   private JScrollBar verticalScroll = new JScrollBar(JScrollBar.VERTICAL, 0, 0, 0, 0);
   private JScrollBar horizontalScroll = new JScrollBar(JScrollBar.HORIZONTAL, 0, 0, 0, 0);
 
   private ScrollingViewPort gridViewport;
-  private JComponent grid;
+  private GridPanel grid;
   private JPanel colHead;
   private JPanel rowHead;
-  private JPanel topLeftCorner;
-  private JPanel bottomRightCorner;
 
   /**
    * Constructs custom scroll panel.
@@ -35,7 +36,7 @@ public class SpreadsheetScrollingPanel extends JPanel {
    * @param cellWidth  width of a rendered cell
    * @param cellHeight height of a rendered cell
    */
-  public SpreadsheetScrollingPanel(JPanel view, int cellWidth, int cellHeight) {
+  public SpreadsheetScrollingPanel(GridPanel view, int cellWidth, int cellHeight) {
     super();
 
     this.cellWidth = cellWidth;
@@ -49,13 +50,13 @@ public class SpreadsheetScrollingPanel extends JPanel {
     this.horizontalScroll.setUnitIncrement(cellWidth);
     this.colHead = new SpreadsheetScrollingColumnHeader();
     this.rowHead = new SpreadsheetScrollingRowHeader();
-    this.topLeftCorner = new JPanel();
-    this.topLeftCorner.setPreferredSize(new Dimension(cellWidth, cellHeight));
-    this.topLeftCorner.setSize(this.topLeftCorner.getPreferredSize());
-    this.bottomRightCorner = new JPanel();
-    this.bottomRightCorner.setPreferredSize(new Dimension(SCROLL_BAR_THICKNESS, SCROLL_BAR_THICKNESS));
-    this.bottomRightCorner.setSize(bottomRightCorner.getPreferredSize());
-
+    JPanel topLeftCorner = new JPanel();
+    topLeftCorner.setPreferredSize(new Dimension(cellWidth, cellHeight));
+    topLeftCorner.setSize(topLeftCorner.getPreferredSize());
+    JPanel bottomRightCorner = new JPanel();
+    bottomRightCorner.setPreferredSize(
+        new Dimension(SCROLL_BAR_THICKNESS, SCROLL_BAR_THICKNESS));
+    bottomRightCorner.setSize(bottomRightCorner.getPreferredSize());
 
     GridBagConstraints tlcc = new GridBagConstraints();
     tlcc.gridx = 0;
@@ -127,19 +128,21 @@ public class SpreadsheetScrollingPanel extends JPanel {
     int width = Math.max(size.width - verticalBarSize.width - 1, 0);
     int height = Math.max(size.height - horizontalBarSize.height - 1, 0);
     gridViewport.setBounds(cellWidth, cellHeight,
-            width - SCROLL_BAR_THICKNESS, height - SCROLL_BAR_THICKNESS);
+        width - SCROLL_BAR_THICKNESS, height - SCROLL_BAR_THICKNESS);
     this.verticalScroll.setBounds(width, cellHeight,
-            verticalBarSize.width, height - SCROLL_BAR_THICKNESS);
+        verticalBarSize.width, height - SCROLL_BAR_THICKNESS);
     this.horizontalScroll.setBounds(cellWidth, height + 2,
-            size.width - (3 * SCROLL_BAR_THICKNESS) - 5, horizontalBarSize.height);
+        size.width - (3 * SCROLL_BAR_THICKNESS) - 5, horizontalBarSize.height);
 
     int maxWidth = Math.max(gridSize.width, 0);
-    this.horizontalScroll.setMaximum(gridSize.width - size.width + horizontalScroll.getVisibleAmount());
+    this.horizontalScroll.setMaximum(
+        gridSize.width - size.width + horizontalScroll.getVisibleAmount());
     this.horizontalScroll.setBlockIncrement(maxWidth / 5);
     this.horizontalScroll.setEnabled(maxWidth > 0);
 
     int maxHeight = Math.max(gridSize.height, 0);
-    this.verticalScroll.setMaximum(gridSize.height - size.height + verticalScroll.getVisibleAmount());
+    this.verticalScroll.setMaximum(
+        gridSize.height - size.height + verticalScroll.getVisibleAmount());
     this.verticalScroll.setBlockIncrement(maxHeight / 5);
     this.verticalScroll.setEnabled(maxHeight > 0);
 
@@ -168,7 +171,6 @@ public class SpreadsheetScrollingPanel extends JPanel {
       int y = verticalScroll.getValue();
       //System.out.println("x: " + x + ", y: " + y);
       Dimension gridSize = new Dimension(grid.getPreferredSize());
-      //gridSize.setSize(Math.max(this.getWidth(), grid.getWidth()), Math.max(this.getHeight(), grid.getHeight()));
       if (gridSize.width - cellWidth * 3 < this.getWidth()) {
         gridSize.setSize(this.getWidth() + cellWidth * 3, gridSize.height);
       }
@@ -177,9 +179,17 @@ public class SpreadsheetScrollingPanel extends JPanel {
       }
       grid.setPreferredSize(gridSize);
       grid.setBounds(-x, -y, gridSize.width,
-              gridSize.height);
-      //System.out.println(grid.getBounds() + " grid bounds");
-      //System.out.println(getSize() + " viewport size");
+          gridSize.height);
+      int colEnd = (-grid.getBounds().x + this.getWidth()) / cellWidth + 3;
+      int colStart = -grid.getBounds().x / cellWidth;
+
+      int rowEnd = (-grid.getBounds().y + this.getHeight()) / cellHeight + 3;
+      int rowStart = -grid.getBounds().y / cellHeight;
+
+      System.out.println("Cols:" + colStart + " " + colEnd);
+      System.out.println("Rows:" + rowStart + " " + rowEnd);
+      grid.setCols(colStart, colEnd);
+      grid.setRows(rowStart, rowEnd);
     }
   }
 
