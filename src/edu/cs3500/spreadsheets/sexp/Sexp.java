@@ -18,5 +18,5 @@ package edu.cs3500.spreadsheets.sexp;
  */
 public interface Sexp {
 
-    <R> R accept(SexpVisitor<R> visitor);
+  <R> R accept(SexpVisitor<R> visitor);
 }
