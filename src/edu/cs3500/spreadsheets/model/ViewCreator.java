@@ -17,12 +17,10 @@ public class ViewCreator {
    */
   public static IView create(ViewType viewType, IReadWorkSheetModel model) {
     IView view = null;
-    switch (viewType) {
-      case GUI:
-        view = new SpreadsheetGUIView(model);
-        break;
-      default:
-        throw new IllegalArgumentException("This isn't even possible lol");
+    if (viewType == ViewType.GUI) {
+      view = new SpreadsheetGUIView(model);
+    } else {
+      throw new IllegalArgumentException("This isn't even possible lol");
     }
     return view;
   }

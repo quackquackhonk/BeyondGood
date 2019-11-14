@@ -163,10 +163,9 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
   }
 
   /**
-   * Return cell at a provided location. loc is the coordinates of the cell
+   * Return cell at a provided location. loc is the coordinates of the cell.
    *
-   * @return the {@code CellContents} at the provided location. Null if cell is blank, or not part
-   * of sheet.
+   * @return the CC at the coordinate.
    */
   @Override
   public CellContents getCell(Coord loc) throws IllegalArgumentException {
@@ -189,7 +188,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
   /**
    * Checks a cell for errors and evaluates it.
    *
-   * @param coord
+   * @param coord location of cell.
    */
   @Override
   public String evaluateCellCheck(String coord) {
@@ -236,7 +235,8 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
             SexpVisitParser coordParser = new SexpVisitParser();
             String[] coordComps = coordParser.checkCoord(strCoord);
 
-            buildCell(Coord.colNameToIndex(coordComps[0]), Integer.parseInt(coordComps[1]), new Blank());
+            buildCell(Coord.colNameToIndex(coordComps[0]),
+                    Integer.parseInt(coordComps[1]), new Blank());
           }
         }
       } catch (IllegalArgumentException e) {
@@ -583,8 +583,11 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
    */
   public final class EvalVisitor implements IEvalVisitor<Value> {
 
-    /*
-    Returns this CellContents as an ArrayList.
+    /**
+     * Returns this CellContents as an ArrayList of CellContents.
+     *
+     * @param b CC
+     * @return ArrayList of CC
      */
     public ArrayList<CellContents> getContentBool(Bool b) {
       ArrayList<CellContents> arr = new ArrayList<>();
@@ -592,8 +595,11 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
       return arr;
     }
 
-    /*
-     * Returns this CellContents as an ArrayList.
+    /**
+     * Returns this CellContents as an ArrayList of CellContents.
+     *
+     * @param b CC
+     * @return ArrayList of CC
      */
     public ArrayList<CellContents> getContentStr(Str b) {
       ArrayList<CellContents> arr = new ArrayList<>();
@@ -601,8 +607,11 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
       return arr;
     }
 
-    /*
-     * Returns this CellContents as an ArrayList.
+    /**
+     * Returns this CellContents as an ArrayList of CellContents.
+     *
+     * @param b CC
+     * @return ArrayList of CC
      */
     public ArrayList<CellContents> getContentDbl(Dbl b) {
       ArrayList<CellContents> arr = new ArrayList<>();
@@ -610,8 +619,11 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
       return arr;
     }
 
-    /*
-     * Returns this CellContents as an ArrayList.
+    /**
+     * Returns this CellContents as an ArrayList of CellContents.
+     *
+     * @param b CC
+     * @return ArrayList of CC
      */
     public ArrayList<CellContents> getContentRefCell(ReferenceCell b) {
       ArrayList<Coord> coords = b.evaluate();
@@ -625,8 +637,11 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
       return cells;
     }
 
-    /*
-     * Returns this CellContents as an ArrayList.
+    /**
+     * Returns this CellContents as an ArrayList of CellContents.
+     *
+     * @param b CC
+     * @return ArrayList of CC
      */
     public ArrayList<CellContents> getContentSum(SUM b) {
       ArrayList<CellContents> evaled = new ArrayList<>();
@@ -634,8 +649,11 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
       return evaled;
     }
 
-    /*
-     * Returns this CellContents as an ArrayList.
+    /**
+     * Returns this CellContents as an ArrayList of CellContents.
+     *
+     * @param b CC
+     * @return ArrayList of CC
      */
     public ArrayList<CellContents> getContentProduct(PRODUCT b) {
       ArrayList<CellContents> evaled = new ArrayList<>();
@@ -643,8 +661,11 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
       return evaled;
     }
 
-    /*
-     * Returns this CellContents as an ArrayList.
+    /**
+     * Returns this CellContents as an ArrayList of CellContents.
+     *
+     * @param b CC
+     * @return ArrayList of CC
      */
     public ArrayList<CellContents> getContentLess(LESSTHAN b) {
       ArrayList<CellContents> evaled = new ArrayList<>();
@@ -652,8 +673,11 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
       return evaled;
     }
 
-    /*
-     * Returns this CellContents as an ArrayList.
+    /**
+     * Returns this CellContents as an ArrayList of CellContents.
+     *
+     * @param b CC
+     * @return ArrayList of CC
      */
     public ArrayList<CellContents> getContentGreater(GREATERTHAN b) {
       ArrayList<CellContents> evaled = new ArrayList<>();
@@ -706,7 +730,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
     }
 
     /**
-     * Returns sum of contents. s
+     * Returns sum of contents.
      */
     @Override
     public Dbl visitSUM(SUM s) {
@@ -739,17 +763,22 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
           total += dblAdd.evaluate();
         }
       }
-//      System.out.println("Summed to " + new Dbl(total).toString());
       return new Dbl(total);
     }
 
+    /**
+     * Evaluates this blank.
+     *
+     * @param b blank
+     * @return Value
+     */
     @Override
     public Value visitBlank(Blank b) {
       return b;
     }
 
     /**
-     * Returns product of contents
+     * Returns product of contents.
      */
     @Override
     public Value visitPRODUCT(PRODUCT s) {
@@ -788,7 +817,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
     }
 
     /**
-     * Returns if first argument is greater than second argument. (numeric inputs)
+     * Returns if first argument is greater than second argument.
      */
     @Override
     public Value visitGREATERTHAN(GREATERTHAN s) {
@@ -846,7 +875,6 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
             Dbl num1 = firstCont.get(0).acceptEvalVisitor(this).getDbl();
             Dbl num2 = secCont.get(0).acceptEvalVisitor(this).getDbl();
             boolean result = num1.evaluate() < num2.evaluate();
-//          System.out.println("Result of LESSTHAN is " + result);
             return new Bool(result);
           } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("Formula - Non-numeric argument");

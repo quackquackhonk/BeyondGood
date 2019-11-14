@@ -3,13 +3,19 @@ package edu.cs3500.spreadsheets.view;
 import edu.cs3500.spreadsheets.model.Coord;
 import edu.cs3500.spreadsheets.model.IReadWorkSheetModel;
 
-import javax.swing.*;
-
-import java.awt.*;
+import java.awt.BorderLayout;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.function.Consumer;
+import javax.swing.JScrollPane;
+import javax.swing.JScrollBar;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.JFrame;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.Dimension;
 
 /**
  * GUI view for IReadWorkSheetModels.
@@ -17,8 +23,7 @@ import java.util.function.Consumer;
 public class SpreadsheetGUIView extends JFrame implements IView {
   private IReadWorkSheetModel model;
   private JPanel gridPanel;
-  private JPanel formulaBarPanel;
-  private JTextField formText;
+
   //private JScrollPane scrollPane;
   private SpreadsheetScrollingPanel scrollPane;
   private int cellWidth;
@@ -81,9 +86,9 @@ public class SpreadsheetGUIView extends JFrame implements IView {
     this.add(scrollPane, BorderLayout.CENTER);
 
     // Add FormulaPanel, currently not editable.
-    this.formulaBarPanel = new JPanel();
+    JPanel formulaBarPanel = new JPanel();
     formulaBarPanel.setLayout(new FlowLayout());
-    formText = new JTextField("Default formula", 20);
+    JTextField formText = new JTextField("Default formula", 20);
     formText.setEditable(false);
     formulaBarPanel.add(formText);
     this.add(formulaBarPanel, BorderLayout.NORTH);
@@ -149,7 +154,7 @@ public class SpreadsheetGUIView extends JFrame implements IView {
    */
   @Override
   public void setCommandCallback(Consumer<String> callback) {
-
+    // Implemented in the future.
   }
 
   /**
@@ -159,6 +164,6 @@ public class SpreadsheetGUIView extends JFrame implements IView {
    */
   @Override
   public void showErrorMessage(String error) {
-
+    // Implemented in the future.
   }
 }

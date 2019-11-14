@@ -13,7 +13,7 @@ public interface IView {
   void render() throws IOException;
 
   /**
-   * Make the view visible. This is usually called after the view is constructed
+   * Make the view visible. This is usually called after the view is constructed.
    */
   void makeVisible();
 
@@ -25,7 +25,7 @@ public interface IView {
   void setCommandCallback(Consumer<String> callback);
 
   /**
-   * Transmit an error message to the view, in case the command could not be processed correctly
+   * Transmit an error message to the view, in case the command could not be processed correctly.
    *
    * @param error message.
    */

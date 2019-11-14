@@ -8,11 +8,7 @@ import java.util.ArrayList;
 public interface CellContents<K> {
 
   /**
-   * Returns value of CellContents. Value refers to the data type of the class. - Values return
-   * their corresponding type (boolean, String, double. - Blanks throw an error - Ops (Functions)
-   * can't evaluate by themselves, throw an error. - ReferenceCells return their list of Coords
-   * <p>
-   * boolean.
+   * Returns Value associated with the cell contents.
    */
   K evaluate();
 

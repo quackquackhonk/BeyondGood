@@ -2,9 +2,15 @@ package edu.cs3500.spreadsheets.view;
 
 import edu.cs3500.spreadsheets.model.Coord;
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
-import java.awt.*;
+import java.awt.BorderLayout;
 import java.util.HashMap;
 
 /**
@@ -25,17 +31,10 @@ public class GridPanel extends JPanel {
   private int ch;
 
   /**
-   * Constructs GUI JPanel mensionsensions
+   * Constructs GUI JPanel dimensions.
    */
   public GridPanel(int numRow, int numCol, int cw, int ch, HashMap<Coord, String> cells) {
     super();
-        /*
-        this.rowMin = rowMin;
-        this.rowMax = rowMax;
-        this.colMax = colMax;
-        this.colMin = colMin;
-        this.grid = grid;
-         */
     this.grid = cells;
     this.numRow = numRow;
     this.numCol = numCol;

@@ -42,7 +42,7 @@ public interface IReadWorkSheetModel<CellContents> {
   String getCellText(Coord coord);
 
   /**
-   * Returns the raw text
+   * Returns the raw text.
    */
   String getCellText(int col, int row);
 
