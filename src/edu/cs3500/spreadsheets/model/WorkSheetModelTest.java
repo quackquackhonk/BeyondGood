@@ -60,7 +60,7 @@ public class WorkSheetModelTest {
   }
 
   // Can't have lone range cell
-  @Test (expected = IllegalArgumentException.class)
+  @Test(expected = IllegalArgumentException.class)
   public void checkBuildAdjListHasCycleSelfRangeSumBad() {
     WorkSheetModel.SheetBuilder builder = new WorkSheetModel.SheetBuilder();
     builder.createCell(1, 1, "=(SUM A2:A4)");

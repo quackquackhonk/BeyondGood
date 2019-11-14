@@ -5,12 +5,12 @@ package edu.cs3500.spreadsheets.model;
  */
 public interface Value<K> extends CellContents<K> {
 
-    /**
-     * returns Dbl if its a Dbl.
-     *
-     * @return
-     */
-    Dbl getDbl();
+  /**
+   * returns Dbl if its a Dbl.
+   *
+   * @return
+   */
+  Dbl getDbl();
 
 
 }
