@@ -43,7 +43,7 @@ public class BeyondGood {
                 if (args.length == 4) {
                     if (args[2].equals("-eval") && !model.hasErrors()) {
                         System.out.println(model.evaluateCell(args[3]));
-                    } else if (args[2].equals("-save") && !model.hasErrors()) {
+                    } else if (args[2].equals("-save")) {
                         File outputFile = new File(args[3]);
                         outputFile.createNewFile();
                         PrintWriter writer = new PrintWriter(outputFile);

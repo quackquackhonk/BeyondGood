@@ -6,3 +6,4 @@ D1 12
 A3 =A4
 A4 =A3
 A5 =(SUM "true")
+A6 "Crop the text please"

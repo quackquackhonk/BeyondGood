@@ -3,9 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="013926d2-f87d-4d22-a068-7b9fcc73e8c6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bad.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bgInputs.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/final 5.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/good1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/good1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/good1Saved" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/good2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/good2.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/BeyondGood.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/BeyondGood.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel$EvalVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel$EvalVisitor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel$SheetBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel$SheetBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/BeyondGood.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/BeyondGood.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetScrollingPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetScrollingPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/WorkSheetModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/WorkSheetModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wtf/production/Asn5 Starter/META-INF/Asn5 Starter.kotlin_module" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -80,21 +90,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.blankSheetGui">
+  <component name="RunManager" selected="JUnit.SpreadsheetTextualViewTest">
     <configuration name="Unnamed" type="AndroidJUnit" nameIsGenerated="true">
       <module name="Asn5 Starter" />
       <option name="MAIN_CLASS_NAME" value="" />
       <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
       <option name="PARAMETERS" value="" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="blankSheetGui" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="edu.cs3500.spreadsheets.BeyondGood" />
-      <module name="Asn5 Starter" />
-      <option name="PROGRAM_PARAMETERS" value="-gui" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -118,7 +120,7 @@
     <configuration name="guiTest" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="edu.cs3500.spreadsheets.BeyondGood" />
       <module name="Asn5 Starter" />
-      <option name="PROGRAM_PARAMETERS" value="-in good1.txt -gui" />
+      <option name="PROGRAM_PARAMETERS" value="-in good3.txt -save good3saved.txt" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -135,6 +137,14 @@
       <option name="MAIN_CLASS_NAME" value="edu.cs3500.spreadsheets.BeyondGood" />
       <module name="Asn5 Starter" />
       <option name="PROGRAM_PARAMETERS" value="-in good1Saved -eval A1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="testBadSave" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="edu.cs3500.spreadsheets.BeyondGood" />
+      <module name="Asn5 Starter" />
+      <option name="PROGRAM_PARAMETERS" value="-in bad.txt -save badSaved.txt" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -231,7 +241,7 @@
       <item itemvalue="Application.largeSheetTest" />
       <item itemvalue="Application.cycleGui" />
       <item itemvalue="Application.good2Gui" />
-      <item itemvalue="Application.blankSheetGui" />
+      <item itemvalue="Application.testBadSave" />
       <item itemvalue="Application.testSave" />
       <item itemvalue="Application.testSaveOrder" />
       <item itemvalue="Application.openSaved" />
@@ -244,11 +254,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SpreadsheetTextualViewTest" />
         <item itemvalue="JUnit.edu.cs3500.spreadsheets in Asn5 Starter" />
         <item itemvalue="JUnit.edu.cs3500.spreadsheets.model in Asn5 Starter" />
         <item itemvalue="JUnit.PRODUCTTest" />
         <item itemvalue="JUnit.All in Asn5 Starter" />
-        <item itemvalue="JUnit.SpreadsheetTextualViewTest" />
       </list>
     </recent_temporary>
   </component>
