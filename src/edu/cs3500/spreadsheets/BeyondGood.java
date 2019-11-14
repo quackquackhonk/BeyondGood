@@ -20,45 +20,49 @@ public class BeyondGood {
      * @param args any command-line arguments
      */
     public static void main(String[] args) {
-        if (validArgs(args)) {
-            File file = new File(args[1]);
-            // Use WorksheetReader.read() to build model
-            try {
+        try {
+            if (args[0].equals("-gui") && args.length == 1) {
+                System.out.println("making blank gui");
+                File file = new File("newSpreadsheet.txt");
+                file.createNewFile();
+                Readable fileReader = new FileReader(file);
+                WorksheetBuilder<IWriteWorkSheetModel> builder = new WorkSheetModel.SheetBuilder();
+                fileReader = new FileReader(file);
+                IWriteWorkSheetModel model = WorksheetReader.read(builder, fileReader);
+                model = WorksheetReader.read(builder, fileReader);
+                IView guiView = ViewCreator.create(ViewCreator.ViewType.GUI, model);
+                guiView.render();
+                guiView.makeVisible();
+            }
+            if (validArgs(args)) {
+                File file = new File(args[1]);
+                // Use WorksheetReader.read() to build model
                 Readable fileReader = new FileReader(file);
                 WorksheetBuilder<IWriteWorkSheetModel> builder = new WorkSheetModel.SheetBuilder();
                 IWriteWorkSheetModel model = WorksheetReader.read(builder, fileReader);
-                    if (args.length == 4) {
-                        if (args[2].equals("-eval") && !model.hasErrors()) {
-                            System.out.println(model.evaluateCell(args[3]));
-                        } else if (args[2].equals("-save")) {
-                            File outputFile = new File(args[3]);
-                            outputFile.createNewFile();
-                            PrintWriter writer = new PrintWriter(outputFile);
-                            IView textView = ViewCreator.create(ViewCreator.ViewType.TEXT, model, writer);
-                            textView.render();
-                            writer.close();
-                        }
-                        // GUI called
-                    } else if (args.length == 3) {
-                        System.out.println("making gui");
-                        IView guiView = ViewCreator.create(ViewCreator.ViewType.GUI, model);
-                        guiView.render();
-                        guiView.makeVisible();
-                    } else if (args.length == 1) {
-                        System.out.println("making blank gui");
-                        file.createNewFile();
-                        fileReader = new FileReader(file);
-                        model = WorksheetReader.read(builder, fileReader);
-                        IView guiView = ViewCreator.create(ViewCreator.ViewType.GUI, model);
-                        guiView.render();
-                        guiView.makeVisible();
+                if (args.length == 4) {
+                    if (args[2].equals("-eval") && !model.hasErrors()) {
+                        System.out.println(model.evaluateCell(args[3]));
+                    } else if (args[2].equals("-save") && !model.hasErrors()) {
+                        File outputFile = new File(args[3]);
+                        outputFile.createNewFile();
+                        PrintWriter writer = new PrintWriter(outputFile);
+                        IView textView = ViewCreator.create(ViewCreator.ViewType.TEXT, model, writer);
+                        textView.render();
+                        writer.close();
                     }
-
-            } catch (FileNotFoundException e) {
-                System.out.println("No file provided");
-            } catch (IOException e) {
-                e.printStackTrace();
+                    // GUI called
+                } else if (args.length == 3) {
+                    System.out.println("making gui");
+                    IView guiView = ViewCreator.create(ViewCreator.ViewType.GUI, model);
+                    guiView.render();
+                    guiView.makeVisible();
+                }
             }
+        } catch (FileNotFoundException e) {
+            System.out.println("No file provided");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

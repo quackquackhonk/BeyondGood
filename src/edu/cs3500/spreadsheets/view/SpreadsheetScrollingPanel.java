@@ -48,8 +48,9 @@ public class SpreadsheetScrollingPanel extends JPanel {
         this.horizontalScroll.setUnitIncrement(cellWidth);
         this.colHead = new SpreadsheetScrollingColumnHeader();
         this.rowHead = new SpreadsheetScrollingRowHeader();
-        // corners
         this.topLeftCorner = new JPanel();
+        this.topLeftCorner.setPreferredSize(new Dimension(cellWidth, cellHeight));
+        this.topLeftCorner.setSize(this.topLeftCorner.getPreferredSize());
         this.bottomRightCorner = new JPanel();
         this.bottomRightCorner.setPreferredSize(new Dimension(SCROLL_BAR_THICKNESS, SCROLL_BAR_THICKNESS));
         this.bottomRightCorner.setSize(bottomRightCorner.getPreferredSize());
