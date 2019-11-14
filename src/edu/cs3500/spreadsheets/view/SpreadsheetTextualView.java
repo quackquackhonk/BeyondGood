@@ -33,6 +33,7 @@ public class SpreadsheetTextualView implements IView {
         HashSet<Coord> allCells = model.activeCells();
         for (Coord c : allCells) {
             String cellText = model.getCellText(c);
+            System.out.println(cellText);
             if (!cellText.equals("")) {
                 String toAdd = c.toString() + " " + cellText;
                 out.append(toAdd);

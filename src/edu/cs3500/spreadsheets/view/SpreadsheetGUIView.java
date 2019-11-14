@@ -74,8 +74,8 @@ public class SpreadsheetGUIView extends JFrame implements IView {
         //System.out.println(numRow);
         gridPanel = new GridPanel(numRow, numCol, cellWidth, cellHeight, stringCells);
         this.scrollPane = new SpreadsheetScrollingPanel(gridPanel, cellWidth, cellHeight);
-        this.scrollPane.setPreferredSize(new Dimension(initPanelWidth + 3 * cellWidth,
-                initPanelHeight + 3 * cellHeight));
+        this.scrollPane.setPreferredSize(new Dimension(initPanelWidth,
+                initPanelHeight));
 
         // Three cell buffer
         gridPanel.setPreferredSize(
@@ -127,6 +127,7 @@ public class SpreadsheetGUIView extends JFrame implements IView {
      */
     @Override
     public void render() throws IOException {
+        System.out.println(this.getWidth() - cellWidth + ": Should be viewport width");
         this.repaint();
     }
 

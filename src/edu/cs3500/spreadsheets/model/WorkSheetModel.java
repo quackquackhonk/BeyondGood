@@ -144,11 +144,13 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
     @Override
     public String getCellText(Coord coord) {
         CellContents cell = getCell(coord);
-        if (cell.forOps(new EvalVisitor()).size() == 0) {
-            return null;
-        } else {
-            return cell.getRaw();
-        }
+
+        return cell.getRaw();
+//        if (cell.forOps(new EvalVisitor()).size() == 0) {
+//            return null;
+//        } else {
+//            return cell.getRaw();
+//        }
     }
 
     @Override
