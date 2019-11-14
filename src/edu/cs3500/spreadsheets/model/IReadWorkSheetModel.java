@@ -28,6 +28,14 @@ public interface IReadWorkSheetModel<CellContents> {
     String evaluateCell(int col, int row);
 
     /**
+     * Evaluates a cell into a string, throws errors if in a cycle or poorly formatted.
+     *
+     * @param coord target cell
+     * @return evaluated cell contents.
+     */
+    String evaluateCellCheck(String coord);
+
+    /**
      * Returns the raw text of the cell at given Coordinate.
      *
      * @param coord is a coordinate

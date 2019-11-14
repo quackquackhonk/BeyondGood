@@ -8,6 +8,7 @@ import java.awt.*;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.IllformedLocaleException;
 import java.util.function.Consumer;
 
 /**
@@ -39,9 +40,20 @@ public class SpreadsheetGUIView extends JFrame implements IView {
         HashSet<Coord> modelCells = model.activeCells();
         HashMap<Coord, String> stringCells = new HashMap<>();
 
+        // Display cycle/formula errors
         for (Coord c : modelCells) {
-            String cellResult = model.evaluateCell(c.toString());
-            stringCells.put(c, cellResult);
+            try {
+                String cellResult = model.evaluateCellCheck(c.toString());
+                stringCells.put(c, cellResult);
+            } catch (IllegalArgumentException e) {
+                String msg = e.getMessage();
+                System.out.println(msg + " "+ c.toString());
+                if(msg.contains("cycle")) {
+                    stringCells.put(c, "#REF!");
+                } else if(msg.contains("Formula")) {
+                    stringCells.put(c, "#VALUE!");
+                }
+            }
         }
 
         this.setLayout(new BorderLayout());

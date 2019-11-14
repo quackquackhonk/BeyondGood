@@ -27,14 +27,10 @@ public class BeyondGood {
                 Readable fileReader = new FileReader(file);
                 WorksheetBuilder<IWriteWorkSheetModel> builder = new WorkSheetModel.SheetBuilder();
                 IWriteWorkSheetModel model = WorksheetReader.read(builder, fileReader);
-                System.out.println("model Made");
-                if (!model.hasErrors()) {
                     if (args.length == 4) {
-                        System.out.println("4");
                         if (args[2].equals("-eval") && !model.hasErrors()) {
                             System.out.println(model.evaluateCell(args[3]));
-                        } else if (args[2].equals("-save")) {
-                            System.out.println("saved");
+                        } else if (args[2].equals("-save") && !model.hasErrors()) {
                             File outputFile = new File(args[3]);
                             outputFile.createNewFile();
                             PrintWriter writer = new PrintWriter(outputFile);
@@ -57,7 +53,7 @@ public class BeyondGood {
                         guiView.render();
                         guiView.makeVisible();
                     }
-                }
+
             } catch (FileNotFoundException e) {
                 System.out.println("No file provided");
             } catch (IOException e) {

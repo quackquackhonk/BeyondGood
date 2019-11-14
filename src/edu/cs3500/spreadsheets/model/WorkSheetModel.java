@@ -189,6 +189,29 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
     }
 
     /**
+     * Checks a cell for errors and evaluates it.
+     *
+     * @param coord
+     */
+    @Override
+    public String evaluateCellCheck(String coord) {
+        Coord tar = this.getCoordFromString(coord);
+        if(!this.getProbCells(tar).isEmpty()) {
+            throw new IllegalArgumentException("Cell in cycle");
+        } else {
+            try {
+                Coord target = getCoordFromString(coord);
+                CellContents cell = getCell(target);
+                Value finalVal = cell.acceptEvalVisitor(new EvalVisitor());
+                //System.out.println(finalVal.toString());
+                return finalVal.toString();
+            } catch (NullPointerException n) {
+                throw new IllegalArgumentException("Can't evaluate cell or cell doesn't exist" + coord);
+            }
+        }
+    }
+
+    /**
      * Checks the validity of all cells in the worksheet by parsing their s-expressions.
      * toSkip - Cycle cells caught in checkAdjList();
      *
@@ -716,7 +739,12 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
                     return new Dbl(0);
                 }
                 if (singleCont.size() == 1) {
-                    return singleCont.get(0).acceptEvalVisitor(this).getDbl();
+                    try {
+                        return singleCont.get(0).acceptEvalVisitor(this).getDbl();
+                    } catch (IllegalArgumentException e){
+                        throw new IllegalArgumentException("Formula - Non-numeric argument");
+                    }
+
                 } else {
                     SUM rangeSum = new SUM(singleCont);
                     return rangeSum.acceptEvalVisitor(this).getDbl();
@@ -756,9 +784,12 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
                 if (singleCont.size() == 0) {
                     return new Dbl(1);
                 }
-
                 if (singleCont.size() == 1) {
-                    return singleCont.get(0).acceptEvalVisitor(this).getDbl();
+                    try {
+                        return singleCont.get(0).acceptEvalVisitor(this).getDbl();
+                    } catch (IllegalArgumentException e){
+                        throw new IllegalArgumentException("Formula - Non-numeric argument");
+                    }
                 } else {
                     PRODUCT rangeProd = new PRODUCT(singleCont);
                     return rangeProd.acceptEvalVisitor(this).getDbl();
@@ -789,10 +820,14 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
 
                     // compare the two numeric arguments
                     if (firstCont.size() == 1 && secCont.size() == 1) {
-                        Dbl num1 = firstCont.get(0).acceptEvalVisitor(this).getDbl();
-                        Dbl num2 = secCont.get(0).acceptEvalVisitor(this).getDbl();
-                        boolean result = num1.evaluate() > num2.evaluate();
-                        return new Bool(result);
+                        try {
+                            Dbl num1 = firstCont.get(0).acceptEvalVisitor(this).getDbl();
+                            Dbl num2 = secCont.get(0).acceptEvalVisitor(this).getDbl();
+                            boolean result = num1.evaluate() > num2.evaluate();
+                            return new Bool(result);
+                        } catch (IllegalArgumentException e){
+                            throw new IllegalArgumentException("Formula - Non-numeric argument");
+                        }
                     } else {
                         Value val1 = first.acceptEvalVisitor(this);
                         Value val2 = first.acceptEvalVisitor(this);
@@ -824,11 +859,15 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
                 ArrayList<CellContents> secCont = second.forOps(this);
 
                 if (firstCont.size() == 1 && secCont.size() == 1) {
-                    Dbl num1 = firstCont.get(0).acceptEvalVisitor(this).getDbl();
-                    Dbl num2 = secCont.get(0).acceptEvalVisitor(this).getDbl();
-                    boolean result = num1.evaluate() < num2.evaluate();
+                    try {
+                        Dbl num1 = firstCont.get(0).acceptEvalVisitor(this).getDbl();
+                        Dbl num2 = secCont.get(0).acceptEvalVisitor(this).getDbl();
+                        boolean result = num1.evaluate() < num2.evaluate();
 //          System.out.println("Result of LESSTHAN is " + result);
-                    return new Bool(result);
+                        return new Bool(result);
+                    } catch (IllegalArgumentException e) {
+                        throw new IllegalArgumentException("Formula - Non-numeric argument");
+                    }
                 } else {
                     Value val1 = first.acceptEvalVisitor(this);
                     Value val2 = first.acceptEvalVisitor(this);

@@ -70,11 +70,9 @@ public class GridPanel extends JPanel {
         g2d.setFont(font);
         g2d.setColor(Color.pink);
         g2d.fillRect(0, 0, this.getPreferredSize().width, this.getPreferredSize().height);
-        System.out.println(this.getPreferredSize() + " grids pref size");
 
         for (int row = 0; row < numRow; row++) {
             for (int col = 0; col < numCol; col++) {
-
                 String cellText = grid.getOrDefault(new Coord(row + 1, col + 1), "");
                 g2d.setColor(Color.black);
                 g2d.fillRect(row * cw, col * ch, cw, ch);

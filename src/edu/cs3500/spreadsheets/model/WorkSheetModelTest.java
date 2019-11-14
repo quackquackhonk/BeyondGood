@@ -33,7 +33,7 @@ public class WorkSheetModelTest {
   }
 
   // Can't have lone range cell
-  @Test(expected = IllegalArgumentException.class)
+  @Test //(expected = IllegalArgumentException.class)
   public void checkBuildAdjListHasCycleSelfRange() {
     WorkSheetModel.SheetBuilder builder = new WorkSheetModel.SheetBuilder();
     builder.createCell(1, 1, "=A1:A3");
@@ -42,7 +42,8 @@ public class WorkSheetModelTest {
 
     IWriteWorkSheetModel model = builder.createWorksheet();
     model.setupModel();
-    model.evaluateCell("A1");
+    assertEquals(model.evaluateCell("A1"), "#Reference");
+
   }
 
   // Can't have lone range cell
