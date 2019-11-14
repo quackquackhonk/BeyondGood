@@ -46,7 +46,10 @@ public class SpreadsheetGUIView extends JFrame implements IView {
     for (Coord c : modelCells) {
       try {
         String cellResult = model.evaluateCellCheck(c.toString());
-        stringCells.put(c, cellResult);
+        // only add the cell if it is not empty
+        if (!cellResult.equals("")) {
+          stringCells.put(c, cellResult);
+        }
       } catch (IllegalArgumentException e) {
         String msg = e.getMessage();
         //System.out.println(msg + " "+ c.toString());
