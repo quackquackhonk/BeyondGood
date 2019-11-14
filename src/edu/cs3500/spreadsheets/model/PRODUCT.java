@@ -54,6 +54,7 @@ public class PRODUCT extends Ops {
     public String getRaw() {
         return this.toString();
     }
+
     /**
      * Returns this CellContents in ArrayList form.
      *

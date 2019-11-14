@@ -62,8 +62,8 @@ public class Blank implements Value {
      * @return
      */
     @Override
-    public ArrayList < CellContents > forOps(WorkSheetModel.EvalVisitor v) {
-        return new ArrayList < CellContents > ();
+    public ArrayList<CellContents> forOps(WorkSheetModel.EvalVisitor v) {
+        return new ArrayList<CellContents>();
     }
 
     /**

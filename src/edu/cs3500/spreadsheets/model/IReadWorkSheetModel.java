@@ -23,7 +23,6 @@ public interface IReadWorkSheetModel<CellContents> {
 
     /**
      * Returns a String of the evaluated Cell at the given column and row.
-     *
      */
     String evaluateCell(int col, int row);
 

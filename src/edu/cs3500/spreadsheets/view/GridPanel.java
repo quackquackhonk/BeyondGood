@@ -45,6 +45,7 @@ public class GridPanel extends JPanel {
 
     /**
      * Sets the HashMap of Coord -> String that this Panel uses to render cell text to cells.
+     *
      * @param cells the new HashMap
      */
     public void setCells(HashMap<Coord, String> cells) {

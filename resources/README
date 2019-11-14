@@ -10,11 +10,27 @@ SpreadsheetGUIView:
 	- Displays all cells as evaluated strings, cells that are in cycles or malformed formulas are displayed
 	  as String errors in their corresponding cells.
 	- Has sticky column and row headers that scroll horizontally/vertically with the grid.
+	- Resizes grid, scrollbars, and viewport if window is maximized.
 
 SpreadsheetScrollingPanel
 	- JPanel that contains a static JPanel that draws the grid, vertical/horizontal JScrollBars, and a JPanel viewport
 	- The viewport pans across the static JPanel using the AdjustmentListeners attached to each scrollbar.
 	- Resizes the grid as needed based on window size.
+
+ScrollingViewPort
+    - Viewport for the grid. Changes the bounds of the grid JPanel based on scroll events
+
+SpreadsheetScrollingColumnHeader
+    - Column header for spreadsheets. Stays stickied at the top, but scrolls horizontally.
+
+SpreadsheetScrollingRowHeader
+    - Row head for spreadsheets. Stays stickied at the left, but scrolls vertically.
+
+SpreadsheetTextualView
+    - Saves the input spreadsheet file in text form.
+
+
+
 
 
 *** MODEL ****************************************************************************************

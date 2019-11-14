@@ -47,9 +47,9 @@ public class SpreadsheetGUIView extends JFrame implements IView {
             } catch (IllegalArgumentException e) {
                 String msg = e.getMessage();
                 //System.out.println(msg + " "+ c.toString());
-                if(msg.contains("cycle")) {
+                if (msg.contains("cycle")) {
                     stringCells.put(c, "#REF!");
-                } else if(msg.contains("Formula")) {
+                } else if (msg.contains("Formula")) {
                     stringCells.put(c, "#VALUE!");
                 }
             }
@@ -94,24 +94,25 @@ public class SpreadsheetGUIView extends JFrame implements IView {
     /**
      * Handles the events for when the frame is resized. Removes the scrollPane
      * and recreates it based on the current size of the window.
+     *
      * @param stringCells the hashmap of strings for the gridpanel to render.
      */
     private void createScrollPanel(HashMap<Coord, String> stringCells) {
-            this.remove(this.scrollPane);
-            Dimension currentSize = this.getSize();
-            int numRow = this.getPreferredSize().width / cellWidth + 3;
-            int numCol = this.getPreferredSize().height / cellHeight + 3;
-            int currPanelWidth = Math.max(currentSize.width, model.getMaxCol() * cellWidth);
-            int currPanelHeight = Math.max(currentSize.height, model.getMaxRow() * cellHeight);
+        this.remove(this.scrollPane);
+        Dimension currentSize = this.getSize();
+        int numRow = this.getPreferredSize().width / cellWidth + 3;
+        int numCol = this.getPreferredSize().height / cellHeight + 3;
+        int currPanelWidth = Math.max(currentSize.width, model.getMaxCol() * cellWidth);
+        int currPanelHeight = Math.max(currentSize.height, model.getMaxRow() * cellHeight);
 
-            gridPanel = new GridPanel(numRow, numCol, cellWidth, cellHeight, stringCells);
-            scrollPane = new SpreadsheetScrollingPanel(gridPanel, cellWidth, cellHeight);
-            this.scrollPane.setPreferredSize(new Dimension(currPanelWidth + 3 * cellWidth,
-                    currPanelHeight + 3 * cellHeight));
-            // Three cell buffer
-            gridPanel.setPreferredSize(
-                    new Dimension(currPanelWidth + 3 * cellWidth, currPanelHeight + 3 * cellHeight));
-            this.add(scrollPane, BorderLayout.CENTER);
+        gridPanel = new GridPanel(numRow, numCol, cellWidth, cellHeight, stringCells);
+        scrollPane = new SpreadsheetScrollingPanel(gridPanel, cellWidth, cellHeight);
+        this.scrollPane.setPreferredSize(new Dimension(currPanelWidth + 3 * cellWidth,
+                currPanelHeight + 3 * cellHeight));
+        // Three cell buffer
+        gridPanel.setPreferredSize(
+                new Dimension(currPanelWidth + 3 * cellWidth, currPanelHeight + 3 * cellHeight));
+        this.add(scrollPane, BorderLayout.CENTER);
     }
 
     /**

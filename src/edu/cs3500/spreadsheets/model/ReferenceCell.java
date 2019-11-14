@@ -21,7 +21,7 @@ public class ReferenceCell implements CellContents<ArrayList<Coord>> {
     /**
      * Returns evaluate() of reference CellContents.
      */
-   // @Override
+    // @Override
     public ArrayList<Coord> evaluate() {
         return this.cells;
     }
@@ -29,7 +29,7 @@ public class ReferenceCell implements CellContents<ArrayList<Coord>> {
     @Override
     public String getRaw() {
         System.out.println(this.cells.size());
-        if(this.cells.size() == 1) {
+        if (this.cells.size() == 1) {
             return this.cells.get(0).toString();
         } else {
             return this.cells.get(0).toString() +

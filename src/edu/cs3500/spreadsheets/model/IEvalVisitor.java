@@ -16,6 +16,7 @@ public interface IEvalVisitor<Value> {
 
     /**
      * Processes a Blank
+     *
      * @throws IllegalArgumentException if CC can't be evaluated to a Value
      */
     Value visitBlank(Blank b) throws IllegalArgumentException;

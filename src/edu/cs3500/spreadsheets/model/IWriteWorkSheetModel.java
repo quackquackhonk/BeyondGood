@@ -1,7 +1,5 @@
 package edu.cs3500.spreadsheets.model;
 
-import java.util.HashSet;
-
 /**
  * To represent a model for a worksheet. Maintains state and enforces class invariants.
  */

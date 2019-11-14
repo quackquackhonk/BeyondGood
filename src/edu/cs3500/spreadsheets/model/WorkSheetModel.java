@@ -89,14 +89,22 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
 
     }
 
-
+    /**
+     * Method to change a region of cells.
+     * @param start  starting coordinate
+     * @param finish ending coordinate
+     */
     @Override
     public void dragChange(Coord start, Coord finish) {
         // we will use for future assignments
 
     }
 
-
+    /**
+     * Method to update a cell.
+     * @param location is the coordinates of the cell
+     * @param value    is the row input, parsable as an s-expression
+     */
     @Override
     public void updateCell(Coord location, String value) {
         // we will use for future assignments
@@ -147,12 +155,24 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
         return cell.getRaw();
     }
 
+    /**
+     * Retrieves raw cell text.
+     *
+     * @param col column in sheet
+     * @param row row in sheet
+     * @return text
+     */
     @Override
     public String getCellText(int col, int row) {
         Coord c = new Coord(col, row);
         return this.getCellText(c);
     }
 
+    /**
+     * Evaluates individual cell.
+     *
+     * @param coord is string coordinate
+     */
     @Override
     public void evaluateIndCell(String coord) {
         Coord target = getCoordFromString(coord);
@@ -192,7 +212,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
     @Override
     public String evaluateCellCheck(String coord) {
         Coord tar = this.getCoordFromString(coord);
-        if(!this.getProbCells(tar).isEmpty()) {
+        if (!this.getProbCells(tar).isEmpty()) {
             throw new IllegalArgumentException("Cell in cycle");
         } else {
             try {
@@ -574,6 +594,10 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
         }
 
 
+        /**
+         * Creates a worksheet.
+         * @return worksheet completed.
+         */
         @Override
         public IWriteWorkSheetModel createWorksheet() {
             this.model.setupModel();
@@ -730,7 +754,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
                 if (singleCont.size() == 1) {
                     try {
                         return singleCont.get(0).acceptEvalVisitor(this).getDbl();
-                    } catch (IllegalArgumentException e){
+                    } catch (IllegalArgumentException e) {
                         throw new IllegalArgumentException("Formula - Non-numeric argument");
                     }
 
@@ -749,6 +773,11 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
             return new Dbl(total);
         }
 
+        /**
+         * Evaluate a blank card.
+         * @param b Blank to be evaluated.
+         * @return Value of blank.
+         */
         @Override
         public Value visitBlank(Blank b) {
             return b;
@@ -776,7 +805,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
                 if (singleCont.size() == 1) {
                     try {
                         return singleCont.get(0).acceptEvalVisitor(this).getDbl();
-                    } catch (IllegalArgumentException e){
+                    } catch (IllegalArgumentException e) {
                         throw new IllegalArgumentException("Formula - Non-numeric argument");
                     }
                 } else {
@@ -814,7 +843,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
                             Dbl num2 = secCont.get(0).acceptEvalVisitor(this).getDbl();
                             boolean result = num1.evaluate() > num2.evaluate();
                             return new Bool(result);
-                        } catch (IllegalArgumentException e){
+                        } catch (IllegalArgumentException e) {
                             throw new IllegalArgumentException("Formula - Non-numeric argument");
                         }
                     } else {
