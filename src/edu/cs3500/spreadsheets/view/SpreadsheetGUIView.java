@@ -4,10 +4,7 @@ import edu.cs3500.spreadsheets.model.Coord;
 import edu.cs3500.spreadsheets.model.IReadWorkSheetModel;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowStateListener;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -90,21 +87,16 @@ public class SpreadsheetGUIView extends JFrame implements IView {
         formulaBarPanel.add(formText);
         this.add(formulaBarPanel, BorderLayout.NORTH);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.addWindowStateListener(new WindowStateListener() {
-            @Override
-            public void windowStateChanged(WindowEvent we) {
-                frameWindowStateChanged(we, stringCells);
-            }
-
-        });
+        this.addWindowStateListener(we -> createScrollPanel(stringCells));
         this.pack();
     }
 
     /**
-     *  Handles the events for when the frame is resized.
-     * @param we the WindowEvent
+     * Handles the events for when the frame is resized. Removes the scrollPane
+     * and recreates it based on the current size of the window.
+     * @param stringCells the hashmap of strings for the gridpanel to render.
      */
-    private void frameWindowStateChanged(WindowEvent we, HashMap<Coord, String> stringCells) {
+    private void createScrollPanel(HashMap<Coord, String> stringCells) {
             this.remove(this.scrollPane);
             Dimension currentSize = this.getSize();
             int numRow = this.getPreferredSize().width / cellWidth + 3;
