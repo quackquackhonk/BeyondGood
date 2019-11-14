@@ -12,10 +12,6 @@ import java.awt.GridBagLayout;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
-import javax.swing.JTextField;
-
-
-import java.awt.FlowLayout;
 import java.awt.event.AdjustmentListener;
 
 /**

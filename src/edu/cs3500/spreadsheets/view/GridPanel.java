@@ -8,9 +8,6 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-
-import java.awt.BorderLayout;
 import java.util.HashMap;
 
 /**

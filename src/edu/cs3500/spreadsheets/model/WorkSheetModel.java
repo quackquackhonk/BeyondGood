@@ -4,7 +4,13 @@ import edu.cs3500.spreadsheets.model.WorksheetReader.WorksheetBuilder;
 import edu.cs3500.spreadsheets.sexp.Parser;
 import edu.cs3500.spreadsheets.sexp.Sexp;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.HashMap;
+import java.util.Stack;
+
 
 /**
  * Model class for working with spreadsheets.
@@ -578,8 +584,8 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
     }
   }
 
-  /*
-  Visitor for evaluating CellContents.
+  /**
+   *  Visitor for evaluating CellContents.
    */
   public final class EvalVisitor implements IEvalVisitor<Value> {
 
@@ -686,7 +692,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
     }
 
     /**
-     * Returns boolean of Bool b
+     * Returns boolean of Bool b.
      */
     @Override
     public Value visitBool(Bool b) {
@@ -694,7 +700,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
     }
 
     /**
-     * Returns String of Str s
+     * Returns String of Str s.
      */
     @Override
     public Value visitStr(Str s) {
@@ -702,7 +708,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
     }
 
     /**
-     * Returns double of Dbl
+     * Returns double of Dbl.
      */
     @Override
     public Value visitDbl(Dbl d) {

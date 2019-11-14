@@ -8,12 +8,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.function.Consumer;
-import javax.swing.JScrollPane;
-import javax.swing.JScrollBar;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JFrame;
-import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.Dimension;
 
@@ -158,7 +155,7 @@ public class SpreadsheetGUIView extends JFrame implements IView {
   }
 
   /**
-   * Transmit an error message to the view, in case the command could not be processed correctly
+   * Transmit an error message to the view, in case the command could not be processed correctly.
    *
    * @param error message.
    */
