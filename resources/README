@@ -2,7 +2,8 @@
 
 -------- Interfaces --------------------------------
 IView
-	- Interface for any view implementation for IWorkSheetModels
+	- Interface for view implementations of IWorkSheetModels.
+	- Has methods to set command callbacks / error messages for future controller implementations.
 
 ------ Classes -------------------------------------
 SpreadsheetGUIView:
@@ -18,7 +19,7 @@ SpreadsheetScrollingPanel
 	- Resizes the grid as needed based on window size.
 
 ScrollingViewPort
-    - Viewport for the grid. Changes the bounds of the grid JPanel based on scroll events
+    - Viewport for the grid. Changes the bounds and size of the grid JPanel based on scroll events and window events.
 
 SpreadsheetScrollingColumnHeader
     - Column header for spreadsheets. Stays stickied at the top, but scrolls horizontally.
@@ -30,6 +31,9 @@ SpreadsheetTextualView
     - Saves the input spreadsheet file in text form.
     - Incorrect cells are still saved for future use.
     - Previously saved files can be opened and resaved.
+
+GridPanel
+    - Draws the grid and text of the spreadsheet. Only draws cells within the bounds of the viewport.
 
 *** MODEL ****************************************************************************************
 

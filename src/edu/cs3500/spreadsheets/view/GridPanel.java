@@ -14,13 +14,7 @@ import java.util.HashMap;
  * GUI JPanel for rendering cells in a spreadsheet.
  */
 public class GridPanel extends JPanel {
-  /*
-  private int rowMin;
-  private int rowMax;
-  private int colMax;
-  private int colMin;
 
-   */
   private HashMap<Coord, String> grid;
   private int numRow;
   private int numCol;

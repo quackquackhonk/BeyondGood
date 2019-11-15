@@ -30,4 +30,8 @@ public interface IView {
    * @param error message.
    */
   void showErrorMessage(String error);
+
+  /**
+   * Select cell;
+   */
 }
