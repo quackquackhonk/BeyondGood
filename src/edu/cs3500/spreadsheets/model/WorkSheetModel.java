@@ -142,15 +142,15 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
   }
 
   /**
-   * Returns the raw text of the cell at given Coordinate. coord
+   * Returns the raw text of the cell at given Coordinate.
    */
   @Override
   public String getCellText(Coord coord) {
     CellContents cell = getCell(coord);
-    if (cell.forOps(new EvalVisitor()).size() == 0) {
-      return null;
-    } else {
+    try {
       return cell.getRaw();
+    } catch (NullPointerException p) {
+      throw new IllegalArgumentException("No cell at Coord");
     }
   }
 
