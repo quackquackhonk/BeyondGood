@@ -51,4 +51,13 @@ public interface IView {
 
   void addActionListener(ActionListener listener);
 
+  /**
+   * Gets the text inputted by th user that may be used to create a new cell.
+   */
+  String getInputText();
+
+  /**
+   * Sets the default input text that the user can then modify.
+   */
+  void setInputText(String s);
 }

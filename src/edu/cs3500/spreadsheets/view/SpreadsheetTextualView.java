@@ -86,4 +86,21 @@ public class SpreadsheetTextualView implements IView {
   public void addActionListener(ActionListener listener) {
 
   }
+
+  /**
+   * Gets the text inputted by th user that may be used to create a new cell.
+   */
+  @Override
+  public String getInputText() {
+    // Text only View doesn't set input text
+    return null;
+  }
+
+  /**
+   * Sets the default input text that the user can then modify.
+   */
+  @Override
+  public void setInputText(String s) {
+    // Text only View doesn't set input text
+  }
 }

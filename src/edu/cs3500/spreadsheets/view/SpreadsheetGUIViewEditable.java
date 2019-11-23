@@ -22,6 +22,9 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
 
   private IReadWorkSheetModel model;
   private GridPanel gridPanel;
+  private JButton formConfirm;
+  private JButton formCancel;
+  private JTextField formText;
 
   //private JScrollPane scrollPane;
   private SpreadsheetScrollingPanel scrollPane;
@@ -94,13 +97,13 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
 
     // Add FormulaPanel, currently not editable.
     JPanel formulaBarPanel = new JPanel();
-    JButton formConfirm = new JButton("✔");
-    JButton formCancel = new JButton("X");
+    formConfirm = new JButton("✔");
+    formCancel = new JButton("X");
     formConfirm.setPreferredSize(new Dimension(45, cellHeight));
     formCancel.setPreferredSize(new Dimension(45, cellHeight));
 
     formulaBarPanel.setLayout(new FlowLayout());
-    JTextField formText = new JTextField("Default formula", 20);
+    formText = new JTextField("Default formula", 20);
     formText.setEditable(true);
 
     formulaBarPanel.add(formConfirm);
@@ -191,5 +194,22 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
   @Override
   public void addActionListener(ActionListener listener) {
 
+  }
+
+  /**
+   * Gets the text inputted by th user that may be used to create a new cell.
+   */
+  @Override
+  public String getInputText() {
+    System.out.println(this.formText.getText());
+    return this.formText.getText();
+  }
+
+  /**
+   * Sets the default input text that the user can then modify.
+   */
+  @Override
+  public void setInputText(String s) {
+    this.formText.setText(s);
   }
 }
