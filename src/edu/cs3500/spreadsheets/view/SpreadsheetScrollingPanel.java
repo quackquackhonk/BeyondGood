@@ -9,6 +9,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Rectangle;
 import java.awt.event.AdjustmentListener;
 
 import javax.swing.JPanel;
@@ -189,9 +190,10 @@ public class SpreadsheetScrollingPanel extends JPanel {
       int rowStart = -grid.getBounds().y / cellHeight;
 
       //System.out.println("Cols:" + colStart + " " + colEnd);
-      //System.out.println("Rows:" + rowStart + " " + rowEnd);
+      //System.out.println(grid.getBounds());
       grid.setCols(colStart, colEnd);
       grid.setRows(rowStart, rowEnd);
+      System.out.println(grid.coordFromLoc(-grid.getBounds().x, -grid.getBounds().y));
     }
   }
 

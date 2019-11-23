@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="013926d2-f87d-4d22-a068-7b9fcc73e8c6" name="Default Changelist" comment="Added action lis">
+    <list default="true" id="013926d2-f87d-4d22-a068-7b9fcc73e8c6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/controller/SpreadsheetMVCController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/controller/SpreadsheetMVCController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetGUIView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetGUIView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/view/GridPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/view/GridPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/view/SpreadsheetScrollingPanel$ScrollingViewPort.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/view/SpreadsheetScrollingPanel$ScrollingViewPort.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/view/SpreadsheetScrollingPanel$SpreadsheetScrollingColumnHeader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/view/SpreadsheetScrollingPanel$SpreadsheetScrollingColumnHeader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/view/SpreadsheetScrollingPanel$SpreadsheetScrollingRowHeader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/view/SpreadsheetScrollingPanel$SpreadsheetScrollingRowHeader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/view/SpreadsheetScrollingPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/view/SpreadsheetScrollingPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/IView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/IView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetGUIViewEditable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetGUIViewEditable.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -277,7 +281,6 @@
       <workItem from="1573704652057" duration="204000" />
       <workItem from="1573706698492" duration="246000" />
       <workItem from="1574530041849" duration="4409000" />
-      <workItem from="1574535267533" duration="1426000" />
     </task>
     <task id="LOCAL-00001" summary="added GUI class">
       <created>1573484804770</created>
@@ -454,14 +457,7 @@
       <option name="project" value="LOCAL" />
       <updated>1574532083526</updated>
     </task>
-    <task id="LOCAL-00026" summary="Finished implementing the MouseEventListener">
-      <created>1574536496831</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1574536496831</updated>
-    </task>
-    <option name="localTasksCounter" value="27" />
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -526,7 +522,6 @@
     <MESSAGE value="removed print statements" />
     <MESSAGE value="- Readme" />
     <MESSAGE value="Added interfaces for the Controller as well as the observer and observed functionality. Added ButtonListener and KeyboardListener classes for streamlined controller and view setup." />
-    <MESSAGE value="Finished implementing the MouseEventListener" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished implementing the MouseEventListener" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added interfaces for the Controller as well as the observer and observed functionality. Added ButtonListener and KeyboardListener classes for streamlined controller and view setup." />
   </component>
 </project>

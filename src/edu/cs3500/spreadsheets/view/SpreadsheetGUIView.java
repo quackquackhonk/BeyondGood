@@ -169,6 +169,16 @@ public class SpreadsheetGUIView extends JFrame implements IView {
   }
 
   /**
+   * Provide the view with a callback option to process a command.
+   *
+   * @param callback object
+   */
+  @Override
+  public void setCommandCallback(Consumer<String> callback) {
+
+  }
+
+  /**
    * Transmit an error message to the view, in case the command could not be processed correctly.
    * @param error message.
    */

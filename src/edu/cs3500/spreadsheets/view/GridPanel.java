@@ -7,6 +7,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import javax.swing.JPanel;
 import java.util.HashMap;
 
@@ -76,6 +77,19 @@ public class GridPanel extends JPanel {
     this.rs = start;
     this.re = end;
   }
+
+  // Get coordinate form mouse location / highlighted cell
+  Coord coordFromLoc(int x, int y) {
+    double windowWidth = (ce - cs) * cw;
+    double windowHeight = (re - rs) * ch;
+
+    int col = (int) Math.floor(x / windowWidth) + cs + 1;
+    int row = (int) Math.floor(y / windowHeight) + rs+ 1;
+    //System.out.println("start:" + (rs+1) + " " + row);
+
+    return new Coord(col, row);
+  }
+
 
   /**
    * Sets the HashMap of Coord -> String that this Panel uses to render cell text to cells.
