@@ -58,4 +58,14 @@ public interface IView {
    * @param listener the MouseListener to add.
    */
   void addMouseListener(MouseListener listener);
+
+  /**
+   * Sets defu user input textbox text.
+   */
+  void setInputText(String s);
+
+  /**
+   * Gets the text the user has inputted in the input field.
+   */
+  String getInputText();
 }

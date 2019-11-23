@@ -5,6 +5,7 @@ import edu.cs3500.spreadsheets.model.IReadWorkSheetModel;
 
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.function.Consumer;
@@ -52,6 +53,16 @@ public class SpreadsheetTextualView implements IView {
   }
 
   /**
+   * Provide the view with a callback option to process a command.
+   *
+   * @param callback object
+   */
+  @Override
+  public void setCommandCallback(Consumer<String> callback) {
+
+  }
+
+  /**
    * Transmit an error message to the view, in case the command could not be processed correctly.
    *
    * @param error message.
@@ -71,6 +82,18 @@ public class SpreadsheetTextualView implements IView {
    */
   @Override
   public void addKeyListener(KeyListener listener) {
+
+  }
+
+  /**
+   * Forces view to have a method to set up listeners for mouse events. For Swing views, this method
+   * will already be implemented through Java Swing. For non-swing views, this will need to be
+   * written.
+   *
+   * @param listener the MouseListener to add.
+   */
+  @Override
+  public void addMouseListener(MouseListener listener) {
 
   }
 
