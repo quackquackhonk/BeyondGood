@@ -173,6 +173,11 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
     this.setVisible(true);
   }
 
+  @Override
+  public void setCommandCallback(Consumer<String> callback) {
+    // TODO: figure out what this is supposed to do.
+  }
+
   /**
    * Transmit an error message to the view, in case the command could not be processed correctly.
    *
@@ -189,27 +194,11 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
    * <p>
    * Thus our Swing-based implementation of this interface will already have such a method.
    *
-   * @param listener
+   * @param listener the listener to add.
    */
   @Override
   public void addActionListener(ActionListener listener) {
 
   }
 
-  /**
-   * Gets the text inputted by th user that may be used to create a new cell.
-   */
-  @Override
-  public String getInputText() {
-    System.out.println(this.formText.getText());
-    return this.formText.getText();
-  }
-
-  /**
-   * Sets the default input text that the user can then modify.
-   */
-  @Override
-  public void setInputText(String s) {
-    this.formText.setText(s);
-  }
 }

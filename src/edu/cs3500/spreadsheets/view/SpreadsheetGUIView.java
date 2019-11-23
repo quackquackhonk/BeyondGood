@@ -162,9 +162,14 @@ public class SpreadsheetGUIView extends JFrame implements IView {
     this.setVisible(true);
   }
 
+  @Override
+  public void setCommandCallback(Consumer<String> callback) {
+    throw new UnsupportedOperationException("Noneditable GUI view does not support command " +
+            "callbacks.");
+  }
+
   /**
    * Transmit an error message to the view, in case the command could not be processed correctly.
-   *
    * @param error message.
    */
   @Override
@@ -172,33 +177,8 @@ public class SpreadsheetGUIView extends JFrame implements IView {
     // Implemented in the future.
   }
 
-  /**
-   * this is to force the view to have a method to set up actions for buttons. All the buttons must
-   * be given this action listener
-   * <p>
-   * Thus our Swing-based implementation of this interface will already have such a method.
-   *
-   * @param listener
-   */
   @Override
   public void addActionListener(ActionListener listener) {
 
-  }
-
-  /**
-   * Gets the text inputted by th user that may be used to create a new cell.
-   */
-  @Override
-  public String getInputText() {
-    // Read only GUI doesn't set input text
-    return null;
-  }
-
-  /**
-   * Sets the default input text that the user can then modify.
-   */
-  @Override
-  public void setInputText(String s) {
-    // Read only GUI doesn't have input text.
   }
 }

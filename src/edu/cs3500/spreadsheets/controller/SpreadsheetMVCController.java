@@ -22,7 +22,10 @@ public class SpreadsheetMVCController implements SpreadsheetController, Spreadsh
   @Override
   public void setView(IView view) {
     this.view = view;
-    //TODO: set up listeners for the view.
+
+    this.view.addActionListener(this.configureButtonListener());
+    this.view.addKeyListener(this.configureKeyboardListener());
+    this.view.addMouseListener(this.configureMouseListener());
   }
 
   @Override
@@ -66,6 +69,20 @@ public class SpreadsheetMVCController implements SpreadsheetController, Spreadsh
     //TODO: finish
 
     return kbd;
+  }
+
+  /**
+   * Creates a new MouseEventListener with all the specified functionality that this controller
+   * needs. This MouseListener can then be passed into the view so that the view can start
+   * listening for those specific events.
+   * @return the configured MouseEventListener.
+   */
+  private MouseEventListener configureMouseListener() {
+    MouseEventListener mel = new MouseEventListener();
+
+    // TODO: finish
+
+    return mel;
   }
 
 }
