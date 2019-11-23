@@ -1,5 +1,6 @@
 package edu.cs3500.spreadsheets;
 
+import edu.cs3500.spreadsheets.controller.SpreadsheetMVCController;
 import edu.cs3500.spreadsheets.model.IWriteWorkSheetModel;
 import edu.cs3500.spreadsheets.model.ViewCreator;
 import edu.cs3500.spreadsheets.model.ViewCreator.ViewType;
@@ -64,6 +65,9 @@ public class BeyondGood {
           IView guiView = args[2].equals("-gui")
               ? ViewCreator.create(ViewCreator.ViewType.GUI, model)
               : ViewCreator.create(ViewCreator.ViewType.EDITGUI, model);
+
+          SpreadsheetMVCController controller = new SpreadsheetMVCController(model);
+          controller.setView(guiView);
           guiView.render();
           guiView.makeVisible();
         }

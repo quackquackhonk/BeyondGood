@@ -6,6 +6,8 @@ import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.util.function.Consumer;
 
+import edu.cs3500.spreadsheets.model.Coord;
+
 /**
  * Interface for views of IWorkSheetModels.
  */
@@ -68,4 +70,6 @@ public interface IView {
    * Gets the text the user has inputted in the input field.
    */
   String getInputText();
+
+  Coord coordFromLoc(int x, int y);
 }

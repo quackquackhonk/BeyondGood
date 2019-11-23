@@ -80,12 +80,15 @@ public class GridPanel extends JPanel {
 
   // Get coordinate form mouse location / highlighted cell
   Coord coordFromLoc(int x, int y) {
-    double windowWidth = (ce - cs) * cw;
-    double windowHeight = (re - rs) * ch;
+    System.out.println("Grid: x = " + x + ", y = " + y);
+    double windowWidth = this.getWidth();
+    double windowHeight = this.getHeight();
 
-    int col = (int) Math.floor(x / windowWidth) + cs + 1;
-    int row = (int) Math.floor(y / windowHeight) + rs+ 1;
+    int col = (int) Math.floor(windowWidth /  x) + cs + 1;
+    int row = (int) Math.floor(windowHeight / y) + rs+ 1;
     //System.out.println("start:" + (rs+1) + " " + row);
+
+    System.out.println("Grid: col = " + col + ", row = " + row);
 
     return new Coord(col, row);
   }

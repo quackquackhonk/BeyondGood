@@ -119,6 +119,12 @@ public class SpreadsheetTextualView implements IView {
     return null;
   }
 
+  @Override
+  public Coord coordFromLoc(int x, int y) {
+    // TODO: put something here.
+    return null;
+  }
+
   /**
    * Sets the default input text that the user can then modify.
    */

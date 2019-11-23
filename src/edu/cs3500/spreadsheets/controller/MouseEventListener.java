@@ -2,6 +2,7 @@ package edu.cs3500.spreadsheets.controller;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -11,9 +12,9 @@ import java.util.Map;
  * they have only handle one specific case for mouse handling.
  */
 public class MouseEventListener implements MouseListener {
-  private Map<Integer, Runnable> mouseClickedMap;
-  private Map<Integer, Runnable> mousePressedMap;
-  private Map<Integer, Runnable> mouseReleasedMap;
+  private Map<Integer, MouseRunnable> mouseClickedMap = new HashMap<>();
+  private Map<Integer, MouseRunnable> mousePressedMap = new HashMap<>();
+  private Map<Integer, MouseRunnable> mouseReleasedMap = new HashMap<>();
   private Runnable mouseEnteredRunnable = defaultRunnable();
   private Runnable mouseExitedRunnable = defaultRunnable();
 
@@ -28,7 +29,7 @@ public class MouseEventListener implements MouseListener {
    * the button that was clicked.
    * @param map the mouseClicked map.
    */
-  public void setMouseClickedMap(Map<Integer, Runnable> map) {
+  public void setMouseClickedMap(Map<Integer, MouseRunnable> map) {
     this.mouseClickedMap = map;
   }
 
@@ -37,7 +38,7 @@ public class MouseEventListener implements MouseListener {
    * the button that was pressed.
    * @param map the mousePressed map.
    */
-  public void setMousePressedmap(Map<Integer, Runnable> map) {
+  public void setMousePressedmap(Map<Integer, MouseRunnable> map) {
     this.mousePressedMap = map;
   }
 
@@ -46,7 +47,7 @@ public class MouseEventListener implements MouseListener {
    * the button that was released.
    * @param map the mouseReleased map.
    */
-  public void setMouseReleasedMap(Map<Integer, Runnable> map) {
+  public void setMouseReleasedMap(Map<Integer, MouseRunnable> map) {
     this.mouseReleasedMap = map;
   }
 
@@ -69,21 +70,21 @@ public class MouseEventListener implements MouseListener {
   @Override
   public void mouseClicked(MouseEvent e) {
     if (this.mouseClickedMap.containsKey(e.getButton())) {
-      this.mouseClickedMap.get(e.getButton()).run();
+      this.mouseClickedMap.get(e.getButton()).run(e.getPoint());
     }
   }
 
   @Override
   public void mousePressed(MouseEvent e) {
     if (this.mousePressedMap.containsKey(e.getButton())) {
-      this.mousePressedMap.get(e.getButton()).run();
+      this.mousePressedMap.get(e.getButton()).run(e.getPoint());
     }
   }
 
   @Override
   public void mouseReleased(MouseEvent e) {
     if (this.mousePressedMap.containsKey(e.getButton())) {
-      this.mousePressedMap.get(e.getButton()).run();
+      this.mousePressedMap.get(e.getButton()).run(e.getPoint());
     }
   }
 

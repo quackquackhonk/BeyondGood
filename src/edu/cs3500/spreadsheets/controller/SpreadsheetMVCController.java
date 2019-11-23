@@ -1,6 +1,10 @@
 package edu.cs3500.spreadsheets.controller;
 
+import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import edu.cs3500.spreadsheets.model.IWriteWorkSheetModel;
 import edu.cs3500.spreadsheets.view.IView;
@@ -52,8 +56,6 @@ public class SpreadsheetMVCController implements SpreadsheetController, Spreadsh
   private ButtonListener configureButtonListener() {
     ButtonListener btn = new ButtonListener();
 
-    //TODO: finish
-
     return btn;
   }
 
@@ -79,6 +81,13 @@ public class SpreadsheetMVCController implements SpreadsheetController, Spreadsh
    */
   private MouseEventListener configureMouseListener() {
     MouseEventListener mel = new MouseEventListener();
+    Map<Integer, MouseRunnable> mouseClickMap = new HashMap<>();
+
+    mouseClickMap.put(MouseEvent.BUTTON1, loc -> System.out.println(view.coordFromLoc(loc.x,
+            loc.y)));
+    //mouseClickMap.put(MouseEvent.BUTTON1, loc -> System.out.println(loc));
+
+    mel.setMouseClickedMap(mouseClickMap);
 
     // TODO: finish
 

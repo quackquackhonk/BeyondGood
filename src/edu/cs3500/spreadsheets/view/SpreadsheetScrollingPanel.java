@@ -154,6 +154,10 @@ public class SpreadsheetScrollingPanel extends JPanel {
 
   }
 
+  Coord coordFromLoc(int x, int y) {
+    return this.grid.coordFromLoc(x, y);
+  }
+
   /**
    * Viewport for the client. Moves grid based on scroll and window resize events.
    */
@@ -193,7 +197,7 @@ public class SpreadsheetScrollingPanel extends JPanel {
       //System.out.println(grid.getBounds());
       grid.setCols(colStart, colEnd);
       grid.setRows(rowStart, rowEnd);
-      System.out.println(grid.coordFromLoc(-grid.getBounds().x, -grid.getBounds().y));
+      //System.out.println(grid.coordFromLoc(-grid.getBounds().x, -grid.getBounds().y));
     }
   }
 

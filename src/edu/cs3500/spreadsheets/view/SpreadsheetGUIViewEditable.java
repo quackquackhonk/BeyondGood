@@ -1,11 +1,13 @@
 package edu.cs3500.spreadsheets.view;
 
+import edu.cs3500.spreadsheets.controller.MouseEventListener;
 import edu.cs3500.spreadsheets.model.Coord;
 import edu.cs3500.spreadsheets.model.IReadWorkSheetModel;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -179,16 +181,6 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
   }
 
   /**
-   * Provide the view with a callback option to process a command.
-   *
-   * @param callback object
-   */
-  @Override
-  public void setCommandCallback(Consumer<String> callback) {
-
-  }
-
-  /**
    * Transmit an error message to the view, in case the command could not be processed correctly.
    *
    * @param error message.
@@ -209,6 +201,26 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
   @Override
   public void addActionListener(ActionListener listener) {
 
+  }
+
+  @Override
+  public void addMouseListener(MouseListener listener) {
+    this.gridPanel.addMouseListener(listener);
+  }
+
+  @Override
+  public void setInputText(String s) {
+    return;
+  }
+
+  @Override
+  public String getInputText() {
+    return null;
+  }
+
+  @Override
+  public Coord coordFromLoc(int x, int y) {
+    return this.scrollPane.coordFromLoc(x, y);
   }
 
 }
