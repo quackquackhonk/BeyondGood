@@ -1,5 +1,8 @@
 package edu.cs3500.spreadsheets.view;
 
+import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.util.function.Consumer;
 
@@ -32,6 +35,27 @@ public interface IView {
   void showErrorMessage(String error);
 
   /**
-   * Select cell;
+   * Forces view to have a method to set up listeners for buttons. For Swing views, this method
+   * will already be implemented through Java Swing. For non-swing views, this will need to be
+   * written.
+   * @param listener the ActionListener to add.
    */
+  void addActionListener(ActionListener listener);
+
+  /**
+   * Forces view to have a method to set up listeners for key events. For Swing views, this method
+   * will already be implemented through Java Swing. For non-swing views, this will need to be
+   * written.
+   * @param listener the KeyListener to add.
+   */
+  void addKeyListener(KeyListener listener);
+
+  /**
+   * Forces view to have a method to set up listeners for mouse events. For Swing views, this
+   * method
+   * will already be implemented through Java Swing. For non-swing views, this will need to be
+   * written.
+   * @param listener the MouseListener to add.
+   */
+  void addMouseListener(MouseListener listener);
 }
