@@ -1,7 +1,5 @@
 package edu.cs3500.spreadsheets.view;
 
-import java.awt.event.ActionListener;
-import java.awt.event.KeyListener;
 import java.io.IOException;
 import java.util.function.Consumer;
 
@@ -19,6 +17,12 @@ public interface IView {
    */
   void makeVisible();
 
+  /**
+   * Provide the view with a callback option to process a command.
+   *
+   * @param callback object
+   */
+  void setCommandCallback(Consumer<String> callback);
 
   /**
    * Transmit an error message to the view, in case the command could not be processed correctly.
@@ -28,36 +32,6 @@ public interface IView {
   void showErrorMessage(String error);
 
   /**
-   * this is to force the view to have a method to set up the keyboard.
-   * The name has been chosen deliberately. This is the same method signature to
-   * add a key listener in Java Swing.
-   * <p>
-   * Thus our Swing-based implementation of this interface will already have such a
-   * method.
-   *
-   * @param listener
+   * Select cell;
    */
-  void addKeyListener(KeyListener listener);
-
-  /**
-   * this is to force the view to have a method to set up actions for buttons.
-   * All the buttons must be given this action listener
-   * <p>
-   * Thus our Swing-based implementation of this interface will already have such a
-   * method.
-   *
-   * @param listener
-   */
-
-  void addActionListener(ActionListener listener);
-
-  /**
-   * Gets the text inputted by th user that may be used to create a new cell.
-   */
-  String getInputText();
-
-  /**
-   * Sets the default input text that the user can then modify.
-   */
-  void setInputText(String s);
 }
