@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="013926d2-f87d-4d22-a068-7b9fcc73e8c6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/controller/MouseEventListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/controller/SpreadsheetMVCController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/GridPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/GridPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetScrollingPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetScrollingPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/controller/SpreadsheetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/controller/SpreadsheetController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/IView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/IView.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -89,7 +91,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.guiTest">
+  <component name="RunManager" selected="JUnit.SpreadsheetTextualViewTest">
     <configuration name="Unnamed" type="AndroidJUnit" nameIsGenerated="true">
       <module name="Asn5 Starter" />
       <option name="MAIN_CLASS_NAME" value="" />
@@ -127,7 +129,7 @@
     <configuration name="guiTest" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="edu.cs3500.spreadsheets.BeyondGood" />
       <module name="Asn5 Starter" />
-      <option name="PROGRAM_PARAMETERS" value="-in good1.txt -edit" />
+      <option name="PROGRAM_PARAMETERS" value="-in good1.txt -gui" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -275,7 +277,7 @@
       <workItem from="1573701647364" duration="2318000" />
       <workItem from="1573704652057" duration="204000" />
       <workItem from="1573706698492" duration="246000" />
-      <workItem from="1574530041849" duration="2027000" />
+      <workItem from="1574530041849" duration="4409000" />
     </task>
     <task id="LOCAL-00001" summary="added GUI class">
       <created>1573484804770</created>
@@ -445,28 +447,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573777397179</updated>
     </task>
-    <task id="LOCAL-00025" summary="- ViewCreator for editable view and some buttons">
-      <created>1574532916821</created>
+    <task id="LOCAL-00025" summary="Added interfaces for the Controller as well as the observer and observed functionality. Added ButtonListener and KeyboardListener classes for streamlined controller and view setup.">
+      <created>1574532083526</created>
       <option name="number" value="00025" />
       <option name="presentableId" value="LOCAL-00025" />
       <option name="project" value="LOCAL" />
-      <updated>1574532916821</updated>
+      <updated>1574532083526</updated>
     </task>
-    <task id="LOCAL-00026" summary="- ViewCreator for editable view and some buttons">
-      <created>1574533034116</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1574533034116</updated>
-    </task>
-    <task id="LOCAL-00027" summary="- IView methods gettext() settext()">
-      <created>1574534055953</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1574534055953</updated>
-    </task>
-    <option name="localTasksCounter" value="28" />
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -531,8 +519,6 @@
     <MESSAGE value="removed print statements" />
     <MESSAGE value="- Readme" />
     <MESSAGE value="Added interfaces for the Controller as well as the observer and observed functionality. Added ButtonListener and KeyboardListener classes for streamlined controller and view setup." />
-    <MESSAGE value="- ViewCreator for editable view and some buttons" />
-    <MESSAGE value="- IView methods gettext() settext()" />
-    <option name="LAST_COMMIT_MESSAGE" value="- IView methods gettext() settext()" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added interfaces for the Controller as well as the observer and observed functionality. Added ButtonListener and KeyboardListener classes for streamlined controller and view setup." />
   </component>
 </project>

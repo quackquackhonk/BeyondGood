@@ -2,6 +2,7 @@ package edu.cs3500.spreadsheets.view;
 
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.util.function.Consumer;
 
@@ -19,6 +20,12 @@ public interface IView {
    */
   void makeVisible();
 
+  /**
+   * Provide the view with a callback option to process a command.
+   *
+   * @param callback object
+   */
+  void setCommandCallback(Consumer<String> callback);
 
   /**
    * Transmit an error message to the view, in case the command could not be processed correctly.
@@ -28,36 +35,27 @@ public interface IView {
   void showErrorMessage(String error);
 
   /**
-   * this is to force the view to have a method to set up the keyboard.
-   * The name has been chosen deliberately. This is the same method signature to
-   * add a key listener in Java Swing.
-   * <p>
-   * Thus our Swing-based implementation of this interface will already have such a
-   * method.
-   *
-   * @param listener
+   * Forces view to have a method to set up listeners for buttons. For Swing views, this method
+   * will already be implemented through Java Swing. For non-swing views, this will need to be
+   * written.
+   * @param listener the ActionListener to add.
+   */
+  void addActionListener(ActionListener listener);
+
+  /**
+   * Forces view to have a method to set up listeners for key events. For Swing views, this method
+   * will already be implemented through Java Swing. For non-swing views, this will need to be
+   * written.
+   * @param listener the KeyListener to add.
    */
   void addKeyListener(KeyListener listener);
 
   /**
-   * this is to force the view to have a method to set up actions for buttons.
-   * All the buttons must be given this action listener
-   * <p>
-   * Thus our Swing-based implementation of this interface will already have such a
-   * method.
-   *
-   * @param listener
+   * Forces view to have a method to set up listeners for mouse events. For Swing views, this
+   * method
+   * will already be implemented through Java Swing. For non-swing views, this will need to be
+   * written.
+   * @param listener the MouseListener to add.
    */
-
-  void addActionListener(ActionListener listener);
-
-  /**
-   * Gets the text inputted by th user that may be used to create a new cell.
-   */
-  String getInputText();
-
-  /**
-   * Sets the default input text that the user can then modify.
-   */
-  void setInputText(String s);
+  void addMouseListener(MouseListener listener);
 }
