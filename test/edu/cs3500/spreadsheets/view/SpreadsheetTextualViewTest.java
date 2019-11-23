@@ -2,7 +2,6 @@ package edu.cs3500.spreadsheets.view;
 
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import edu.cs3500.spreadsheets.model.IWriteWorkSheetModel;
 import edu.cs3500.spreadsheets.model.WorkSheetModel;
@@ -41,8 +40,8 @@ public class SpreadsheetTextualViewTest {
     IView view = new SpreadsheetTextualView(model, log);
     view.render();
     assertEquals("A2 3.000000\n" +
-            "A1 2.000000\n" +
-            "A3 =(SUM 1.000000 2.000000 3.000000)" + "\n", log.toString());
+        "A1 2.000000\n" +
+        "A3 =(SUM 1.000000 2.000000 3.000000)" + "\n", log.toString());
   }
 
   // Tests a file is saved with formulas that have references in them
@@ -58,8 +57,8 @@ public class SpreadsheetTextualViewTest {
     IView view = new SpreadsheetTextualView(model, log);
     view.render();
     assertEquals("A2 3.000000\n" +
-            "A1 2.000000\n" +
-            "A3 =(SUM A1 A2 3.000000)" + "\n", log.toString());
+        "A1 2.000000\n" +
+        "A3 =(SUM A1 A2 3.000000)" + "\n", log.toString());
   }
 
   // Render formula with colon range.
@@ -75,8 +74,8 @@ public class SpreadsheetTextualViewTest {
     IView view = new SpreadsheetTextualView(model, log);
     view.render();
     assertEquals("A2 3.000000\n" +
-            "A1 2.000000\n" +
-            "A3 =(SUM A1:A2)" + "\n", log.toString());
+        "A1 2.000000\n" +
+        "A3 =(SUM A1:A2)" + "\n", log.toString());
   }
 
   // Read in a file that was previously saved.

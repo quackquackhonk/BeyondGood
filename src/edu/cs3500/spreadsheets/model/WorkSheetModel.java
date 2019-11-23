@@ -3,7 +3,6 @@ package edu.cs3500.spreadsheets.model;
 import edu.cs3500.spreadsheets.model.WorksheetReader.WorksheetBuilder;
 import edu.cs3500.spreadsheets.sexp.Parser;
 import edu.cs3500.spreadsheets.sexp.Sexp;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -241,7 +240,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
             String[] coordComps = coordParser.checkCoord(strCoord);
 
             buildCell(Coord.colNameToIndex(coordComps[0]),
-                    Integer.parseInt(coordComps[1]), new Blank());
+                Integer.parseInt(coordComps[1]), new Blank());
           }
         }
       } catch (IllegalArgumentException e) {
@@ -272,6 +271,16 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
     for (Coord c : badEvalCells) {
       System.out.println("Error in cell: " + c.toString() + ": Could not be evaluated");
     }
+  }
+
+  /**
+   * Remove cell at Coordinate.
+   *
+   * @param target
+   */
+  @Override
+  public void removeCell(Coord target) {
+
   }
 
   // Checks adjacency list for cycles
@@ -450,8 +459,8 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
             SexpVisitParser coordParser = new SexpVisitParser();
             String[] coordComps = coordParser.checkCoord(strCoord);
             buildCell(Coord.colNameToIndex(coordComps[0]),
-                    Integer.parseInt(coordComps[1]),
-                    new Blank());
+                Integer.parseInt(coordComps[1]),
+                new Blank());
             this.adjList.get(coordDep).get(0).add(currentCoord);
           }
         }
@@ -509,7 +518,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
    * A factory class to build model.
    */
   public static final class SheetBuilder implements
-          WorksheetReader.WorksheetBuilder<IWriteWorkSheetModel> {
+      WorksheetReader.WorksheetBuilder<IWriteWorkSheetModel> {
 
     IWriteWorkSheetModel model;
 
@@ -570,7 +579,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
       } catch (IllegalArgumentException e) {
         // Catch IAE thrown by parser
         System.out.println("Error in cell " +
-                Coord.colIndexToName(col) + row + ": Unparsable Sexpression");
+            Coord.colIndexToName(col) + row + ": Unparsable Sexpression");
       }
       return new SheetBuilder(this.model);
     }
@@ -584,7 +593,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
   }
 
   /**
-   *  Visitor for evaluating CellContents.
+   * Visitor for evaluating CellContents.
    */
   public final class EvalVisitor implements IEvalVisitor<Value> {
 
@@ -918,4 +927,3 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
     }
   }
 }
-

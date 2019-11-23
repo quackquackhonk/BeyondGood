@@ -2,6 +2,7 @@ package edu.cs3500.spreadsheets;
 
 import edu.cs3500.spreadsheets.model.IWriteWorkSheetModel;
 import edu.cs3500.spreadsheets.model.ViewCreator;
+import edu.cs3500.spreadsheets.model.ViewCreator.ViewType;
 import edu.cs3500.spreadsheets.model.WorkSheetModel;
 import edu.cs3500.spreadsheets.model.WorksheetReader;
 import edu.cs3500.spreadsheets.model.WorksheetReader.WorksheetBuilder;
@@ -26,7 +27,7 @@ public class BeyondGood {
    */
   public static void main(String[] args) {
     try {
-      if (args[0].equals("-gui") && args.length == 1) {
+      if ((args[0].equals("-gui") || args[0].equals("-edit")) && args.length == 1) {
         //System.out.println("making blank gui");
         File file = new File("newSpreadsheet.txt");
         file.createNewFile();
@@ -35,7 +36,9 @@ public class BeyondGood {
         fileReader = new FileReader(file);
         IWriteWorkSheetModel model = WorksheetReader.read(builder, fileReader);
         model = WorksheetReader.read(builder, fileReader);
-        IView guiView = ViewCreator.create(ViewCreator.ViewType.GUI, model);
+        IView guiView = args[0].equals("-gui")
+            ? ViewCreator.create(ViewCreator.ViewType.GUI, model)
+            : ViewCreator.create(ViewCreator.ViewType.EDITGUI, model);
         guiView.render();
         guiView.makeVisible();
       } else if (validArgs(args)) {
@@ -58,7 +61,9 @@ public class BeyondGood {
           // GUI called
         } else if (args.length == 3) {
           //System.out.println("making gui");
-          IView guiView = ViewCreator.create(ViewCreator.ViewType.GUI, model);
+          IView guiView = args[2].equals("-gui")
+              ? ViewCreator.create(ViewCreator.ViewType.GUI, model)
+              : ViewCreator.create(ViewCreator.ViewType.EDITGUI, model);
           guiView.render();
           guiView.makeVisible();
         }
@@ -73,8 +78,8 @@ public class BeyondGood {
   // Validates input arguments
   private static boolean validArgs(String[] args) {
     if (args == null || args.length > 4 ||
-            !(args[0].equals("-in") || args[0].equals("-gui")) ||
-            !(args[2].equals("-save") || args[2].equals("-eval") ||
+            !(args[0].equals("-in") || args[0].equals("-gui") || args[0].equals("-edit")) ||
+            !(args[2].equals("-save") || args[2].equals("-eval") || (args[2].equals("-edit")) ||
                     args[2].equals("-gui"))) {
       System.out.println("Null or incorrect number of arguments");
       return false;

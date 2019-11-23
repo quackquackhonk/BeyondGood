@@ -5,6 +5,7 @@ import edu.cs3500.spreadsheets.model.IReadWorkSheetModel;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -94,7 +95,8 @@ public class SpreadsheetGUIView extends JFrame implements IView {
     JPanel formulaBarPanel = new JPanel();
     formulaBarPanel.setLayout(new FlowLayout());
     JTextField formText = new JTextField("Default formula", 20);
-    formText.setEditable(false);
+    formText.setEditable(true);
+
     formulaBarPanel.add(formText);
     this.add(formulaBarPanel, BorderLayout.NORTH);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -161,16 +163,6 @@ public class SpreadsheetGUIView extends JFrame implements IView {
   }
 
   /**
-   * Provide the view with a callback option to process a command.
-   *
-   * @param callback object
-   */
-  @Override
-  public void setCommandCallback(Consumer<String> callback) {
-    // Implemented in the future.
-  }
-
-  /**
    * Transmit an error message to the view, in case the command could not be processed correctly.
    *
    * @param error message.
@@ -178,5 +170,18 @@ public class SpreadsheetGUIView extends JFrame implements IView {
   @Override
   public void showErrorMessage(String error) {
     // Implemented in the future.
+  }
+
+  /**
+   * this is to force the view to have a method to set up actions for buttons. All the buttons must
+   * be given this action listener
+   * <p>
+   * Thus our Swing-based implementation of this interface will already have such a method.
+   *
+   * @param listener
+   */
+  @Override
+  public void addActionListener(ActionListener listener) {
+
   }
 }

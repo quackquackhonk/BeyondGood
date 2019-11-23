@@ -2,6 +2,8 @@ package edu.cs3500.spreadsheets.model;
 
 /**
  * To represent a model for a worksheet. Maintains state and enforces class invariants.
+ * Includes methods to set, move, and evaluate cells.  All cells are represented as CellContents.
+ * Cycles and invalid cells are recorded.
  */
 public interface IWriteWorkSheetModel<CellContents> extends IReadWorkSheetModel<CellContents> {
 
@@ -41,6 +43,11 @@ public interface IWriteWorkSheetModel<CellContents> extends IReadWorkSheetModel<
    * Checks the validity of the model.
    */
   void setupModel();
+
+  /**
+   * Remove cell at Coordinate.
+   */
+  void removeCell(Coord target);
 
   /**
    * Build a cell at a given location provided with col and row numbers.

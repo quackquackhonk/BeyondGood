@@ -2,6 +2,7 @@ package edu.cs3500.spreadsheets.model;
 
 import edu.cs3500.spreadsheets.view.IView;
 import edu.cs3500.spreadsheets.view.SpreadsheetGUIView;
+import edu.cs3500.spreadsheets.view.SpreadsheetGUIViewEditable;
 import edu.cs3500.spreadsheets.view.SpreadsheetTextualView;
 
 /**
@@ -19,6 +20,9 @@ public class ViewCreator {
     IView view = null;
     if (viewType == ViewType.GUI) {
       view = new SpreadsheetGUIView(model);
+    } else if(viewType == ViewType.EDITGUI) {
+      view = new SpreadsheetGUIViewEditable(model);
+      System.out.println("Made edit");
     } else {
       throw new IllegalArgumentException("This isn't even possible lol");
     }
@@ -45,7 +49,7 @@ public class ViewCreator {
    * Enum to represent the three possible game modes.
    */
   public enum ViewType {
-    TEXT(), GUI();
+    TEXT(), GUI(), EDITGUI();
   }
 
 }

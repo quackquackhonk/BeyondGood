@@ -3,7 +3,8 @@ package edu.cs3500.spreadsheets.model;
 import java.util.HashSet;
 
 /**
- * Represents a Read-only Worksheet Model. Mainly for use in the view.
+ * Represents a Read-only Worksheet Model. Mainly for use in the view. Only includes getter
+ * methods that report the state of the model. No methods can mutate the model.
  */
 public interface IReadWorkSheetModel<CellContents> {
 
@@ -57,7 +58,7 @@ public interface IReadWorkSheetModel<CellContents> {
   CellContents getCell(Coord location) throws IllegalStateException;
 
   /**
-   * Does the model have any cells in error.
+   * Does the model have any cells in error. Includes cycles and invalid formulas.
    */
   Boolean hasErrors();
 

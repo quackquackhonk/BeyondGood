@@ -3,6 +3,8 @@ package edu.cs3500.spreadsheets.view;
 import edu.cs3500.spreadsheets.model.Coord;
 import edu.cs3500.spreadsheets.model.IReadWorkSheetModel;
 
+import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.function.Consumer;
@@ -50,22 +52,38 @@ public class SpreadsheetTextualView implements IView {
   }
 
   /**
-   * Provide the view with a callback option to process a command.
-   *
-   * @param callback object
-   */
-  @Override
-  public void setCommandCallback(Consumer<String> callback) {
-    // Stub without controller
-  }
-
-  /**
    * Transmit an error message to the view, in case the command could not be processed correctly.
    *
    * @param error message.
    */
   @Override
   public void showErrorMessage(String error) {
-    // Stub without controller
+    throw new UnsupportedOperationException("Textual view processes all cells and saves errors");
+  }
+
+  /**
+   * this is to force the view to have a method to set up the keyboard. The name has been chosen
+   * deliberately. This is the same method signature to add a key listener in Java Swing.
+   * <p>
+   * Thus our Swing-based implementation of this interface will already have such a method.
+   *
+   * @param listener
+   */
+  @Override
+  public void addKeyListener(KeyListener listener) {
+
+  }
+
+  /**
+   * this is to force the view to have a method to set up actions for buttons. All the buttons must
+   * be given this action listener
+   * <p>
+   * Thus our Swing-based implementation of this interface will already have such a method.
+   *
+   * @param listener
+   */
+  @Override
+  public void addActionListener(ActionListener listener) {
+
   }
 }
