@@ -4,8 +4,9 @@ import edu.cs3500.spreadsheets.view.IView;
 
 /**
  * Interface for writing a controller for the BeyondGood Spreadsheet.
+ * Extends ControllerFeatures
  */
-public interface SpreadsheetController {
+public interface SpreadsheetController extends ControllerFeatures {
 
   /**
    * Sets the view that the controller has control over. Sets up any event listeners that may be
@@ -13,8 +14,5 @@ public interface SpreadsheetController {
    * @param view the view to control.
    */
   void setView(IView view);
-
-
-
 
 }

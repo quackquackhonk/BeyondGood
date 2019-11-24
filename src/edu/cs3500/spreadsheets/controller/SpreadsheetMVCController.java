@@ -1,5 +1,6 @@
 package edu.cs3500.spreadsheets.controller;
 
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.HashMap;
@@ -111,67 +112,16 @@ public class SpreadsheetMVCController implements SpreadsheetController {
     Map<String, Runnable> buttonClickedActions = new HashMap<>();
 
     // Create new cell from user text input.
-    buttonClickedActions.put("confirm input", () -> {
-      String input = view.getInputText();
-      Coord location = view.getSelectedCell();
-      if(location != null && input != null) {
-        HashSet<Coord> toUpdate = model.setCellAllowErrors(location, input);
-        System.out.println(toUpdate);
-        HashMap<Coord, String> updatedCells = this.recalculateCells(toUpdate);
-
-        // Update cells dependent on newly added cells
-        for(Coord c : updatedCells.keySet()) {
-          view.updateView(c, updatedCells.get(c));
-          System.out.println("Updating " + c);
-        }
-      }
-      try {
-        view.render();
-      } catch (IOException e) {
-        e.printStackTrace();
-      }
-    });
+    buttonClickedActions.put("confirm input", this::confirmInput);
 
     // Clear user text input.
-    buttonClickedActions.put("clear input", () -> {
-      Coord target = view.getSelectedCell();
-      String cellText;
-      try {
-        cellText = model.getCellText(target);
-      } catch (IllegalArgumentException n) {
-        cellText = "";
-      }
-      view.setInputText(cellText);
-    });
+    buttonClickedActions.put("clear input", this::clearInput);
 
-    buttonClickedActions.put("add column", () -> {
-      String toAdd = view.getColToAdd();
-      //String of any length of only alphabetical characters
-      final Pattern colName = Pattern.compile("([A-Za-z]+)");
-      Matcher m = colName.matcher(toAdd);
-      // valid col name
-      if (m.matches()) {
-        int colIdx = Coord.colNameToIndex(toAdd);
-        // TODO: ADD COLUMN
-        view.showErrorMessage("added column at: " + colIdx);
-      } else { // does not match
-        view.showErrorMessage("Please enter a valid column name (alphabetical characters only)");
-      }
-    });
+    // adds a column
+    buttonClickedActions.put("add column", this::addColumn);
 
-    buttonClickedActions.put("add row", () -> {
-      String toAdd = view.getRowToAdd();
-      try {
-        int rowIdx = Integer.parseInt(toAdd);
-        if (rowIdx <= 0) {
-          view.showErrorMessage("Row index must be greater than 0");
-        } else {
-          view.showErrorMessage("ADDED ROW AT: " + rowIdx);
-        }
-      } catch (NumberFormatException e) {
-        view.showErrorMessage(toAdd + " is not a valid row index. Please enter a valid number.");
-      }
-    });
+    // adds a row
+    buttonClickedActions.put("add row", this::addRow);
     btn.setButtonClickedActionMap(buttonClickedActions);
     return btn;
   }
@@ -200,24 +150,89 @@ public class SpreadsheetMVCController implements SpreadsheetController {
     MouseEventListener mel = new MouseEventListener();
     Map<Integer, MouseRunnable> mouseClickMap = new HashMap<>();
 
-    mouseClickMap.put(MouseEvent.BUTTON1, (loc) -> {
-      Coord target = view.coordFromLoc(loc.x, loc.y);
-      String cellText;
-      try {
-        cellText = model.getCellText(target);
-      } catch (IllegalArgumentException n) {
-        cellText = "";
-      }
-      view.setInputText(cellText);
-    });
+    mouseClickMap.put(MouseEvent.BUTTON1, this::clickOnCellAt);
     //mouseClickMap.put(MouseEvent.BUTTON1, loc -> System.out.println(view.getInputText()));
     //mouseClickMap.put(MouseEvent.BUTTON1, loc -> System.out.println(loc));
 
     mel.setMouseClickedMap(mouseClickMap);
 
-    // TODO: finish
-
     return mel;
   }
 
+  @Override
+  public void confirmInput() {
+    String input = view.getInputText();
+    Coord location = view.getSelectedCell();
+    if(location != null && input != null) {
+      HashSet<Coord> toUpdate = model.setCellAllowErrors(location, input);
+      System.out.println(toUpdate);
+      HashMap<Coord, String> updatedCells = this.recalculateCells(toUpdate);
+
+      // Update cells dependent on newly added cells
+      for(Coord c : updatedCells.keySet()) {
+        view.updateView(c, updatedCells.get(c));
+        System.out.println("Updating " + c);
+      }
+    }
+    try {
+      view.render();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  @Override
+  public void clearInput() {
+    Coord target = view.getSelectedCell();
+    String cellText;
+    try {
+      cellText = model.getCellText(target);
+    } catch (IllegalArgumentException n) {
+      cellText = "";
+    }
+    view.setInputText(cellText);
+  }
+
+  @Override
+  public void addColumn() {
+    String toAdd = view.getColToAdd();
+    //String of any length of only alphabetical characters
+    final Pattern colName = Pattern.compile("([A-Za-z]+)");
+    Matcher m = colName.matcher(toAdd);
+    // valid col name
+    if (m.matches()) {
+      int colIdx = Coord.colNameToIndex(toAdd);
+      // TODO: ADD COLUMN
+      view.showErrorMessage("added column at: " + colIdx);
+    } else { // does not match
+      view.showErrorMessage("Please enter a valid column name (alphabetical characters only)");
+    }
+  }
+
+  @Override
+  public void addRow() {
+    String toAdd = view.getRowToAdd();
+    try {
+      int rowIdx = Integer.parseInt(toAdd);
+      if (rowIdx <= 0) {
+        view.showErrorMessage("Row index must be greater than 0");
+      } else {
+        view.showErrorMessage("ADDED ROW AT: " + rowIdx);
+      }
+    } catch (NumberFormatException e) {
+      view.showErrorMessage(toAdd + " is not a valid row index. Please enter a valid number.");
+    }
+  }
+
+  @Override
+  public void clickOnCellAt(Point loc) {
+    Coord target = view.coordFromLoc(loc.x, loc.y);
+    String cellText;
+    try {
+      cellText = model.getCellText(target);
+    } catch (IllegalArgumentException n) {
+      cellText = "";
+    }
+    view.setInputText(cellText);
+  }
 }
