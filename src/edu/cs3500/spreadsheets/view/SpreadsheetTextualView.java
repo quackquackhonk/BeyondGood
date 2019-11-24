@@ -150,6 +150,16 @@ public class SpreadsheetTextualView implements IView {
     // No input to reset.
   }
 
+  @Override
+  public String getColToAdd() {
+    throw new UnsupportedOperationException("Read-only views cannot add columns");
+  }
+
+  @Override
+  public String getRowToAdd() {
+    throw new UnsupportedOperationException("Read-only views cannot add rows");
+  }
+
   /**
    * Sets the default input text that the user can then modify.
    */

@@ -2,18 +2,12 @@ package edu.cs3500.spreadsheets.view;
 
 import edu.cs3500.spreadsheets.model.Coord;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.awt.event.AdjustmentListener;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
+import javax.swing.border.Border;
 
 /**
  * Custom ScrollPane for spreadsheets.
@@ -56,6 +50,7 @@ public class SpreadsheetScrollingPanel extends JPanel {
     this.colHead = new SpreadsheetScrollingColumnHeader();
     this.rowHead = new SpreadsheetScrollingRowHeader();
     JPanel topLeftCorner = new JPanel();
+    topLeftCorner.setBackground(Color.pink);
     topLeftCorner.setPreferredSize(new Dimension(cellWidth, cellHeight));
     topLeftCorner.setSize(topLeftCorner.getPreferredSize());
     JPanel bottomRightCorner = new JPanel();

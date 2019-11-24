@@ -199,8 +199,7 @@ public class SpreadsheetGUIView extends JFrame implements IView {
 
   @Override
   public Coord getSelectedCell() {
-    // No selection in read only GUI view.
-    return null;
+    throw new UnsupportedOperationException("Read-only views cannot select cells");
   }
 
   @Override
@@ -210,7 +209,7 @@ public class SpreadsheetGUIView extends JFrame implements IView {
 
   @Override
   public void updateView(Coord coord, String cell) {
-    // Read only view not updated.
+    throw new UnsupportedOperationException("Read-only views cannot be updated");
   }
 
   /**
@@ -218,6 +217,16 @@ public class SpreadsheetGUIView extends JFrame implements IView {
    */
   @Override
   public void resetInput() {
-    // No input to reset.
+    throw new UnsupportedOperationException("Non-editable views have no input to reset");
+  }
+
+  @Override
+  public String getColToAdd() {
+    throw new UnsupportedOperationException("Non-editable views cannot add columns");
+  }
+
+  @Override
+  public String getRowToAdd() {
+    throw new UnsupportedOperationException("Non-editable views cannot add rows");
   }
 }

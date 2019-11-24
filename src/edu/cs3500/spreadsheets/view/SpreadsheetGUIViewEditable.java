@@ -2,19 +2,17 @@ package edu.cs3500.spreadsheets.view;
 
 import edu.cs3500.spreadsheets.controller.MouseEventListener;
 import edu.cs3500.spreadsheets.model.Coord;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
+
+import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.function.Consumer;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+
+import javax.swing.*;
+import javax.swing.border.Border;
 
 /**
  * GUI view for IReadWorkSheetModels.
@@ -26,6 +24,12 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
   private JButton formConfirm;
   private JButton formCancel;
   private JTextField formText;
+  private JLabel addColLabel;
+  private JLabel addRowLabel;
+  private JTextField addColField;
+  private JTextField addRowField;
+  private JButton addColButton;
+  private JButton addRowButton;
   private HashMap<Coord, String> stringCells;
 
   //private JScrollPane scrollPane;
@@ -68,6 +72,7 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
 
     // Add FormulaPanel, currently not editable.
     JPanel formulaBarPanel = new JPanel();
+    formulaBarPanel.setLayout(new FlowLayout());
     formConfirm = new JButton("✔");
     formConfirm.setPreferredSize(new Dimension(45, cellHeight));
     formConfirm.setActionCommand("confirm input");
@@ -76,13 +81,33 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
     formCancel.setPreferredSize(new Dimension(45, cellHeight));
     formCancel.setActionCommand("clear input");
 
-    formulaBarPanel.setLayout(new FlowLayout());
     formText = new JTextField("Default formula", 20);
     formText.setEditable(true);
+
+    // UI option to add rows and columns
+    addColLabel = new JLabel("Add Column At:");
+    addColField = new JTextField("", 5);
+    addColButton = new JButton("✔");
+    addColButton.setPreferredSize(new Dimension(45, cellHeight));
+    addColButton.setActionCommand("add column");
+
+    addRowLabel = new JLabel("Add Row At:");
+    addRowField = new JTextField("", 5);
+    addRowButton = new JButton("✔");
+    addRowButton.setPreferredSize(new Dimension(45, cellHeight));
+    addRowButton.setActionCommand("add row");
+
 
     formulaBarPanel.add(formConfirm);
     formulaBarPanel.add(formCancel);
     formulaBarPanel.add(formText);
+    formulaBarPanel.add(addRowLabel);
+    formulaBarPanel.add(addRowField);
+    formulaBarPanel.add(addRowButton);
+    formulaBarPanel.add(addColLabel);
+    formulaBarPanel.add(addColField);
+    formulaBarPanel.add(addColButton);
+
     this.add(formulaBarPanel, BorderLayout.NORTH);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.addWindowStateListener(we -> createScrollPanel(this.stringCells));
@@ -164,7 +189,7 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
    */
   @Override
   public void showErrorMessage(String error) {
-    // Implemented in the future.
+    JOptionPane.showMessageDialog(this, error);
   }
 
   /**
@@ -179,6 +204,8 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
   public void addActionListener(ActionListener listener) {
     this.formConfirm.addActionListener(listener);
     this.formCancel.addActionListener(listener);
+    this.addRowButton.addActionListener(listener);
+    this.addColButton.addActionListener(listener);
   }
 
   /**
@@ -210,7 +237,6 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
   public String getInputText() {
     return this.formText.getText();
   }
-
 
   /**
    * Determine corresponding Coord from x position and y position on the worksheet.
@@ -292,6 +318,16 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
   @Override
   public void resetInput() {
     this.formText.setText(this.prevText);
+  }
+
+  @Override
+  public String getColToAdd() {
+    return this.addColField.getText();
+  }
+
+  @Override
+  public String getRowToAdd() {
+    return this.addRowField.getText();
   }
 
   /**

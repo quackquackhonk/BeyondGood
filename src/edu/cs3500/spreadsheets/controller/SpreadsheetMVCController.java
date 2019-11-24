@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import edu.cs3500.spreadsheets.model.IWriteWorkSheetModel;
 import edu.cs3500.spreadsheets.view.IView;
@@ -161,6 +163,34 @@ public class SpreadsheetMVCController implements SpreadsheetController, Spreadsh
       view.setInputText(cellText);
     });
 
+    buttonClickedActions.put("add column", () -> {
+      String toAdd = view.getColToAdd();
+      //String of any length of only alphabetical characters
+      final Pattern colName = Pattern.compile("([A-Za-z]+)");
+      Matcher m = colName.matcher(toAdd);
+      // valid col name
+      if (m.matches()) {
+        int colIdx = Coord.colNameToIndex(toAdd);
+        // TODO: ADD COLUMN
+        view.showErrorMessage("added column at: " + colIdx);
+      } else { // does not match
+        view.showErrorMessage("Please enter a valid column name (alphabetical characters only)");
+      }
+    });
+
+    buttonClickedActions.put("add row", () -> {
+      String toAdd = view.getRowToAdd();
+      try {
+        int rowIdx = Integer.parseInt(toAdd);
+        if (rowIdx <= 0) {
+          view.showErrorMessage("Row index must be greater than 0");
+        } else {
+          view.showErrorMessage("ADDED ROW AT: " + rowIdx);
+        }
+      } catch (NumberFormatException e) {
+        view.showErrorMessage(toAdd + " is not a valid row index. Please enter a valid number.");
+      }
+    });
     btn.setButtonClickedActionMap(buttonClickedActions);
     return btn;
   }
