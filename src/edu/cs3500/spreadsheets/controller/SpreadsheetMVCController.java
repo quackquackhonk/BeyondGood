@@ -1,23 +1,20 @@
 package edu.cs3500.spreadsheets.controller;
 
-import edu.cs3500.spreadsheets.model.Coord;
-import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import edu.cs3500.spreadsheets.model.Coord;
 import edu.cs3500.spreadsheets.model.IWriteWorkSheetModel;
 import edu.cs3500.spreadsheets.view.IView;
 
-public class SpreadsheetMVCController implements SpreadsheetController, SpreadsheetPublisher {
+public class SpreadsheetMVCController implements SpreadsheetController {
   private IWriteWorkSheetModel model;
   private IView view;
-  private List<SpreadsheetObserver> observerList;
 
   /**
    * Initializes the controller to have control over the given model.
@@ -103,21 +100,6 @@ public class SpreadsheetMVCController implements SpreadsheetController, Spreadsh
     this.view.addMouseListener(this.configureMouseListener());
   }
 
-  @Override
-  public void addObserver(SpreadsheetObserver observer) {
-    this.observerList.add(observer);
-  }
-
-  @Override
-  public void removeObserver(SpreadsheetObserver observer) {
-    this.observerList.remove(observer);
-  }
-
-  @Override
-  public void notifyObservers(String event) {
-    this.observerList.forEach(observer -> observer.update(event));
-  }
-
   /**
    * Creates a ButtonListener with all the specified button functionality for this specific
    * controller to have. This ButtonListener can then be passed into the view in order for the
@@ -130,7 +112,6 @@ public class SpreadsheetMVCController implements SpreadsheetController, Spreadsh
 
     // Create new cell from user text input.
     buttonClickedActions.put("confirm input", () -> {
-
       String input = view.getInputText();
       Coord location = view.getSelectedCell();
       if(location != null && input != null) {
