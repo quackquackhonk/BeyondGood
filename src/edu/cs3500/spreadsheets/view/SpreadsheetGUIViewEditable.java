@@ -2,15 +2,14 @@ package edu.cs3500.spreadsheets.view;
 
 import edu.cs3500.spreadsheets.controller.MouseEventListener;
 import edu.cs3500.spreadsheets.model.Coord;
-import edu.cs3500.spreadsheets.model.IReadWorkSheetModel;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.function.Consumer;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -22,6 +21,7 @@ import javax.swing.JTextField;
  */
 public class SpreadsheetGUIViewEditable extends JFrame implements IView {
 
+  private MouseListener mouseEvent = this.defaultMouseListener();
   private GridPanel gridPanel;
   private JButton formConfirm;
   private JButton formCancel;
@@ -118,6 +118,7 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
     gridPanel.setPreferredSize(
         new Dimension(currPanelWidth + 3 * cellWidth,
             currPanelHeight + 3 * cellHeight));
+    this.gridPanel.addMouseListener(mouseEvent);
     this.add(scrollPane, BorderLayout.CENTER);
   }
 
@@ -189,6 +190,7 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
    */
   @Override
   public void addMouseListener(MouseListener listener) {
+    this.mouseEvent = listener;
     this.gridPanel.addMouseListener(listener);
   }
 
@@ -291,4 +293,39 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
   public void resetInput() {
     this.formText.setText(this.prevText);
   }
+
+  /**
+   * Creates an empty MouseListener that does nothing given any mouse event. Used as the default
+   * stored mouse event in the view.
+   * @return an empty MouseListener.
+   */
+  private MouseListener defaultMouseListener() {
+    return new MouseListener() {
+      @Override
+      public void mouseClicked(MouseEvent e) {
+
+      }
+
+      @Override
+      public void mousePressed(MouseEvent e) {
+
+      }
+
+      @Override
+      public void mouseReleased(MouseEvent e) {
+
+      }
+
+      @Override
+      public void mouseEntered(MouseEvent e) {
+
+      }
+
+      @Override
+      public void mouseExited(MouseEvent e) {
+
+      }
+    };
+  }
+
 }

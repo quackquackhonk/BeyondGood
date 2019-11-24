@@ -96,8 +96,8 @@ public class GridPanel extends JPanel {
 
   // Get coordinate form mouse location / highlighted cell
   Coord coordFromLoc(int x, int y) {
-    int col = (int) x / cw;
-    int row = (int) y / ch;
+    int col = x / cw;
+    int row = y / ch;
 
     Coord location = new Coord(col+1, row+1);
     this.selectedCell = location;
