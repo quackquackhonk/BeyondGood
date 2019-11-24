@@ -233,6 +233,17 @@ public class SpreadsheetMVCController implements SpreadsheetController {
     } catch (IllegalArgumentException n) {
       cellText = "";
     }
+
+    // check if this is ONLY a reference, append = to beginning.
+    final Pattern singleCellRef = Pattern.compile("([A-Za-z]+)([1-9][0-9]*)");
+    Matcher singleMatch = singleCellRef.matcher(cellText);
+    final Pattern multiCellRef =
+            Pattern.compile("([A-Za-z]+)([1-9][0-9]*)([:])([A-Za-z]+)([1-9][0-9]*)");
+    Matcher multiMatch = multiCellRef.matcher(cellText);
+    if (singleMatch.matches() || multiMatch.matches()) {
+      cellText = "=" + cellText;
+    }
+
     view.setInputText(cellText);
   }
 }
