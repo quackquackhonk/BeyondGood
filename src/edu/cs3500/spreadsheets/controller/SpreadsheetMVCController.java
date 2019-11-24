@@ -150,7 +150,16 @@ public class SpreadsheetMVCController implements SpreadsheetController, Spreadsh
     });
 
     // Clear user text input.
-    buttonClickedActions.put("clear input", () -> view.resetInput());
+    buttonClickedActions.put("clear input", () -> {
+      Coord target = view.getSelectedCell();
+      String cellText;
+      try {
+        cellText = model.getCellText(target);
+      } catch (IllegalArgumentException n) {
+        cellText = "";
+      }
+      view.setInputText(cellText);
+    });
 
     btn.setButtonClickedActionMap(buttonClickedActions);
     return btn;
