@@ -35,6 +35,7 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
   private int maxCol;
   private int maxRow;
   private boolean ready;
+  private String prevText;
 
 
   /**
@@ -179,34 +180,69 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
     this.formCancel.addActionListener(listener);
   }
 
+  /**
+   * Forces view to have a method to set up listeners for mouse events. For Swing views, this
+   * method
+   * will already be implemented through Java Swing. For non-swing views, this will need to be
+   * written.
+   * @param listener the MouseListener to add.
+   */
   @Override
   public void addMouseListener(MouseListener listener) {
     this.gridPanel.addMouseListener(listener);
   }
 
+  /**
+   * Sets default user input.
+   */
   @Override
   public void setInputText(String s) {
     this.formText.setText(s);
   }
 
+
+  /**
+   * Gets the text the user has inputted in the input field.
+   */
   @Override
   public String getInputText() {
     return this.formText.getText();
   }
 
+
+  /**
+   * Determine corresponding Coord from x position and y position on the worksheet.
+   *
+   * @param x x position
+   * @param y y position
+   * @return Coord that corresponds to inputs
+   */
   @Override
   public Coord coordFromLoc(int x, int y) {
     this.formText.requestFocus();
+    this.prevText = this.formText.getText();
     Coord cell = this.scrollPane.coordFromLoc(x, y);
     this.repaint();
     return cell;
   }
 
+  /**
+   * The Coord of the cell currently selected by the user.
+   *
+   * @return Coord of highlighted cell
+   */
   @Override
   public Coord getSelectedCell() {
     return this.gridPanel.getSelectedCell();
   }
 
+  /**
+   * Initializes view by passing in the cells to display and the range of cells to display.
+   *
+   * @param stringCells All cells in the sheet.
+   * @param maxCol render cells up to this column
+   * @param maxRow render cells up to this row
+   */
   @Override
   public void setupView(HashMap<Coord, String> stringCells, int maxCol, int maxRow) {
     this.setTitle("Beyond gOOD Editor");
@@ -235,11 +271,24 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
     ready = true;
   }
 
-  // Add a new cell to be displayed by the view.
+  /**
+   * Update the view with new cells.
+   *
+   * @param coord location of cell.
+   * @param cell contents of new cell in String form
+   */
   @Override
   public void updateView(Coord coord, String cell) {
     this.stringCells.put(coord, cell);
     this.gridPanel.addCell(coord, cell);
     this.repaint();
+  }
+
+  /**
+   * Reverts input state prior to user modification.
+   */
+  @Override
+  public void resetInput() {
+    this.formText.setText(this.prevText);
   }
 }

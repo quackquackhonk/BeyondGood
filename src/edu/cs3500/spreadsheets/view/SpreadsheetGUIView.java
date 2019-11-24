@@ -213,5 +213,11 @@ public class SpreadsheetGUIView extends JFrame implements IView {
     // Read only view not updated.
   }
 
-
+  /**
+   * Reverts input state prior to user modification.
+   */
+  @Override
+  public void resetInput() {
+    // No input to reset.
+  }
 }

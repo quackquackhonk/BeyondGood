@@ -143,6 +143,14 @@ public class SpreadsheetTextualView implements IView {
   }
 
   /**
+   * Reverts input state prior to user modification.
+   */
+  @Override
+  public void resetInput() {
+    // No input to reset.
+  }
+
+  /**
    * Sets the default input text that the user can then modify.
    */
   @Override

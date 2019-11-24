@@ -63,7 +63,7 @@ public interface IView {
   void addMouseListener(MouseListener listener);
 
   /**
-   * Sets defu user input textbox text.
+   * Sets default user input.
    */
   void setInputText(String s);
 
@@ -72,14 +72,41 @@ public interface IView {
    */
   String getInputText();
 
+  /**
+   * Determine corresponding Coord from x position and y position on the worksheet.
+   *
+   * @param x x position
+   * @param y y position
+   * @return Coord that corresponds to inputs
+   */
   Coord coordFromLoc(int x, int y);
 
-  // The highlighted cell by the user. Returns null if cell has yet to be selected.
+  /**
+   * The Coord of the cell currently selected by the user.
+   *
+   * @return Coord of highlighted cell
+   */
   Coord getSelectedCell();
 
-  // Initializes the view with parameters for cells to display and dimension information.
+  /**
+   * Initializes view by passing in the cells to display and the range of cells to display.
+   *
+   * @param stringCells All cells in the sheet.
+   * @param maxCol render cells up to this column
+   * @param maxRow render cells up to this row
+   */
   void setupView(HashMap<Coord, String> stringCells, int maxCol, int maxRow);
 
-  // Add a new cell to be displayed by the view.
+  /**
+   * Update the view with new cells.
+   *
+   * @param coord location of cell.
+   * @param cell contents of new cell in String form
+   */
   void updateView(Coord coord, String cell);
+
+  /**
+   * Reverts input state prior to user modification.
+   */
+  void resetInput();
 }
