@@ -114,4 +114,8 @@ public interface IView {
    * Expand the range of cells to be displayed by the view to the new given ranges.
    */
   void resizeView(int maxCol, int maxRow);
+
+  String getColToAdd();
+
+  String getRowToAdd();
 }

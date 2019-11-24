@@ -251,7 +251,7 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
     this.formText.requestFocus();
     this.prevText = this.formText.getText();
     Coord cell = this.scrollPane.coordFromLoc(x, y);
-    this.repaint();
+    //this.repaint();
     return cell;
   }
 
@@ -293,6 +293,8 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
         new Dimension(initPanelWidth + 3 * cellWidth, initPanelHeight + 3 * cellHeight));
 
     gridPanel.setCells(stringCells);
+    gridPanel.setMaxCol(maxCol);
+    gridPanel.setMaxRow(maxRow);
     formConfirm.setPreferredSize(new Dimension(45, cellHeight));
     formCancel.setPreferredSize(new Dimension(45, cellHeight));
     this.pack();
@@ -310,7 +312,7 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
   public void updateView(Coord coord, String cell) {
     this.stringCells.put(coord, cell);
     this.gridPanel.addCell(coord, cell);
-    this.repaint();
+    //this.repaint();
   }
 
   /**
@@ -339,12 +341,12 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
    */
   @Override
   public void resizeView(int maxCol, int maxRow) {
-    this.maxCol = maxCol;
-    this.maxRow = maxRow;
 
-    this.gridPanel.setCols(0, maxCol);
-    this.gridPanel.setRows(0, maxRow);
-    this.scrollPane.doLayout();
+    this.maxCol = Math.max(maxCol, this.maxCol);
+    this.maxRow = Math.max(maxRow, this.maxRow);
+
+    this.gridPanel.setMaxCol(maxCol);
+    this.gridPanel.setMaxRow(maxRow);
   }
 
   /**

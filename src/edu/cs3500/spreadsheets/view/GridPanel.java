@@ -88,10 +88,30 @@ public class GridPanel extends JPanel {
     this.ce = end;
   }
 
-  // Set row boundaries.
+  // Set row boundaries to display
   void setRows(int start, int end) {
     this.rs = start;
     this.re = end;
+  }
+
+  // Set MAXIMUM row, the row number of highest cell in the sheet.
+  void setMaxRow(int row) {
+    this.numRow = row;
+  }
+
+  // Get MAXIMUM row, the row number of highest cell in the sheet.
+  int getMaxRow() {
+    return this.numRow;
+  }
+
+  // set MAXIMUM col, the column number of furthest right cell in the sheet.
+  void setMaxCol(int col) {
+    this.numCol = col;
+  }
+
+  // get MAXIMUM col, the column number of furthest right cell in the sheet.
+  int getMaxCol() {
+    return this.numCol;
   }
 
   // Get coordinate form mouse location / highlighted cell
@@ -123,11 +143,12 @@ public class GridPanel extends JPanel {
   @Override
   protected void paintComponent(Graphics g) {
     super.paintComponent(g);
-
-    numRow = this.getPreferredSize().height / ch + 3;
-    numCol = this.getPreferredSize().width / cw + 3;
-
+    System.out.println(getMaxCol() + " maxCOl");
+    System.out.println(getMaxRow() + " maxROl");
     Font font = new Font("Arial", Font.PLAIN, (int) Math.floor(ch / 2));
+
+    this.setPreferredSize(new Dimension((3+getMaxCol())*cw, (3+getMaxRow())*ch));
+
     int yOffset = (int) (font.getSize() * 1.4);
     Dimension prefSize = this.getPreferredSize();
     Graphics2D g2d = (Graphics2D) g;

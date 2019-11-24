@@ -85,6 +85,7 @@ public class SpreadsheetMVCController implements SpreadsheetController, Spreadsh
     HashMap<Coord, String> stringCells = cellsFromModel(this.model);
 
     this.view = view;
+    System.out.println("setup view max xol " + model.getMaxCol());
     view.setupView(stringCells, model.getMaxCol(), model.getMaxRow());
     System.out.println("View setup");
     try {
@@ -159,6 +160,11 @@ public class SpreadsheetMVCController implements SpreadsheetController, Spreadsh
         cellText = "";
       }
       view.setInputText(cellText);
+      try {
+        view.render();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
     });
 
     buttonClickedActions.put("add column", () -> {
@@ -169,8 +175,16 @@ public class SpreadsheetMVCController implements SpreadsheetController, Spreadsh
       // valid col name
       if (m.matches()) {
         int colIdx = Coord.colNameToIndex(toAdd);
-        // TODO: ADD COLUMN
+        System.out.println(model.getMaxCol() + " current max");
+        int newMax = Math.max(colIdx, model.getMaxCol());
+        view.resizeView(newMax, model.getMaxRow());
+        System.out.println("new max Col " + newMax);
         view.showErrorMessage("added column at: " + colIdx);
+        try {
+          view.render();
+        } catch (IOException e) {
+          e.printStackTrace();
+        }
       } else { // does not match
         view.showErrorMessage("Please enter a valid column name (alphabetical characters only)");
       }
@@ -183,9 +197,13 @@ public class SpreadsheetMVCController implements SpreadsheetController, Spreadsh
         if (rowIdx <= 0) {
           view.showErrorMessage("Row index must be greater than 0");
         } else {
+          int newMax = Math.max(rowIdx, model.getMaxRow());
+          view.resizeView(model.getMaxCol(), newMax);
+          view.render();
           view.showErrorMessage("ADDED ROW AT: " + rowIdx);
+
         }
-      } catch (NumberFormatException e) {
+      } catch (NumberFormatException | IOException e) {
         view.showErrorMessage(toAdd + " is not a valid row index. Please enter a valid number.");
       }
     });
@@ -235,6 +253,11 @@ public class SpreadsheetMVCController implements SpreadsheetController, Spreadsh
         cellText = "";
       }
       view.setInputText(cellText);
+      try {
+        view.render();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
     });
     //mouseClickMap.put(MouseEvent.BUTTON1, loc -> System.out.println(view.getInputText()));
     //mouseClickMap.put(MouseEvent.BUTTON1, loc -> System.out.println(loc));

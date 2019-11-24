@@ -148,7 +148,6 @@ public class SpreadsheetScrollingPanel extends JPanel {
 
     this.horizontalScroll.setVisibleAmount(this.horizontalScroll.getBlockIncrement());
     this.verticalScroll.setVisibleAmount(this.verticalScroll.getBlockIncrement());
-
   }
 
   Coord coordFromLoc(int x, int y) {
@@ -176,33 +175,36 @@ public class SpreadsheetScrollingPanel extends JPanel {
       //System.out.println("x: " + x + ", y: " + y);
       Dimension gridSize = new Dimension(grid.getPreferredSize());
       if (gridSize.width - cellWidth * 3 < this.getWidth()) {
-        gridSize.setSize(this.getWidth() + cellWidth * 3, gridSize.height);
+        double newWidth = this.getWidth() + cellWidth * 3;
+        gridSize.setSize(newWidth, gridSize.height);
+        System.out.println("changed size in scroll panel");
       }
       if (gridSize.height - cellHeight * 3 < this.getHeight()) {
-        gridSize.setSize(gridSize.width, this.getHeight() + cellHeight * 3);
+        double newHeight = this.getHeight() + cellHeight * 3;
+        gridSize.setSize(gridSize.width, newHeight);
+        System.out.println("changed size in scroll panel");
       }
+//
+//      if (gridSize.getWidth() < ((3+grid.getMaxCol()))*cellWidth) {
+//        gridSize.setSize(((3+grid.getColEnd()))*cellWidth, gridSize.getHeight());
+//      }
+//      if (gridSize.getHeight() < ((3+grid.getMaxRow()))*cellHeight) {
+//        gridSize.setSize(gridSize.getWidth(), ((3+grid.getRowEnd()))*cellHeight);
+//      }
 
-      int colEndCur = (-grid.getBounds().x + this.getWidth()) / cellWidth + 3;
+      int colEnd = (-grid.getBounds().x + this.getWidth()) / cellWidth + 3;
       int colStart = -grid.getBounds().x / cellWidth;
 
-      int rowEndCur = (-grid.getBounds().y + this.getHeight()) / cellHeight + 3;
+      int rowEnd = (-grid.getBounds().y + this.getHeight()) / cellHeight + 3;
       int rowStart = -grid.getBounds().y / cellHeight;
 
-      int rowEndNew = Math.max(rowEndCur, grid.getRowEnd());
-      int colEndNew = Math.max(colEndCur, grid.getColEnd());
-
-      if(rowEndNew > rowEndCur || colEndNew > colEndCur) {
-        double newWidth = gridSize.getWidth() + (colEndNew - colEndCur) * cellWidth + 3;
-        double newHeight = gridSize.getHeight() + (rowEndNew - rowEndCur) * cellHeight + 3;
-
-        gridSize.setSize(newWidth, newHeight);
-      }
-
-      System.out.println(grid.getColEnd() > colEndCur);
-      grid.setCols(colStart, colEndNew);
-      grid.setRows(rowStart, rowEndNew);
+      //System.out.println(grid.getColEnd() > colEndCur);
+      grid.setCols(colStart, colEnd);
+      grid.setRows(rowStart, rowEnd);
 
       grid.setPreferredSize(gridSize);
+      System.out.println(gridSize + " scrollpane set size");
+
       grid.setBounds(-x, -y, gridSize.width,
               gridSize.height);
     }
@@ -307,6 +309,5 @@ public class SpreadsheetScrollingPanel extends JPanel {
       }
       this.revalidate();
     }
-
   }
 }
