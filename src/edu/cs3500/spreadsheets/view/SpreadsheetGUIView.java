@@ -127,7 +127,7 @@ public class SpreadsheetGUIView extends JFrame implements IView {
     gridPanel = new GridPanel(numRow, numCol, cellWidth,
         cellHeight, stringCells, colStart, colEnd, rowStart, rowEnd);
     scrollPane = new SpreadsheetScrollingPanel(gridPanel, cellWidth, cellHeight);
-    this.scrollPane.setPreferredSize(new Dimension(currPanelWidth + 3 * cellWidth,
+    this.setPreferredSize(new Dimension(currPanelWidth + 3 * cellWidth,
         currPanelHeight + 3 * cellHeight));
     // Three cell buffer
     gridPanel.setPreferredSize(
@@ -228,5 +228,16 @@ public class SpreadsheetGUIView extends JFrame implements IView {
   @Override
   public String getRowToAdd() {
     throw new UnsupportedOperationException("Non-editable views cannot add rows");
+  }
+
+  /**
+   * Expand the range of cells to be displayed by the view to the new given ranges.
+   *
+   * @param maxCol
+   * @param maxRow
+   */
+  @Override
+  public void resizeView(int maxCol, int maxRow) {
+    // Read only view can't be expanded.
   }
 }

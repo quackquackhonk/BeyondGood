@@ -161,6 +161,17 @@ public class SpreadsheetTextualView implements IView {
   }
 
   /**
+   * Expand the range of cells to be displayed by the view to the new given ranges.
+   *
+   * @param maxCol
+   * @param maxRow
+   */
+  @Override
+  public void resizeView(int maxCol, int maxRow) {
+    // Read only view is not resized ever.
+  }
+
+  /**
    * Sets the default input text that the user can then modify.
    */
   @Override

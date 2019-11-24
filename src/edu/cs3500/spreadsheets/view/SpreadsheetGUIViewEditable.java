@@ -83,6 +83,7 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
 
     formText = new JTextField("Default formula", 20);
     formText.setEditable(true);
+    formText.setActionCommand("");
 
     // UI option to add rows and columns
     addColLabel = new JLabel("Add Column At:");
@@ -328,6 +329,22 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
   @Override
   public String getRowToAdd() {
     return this.addRowField.getText();
+  }
+
+  /**
+   * Expand the range of cells to be displayed by the view to the new given ranges.
+   *
+   * @param maxCol display cells up to this column
+   * @param maxRow display cells up to this row
+   */
+  @Override
+  public void resizeView(int maxCol, int maxRow) {
+    this.maxCol = maxCol;
+    this.maxRow = maxRow;
+
+    this.gridPanel.setCols(0, maxCol);
+    this.gridPanel.setRows(0, maxRow);
+    this.scrollPane.doLayout();
   }
 
   /**

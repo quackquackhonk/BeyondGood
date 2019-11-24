@@ -150,6 +150,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
           blankAdjList.add(new HashSet<>());
           this.adjList.put(c, blankAdjList);
           this.sheet.put(c, blankCell);
+          System.out.println("Made blank at " + c);
         }
       }
       this.sheet.put(coord, newCell);
@@ -157,6 +158,17 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
     // Return children of newly added cell.
     HashSet<Coord> toUpdate = new HashSet<>(this.adjList.get(coord).get(0));
     toUpdate.add(coord);
+
+    HashSet<Coord> checkNewMax = new HashSet<>(this.adjList.get(coord).get(1));
+    checkNewMax.add(coord);
+    for(Coord c : checkNewMax) {
+      if(this.maxCol < c.col) {
+        this.maxCol = c.col;
+      }
+      if(this.maxRow < c.row) {
+        this.maxRow = c.row;
+      }
+    }
 
     return toUpdate;
   }

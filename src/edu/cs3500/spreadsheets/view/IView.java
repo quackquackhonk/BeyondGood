@@ -111,14 +111,7 @@ public interface IView {
   void resetInput();
 
   /**
-   * Gets the position where the user wants to add a column.
-   * @return the position to add a column.
+   * Expand the range of cells to be displayed by the view to the new given ranges.
    */
-  String getColToAdd();
-
-  /**
-   * Gets the position where the user wants to add a row.
-   * @return the position to add a row.
-   */
-  String getRowToAdd();
+  void resizeView(int maxCol, int maxRow);
 }

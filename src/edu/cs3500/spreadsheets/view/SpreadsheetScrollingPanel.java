@@ -181,21 +181,30 @@ public class SpreadsheetScrollingPanel extends JPanel {
       if (gridSize.height - cellHeight * 3 < this.getHeight()) {
         gridSize.setSize(gridSize.width, this.getHeight() + cellHeight * 3);
       }
+
+      int colEndCur = (-grid.getBounds().x + this.getWidth()) / cellWidth + 3;
+      int colStart = -grid.getBounds().x / cellWidth;
+
+      int rowEndCur = (-grid.getBounds().y + this.getHeight()) / cellHeight + 3;
+      int rowStart = -grid.getBounds().y / cellHeight;
+
+      int rowEndNew = Math.max(rowEndCur, grid.getRowEnd());
+      int colEndNew = Math.max(colEndCur, grid.getColEnd());
+
+      if(rowEndNew > rowEndCur || colEndNew > colEndCur) {
+        double newWidth = gridSize.getWidth() + (colEndNew - colEndCur) * cellWidth + 3;
+        double newHeight = gridSize.getHeight() + (rowEndNew - rowEndCur) * cellHeight + 3;
+
+        gridSize.setSize(newWidth, newHeight);
+      }
+
+      System.out.println(grid.getColEnd() > colEndCur);
+      grid.setCols(colStart, colEndNew);
+      grid.setRows(rowStart, rowEndNew);
+
       grid.setPreferredSize(gridSize);
       grid.setBounds(-x, -y, gridSize.width,
               gridSize.height);
-      int colEnd = (-grid.getBounds().x + this.getWidth()) / cellWidth + 3;
-      int colStart = -grid.getBounds().x / cellWidth;
-
-      int rowEnd = (-grid.getBounds().y + this.getHeight()) / cellHeight + 3;
-      int rowStart = -grid.getBounds().y / cellHeight;
-
-      //System.out.println("Cols:" + colStart + " " + colEnd);
-      //System.out.println(grid.getBounds());
-      grid.setCols(colStart, colEnd);
-      grid.setRows(rowStart, rowEnd);
-
-      //System.out.println(grid.coordFromLoc(-grid.getBounds().x, -grid.getBounds().y));
     }
   }
 

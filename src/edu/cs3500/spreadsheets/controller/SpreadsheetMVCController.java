@@ -2,6 +2,7 @@ package edu.cs3500.spreadsheets.controller;
 
 import edu.cs3500.spreadsheets.model.Coord;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.HashMap;
@@ -81,11 +82,6 @@ public class SpreadsheetMVCController implements SpreadsheetController, Spreadsh
 
   @Override
   public void setView(IView view) {
-    /* TODO: Decouple model from controller.
-             - pass HashMap<Coord, String> to view
-             - pass max row and max col to view
-             - update these on "confirm formula" and adding new rows/columns
-     */
     HashMap<Coord, String> stringCells = cellsFromModel(this.model);
 
     this.view = view;
@@ -145,6 +141,8 @@ public class SpreadsheetMVCController implements SpreadsheetController, Spreadsh
         }
       }
       try {
+        view.resizeView(model.getMaxCol(), model.getMaxRow());
+        System.out.println(model.getMaxCol());
         view.render();
       } catch (IOException e) {
         e.printStackTrace();
@@ -203,6 +201,15 @@ public class SpreadsheetMVCController implements SpreadsheetController, Spreadsh
    */
   private KeyboardListener configureKeyboardListener() {
     KeyboardListener kbd = new KeyboardListener();
+    Map<Character, Runnable> keyTypes = new HashMap<Character, Runnable>();
+    Map<Integer, Runnable> keyPresses = new HashMap<Integer, Runnable>();
+    Map<Integer, Runnable> keyReleases = new HashMap<Integer, Runnable>();
+
+//    keyPresses.put(KeyEvent.VK_ENTER, () -> {
+//      if(view.getSelectedCell() != null) {
+//
+//      }
+//    });
 
     //TODO: finish
 
