@@ -32,10 +32,12 @@ public class BeyondGood {
         //System.out.println("making blank gui");
         File file = new File("newSpreadsheet.txt");
         file.createNewFile();
-        Readable fileReader = new FileReader(file);
+        new FileReader(file);
+        Readable fileReader;
         WorksheetBuilder<IWriteWorkSheetModel> builder = new WorkSheetModel.SheetBuilder();
         fileReader = new FileReader(file);
-        IWriteWorkSheetModel model = WorksheetReader.read(builder, fileReader);
+        WorksheetReader.read(builder, fileReader);
+        IWriteWorkSheetModel model;
         model = WorksheetReader.read(builder, fileReader);
         IView guiView = args[0].equals("-gui")
             ? ViewCreator.create(ViewCreator.ViewType.GUI, model)

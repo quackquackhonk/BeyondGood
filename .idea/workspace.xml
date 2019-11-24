@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="013926d2-f87d-4d22-a068-7b9fcc73e8c6" name="Default Changelist" comment="" />
+    <list default="true" id="013926d2-f87d-4d22-a068-7b9fcc73e8c6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Asn5_Starter_jar/Asn5 Starter.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Asn5_Starter_jar/Asn5 Starter.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/ReferenceCell.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/ReferenceCell.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/controller/SpreadsheetMVCController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/controller/SpreadsheetMVCController.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,9 +20,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
         <option value="JUnit4 Test Class" />
         <option value="Interface" />
-        <option value="Class" />
       </list>
     </option>
   </component>
@@ -55,6 +60,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="edu.cs3500.spreadsheets.controller" />
       <recent name="edu.cs3500.spreadsheets.view" />
       <recent name="edu.cs3500.spreadsheets.model" />
     </key>
@@ -476,14 +482,28 @@
       <option name="project" value="LOCAL" />
       <updated>1574609497915</updated>
     </task>
-    <task id="LOCAL-00029" summary="- adding row sand columns">
-      <created>1574632331420</created>
+    <task id="LOCAL-00029" summary="Fixed bug where MouseEvents would no longer be recognized after maximizing the window.">
+      <created>1574620394087</created>
       <option name="number" value="00029" />
       <option name="presentableId" value="LOCAL-00029" />
       <option name="project" value="LOCAL" />
-      <updated>1574632331420</updated>
+      <updated>1574620394087</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Added UI components to support for inserting rows and columns into the spreadsheet">
+      <created>1574624228240</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1574624228240</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Added ControllerFeatures interface to allow for easier addition of functionality to the controller. SpreadsheetController extends ControllerFeatures.">
+      <created>1574628390268</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1574628390268</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -527,8 +547,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added GUI class" />
-    <MESSAGE value="- Added IView factory class for the main method to use&#10;- Lerner says using ScrollPane is bad idea and to make custom &#10;  stuff&#10;     - Can go over how we want to approach tomorrow&#10;     &#10;- Basic idea is one static panel draws the grid, and a second &#10;  panel contains two scrollbars and the static panel. The second&#10;  panel moves the static panel based on the scroll bar movements.&#10;  &#10;- I'm working on just rendering the static panel right now, will&#10;  probably grind away at it a little more tonight" />
     <MESSAGE value="- Drew grid" />
     <MESSAGE value="- font auto-sizing/spacing" />
     <MESSAGE value="Added SpreadsheetScrollingPanel" />
@@ -551,7 +569,9 @@
     <MESSAGE value="- Fixed math for Point to Coord method" />
     <MESSAGE value="- Highlight cell on click&#10;- Add cells to model with confirm button&#10;- Clear text field with clear button" />
     <MESSAGE value="- Javadoc" />
-    <MESSAGE value="- adding row sand columns" />
-    <option name="LAST_COMMIT_MESSAGE" value="- adding row sand columns" />
+    <MESSAGE value="Fixed bug where MouseEvents would no longer be recognized after maximizing the window." />
+    <MESSAGE value="Added UI components to support for inserting rows and columns into the spreadsheet" />
+    <MESSAGE value="Added ControllerFeatures interface to allow for easier addition of functionality to the controller. SpreadsheetController extends ControllerFeatures." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added ControllerFeatures interface to allow for easier addition of functionality to the controller. SpreadsheetController extends ControllerFeatures." />
   </component>
 </project>
