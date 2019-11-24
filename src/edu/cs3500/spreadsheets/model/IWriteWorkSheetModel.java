@@ -1,11 +1,19 @@
 package edu.cs3500.spreadsheets.model;
 
+import java.util.HashSet;
+
 /**
  * To represent a model for a worksheet. Maintains state and enforces class invariants.
  * Includes methods to set, move, and evaluate cells.  All cells are represented as CellContents.
  * Cycles and invalid cells are recorded.
  */
 public interface IWriteWorkSheetModel<CellContents> extends IReadWorkSheetModel<CellContents> {
+
+  /**
+   * Creates and sets cell at given Coordinate regardless of errors it creates, returns set of
+   * cells dependent on new cell.
+   */
+  HashSet<Coord> setCellAllowErrors(Coord coord, String cell);
 
   /**
    * Replaces cell at the given location with the cell created from the provided value.

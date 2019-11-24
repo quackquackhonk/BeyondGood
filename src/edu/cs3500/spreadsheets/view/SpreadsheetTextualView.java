@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.function.Consumer;
 
@@ -123,6 +124,22 @@ public class SpreadsheetTextualView implements IView {
   public Coord coordFromLoc(int x, int y) {
     // TODO: put something here.
     return null;
+  }
+
+  @Override
+  public Coord getSelectedCell() {
+    return null;
+    // No selection in text view.
+  }
+
+  @Override
+  public void setupView(HashMap<Coord, String> stringCells, int maxCol, int maxRow) {
+    // textual view doesn't need setup.
+  }
+
+  @Override
+  public void updateView(Coord coord, String cell) {
+    // Read only view not updated.
   }
 
   /**

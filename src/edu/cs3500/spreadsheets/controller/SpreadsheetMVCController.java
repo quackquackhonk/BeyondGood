@@ -1,8 +1,11 @@
 package edu.cs3500.spreadsheets.controller;
 
+import edu.cs3500.spreadsheets.model.Coord;
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -23,9 +26,75 @@ public class SpreadsheetMVCController implements SpreadsheetController, Spreadsh
     // TODO: set up observer for the model.
   }
 
+  // Get active model cells, draw them
+  private HashMap<Coord, String> cellsFromModel(IWriteWorkSheetModel model) {
+    HashSet<Coord> modelCells = model.activeCells();
+    HashMap<Coord, String> stringCells = new HashMap<>();
+
+    // Display cycle/formula errors
+    for (Coord c : modelCells) {
+      try {
+        String cellResult = model.evaluateCellCheck(c.toString());
+        // only add the cell if it is not empty
+        if (!cellResult.equals("")) {
+          stringCells.put(c, cellResult);
+        }
+      } catch (IllegalArgumentException e) {
+        String msg = e.getMessage();
+        //System.out.println(msg + " "+ c.toString());
+        if (msg.contains("cycle")) {
+          stringCells.put(c, "#REF!");
+        } else if (msg.contains("Formula")) {
+          stringCells.put(c, "#VALUE!");
+        }
+      }
+    }
+    return stringCells;
+  }
+
+  // Reevaluate cells affected by addition of new cell.
+  private HashMap<Coord, String> recalculateCells(HashSet<Coord> cells) {
+    HashMap<Coord, String> stringCells = new HashMap<>();
+    System.out.println(cells + " recalculating");
+    for (Coord c : cells) {
+      try {
+        String cellResult = model.evaluateCellCheck(c.toString());
+        System.out.println(cellResult + " is result");
+        // only add the cell if it is not empty
+
+          stringCells.put(c, cellResult);
+
+      } catch (IllegalArgumentException e) {
+        String msg = e.getMessage();
+        System.out.println(msg + " "+ c.toString());
+        if (msg.contains("cycle")) {
+          stringCells.put(c, "#REF!");
+        } else if (msg.contains("Formula")) {
+          stringCells.put(c, "#VALUE!");
+        }
+      }
+    }
+    return stringCells;
+  }
+
   @Override
   public void setView(IView view) {
+    /* TODO: Decouple model from controller.
+             - pass HashMap<Coord, String> to view
+             - pass max row and max col to view
+             - update these on "confirm formula" and adding new rows/columns
+     */
+    HashMap<Coord, String> stringCells = cellsFromModel(this.model);
+
     this.view = view;
+    view.setupView(stringCells, model.getMaxCol(), model.getMaxRow());
+    System.out.println("View setup");
+    try {
+      view.render();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    view.makeVisible();
 
     this.view.addActionListener(this.configureButtonListener());
     this.view.addKeyListener(this.configureKeyboardListener());
@@ -55,7 +124,35 @@ public class SpreadsheetMVCController implements SpreadsheetController, Spreadsh
    */
   private ButtonListener configureButtonListener() {
     ButtonListener btn = new ButtonListener();
+    Map<String, Runnable> buttonClickedActions = new HashMap<>();
 
+    // Create new cell from user text input.
+    buttonClickedActions.put("confirm input", () -> {
+
+      String input = view.getInputText();
+      Coord location = view.getSelectedCell();
+      if(location != null && input != null) {
+        HashSet<Coord> toUpdate = model.setCellAllowErrors(location, input);
+        System.out.println(toUpdate);
+        HashMap<Coord, String> updatedCells = this.recalculateCells(toUpdate);
+
+        // Update cells dependent on newly added cells
+        for(Coord c : updatedCells.keySet()) {
+          view.updateView(c, updatedCells.get(c));
+          System.out.println("Updating " + c);
+        }
+      }
+      try {
+        view.render();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    });
+
+    // Clear user text input.
+    buttonClickedActions.put("clear input", () -> view.setInputText(""));
+
+    btn.setButtonClickedActionMap(buttonClickedActions);
     return btn;
   }
 
@@ -83,8 +180,17 @@ public class SpreadsheetMVCController implements SpreadsheetController, Spreadsh
     MouseEventListener mel = new MouseEventListener();
     Map<Integer, MouseRunnable> mouseClickMap = new HashMap<>();
 
-    mouseClickMap.put(MouseEvent.BUTTON1, loc -> System.out.println(view.coordFromLoc(loc.x,
-            loc.y)));
+    mouseClickMap.put(MouseEvent.BUTTON1, (loc) -> {
+      Coord target = view.coordFromLoc(loc.x, loc.y);
+      String cellText;
+      try {
+        cellText = model.getCellText(target);
+      } catch (IllegalArgumentException n) {
+        cellText = "";
+      }
+      view.setInputText(cellText);
+    });
+    //mouseClickMap.put(MouseEvent.BUTTON1, loc -> System.out.println(view.getInputText()));
     //mouseClickMap.put(MouseEvent.BUTTON1, loc -> System.out.println(loc));
 
     mel.setMouseClickedMap(mouseClickMap);

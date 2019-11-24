@@ -28,6 +28,7 @@ public class GridPanel extends JPanel {
   private int ce;
   private int rs;
   private int re;
+  private Coord selectedCell;
 
   /**
    * Constructs GUI JPanel dimensions.
@@ -44,6 +45,21 @@ public class GridPanel extends JPanel {
     this.cs = colStart;
     this.rs = rowStart;
     this.re = rowEnd;
+    this.selectedCell = null;
+  }
+
+  // Change the currently highlighted cell to input Coord.
+  void setSelectedCell(Coord c) {
+    this.selectedCell = c;
+  }
+
+  // Returns Coord of last cell highlighted by the user.
+  Coord getSelectedCell() {
+    if(this.selectedCell != null) {
+      return new Coord(this.selectedCell.col, this.selectedCell.row);
+    } else {
+      return null;
+    }
   }
 
   // Display cells starting at this column.
@@ -83,7 +99,10 @@ public class GridPanel extends JPanel {
     int col = (int) x / cw;
     int row = (int) y / ch;
 
-    return new Coord(col+1, row+1);
+    Coord location = new Coord(col+1, row+1);
+    this.selectedCell = location;
+    this.repaint();
+    return location;
   }
 
 
@@ -121,13 +140,41 @@ public class GridPanel extends JPanel {
         g2d.setColor(Color.black);
         g2d.fillRect(col * cw, row * ch, cw, ch);
         g2d.setColor(Color.pink);
+        Color lineColor = Color.pink;
+
+        boolean on = selectedCell != null
+            && row == this.selectedCell.row-1
+            && col == this.selectedCell.col-1;
+
+        boolean right = selectedCell != null
+            && row == this.selectedCell.row-1
+            && col == this.selectedCell.col;
+
+        boolean below = selectedCell != null
+            && row == this.selectedCell.row
+            && col == this.selectedCell.col-1;
+
+        // Draws top border
+        lineColor = on || below ? Color.white : Color.pink;
+        g2d.setColor(lineColor);
         g2d.drawLine(col * cw, row * ch, col * cw + cw, row * ch);
-        g2d.drawLine(col * cw, row * ch + ch, col * cw + cw, row * ch + ch);
+
+        // Draws left border
+        lineColor = on || right ? Color.white : Color.pink;
+        g2d.setColor(lineColor);
         g2d.drawLine(col * cw, row * ch, col * cw, row * ch + ch);
-        g2d.drawLine(col * cw + cw, row * ch, col * cw + cw, row * ch + ch);
+
+        lineColor = on ? Color.white : Color.pink;
+        g2d.setColor(lineColor);
         g2d.drawString(cellText, col * cw + 3, row * ch + yOffset);
+        g2d.drawLine(col * cw, row * ch + ch, col * cw + cw, row * ch + ch);
+        g2d.drawLine(col * cw + cw, row * ch, col * cw + cw, row * ch + ch);
       }
     }
     this.revalidate();
+  }
+
+  void addCell(Coord coord, String cell) {
+    this.grid.put(coord, cell);
   }
 }

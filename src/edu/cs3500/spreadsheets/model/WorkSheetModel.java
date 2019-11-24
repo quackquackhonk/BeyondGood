@@ -101,6 +101,66 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
   }
 
 
+  /**
+   * Creates and sets cell at given Coordinate regardless of errors it creates, returns set of cells
+   * dependent on new cell.
+   *
+   * @param coord location to add cell
+   * @param cell  contents of new cell
+   * @return cells dependent on new cell
+   */
+  @Override
+  public HashSet<Coord> setCellAllowErrors(Coord coord, String cell) {
+
+    if (coord == null) {
+      throw new IllegalArgumentException("Null Coordinate");
+    } else {
+      //System.out.println("Setting cell " + coord.toString());
+      CellContents newCell = cell.equals("") ? new Blank() : SheetBuilder.cellFromString(cell);
+
+      boolean coordExists = this.getCellAdjList(coord) != null;
+
+      // Current Dependencies or none.
+      HashSet<Coord> curDeps = coordExists ? this.getCellAdjList(coord).get(1) : new HashSet<>();
+      HashSet<Coord> curChild = coordExists ? this.getCellAdjList(coord).get(0) : new HashSet<>();
+      CellContents oldCell = getCell(coord);
+      HashSet<Coord> newDeps = this.getDepCoords(newCell.stringParams());
+
+      // Set new dependencies
+      if (coordExists) {
+        // Get and set current list if Coord exists
+        this.adjList.get(coord).set(1, newDeps);
+        System.out.println("New dependencies " + newDeps);
+      } else {
+        // Create and set list if Coord doesn't exist
+        ArrayList<HashSet<Coord>> newAdj = new ArrayList<>();
+        newAdj.add(curChild);
+        newAdj.add(newDeps);
+        this.adjList.put(coord, newAdj);
+      }
+      // Add this cell as child of its dependencies
+      for (Coord c : newDeps) {
+        try {
+          this.adjList.get(c).get(0).add(coord);
+        } catch (NullPointerException p) {
+          // Make a blank cell if dependency not part of sheet yet
+          CellContents blankCell = new Blank();
+          ArrayList<HashSet<Coord>> blankAdjList = new ArrayList<>();
+          blankAdjList.add(new HashSet<>());
+          blankAdjList.add(new HashSet<>());
+          this.adjList.put(c, blankAdjList);
+          this.sheet.put(c, blankCell);
+        }
+      }
+      this.sheet.put(coord, newCell);
+    }
+    // Return children of newly added cell.
+    HashSet<Coord> toUpdate = new HashSet<>(this.adjList.get(coord).get(0));
+    toUpdate.add(coord);
+
+    return toUpdate;
+  }
+
   @Override
   public void updateCell(Coord location, String value) {
     // we will use for future assignments
@@ -202,7 +262,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
     } else {
       try {
         Coord target = getCoordFromString(coord);
-        CellContents cell = getCell(target);
+        CellContents cell = this.sheet.get(target);
         Value finalVal = cell.acceptEvalVisitor(new EvalVisitor());
         //System.out.println(finalVal.toString());
         return finalVal.toString();
@@ -367,6 +427,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
     try {
       return this.adjList.get(coord);
     } catch (NullPointerException p) {
+
       return null;
     }
   }
@@ -390,8 +451,10 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
     } else {
       //System.out.println("Setting cell " + coord.toString());
       CellContents newCell = SheetBuilder.cellFromString(cellString);
+      System.out.println(newCell.getRaw() + coord);
 
       boolean coordExists = this.getCellAdjList(coord) != null;
+
       // Current Dependencies or none.
       HashSet<Coord> curDeps = coordExists ? this.getCellAdjList(coord).get(1) : new HashSet<>();
       HashSet<Coord> curChild = coordExists ? this.getCellAdjList(coord).get(0) : new HashSet<>();
@@ -399,10 +462,21 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
       HashSet<Coord> newDeps = this.getDepCoords(newCell.stringParams());
 
       // Set new dependencies to check for cycles.
-      this.adjList.get(coord).set(1, newDeps);
+      if (coordExists) {
+        // Get and set current list if Coord exists
+        this.adjList.get(coord).set(1, newDeps);
+      } else {
+        // Create and set list if Coord doesn't exist
+        ArrayList<HashSet<Coord>> newAdj = new ArrayList<>();
+        newAdj.add(curChild);
+        newAdj.add(newDeps);
+        this.adjList.put(coord, newAdj);
+      }
+
       this.sheet.put(coord, newCell);
 
       HashSet<Coord> cycleCells = this.getProbCells(coord);
+
       if (cycleCells.size() == 0) {
         try {
           // Evaluate current cell
@@ -415,8 +489,9 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
           dontCheck.removeAll(needCheck);
 
           HashSet<Coord> probEvalCells = this.checkGrid(dontCheck);
+          System.out.println(probEvalCells);
           // If cells can't evaluate, put old cell/dependencies back.
-          if (probEvalCells.size() != 0) {
+          if (probEvalCells.size() != 0 && probEvalCells.contains(coord)) {
             this.sheet.put(coord, oldCell);
             this.adjList.get(coord).set(1, curDeps);
             throw new IllegalArgumentException("New cell messes up old cells");
@@ -542,6 +617,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
       try {
         String toParse;
         CellContents cell;
+        System.out.println(contents);
         String first = contents.substring(0, 1);
         // Parses CellContents if equal sign seen
         if (first.equals("=")) {
@@ -557,7 +633,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
         }
         return cell;
       } catch (IllegalArgumentException e) {
-        //System.out.println(contents);
+        System.out.println(contents.length());
         throw new IllegalArgumentException(e);
       }
     }
@@ -845,6 +921,9 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
           ArrayList<CellContents> secCont = second.forOps(this);
 
           // compare the two numeric arguments
+          if (firstCont.size() == 0 || secCont.size() == 0) {
+            throw new IllegalArgumentException("Formula: Cannot compare to blank value");
+          }
           if (firstCont.size() == 1 && secCont.size() == 1) {
             try {
               Dbl num1 = firstCont.get(0).acceptEvalVisitor(this).getDbl();
@@ -883,6 +962,10 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
         ArrayList<CellContents> firstCont = first.forOps(this);
         CellContents second = cont.get(1);
         ArrayList<CellContents> secCont = second.forOps(this);
+
+        if (firstCont.size() == 0 || secCont.size() == 0) {
+          throw new IllegalArgumentException("Formula: Cannot compare to blank value");
+        }
 
         if (firstCont.size() == 1 && secCont.size() == 1) {
           try {

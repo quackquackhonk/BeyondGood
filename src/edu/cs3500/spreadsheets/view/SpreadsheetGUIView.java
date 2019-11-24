@@ -196,4 +196,22 @@ public class SpreadsheetGUIView extends JFrame implements IView {
   public Coord coordFromLoc(int x, int y) {
     return this.scrollPane.coordFromLoc(x, y);
   }
+
+  @Override
+  public Coord getSelectedCell() {
+    // No selection in read only GUI view.
+    return null;
+  }
+
+  @Override
+  public void setupView(HashMap<Coord, String> stringCells, int maxCol, int maxRow) {
+    // TODO
+  }
+
+  @Override
+  public void updateView(Coord coord, String cell) {
+    // Read only view not updated.
+  }
+
+
 }

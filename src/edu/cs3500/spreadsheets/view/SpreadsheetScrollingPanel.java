@@ -31,6 +31,7 @@ public class SpreadsheetScrollingPanel extends JPanel {
   private GridPanel grid;
   private JPanel colHead;
   private JPanel rowHead;
+  private Coord selectedCell;
 
   /**
    * Constructs custom scroll panel.
@@ -44,6 +45,7 @@ public class SpreadsheetScrollingPanel extends JPanel {
 
     this.cellWidth = cellWidth;
     this.cellHeight = cellHeight;
+    this.selectedCell = null;
 
     this.setLayout(new GridBagLayout());
     this.grid = view;
@@ -197,6 +199,7 @@ public class SpreadsheetScrollingPanel extends JPanel {
       //System.out.println(grid.getBounds());
       grid.setCols(colStart, colEnd);
       grid.setRows(rowStart, rowEnd);
+
       //System.out.println(grid.coordFromLoc(-grid.getBounds().x, -grid.getBounds().y));
     }
   }

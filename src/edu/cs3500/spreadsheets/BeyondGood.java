@@ -68,8 +68,6 @@ public class BeyondGood {
 
           SpreadsheetMVCController controller = new SpreadsheetMVCController(model);
           controller.setView(guiView);
-          guiView.render();
-          guiView.makeVisible();
         }
       }
     } catch (FileNotFoundException e) {

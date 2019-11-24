@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.function.Consumer;
 
 import edu.cs3500.spreadsheets.model.Coord;
@@ -72,4 +73,13 @@ public interface IView {
   String getInputText();
 
   Coord coordFromLoc(int x, int y);
+
+  // The highlighted cell by the user. Returns null if cell has yet to be selected.
+  Coord getSelectedCell();
+
+  // Initializes the view with parameters for cells to display and dimension information.
+  void setupView(HashMap<Coord, String> stringCells, int maxCol, int maxRow);
+
+  // Add a new cell to be displayed by the view.
+  void updateView(Coord coord, String cell);
 }

@@ -22,61 +22,36 @@ import javax.swing.JTextField;
  */
 public class SpreadsheetGUIViewEditable extends JFrame implements IView {
 
-  private IReadWorkSheetModel model;
   private GridPanel gridPanel;
   private JButton formConfirm;
   private JButton formCancel;
   private JTextField formText;
+  private HashMap<Coord, String> stringCells;
 
   //private JScrollPane scrollPane;
   private SpreadsheetScrollingPanel scrollPane;
   private int cellWidth;
   private int cellHeight;
+  private int maxCol;
+  private int maxRow;
+  private boolean ready;
+
 
   /**
    * Constructs a GUI view for IReadWorkSheetModel.
    */
-  public SpreadsheetGUIViewEditable(IReadWorkSheetModel model) {
+  public SpreadsheetGUIViewEditable() {
     super();
-    this.model = model;
     this.setTitle("Beyond gOOD Editor");
     //this.rowMinGrid = 0;
     //this.colMinGrid = 0;
     this.cellWidth = 80;
     this.cellHeight = (int) (cellWidth / 2.5);
 
-    // Get active model cells, draw them
-    HashSet<Coord> modelCells = model.activeCells();
     HashMap<Coord, String> stringCells = new HashMap<>();
-
-    // Display cycle/formula errors
-    for (Coord c : modelCells) {
-      try {
-        String cellResult = model.evaluateCellCheck(c.toString());
-        // only add the cell if it is not empty
-        if (!cellResult.equals("")) {
-          stringCells.put(c, cellResult);
-        }
-      } catch (IllegalArgumentException e) {
-        String msg = e.getMessage();
-        //System.out.println(msg + " "+ c.toString());
-        if (msg.contains("cycle")) {
-          stringCells.put(c, "#REF!");
-        } else if (msg.contains("Formula")) {
-          stringCells.put(c, "#VALUE!");
-        }
-      }
-    }
-
+    this.stringCells = stringCells;
     this.setLayout(new BorderLayout());
     this.setSize(this.getPreferredSize());
-
-    // Size the grid panel to be as wide/tall as the furthest out cells + some buffer.
-    // If this size is smaller than the Frame size, use the frame size instead.
-    //System.out.println(model.getMaxRow());
-    int initPanelWidth = Math.max(getPreferredSize().width, model.getMaxCol() * cellWidth);
-    //System.out.println(initPanelWidth);
-    int initPanelHeight = Math.max(getPreferredSize().height, model.getMaxRow() * cellHeight);
 
     // Determine number of rows and columns GridPanel needs to display given Frame dimensions
     int numRow = this.getPreferredSize().width / cellWidth + 3;
@@ -88,21 +63,17 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
 
     gridPanel = new GridPanel(numRow, numCol, cellWidth, cellHeight,
         stringCells, 0, colEnd, 0, rowEnd);
-    this.scrollPane = new SpreadsheetScrollingPanel(gridPanel, cellWidth, cellHeight);
-    this.scrollPane.setPreferredSize(new Dimension(initPanelWidth + 3 * cellWidth,
-        initPanelHeight + 3 * cellHeight));
 
-    // Three cell buffer
-    gridPanel.setPreferredSize(
-        new Dimension(initPanelWidth + 3 * cellWidth, initPanelHeight + 3 * cellHeight));
-    this.add(scrollPane, BorderLayout.CENTER);
 
     // Add FormulaPanel, currently not editable.
     JPanel formulaBarPanel = new JPanel();
     formConfirm = new JButton("✔");
-    formCancel = new JButton("X");
     formConfirm.setPreferredSize(new Dimension(45, cellHeight));
+    formConfirm.setActionCommand("confirm input");
+
+    formCancel = new JButton("X");
     formCancel.setPreferredSize(new Dimension(45, cellHeight));
+    formCancel.setActionCommand("clear input");
 
     formulaBarPanel.setLayout(new FlowLayout());
     formText = new JTextField("Default formula", 20);
@@ -113,7 +84,7 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
     formulaBarPanel.add(formText);
     this.add(formulaBarPanel, BorderLayout.NORTH);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    this.addWindowStateListener(we -> createScrollPanel(stringCells));
+    this.addWindowStateListener(we -> createScrollPanel(this.stringCells));
     this.pack();
   }
 
@@ -128,8 +99,8 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
     Dimension currentSize = this.getSize();
     int numRow = this.getPreferredSize().width / cellWidth + 3;
     int numCol = this.getPreferredSize().height / cellHeight + 3;
-    int currPanelWidth = Math.max(currentSize.width, model.getMaxCol() * cellWidth);
-    int currPanelHeight = Math.max(currentSize.height, model.getMaxRow() * cellHeight);
+    int currPanelWidth = Math.max(currentSize.width, maxCol * cellWidth);
+    int currPanelHeight = Math.max(currentSize.height, maxRow * cellHeight);
 
     int colStart = gridPanel.getColStart();
     int colEnd = gridPanel.getColEnd();
@@ -154,7 +125,11 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
    */
   @Override
   public void render() throws IOException {
-    this.repaint();
+    if(this.ready) {
+      this.repaint();
+    } else {
+      System.out.println("View has not been setup");
+    }
   }
 
   /**
@@ -200,7 +175,8 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
    */
   @Override
   public void addActionListener(ActionListener listener) {
-
+    this.formConfirm.addActionListener(listener);
+    this.formCancel.addActionListener(listener);
   }
 
   @Override
@@ -210,17 +186,60 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
 
   @Override
   public void setInputText(String s) {
-    return;
+    this.formText.setText(s);
   }
 
   @Override
   public String getInputText() {
-    return null;
+    return this.formText.getText();
   }
 
   @Override
   public Coord coordFromLoc(int x, int y) {
-    return this.scrollPane.coordFromLoc(x, y);
+    this.formText.requestFocus();
+    Coord cell = this.scrollPane.coordFromLoc(x, y);
+    this.repaint();
+    return cell;
   }
 
+  @Override
+  public Coord getSelectedCell() {
+    return this.gridPanel.getSelectedCell();
+  }
+
+  @Override
+  public void setupView(HashMap<Coord, String> stringCells, int maxCol, int maxRow) {
+    this.setTitle("Beyond gOOD Editor");
+    this.maxCol = maxCol;
+    this.maxRow = maxRow;
+    this.stringCells = stringCells;
+
+    this.scrollPane = new SpreadsheetScrollingPanel(gridPanel, cellWidth, cellHeight);
+    this.add(scrollPane, BorderLayout.CENTER);
+    // Size the grid panel to be as wide/tall as the furthest out cells + some buffer.
+    // If this size is smaller than the Frame size, use the frame size instead.
+    //System.out.println(model.getMaxRow());
+    int initPanelWidth = Math.max(getPreferredSize().width, this.maxCol * cellWidth);
+    //System.out.println(initPanelWidth);
+    int initPanelHeight = Math.max(getPreferredSize().height, this.maxRow * cellHeight);
+
+    // Three cell buffer
+    gridPanel.setPreferredSize(
+        new Dimension(initPanelWidth + 3 * cellWidth, initPanelHeight + 3 * cellHeight));
+
+    gridPanel.setCells(stringCells);
+    formConfirm.setPreferredSize(new Dimension(45, cellHeight));
+    formCancel.setPreferredSize(new Dimension(45, cellHeight));
+    this.pack();
+    this.revalidate();
+    ready = true;
+  }
+
+  // Add a new cell to be displayed by the view.
+  @Override
+  public void updateView(Coord coord, String cell) {
+    this.stringCells.put(coord, cell);
+    this.gridPanel.addCell(coord, cell);
+    this.repaint();
+  }
 }
