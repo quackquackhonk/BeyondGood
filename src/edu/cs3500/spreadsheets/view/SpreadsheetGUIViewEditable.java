@@ -14,7 +14,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -173,42 +172,21 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
     }
   }
 
-  /**
-   * Default size of the frame.
-   *
-   * @return dimensions of the frame.
-   */
   @Override
   public Dimension getPreferredSize() {
     return new Dimension(1000, 600);
   }
 
-  /**
-   * Make the view visible. This is usually called after the view is constructed
-   */
   @Override
   public void makeVisible() {
     this.setVisible(true);
   }
 
-  /**
-   * Transmit an error message to the view, in case the command could not be processed correctly.
-   *
-   * @param error message.
-   */
   @Override
   public void showErrorMessage(String error) {
     JOptionPane.showMessageDialog(this, error);
   }
 
-  /**
-   * this is to force the view to have a method to set up actions for buttons. All the buttons must
-   * be given this action listener
-   * <p>
-   * Thus our Swing-based implementation of this interface will already have such a method.
-   *
-   * @param listener the listener to add.
-   */
   @Override
   public void addActionListener(ActionListener listener) {
     this.formConfirm.addActionListener(listener);
@@ -217,42 +195,22 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
     this.addColButton.addActionListener(listener);
   }
 
-  /**
-   * Forces view to have a method to set up listeners for mouse events. For Swing views, this method
-   * will already be implemented through Java Swing. For non-swing views, this will need to be
-   * written.
-   *
-   * @param listener the MouseListener to add.
-   */
   @Override
   public void addMouseListener(MouseListener listener) {
     this.mouseEvent = listener;
     this.gridPanel.addMouseListener(listener);
   }
 
-  /**
-   * Sets default user input.
-   */
   @Override
   public void setInputText(String s) {
     this.formText.setText(s);
   }
 
-  /**
-   * Gets the text the user has inputted in the input field.
-   */
   @Override
   public String getInputText() {
     return this.formText.getText();
   }
 
-  /**
-   * Determine corresponding Coord from x position and y position on the worksheet.
-   *
-   * @param x x position
-   * @param y y position
-   * @return Coord that corresponds to inputs
-   */
   @Override
   public Coord coordFromLoc(int x, int y) {
     //this.formText.requestFocus();
@@ -262,23 +220,11 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
     return cell;
   }
 
-  /**
-   * The Coord of the cell currently selected by the user.
-   *
-   * @return Coord of highlighted cell
-   */
   @Override
   public Coord getSelectedCell() {
     return this.gridPanel.getSelectedCell();
   }
 
-  /**
-   * Initializes view by passing in the cells to display and the range of cells to display.
-   *
-   * @param stringCells All cells in the sheet.
-   * @param maxCol      render cells up to this column
-   * @param maxRow      render cells up to this row
-   */
   @Override
   public void setupView(HashMap<Coord, String> stringCells, int maxCol, int maxRow) {
     this.setTitle("Beyond gOOD Editor");
@@ -312,12 +258,6 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
     ready = true;
   }
 
-  /**
-   * Update the view with new cells.
-   *
-   * @param coord location of cell.
-   * @param cell  contents of new cell in String form
-   */
   @Override
   public void updateView(Coord coord, String cell) {
     this.stringCells.put(coord, cell);
@@ -325,9 +265,6 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
     //this.repaint();
   }
 
-  /**
-   * Reverts input state prior to user modification.
-   */
   @Override
   public void resetInput() {
     this.formText.setText(this.prevText);
@@ -360,31 +297,17 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
     this.addMouseListener(this.configureMouseListener(f));
   }
 
-  /**
-   * Changed the currently highlighted cell using the arrow keys of a keyboard.
-   *
-   * @param coord new selection based on keyboard input
-   */
   @Override
   public void cellSelectWithKey(Coord coord) {
     this.gridPanel.setSelectedCell(coord);
   }
 
-  /**
-   * Reset focus of the view such that keyboard interactivity can occur.
-   */
   @Override
   public void resetFocus() {
     this.setFocusable(true);
     this.requestFocus();
   }
 
-  /**
-   * Expand the range of cells to be displayed by the view to the new given ranges.
-   *
-   * @param maxCol display cells up to this column
-   * @param maxRow display cells up to this row
-   */
   @Override
   public void resizeView(int maxCol, int maxRow) {
 
@@ -398,7 +321,6 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
   /**
    * Creates an empty MouseListener that does nothing given any mouse event. Used as the default
    * stored mouse event in the view.
-   *
    * @return an empty MouseListener.
    */
   private MouseListener defaultMouseListener() {
@@ -430,6 +352,12 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
     };
   }
 
+  /**
+   * Creates a ButtonListener with all the functionality of the given feature passed in.
+   * Basically "wires" the buttons in this view to the functionality provided by the controller.
+   * @param f the features from the controller.
+   * @return a ButtonListener connection the controller to the view
+   */
   private ButtonListener configureButtonListener(ControllerFeatures f) {
     ButtonListener btn = new ButtonListener();
     Map<String, Runnable> buttonClickedActions = new HashMap<>();
@@ -453,7 +381,7 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
    * Creates a new MouseEventListener with all the specified functionality that this controller
    * needs. This MouseListener can then be passed into the view so that the view can start listening
    * for those specific events.
-   *
+   * @param f the features from the Controller
    * @return the configured MouseEventListener.
    */
   private MouseEventListener configureMouseListener(ControllerFeatures f) {
@@ -473,7 +401,7 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
    * Creates a new KeyboardListener with all the specified keyboard functionality that this
    * controller needs. This KeyboardListener can then be passed into the view so that the view can
    * start listening for those specific events.
-   *
+   * @param f the features from the controller.
    * @return the configured KeyboardListener.
    */
   private KeyboardListener configureKeyboardListener(ControllerFeatures f) {
