@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="013926d2-f87d-4d22-a068-7b9fcc73e8c6" name="Default Changelist" comment="-Fixing cycle stuff">
+    <list default="true" id="013926d2-f87d-4d22-a068-7b9fcc73e8c6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/Asn5_Starter_jar/Asn5 Starter.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Asn5_Starter_jar/Asn5 Starter.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/controller/SpreadsheetMVCController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/controller/SpreadsheetMVCController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel$EvalVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel$EvalVisitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel$SheetBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel$SheetBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModelTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModelTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/controller/SpreadsheetMVCController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/controller/SpreadsheetMVCController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/WorkSheetModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/WorkSheetModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/WorkSheetModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/WorkSheetModelTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -95,7 +93,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.WorkSheetModelTest.checkBuildAdjListHasCycleSelfRange2">
+  <component name="RunManager" selected="JUnit.WorkSheetModelTest">
     <configuration name="Unnamed" type="AndroidJUnit" nameIsGenerated="true">
       <module name="Asn5 Starter" />
       <option name="MAIN_CLASS_NAME" value="" />
@@ -178,6 +176,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PRODUCTTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Asn5 Starter" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="uniqueId" />
+      <uniqueIds>
+        <uniqueId value="[engine:junit-vintage]/[runner:edu.cs3500.spreadsheets.model.PRODUCTTest]" />
+      </uniqueIds>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SpreadsheetTextualViewTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Asn5 Starter" />
       <extension name="coverage">
@@ -204,22 +213,6 @@
       <option name="PACKAGE_NAME" value="edu.cs3500.spreadsheets.model" />
       <option name="MAIN_CLASS_NAME" value="edu.cs3500.spreadsheets.model.WorkSheetModelTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="WorkSheetModelTest.checkBuildAdjListHasCycleSelfRange2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Asn5 Starter" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="edu.cs3500.spreadsheets.model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="edu.cs3500.spreadsheets.model" />
-      <option name="MAIN_CLASS_NAME" value="edu.cs3500.spreadsheets.model.WorkSheetModelTest" />
-      <option name="METHOD_NAME" value="checkBuildAdjListHasCycleSelfRange2" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -264,18 +257,18 @@
       <item itemvalue="Application.openSaved" />
       <item itemvalue="Application.testEvalGood" />
       <item itemvalue="JUnit.SpreadsheetTextualViewTest" />
+      <item itemvalue="JUnit.PRODUCTTest" />
       <item itemvalue="JUnit.edu.cs3500.spreadsheets.model in Asn5 Starter" />
       <item itemvalue="JUnit.edu.cs3500.spreadsheets in Asn5 Starter" />
       <item itemvalue="JUnit.WorkSheetModelTest" />
-      <item itemvalue="JUnit.WorkSheetModelTest.checkBuildAdjListHasCycleSelfRange2" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.WorkSheetModelTest.checkBuildAdjListHasCycleSelfRange2" />
         <item itemvalue="JUnit.WorkSheetModelTest" />
         <item itemvalue="JUnit.SpreadsheetTextualViewTest" />
         <item itemvalue="JUnit.edu.cs3500.spreadsheets in Asn5 Starter" />
         <item itemvalue="JUnit.edu.cs3500.spreadsheets.model in Asn5 Starter" />
+        <item itemvalue="JUnit.PRODUCTTest" />
       </list>
     </recent_temporary>
   </component>
@@ -294,6 +287,7 @@
       <workItem from="1573704652057" duration="204000" />
       <workItem from="1573706698492" duration="246000" />
       <workItem from="1574530041849" duration="4409000" />
+      <workItem from="1574731161710" duration="1102000" />
     </task>
     <task id="LOCAL-00001" summary="added GUI class">
       <created>1573484804770</created>
@@ -526,12 +520,12 @@
       <option name="project" value="LOCAL" />
       <updated>1574728715108</updated>
     </task>
-    <task id="LOCAL-00034" summary="-Fixing cycle stuff">
-      <created>1574730745998</created>
+    <task id="LOCAL-00034" summary="Fixed &quot;=&quot; bug again">
+      <created>1574731682729</created>
       <option name="number" value="00034" />
       <option name="presentableId" value="LOCAL-00034" />
       <option name="project" value="LOCAL" />
-      <updated>1574730745998</updated>
+      <updated>1574731682729</updated>
     </task>
     <option name="localTasksCounter" value="35" />
     <servers />
@@ -601,23 +595,7 @@
     <MESSAGE value="Added ControllerFeatures interface to allow for easier addition of functionality to the controller. SpreadsheetController extends ControllerFeatures." />
     <MESSAGE value="- Add row/columns" />
     <MESSAGE value="- fix full screen" />
-    <MESSAGE value="-Fixing cycle stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="-Fixing cycle stuff" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/WorkSheetModelTest.java</url>
-          <line>58</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/WorkSheetModelTest.java</url>
-          <line>57</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Fixed &quot;=&quot; bug again" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed &quot;=&quot; bug again" />
   </component>
 </project>

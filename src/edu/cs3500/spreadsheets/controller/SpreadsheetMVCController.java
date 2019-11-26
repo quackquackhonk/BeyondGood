@@ -41,6 +41,7 @@ public class SpreadsheetMVCController implements SpreadsheetController {
         }
       } catch (IllegalArgumentException e) {
         String msg = e.getMessage();
+        //System.out.println("MVC: " + c.toString() + ": " + msg);
         //System.out.println(msg + " "+ c.toString());
         if (msg.contains("cycle")) {
           stringCells.put(c, "#REF!");

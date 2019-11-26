@@ -829,7 +829,9 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
       } else {
         CellContents cellCont = WorkSheetModel.this.sheet.get(contCoord.get(0));
         if (cellCont.equals(r)) {
-          throw new IllegalArgumentException("Cell can't refer to itself");
+          throw new IllegalArgumentException("Cell in cycle: self-reference");
+        } else if (getProbCells(contCoord.get(0)).size() > 0) {
+          throw new IllegalArgumentException("Cell in cycle.");
         }
         return cellCont.acceptEvalVisitor(this);
       }
