@@ -7,9 +7,14 @@ import java.util.HashSet;
 import java.util.Locale;
 
 /**
- * Mock model that takes in an Appendable for testing purposes.
+ * Mock model to confirm inputs passed to it by the controller are correct.
   */
 public class MockWorksheetModel extends WorkSheetModel  {
+
+  // Constructs the mock model.
+  MockWorksheetModel(StringBuilder log) {
+    this.log = log;
+  }
   public StringBuilder log = new StringBuilder();
 
   /**
@@ -21,7 +26,8 @@ public class MockWorksheetModel extends WorkSheetModel  {
    */
   @Override
   public HashSet<Coord> setCellAllowErrors(Coord coord, String cell) {
-    return super.setCellAllowErrors(coord, cell);
+    log.append(coord + " " + cell);
+    return null;
   }
 
   /**
@@ -32,7 +38,7 @@ public class MockWorksheetModel extends WorkSheetModel  {
    */
   @Override
   public void updateCell(Coord location, String value) {
-    super.updateCell(location, value);
+    log.append(location + " " + value);
   }
 
   /**
@@ -42,7 +48,7 @@ public class MockWorksheetModel extends WorkSheetModel  {
    */
   @Override
   public void evaluateIndCell(String coord) {
-    super.evaluateIndCell(coord);
+    log.append(coord);
 
   }
 
@@ -54,7 +60,7 @@ public class MockWorksheetModel extends WorkSheetModel  {
    */
   @Override
   public void dragChange(Coord start, Coord finish) {
-    super.dragChange(start, finish);
+    log.append(start + " " + finish);
   }
 
   /**
@@ -62,7 +68,8 @@ public class MockWorksheetModel extends WorkSheetModel  {
    */
   @Override
   public void setupModel() {
-    super.setupModel();
+
+    // Mock model doesn't setup.
   }
 
   /**
@@ -72,7 +79,7 @@ public class MockWorksheetModel extends WorkSheetModel  {
    */
   @Override
   public void removeCell(Coord target) {
-    super.removeCell(target);
+    log.append("remove " + target);
   }
 
   /**
@@ -84,7 +91,8 @@ public class MockWorksheetModel extends WorkSheetModel  {
    */
   @Override
   public void setCell(int col, int row, String s) {
-    super.setCell(col, row, s);
+
+    log.append(col + " " + row + " " + s);
   }
 
   /**
@@ -136,8 +144,8 @@ public class MockWorksheetModel extends WorkSheetModel  {
    */
   @Override
   public String getCellText(Coord coord) {
-    log.append(super.getCellText(coord)).append(" at ").append(coord).append("\n");
-    return super.getCellText(coord);
+    log.append(coord + " was passed");
+    return coord + " was passed";
   }
 
   /**

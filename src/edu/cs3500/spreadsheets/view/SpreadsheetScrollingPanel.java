@@ -173,23 +173,20 @@ public class SpreadsheetScrollingPanel extends JPanel {
       int x = horizontalScroll.getValue();
       int y = verticalScroll.getValue();
       Dimension gridSize = new Dimension(grid.getPreferredSize());
+
+      // Resize the grid
       if (gridSize.width - cellWidth * 3 < SpreadsheetScrollingPanel.this.getWidth()) {
         double newWidth = SpreadsheetScrollingPanel.this.getWidth() + cellWidth * 3;
         gridSize.setSize(newWidth, gridSize.height);
         System.out.println("changed size in scroll panel");
       }
+
       if (gridSize.height - cellHeight * 3 < SpreadsheetScrollingPanel.this.getHeight()) {
         double newHeight = SpreadsheetScrollingPanel.this.getHeight() + cellHeight * 3;
         gridSize.setSize(gridSize.width, newHeight);
         System.out.println("changed size in scroll panel");
       }
-//
-//      if (gridSize.getWidth() < ((3+grid.getMaxCol()))*cellWidth) {
-//        gridSize.setSize(((3+grid.getColEnd()))*cellWidth, gridSize.getHeight());
-//      }
-//      if (gridSize.getHeight() < ((3+grid.getMaxRow()))*cellHeight) {
-//        gridSize.setSize(gridSize.getWidth(), ((3+grid.getRowEnd()))*cellHeight);
-//      }
+
 
       int colEnd = (-grid.getBounds().x + this.getWidth()) / cellWidth + 3;
       int colStart = -grid.getBounds().x / cellWidth;

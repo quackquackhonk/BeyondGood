@@ -95,7 +95,7 @@ public class SpreadsheetTextualViewTest {
         "A3 =(SUM A1:A2)" + "\n", log.toString());
   }
 
-  // Cells with errors are saved properly.
+  // Cells with errors are saved properly by the model
   @Test
   public void saveErrors() throws IOException {
     WorkSheetModel.SheetBuilder builder = new WorkSheetModel.SheetBuilder();

@@ -4,7 +4,11 @@
     <list default="true" id="013926d2-f87d-4d22-a068-7b9fcc73e8c6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/Asn5_Starter_jar/Asn5 Starter.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Asn5_Starter_jar/Asn5 Starter.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/GridPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/GridPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/view/GridPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/view/GridPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetScrollingPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetScrollingPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/edu/cs3500/spreadsheets/controller/MockWorksheetModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/edu/cs3500/spreadsheets/controller/MockWorksheetModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/edu/cs3500/spreadsheets/controller/SpreadsheetMVCControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/edu/cs3500/spreadsheets/controller/SpreadsheetMVCControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/edu/cs3500/spreadsheets/view/SpreadsheetTextualViewTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/edu/cs3500/spreadsheets/view/SpreadsheetTextualViewTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -90,7 +94,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.blankSheetGui">
+  <component name="RunManager" selected="JUnit.SpreadsheetMVCControllerTest">
     <configuration name="Unnamed" type="AndroidJUnit" nameIsGenerated="true">
       <module name="Asn5 Starter" />
       <option name="MAIN_CLASS_NAME" value="" />
@@ -560,7 +564,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574741916866</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="- fix fullscreen blank">
+      <created>1574787873223</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1574787873223</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -604,7 +615,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="- JavDocs, removed unused classes" />
     <MESSAGE value="Updated the name of getMaxRowWidth and getMaxColHeight to make more sense in the context of the model" />
     <MESSAGE value="Added window maximize listener" />
     <MESSAGE value="Fixed bug where resizing the window will offset the grid." />
@@ -629,6 +639,7 @@
     <MESSAGE value="Created mock view for testing" />
     <MESSAGE value="added more tests" />
     <MESSAGE value="- fullscreen Ok kinda" />
-    <option name="LAST_COMMIT_MESSAGE" value="- fullscreen Ok kinda" />
+    <MESSAGE value="- fix fullscreen blank" />
+    <option name="LAST_COMMIT_MESSAGE" value="- fix fullscreen blank" />
   </component>
 </project>

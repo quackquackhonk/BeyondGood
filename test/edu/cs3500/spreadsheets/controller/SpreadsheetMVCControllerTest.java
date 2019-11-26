@@ -1,21 +1,18 @@
 package edu.cs3500.spreadsheets.controller;
 
+import static org.junit.Assert.assertEquals;
+
 import edu.cs3500.spreadsheets.model.Coord;
-import org.junit.Test;
-
-import java.awt.*;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-
 import edu.cs3500.spreadsheets.model.IWriteWorkSheetModel;
 import edu.cs3500.spreadsheets.model.WorkSheetModel;
 import edu.cs3500.spreadsheets.model.WorksheetReader;
 import edu.cs3500.spreadsheets.view.IView;
-import edu.cs3500.spreadsheets.view.SpreadsheetGUIViewEditable;
-
-import static org.junit.Assert.*;
+import java.awt.Point;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import org.junit.Test;
 
 /**
  * Tests for the Controller.
@@ -23,12 +20,12 @@ import static org.junit.Assert.*;
 public class SpreadsheetMVCControllerTest {
 
   WorksheetReader.WorksheetBuilder<IWriteWorkSheetModel> builder
-          = new WorkSheetModel.SheetBuilder();
+      = new WorkSheetModel.SheetBuilder();
   IWriteWorkSheetModel model;
   IView view;
   SpreadsheetController controller;
 
-  private void init(String filename){
+  private void init(String filename) {
     File file = new File(filename);
     Readable fileReader;
     try {
@@ -62,8 +59,8 @@ public class SpreadsheetMVCControllerTest {
     // click on empty cell
     controller.clickOnCellAt(new Point(100, 100));
     expectedOutput.append("clicked on (100,100)\n" +
-            "selected cell B4\n" +
-            "set input text to \n");
+        "selected cell B4\n" +
+        "set input text to \n");
 
     controller.clickOnCellAt(new Point(440, 20));
     expectedOutput.append("clicked on (440,20)\n");
@@ -155,19 +152,19 @@ public class SpreadsheetMVCControllerTest {
     assertEquals(model.getCellText(new Coord(6, 1)), "123.000000");
   }
 
-  // Controller to model
+  // Input from view to Controller verified as working by previous test testConfirmInput()
+  // Test that Controller sends info to the view properly.
   @Test
-  public void testControllerSetsViewCell() {
+  public void testControllerPassesToModel() {
     StringBuilder expectedOutput = new StringBuilder();
     view = new MockView();
-    model = new MockWorksheetModel();
+    model = new MockWorksheetModel(expectedOutput);
     controller = new SpreadsheetMVCController(model);
     controller.setView(view);
-    model.setCellAllowErrors(new Coord(0,0), "123");
 
+    controller.clickOnCellAt(new Point(0, 0));
+    controller.clickOnCellAt(new Point(80, 0));
 
-
-
+    assertEquals("A1 was passedB1 was passed", expectedOutput.toString().trim());
   }
-
 }
