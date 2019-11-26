@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="013926d2-f87d-4d22-a068-7b9fcc73e8c6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/GridPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/GridPanel.java" afterDir="false" />
-    </list>
+    <list default="true" id="013926d2-f87d-4d22-a068-7b9fcc73e8c6" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -589,7 +587,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574791386389</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="- default cell selected is A1">
+      <created>1574791814992</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1574791814992</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -638,7 +643,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed bug where resizing the window will offset the grid." />
     <MESSAGE value="Updated documentation for createScrollPane" />
     <MESSAGE value="Fixed bug where -gui wasn't working" />
     <MESSAGE value="Removed print statements" />
@@ -663,6 +667,7 @@
     <MESSAGE value="Cleaned up MockView" />
     <MESSAGE value="Added column test" />
     <MESSAGE value="- clearInput() tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="- clearInput() tests" />
+    <MESSAGE value="- default cell selected is A1" />
+    <option name="LAST_COMMIT_MESSAGE" value="- default cell selected is A1" />
   </component>
 </project>
