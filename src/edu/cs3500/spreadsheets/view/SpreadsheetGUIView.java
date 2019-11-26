@@ -1,5 +1,6 @@
 package edu.cs3500.spreadsheets.view;
 
+import edu.cs3500.spreadsheets.controller.ControllerFeatures;
 import edu.cs3500.spreadsheets.model.Coord;
 import edu.cs3500.spreadsheets.model.IReadWorkSheetModel;
 import java.awt.BorderLayout;
@@ -228,6 +229,11 @@ public class SpreadsheetGUIView extends JFrame implements IView {
   @Override
   public String getRowToAdd() {
     throw new UnsupportedOperationException("Non-editable views cannot add rows");
+  }
+
+  @Override
+  public void addFeatures(ControllerFeatures f) {
+    // NO features to add
   }
 
   /**

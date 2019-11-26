@@ -1,5 +1,6 @@
 package edu.cs3500.spreadsheets.view;
 
+import edu.cs3500.spreadsheets.controller.ControllerFeatures;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
@@ -118,4 +119,6 @@ public interface IView {
   String getColToAdd();
 
   String getRowToAdd();
+
+  void addFeatures(ControllerFeatures f);
 }

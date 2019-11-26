@@ -89,6 +89,7 @@ public class SpreadsheetMVCController implements SpreadsheetController {
 
     this.view = view;
     view.setupView(stringCells, model.getMaxCol(), model.getMaxRow());
+    view.addFeatures(this);
     System.out.println("View setup");
     try {
       view.render();
@@ -97,9 +98,6 @@ public class SpreadsheetMVCController implements SpreadsheetController {
     }
     view.makeVisible();
 
-    this.view.addActionListener(this.configureButtonListener());
-    this.view.addKeyListener(this.configureKeyboardListener());
-    this.view.addMouseListener(this.configureMouseListener());
   }
 
   /**
@@ -125,39 +123,6 @@ public class SpreadsheetMVCController implements SpreadsheetController {
     buttonClickedActions.put("add row", this::addRow);
     btn.setButtonClickedActionMap(buttonClickedActions);
     return btn;
-  }
-
-  /**
-   * Creates a new KeyboardListener with all the specified keyboard functionality that this
-   * controller needs. This KeyboardListener can then be passed into the view so that the view
-   * can start listening for those specific events.
-   * @return the configured KeyboardListener.
-   */
-  private KeyboardListener configureKeyboardListener() {
-    KeyboardListener kbd = new KeyboardListener();
-
-    //TODO: finish
-
-    return kbd;
-  }
-
-  /**
-   * Creates a new MouseEventListener with all the specified functionality that this controller
-   * needs. This MouseListener can then be passed into the view so that the view can start
-   * listening for those specific events.
-   * @return the configured MouseEventListener.
-   */
-  private MouseEventListener configureMouseListener() {
-    MouseEventListener mel = new MouseEventListener();
-    Map<Integer, MouseRunnable> mouseClickMap = new HashMap<>();
-
-    mouseClickMap.put(MouseEvent.BUTTON1, this::clickOnCellAt);
-    //mouseClickMap.put(MouseEvent.BUTTON1, loc -> System.out.println(view.getInputText()));
-    //mouseClickMap.put(MouseEvent.BUTTON1, loc -> System.out.println(loc));
-
-    mel.setMouseClickedMap(mouseClickMap);
-
-    return mel;
   }
 
   @Override

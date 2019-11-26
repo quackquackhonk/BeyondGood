@@ -41,4 +41,6 @@ public interface ControllerFeatures {
    */
   void clickOnCellAt(Point loc);
 
+
+
 }

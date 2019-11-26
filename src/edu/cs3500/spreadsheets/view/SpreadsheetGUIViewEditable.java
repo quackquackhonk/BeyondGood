@@ -1,5 +1,10 @@
 package edu.cs3500.spreadsheets.view;
 
+import edu.cs3500.spreadsheets.controller.ButtonListener;
+import edu.cs3500.spreadsheets.controller.ControllerFeatures;
+import edu.cs3500.spreadsheets.controller.KeyboardListener;
+import edu.cs3500.spreadsheets.controller.MouseEventListener;
+import edu.cs3500.spreadsheets.controller.MouseRunnable;
 import edu.cs3500.spreadsheets.model.Coord;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -9,6 +14,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.function.Consumer;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -347,6 +353,15 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
     return this.addRowField.getText();
   }
 
+  @Override
+  public void addFeatures(ControllerFeatures f) {
+    this.addActionListener(this.configureButtonListener(f));
+    this.addKeyListener(this.configureKeyboardListener(f));
+    this.addMouseListener(this.configureMouseListener(f));
+
+    
+  }
+
   /**
    * Expand the range of cells to be displayed by the view to the new given ranges.
    *
@@ -395,6 +410,58 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
 
       }
     };
+  }
+
+  private ButtonListener configureButtonListener(ControllerFeatures f) {
+    ButtonListener btn = new ButtonListener();
+    Map<String, Runnable> buttonClickedActions = new HashMap<>();
+
+    // Create new cell from user text input.
+    buttonClickedActions.put("confirm input", f::confirmInput);
+
+    // Clear user text input.
+    buttonClickedActions.put("clear input", f::clearInput);
+
+    // adds a column
+    buttonClickedActions.put("add column", f::addColumn);
+
+    // adds a row
+    buttonClickedActions.put("add row", f::addRow);
+    btn.setButtonClickedActionMap(buttonClickedActions);
+    return btn;
+  }
+
+  /**
+   * Creates a new MouseEventListener with all the specified functionality that this controller
+   * needs. This MouseListener can then be passed into the view so that the view can start
+   * listening for those specific events.
+   * @return the configured MouseEventListener.
+   */
+  private MouseEventListener configureMouseListener(ControllerFeatures f) {
+    MouseEventListener mel = new MouseEventListener();
+    Map<Integer, MouseRunnable> mouseClickMap = new HashMap<>();
+
+    mouseClickMap.put(MouseEvent.BUTTON1, f::clickOnCellAt);
+    //mouseClickMap.put(MouseEvent.BUTTON1, loc -> System.out.println(view.getInputText()));
+    //mouseClickMap.put(MouseEvent.BUTTON1, loc -> System.out.println(loc));
+
+    mel.setMouseClickedMap(mouseClickMap);
+
+    return mel;
+  }
+
+  /**
+   * Creates a new KeyboardListener with all the specified keyboard functionality that this
+   * controller needs. This KeyboardListener can then be passed into the view so that the view
+   * can start listening for those specific events.
+   * @return the configured KeyboardListener.
+   */
+  private KeyboardListener configureKeyboardListener(ControllerFeatures f) {
+    KeyboardListener kbd = new KeyboardListener();
+
+    //TODO: finish
+
+    return kbd;
   }
 
 }
