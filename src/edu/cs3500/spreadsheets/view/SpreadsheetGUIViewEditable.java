@@ -480,9 +480,9 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
   private KeyboardListener configureKeyboardListener(ControllerFeatures f) {
     KeyboardListener kbd = new KeyboardListener();
 
-    Map<Character, Runnable> keyTypedMap;
-    Map<Integer, Runnable> keyPressedMap;
-    Map<Integer, Runnable> keyReleasedMap;
+    Map<Character, Runnable> keyTypedMap = new HashMap<>();
+    Map<Integer, Runnable> keyPressedMap = new HashMap<>();
+    Map<Integer, Runnable> keyReleasedMap = new HashMap<>();
 
     keyPressedMap.put(KeyEvent.VK_DELETE, f::deleteCellContents);
 
