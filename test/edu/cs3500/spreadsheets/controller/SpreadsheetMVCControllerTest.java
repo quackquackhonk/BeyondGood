@@ -164,7 +164,7 @@ public class SpreadsheetMVCControllerTest {
     model = new MockWorksheetModel(expectedOutput);
     controller = new SpreadsheetMVCController(model);
     controller.setView(view);
-    model.setCellAllowErrors(new Coord(0,0), "123");
+    model.setCellAllowErrors(new Coord(1,1), "123");
   }
 
   @Test
