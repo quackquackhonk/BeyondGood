@@ -55,7 +55,38 @@ public class SpreadsheetMVCControllerTest {
     controller.clickOnCellAt(new Point(0, 0));
     expectedOutput.append("clicked on (0,0)\n");
     expectedOutput.append("selected cell A1\n");
-    expectedOutput.append("set input text to 3.000000");
+    expectedOutput.append("set input text to 3.000000\n");
+
+    // click on empty cell
+    controller.clickOnCellAt(new Point(100, 100));
+    expectedOutput.append("clicked on (100,100)\n" +
+            "selected cell B4\n" +
+            "set input text to \n");
+
+    controller.clickOnCellAt(new Point(440, 20));
+    expectedOutput.append("clicked on (440,20)\n");
+    expectedOutput.append("selected cell F1\n");
+    expectedOutput.append("set input text to =(SUM A1:D1)");
+
+    MockView testView = (MockView) view;
+    assertEquals(expectedOutput.toString().trim(), testView.log.toString().trim());
+  }
+
+  @Test
+  public void testControllerClearText() {
+    this.init("good1.txt");
+    StringBuilder expectedOutput = new StringBuilder();
+
+    controller.clickOnCellAt(new Point(0, 0));
+    expectedOutput.append("clicked on (0,0)\n");
+    expectedOutput.append("selected cell A1\n");
+    expectedOutput.append("set input text to 3.000000\n");
+
+    view.setInputText("12312316231");
+    expectedOutput.append("set input text to 12312316231\n");
+    controller.clearInput();
+    expectedOutput.append("reset input\n");
+    expectedOutput.append("set input text to 3.000000\n");
 
     MockView testView = (MockView) view;
     assertEquals(expectedOutput.toString().trim(), testView.log.toString().trim());

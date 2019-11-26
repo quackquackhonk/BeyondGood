@@ -55,7 +55,7 @@ public class MockView extends SpreadsheetGUIViewEditable implements IView {
   @Override
   public void resetInput() {
     super.resetInput();
-    log.append("reset input" + "\n");
+    log.append("reset input\n");
   }
 
   @Override

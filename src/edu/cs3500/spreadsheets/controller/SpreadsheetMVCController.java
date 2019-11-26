@@ -159,6 +159,7 @@ public class SpreadsheetMVCController implements SpreadsheetController {
 
     cellText = this.addEqualsIfRef(cellText);
 
+    view.resetInput();
     view.setInputText(cellText);
   }
 
