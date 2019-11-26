@@ -40,6 +40,8 @@
            ex: Setting currently highlighted cell
            ex: Adding additional blank rows/columns to display, independently of the model
 
+  - WorkSheetModel: Bug fixes for cycle detection and adding cells to spreadsheets that have errors.
+
 
 *** VIEW ************************************************************************************
 
