@@ -611,7 +611,21 @@
       <option name="project" value="LOCAL" />
       <updated>1574795321126</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="- README">
+      <created>1574797040330</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1574797040330</updated>
+    </task>
+    <task id="LOCAL-00046" summary="- README">
+      <created>1574797093158</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1574797093158</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -660,7 +674,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Removed print statements" />
     <MESSAGE value="Removed more print statements" />
     <MESSAGE value="Created a .jar for the project" />
     <MESSAGE value="- Style fixes" />
@@ -685,6 +698,7 @@
     <MESSAGE value="- default cell selected is A1" />
     <MESSAGE value="delete code" />
     <MESSAGE value="- Selected cel input text changes with arrows" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Selected cel input text changes with arrows" />
+    <MESSAGE value="- README" />
+    <option name="LAST_COMMIT_MESSAGE" value="- README" />
   </component>
 </project>
