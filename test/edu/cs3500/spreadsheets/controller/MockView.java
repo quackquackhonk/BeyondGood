@@ -11,6 +11,8 @@ import edu.cs3500.spreadsheets.view.SpreadsheetGUIViewEditable;
 public class MockView extends SpreadsheetGUIViewEditable implements IView {
 
   public StringBuilder log = new StringBuilder();
+  String colToAdd = "";
+  String rowToAdd = "";
 
   @Override
   public void render() throws IOException {

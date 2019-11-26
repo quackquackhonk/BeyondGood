@@ -167,7 +167,6 @@ public class SpreadsheetMVCControllerTest {
     model.setCellAllowErrors(new Coord(0,0), "123");
   }
 
-
   @Test
   public void testControllerAddColumn() {
     this.init("good1.txt");
@@ -177,6 +176,11 @@ public class SpreadsheetMVCControllerTest {
     controller = new SpreadsheetMVCController(model);
     controller.setView(view);
 
+    controller.addColumn();
+    expectedOutput.append("ERROR: Please enter a valid column name (alphabetical characters only)");
+
+    MockView testView = (MockView) view;
+    assertEquals(expectedOutput.toString(), testView.log.toString());
   }
 
 }

@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="013926d2-f87d-4d22-a068-7b9fcc73e8c6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Asn5_Starter_jar/Asn5 Starter.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Asn5_Starter_jar/Asn5 Starter.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/view/GridPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/view/GridPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/view/SpreadsheetGUIViewEditable$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/view/SpreadsheetGUIViewEditable$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/view/SpreadsheetGUIViewEditable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/view/SpreadsheetGUIViewEditable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/controller/SpreadsheetMVCController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/controller/SpreadsheetMVCController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetGUIViewEditable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetGUIViewEditable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/IView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/IView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/edu/cs3500/spreadsheets/controller/MockView.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/edu/cs3500/spreadsheets/controller/MockView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/edu/cs3500/spreadsheets/controller/MockWorksheetModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/edu/cs3500/spreadsheets/controller/MockWorksheetModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/edu/cs3500/spreadsheets/controller/SpreadsheetMVCControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/edu/cs3500/spreadsheets/controller/SpreadsheetMVCControllerTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -98,7 +91,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.SpreadsheetMVCControllerTest">
+  <component name="RunManager" selected="JUnit.SpreadsheetMVCControllerTest.testControllerAddColumn">
     <configuration name="Unnamed" type="AndroidJUnit" nameIsGenerated="true">
       <module name="Asn5 Starter" />
       <option name="MAIN_CLASS_NAME" value="" />
@@ -204,6 +197,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SpreadsheetMVCControllerTest.testControllerAddColumn" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Asn5 Starter" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.cs3500.spreadsheets.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.cs3500.spreadsheets.controller" />
+      <option name="MAIN_CLASS_NAME" value="edu.cs3500.spreadsheets.controller.SpreadsheetMVCControllerTest" />
+      <option name="METHOD_NAME" value="testControllerAddColumn" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SpreadsheetMVCControllerTest.testControllerClick" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Asn5 Starter" />
       <extension name="coverage">
@@ -250,20 +259,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="edu.cs3500.spreadsheets in Asn5 Starter" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Asn5 Starter" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="edu.cs3500.spreadsheets.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="edu.cs3500.spreadsheets" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Android JUnit.Unnamed" />
       <item itemvalue="Application.triangular" />
@@ -277,18 +272,18 @@
       <item itemvalue="Application.openSaved" />
       <item itemvalue="Application.testEvalGood" />
       <item itemvalue="JUnit.SpreadsheetTextualViewTest" />
-      <item itemvalue="JUnit.edu.cs3500.spreadsheets in Asn5 Starter" />
       <item itemvalue="JUnit.WorkSheetModelTest" />
       <item itemvalue="JUnit.SpreadsheetMVCControllerTest.testControllerClick" />
       <item itemvalue="JUnit.SpreadsheetMVCControllerTest" />
+      <item itemvalue="JUnit.SpreadsheetMVCControllerTest.testControllerAddColumn" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SpreadsheetMVCControllerTest.testControllerAddColumn" />
         <item itemvalue="JUnit.SpreadsheetMVCControllerTest" />
         <item itemvalue="JUnit.SpreadsheetMVCControllerTest.testControllerClick" />
         <item itemvalue="JUnit.WorkSheetModelTest" />
         <item itemvalue="JUnit.SpreadsheetTextualViewTest" />
-        <item itemvalue="JUnit.edu.cs3500.spreadsheets in Asn5 Starter" />
       </list>
     </recent_temporary>
   </component>
@@ -568,7 +563,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574741916866</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Cleaned up MockView">
+      <created>1574789082901</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1574789082901</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -612,7 +614,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="- JavDocs, removed unused classes" />
     <MESSAGE value="Updated the name of getMaxRowWidth and getMaxColHeight to make more sense in the context of the model" />
     <MESSAGE value="Added window maximize listener" />
     <MESSAGE value="Fixed bug where resizing the window will offset the grid." />
@@ -637,6 +638,7 @@
     <MESSAGE value="Created mock view for testing" />
     <MESSAGE value="added more tests" />
     <MESSAGE value="- fullscreen Ok kinda" />
-    <option name="LAST_COMMIT_MESSAGE" value="- fullscreen Ok kinda" />
+    <MESSAGE value="Cleaned up MockView" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleaned up MockView" />
   </component>
 </project>
