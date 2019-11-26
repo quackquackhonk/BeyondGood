@@ -226,6 +226,15 @@ public class SpreadsheetMVCController implements SpreadsheetController {
     }
   }
 
+  @Override
+  public void deleteCellContents() {
+    System.out.println("clearing cell contents");
+    // clears the input text
+    view.setInputText("");
+    // confirms the blank input
+    this.confirmInput();
+  }
+
   /**
    * Appends an '=' onto the beginning of the given string if it is only a cell reference (single or
    * multi-cell).

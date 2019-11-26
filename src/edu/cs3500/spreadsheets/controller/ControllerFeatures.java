@@ -41,6 +41,8 @@ public interface ControllerFeatures {
    */
   void clickOnCellAt(Point loc);
 
-
-
+  /**
+   * Deletes the contents of the selected cell.
+   */
+  void deleteCellContents();
 }

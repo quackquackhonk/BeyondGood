@@ -10,6 +10,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
@@ -262,7 +263,7 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
    */
   @Override
   public Coord coordFromLoc(int x, int y) {
-    this.formText.requestFocus();
+    //this.formText.requestFocus();
     this.prevText = this.formText.getText();
     Coord cell = this.scrollPane.coordFromLoc(x, y);
     //this.repaint();
@@ -465,8 +466,10 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
    */
   private KeyboardListener configureKeyboardListener(ControllerFeatures f) {
     KeyboardListener kbd = new KeyboardListener();
+    HashMap<Integer, Runnable> keyPressedMap = new HashMap<>();
+    keyPressedMap.put(KeyEvent.VK_DELETE, f::deleteCellContents);
 
-    //TODO: finish
+    kbd.setKeyPressedMap(keyPressedMap);
 
     return kbd;
   }
