@@ -78,6 +78,7 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
     gridPanel = new GridPanel(numRow, numCol, cellWidth, cellHeight,
         stringCells, 0, colEnd, 0, rowEnd);
 
+
     // Add FormulaPanel, currently not editable.
     JPanel formulaBarPanel = new JPanel();
     formulaBarPanel.setLayout(new FlowLayout());
@@ -490,6 +491,7 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
     KeyboardListener kbd = new KeyboardListener();
 
     Map<Character, Runnable> keyTypedMap = new HashMap<>();
+
     Map<Integer, Runnable> keyPressedMap = new HashMap<>();;
     Map<Integer, Runnable> keyReleasedMap = new HashMap<>();
 
@@ -508,6 +510,12 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
     keyReleasedMap.put(KeyEvent.VK_LEFT, () -> f.cellSelectWithKey(0, 0));
 
     keyReleasedMap.put(KeyEvent.VK_RIGHT, () -> f.cellSelectWithKey(0, 0));
+
+
+    keyPressedMap.put(KeyEvent.VK_DELETE, f::deleteCellContents);
+
+    kbd.setKeyPressedMap(keyPressedMap);
+
 
     kbd.setKeyPressedMap(keyPressedMap);
     kbd.setKeyReleasedMap(keyReleasedMap);
