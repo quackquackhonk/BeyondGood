@@ -45,7 +45,7 @@ public class GridPanel extends JPanel {
     this.cs = colStart;
     this.rs = rowStart;
     this.re = rowEnd;
-    this.selectedCell = null;
+    this.selectedCell = new Coord(1,1);
   }
 
   // Change the currently highlighted cell to input Coord.
