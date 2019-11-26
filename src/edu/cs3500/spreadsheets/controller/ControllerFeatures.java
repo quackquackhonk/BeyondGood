@@ -41,6 +41,12 @@ public interface ControllerFeatures {
    */
   void clickOnCellAt(Point loc);
 
-
+  /**
+   * Changed the currently highlighted cell using the arrow keys of a keyboard.
+   *
+   * @param x change in x direction
+   * @param y change in y direction
+   */
+  void cellSelectWithKey(int x, int y);
 
 }

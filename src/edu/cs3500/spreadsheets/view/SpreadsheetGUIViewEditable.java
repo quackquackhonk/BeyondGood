@@ -77,7 +77,6 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
     gridPanel = new GridPanel(numRow, numCol, cellWidth, cellHeight,
         stringCells, 0, colEnd, 0, rowEnd);
 
-
     // Add FormulaPanel, currently not editable.
     JPanel formulaBarPanel = new JPanel();
     formulaBarPanel.setLayout(new FlowLayout());
@@ -105,7 +104,6 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
     addRowButton = new JButton("✔");
     addRowButton.setPreferredSize(new Dimension(45, cellHeight));
     addRowButton.setActionCommand("add row");
-
 
     formulaBarPanel.add(formConfirm);
     formulaBarPanel.add(formCancel);
@@ -168,7 +166,7 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
    */
   @Override
   public void render() throws IOException {
-    if(this.ready) {
+    if (this.ready) {
       this.repaint();
     } else {
       System.out.println("View has not been setup");
@@ -225,10 +223,10 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
   }
 
   /**
-   * Forces view to have a method to set up listeners for mouse events. For Swing views, this
-   * method
+   * Forces view to have a method to set up listeners for mouse events. For Swing views, this method
    * will already be implemented through Java Swing. For non-swing views, this will need to be
    * written.
+   *
    * @param listener the MouseListener to add.
    */
   @Override
@@ -283,8 +281,8 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
    * Initializes view by passing in the cells to display and the range of cells to display.
    *
    * @param stringCells All cells in the sheet.
-   * @param maxCol render cells up to this column
-   * @param maxRow render cells up to this row
+   * @param maxCol      render cells up to this column
+   * @param maxRow      render cells up to this row
    */
   @Override
   public void setupView(HashMap<Coord, String> stringCells, int maxCol, int maxRow) {
@@ -292,7 +290,6 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
     this.maxCol = maxCol;
     this.maxRow = maxRow;
     this.stringCells = stringCells;
-
 
     // Size the grid panel to be as wide/tall as the furthest out cells + some buffer.
     // If this size is smaller than the Frame size, use the frame size instead.
@@ -304,8 +301,6 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
     // Three cell buffer
     gridPanel.setPreferredSize(
         new Dimension(initPanelWidth + 3 * cellWidth, initPanelHeight + 3 * cellHeight));
-
-
 
     this.scrollPane = new SpreadsheetScrollingPanel(gridPanel, cellWidth, cellHeight);
 
@@ -325,7 +320,7 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
    * Update the view with new cells.
    *
    * @param coord location of cell.
-   * @param cell contents of new cell in String form
+   * @param cell  contents of new cell in String form
    */
   @Override
   public void updateView(Coord coord, String cell) {
@@ -370,6 +365,20 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
   }
 
   /**
+   * Changed the currently highlighted cell using the arrow keys of a keyboard.
+   *
+   * @param x change in x direction
+   * @param y change in y direction
+   */
+  @Override
+  public void cellSelectWithKey(int x, int y) {
+    Coord curSelect = this.gridPanel.getSelectedCell();
+
+    Coord newCoord = new Coord(Math.max(0, curSelect.col + x), Math.max(0, curSelect.row + y));
+    this.gridPanel.setSelectedCell(newCoord);
+  }
+
+  /**
    * Expand the range of cells to be displayed by the view to the new given ranges.
    *
    * @param maxCol display cells up to this column
@@ -388,6 +397,7 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
   /**
    * Creates an empty MouseListener that does nothing given any mouse event. Used as the default
    * stored mouse event in the view.
+   *
    * @return an empty MouseListener.
    */
   private MouseListener defaultMouseListener() {
@@ -440,8 +450,9 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
 
   /**
    * Creates a new MouseEventListener with all the specified functionality that this controller
-   * needs. This MouseListener can then be passed into the view so that the view can start
-   * listening for those specific events.
+   * needs. This MouseListener can then be passed into the view so that the view can start listening
+   * for those specific events.
+   *
    * @return the configured MouseEventListener.
    */
   private MouseEventListener configureMouseListener(ControllerFeatures f) {
@@ -459,14 +470,17 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
 
   /**
    * Creates a new KeyboardListener with all the specified keyboard functionality that this
-   * controller needs. This KeyboardListener can then be passed into the view so that the view
-   * can start listening for those specific events.
+   * controller needs. This KeyboardListener can then be passed into the view so that the view can
+   * start listening for those specific events.
+   *
    * @return the configured KeyboardListener.
    */
   private KeyboardListener configureKeyboardListener(ControllerFeatures f) {
     KeyboardListener kbd = new KeyboardListener();
 
-    //TODO: finish
+    Map<Character, Runnable> keyTypedMap;
+    Map<Integer, Runnable> keyPressedMap;
+    Map<Integer, Runnable> keyReleasedMap;
 
     return kbd;
   }

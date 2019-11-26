@@ -177,6 +177,17 @@ public class SpreadsheetTextualView implements IView {
   }
 
   /**
+   * Changed the currently highlighted cell using the arrow keys of a keyboard.
+   *
+   * @param x change in x direction
+   * @param y change in y direction
+   */
+  @Override
+  public void cellSelectWithKey(int x, int y) {
+    // Text view doesn't change selection
+  }
+
+  /**
    * Expand the range of cells to be displayed by the view to the new given ranges.
    *
    * @param maxCol

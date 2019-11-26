@@ -227,6 +227,22 @@ public class SpreadsheetMVCController implements SpreadsheetController {
   }
 
   /**
+   * Changed the currently highlighted cell using the arrow keys of a keyboard.
+   *
+   * @param x change in x direction
+   * @param y change in y direction
+   */
+  @Override
+  public void cellSelectWithKey(int x, int y) {
+    view.cellSelectWithKey(x, y);
+    try {
+      view.render();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  /**
    * Appends an '=' onto the beginning of the given string if it is only a cell reference (single or
    * multi-cell).
    *
