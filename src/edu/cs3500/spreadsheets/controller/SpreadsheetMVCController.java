@@ -1,24 +1,27 @@
 package edu.cs3500.spreadsheets.controller;
 
-import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import edu.cs3500.spreadsheets.model.Coord;
 import edu.cs3500.spreadsheets.model.IWriteWorkSheetModel;
 import edu.cs3500.spreadsheets.view.IView;
+import java.awt.Point;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+/**
+ * MVC Controller for IWriteWorksheetModels and IViews. Facilitates communication between the two
+ * that otherwise could not happen.
+ */
 public class SpreadsheetMVCController implements SpreadsheetController {
+
   private IWriteWorkSheetModel model;
   private IView view;
 
   /**
    * Initializes the controller to have control over the given model.
+   *
    * @param model the model to have control over.
    */
   public SpreadsheetMVCController(IWriteWorkSheetModel model) {
@@ -62,11 +65,11 @@ public class SpreadsheetMVCController implements SpreadsheetController {
         System.out.println(cellResult + " is result");
         // only add the cell if it is not empty
 
-          stringCells.put(c, cellResult);
+        stringCells.put(c, cellResult);
 
       } catch (IllegalArgumentException e) {
         String msg = e.getMessage();
-        System.out.println(msg + " "+ c.toString());
+        System.out.println(msg + " " + c.toString());
         if (msg.contains("cycle")) {
           stringCells.put(c, "#REF!");
         } else if (msg.contains("Formula")) {
@@ -77,13 +80,14 @@ public class SpreadsheetMVCController implements SpreadsheetController {
     return stringCells;
   }
 
+  /**
+   * Sets the view that the controller has control over and initializes the IView for potential
+   * interaction.
+   *
+   * @param view the view to control.
+   */
   @Override
   public void setView(IView view) {
-    /* TODO: Decouple model from controller.
-             - pass HashMap<Coord, String> to view
-             - pass max row and max col to view
-             - update these on "confirm formula" and adding new rows/columns
-     */
     HashMap<Coord, String> stringCells = cellsFromModel(this.model);
 
     this.view = view;
@@ -100,41 +104,20 @@ public class SpreadsheetMVCController implements SpreadsheetController {
   }
 
   /**
-   * Creates a ButtonListener with all the specified button functionality for this specific
-   * controller to have. This ButtonListener can then be passed into the view in order for the
-   * view to start listening for those specific events.
-   * @return the configured ButtonListener.
+   * Fetches the (possibly) new cell data from the user input and puts it into the currently
+   * selected cell.
    */
-  private ButtonListener configureButtonListener() {
-    ButtonListener btn = new ButtonListener();
-    Map<String, Runnable> buttonClickedActions = new HashMap<>();
-
-    // Create new cell from user text input.
-    buttonClickedActions.put("confirm input", this::confirmInput);
-
-    // Clear user text input.
-    buttonClickedActions.put("clear input", this::clearInput);
-
-    // adds a column
-    buttonClickedActions.put("add column", this::addColumn);
-
-    // adds a row
-    buttonClickedActions.put("add row", this::addRow);
-    btn.setButtonClickedActionMap(buttonClickedActions);
-    return btn;
-  }
-
   @Override
   public void confirmInput() {
     String input = view.getInputText();
     Coord location = view.getSelectedCell();
-    if(location != null && input != null) {
+    if (location != null && input != null) {
       HashSet<Coord> toUpdate = model.setCellAllowErrors(location, input);
       System.out.println(toUpdate);
       HashMap<Coord, String> updatedCells = this.recalculateCells(toUpdate);
 
       // Update cells dependent on newly added cells
-      for(Coord c : updatedCells.keySet()) {
+      for (Coord c : updatedCells.keySet()) {
         view.updateView(c, updatedCells.get(c));
         System.out.println("Updating " + c);
       }
@@ -146,6 +129,10 @@ public class SpreadsheetMVCController implements SpreadsheetController {
     }
   }
 
+  /**
+   * Clears the input from the user input and reverts back to the old cell contents before they were
+   * modified by the user.
+   */
   @Override
   public void clearInput() {
     Coord target = view.getSelectedCell();
@@ -162,6 +149,11 @@ public class SpreadsheetMVCController implements SpreadsheetController {
     view.setInputText(cellText);
   }
 
+  /**
+   * Adds a column at the index specified by the column adding text field. If the given column is
+   * further out in the grid than the view is currently rendering, expand the size of the grid to
+   * accommodate the new size.
+   */
   @Override
   public void addColumn() {
     String toAdd = view.getColToAdd();
@@ -184,6 +176,11 @@ public class SpreadsheetMVCController implements SpreadsheetController {
     }
   }
 
+  /**
+   * Adds as a row at the index specified by the row adding text field. If the given row index is
+   * further out in the grid than the max row of the grid in the view, expand the size of the grid
+   * to accommodate the new size.
+   */
   @Override
   public void addRow() {
     String toAdd = view.getRowToAdd();
@@ -206,6 +203,12 @@ public class SpreadsheetMVCController implements SpreadsheetController {
     }
   }
 
+  /**
+   * Selects the cell that was clicked on.
+   *
+   * @param loc the point that was clicked on, given in the x and y pixel coordinates relative to
+   *            the grid JPanel in the view.
+   */
   @Override
   public void clickOnCellAt(Point loc) {
     Coord target = view.coordFromLoc(loc.x, loc.y);
@@ -227,8 +230,9 @@ public class SpreadsheetMVCController implements SpreadsheetController {
   }
 
   /**
-   * Appends an '=' onto the beginning of the given string if it is only a cell reference (single
-   * or multi-cell)
+   * Appends an '=' onto the beginning of the given string if it is only a cell reference (single or
+   * multi-cell).
+   *
    * @param cellText the string to append.
    * @return cellText or "=" + cellText.
    */
@@ -237,7 +241,7 @@ public class SpreadsheetMVCController implements SpreadsheetController {
     final Pattern singleCellRef = Pattern.compile("([A-Za-z]+)([1-9][0-9]*)");
     Matcher singleMatch = singleCellRef.matcher(cellText);
     final Pattern multiCellRef =
-            Pattern.compile("([A-Za-z]+)([1-9][0-9]*)([:])([A-Za-z]+)([1-9][0-9]*)");
+        Pattern.compile("([A-Za-z]+)([1-9][0-9]*)([:])([A-Za-z]+)([1-9][0-9]*)");
     Matcher multiMatch = multiCellRef.matcher(cellText);
     if (singleMatch.matches() || multiMatch.matches()) {
       cellText = "=" + cellText;

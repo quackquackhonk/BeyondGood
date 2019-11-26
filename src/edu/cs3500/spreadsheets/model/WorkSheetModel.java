@@ -153,6 +153,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
           System.out.println("Made blank at " + c);
         }
       }
+      System.out.println("Model: Added cell at " + coord);
       this.sheet.put(coord, newCell);
     }
     // Return children of newly added cell.

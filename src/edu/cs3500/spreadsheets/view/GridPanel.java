@@ -142,6 +142,7 @@ public class GridPanel extends JPanel {
   @Override
   protected void paintComponent(Graphics g) {
     super.paintComponent(g);
+    System.out.println(this.getPreferredSize() + " grid size");
     Font font = new Font("Arial", Font.PLAIN, (int) Math.floor(ch / 2));
 
     this.setPreferredSize(new Dimension((3+getMaxCol())*cw, (3+getMaxRow())*ch));

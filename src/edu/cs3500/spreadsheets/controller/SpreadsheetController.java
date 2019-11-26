@@ -9,8 +9,9 @@ import edu.cs3500.spreadsheets.view.IView;
 public interface SpreadsheetController extends ControllerFeatures {
 
   /**
-   * Sets the view that the controller has control over. Sets up any event listeners that may be
-   * necessary as well.
+   * Sets the view that the controller has control over and initializes the IView for potential
+   * interaction.
+   *
    * @param view the view to control.
    */
   void setView(IView view);

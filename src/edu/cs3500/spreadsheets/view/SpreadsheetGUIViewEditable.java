@@ -14,7 +14,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.function.Consumer;
 import javax.swing.JButton;
@@ -51,9 +50,6 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
   private boolean ready;
   private String prevText;
 
-  private final int MIN_COL_END = 13;
-  private final int MIN_ROW_END = 25;
-
   /**
    * Constructs a GUI view for IReadWorkSheetModel.
    */
@@ -74,6 +70,7 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
     int numRow = this.getPreferredSize().width / cellWidth + 3;
     int numCol = this.getPreferredSize().height / cellHeight + 3;
     //System.out.println(numRow);
+
     int colEnd = this.getWidth() / cellWidth + 3;
     int rowEnd = this.getHeight() / cellWidth + 3;
 
@@ -120,11 +117,9 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
     formulaBarPanel.add(addColField);
     formulaBarPanel.add(addColButton);
 
-
     this.add(formulaBarPanel, BorderLayout.NORTH);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.addWindowStateListener(we -> createScrollPanel(this.stringCells));
-    System.out.println(this.getSize());
     this.pack();
   }
 
@@ -148,19 +143,11 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
     int rowStart = gridPanel.getRowStart();
     int rowEnd = gridPanel.getRowEnd();
 
+    System.out.println(getPreferredSize() + " gui size");
     int initPanelWidth = Math.max(getPreferredSize().width, this.maxCol * cellWidth);
     //System.out.println(initPanelWidth);
     int initPanelHeight = Math.max(getPreferredSize().height, this.maxRow * cellHeight);
 
-    System.out.println(numRow);
-    System.out.println(numCol);
-    System.out.println(rowStart);
-    System.out.println(rowEnd);
-    System.out.println(colStart);
-    System.out.println(colEnd);
-
-    gridPanel = new GridPanel(numRow, numCol, cellWidth,
-            cellHeight, stringCells, colStart, colEnd, rowStart, rowEnd);
     // Three cell buffer
     gridPanel.setPreferredSize(
         new Dimension(initPanelWidth + 3 * cellWidth, initPanelHeight + 3 * cellHeight));
@@ -169,7 +156,7 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
     this.scrollPane.setPreferredSize(new Dimension(currPanelWidth + 3 * cellWidth,
         currPanelHeight + 3 * cellHeight));
 
-//     Three cell buffer
+    // Three cell buffer
     gridPanel.setPreferredSize(
         new Dimension(currPanelWidth + 3 * cellWidth,
             currPanelHeight + 3 * cellHeight));
@@ -303,10 +290,10 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
   @Override
   public void setupView(HashMap<Coord, String> stringCells, int maxCol, int maxRow) {
     this.setTitle("Beyond gOOD Editor");
-    System.out.println("setup");
     this.maxCol = maxCol;
     this.maxRow = maxRow;
     this.stringCells = stringCells;
+
 
     // Size the grid panel to be as wide/tall as the furthest out cells + some buffer.
     // If this size is smaller than the Frame size, use the frame size instead.
@@ -318,6 +305,8 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
     // Three cell buffer
     gridPanel.setPreferredSize(
         new Dimension(initPanelWidth + 3 * cellWidth, initPanelHeight + 3 * cellHeight));
+
+
 
     this.scrollPane = new SpreadsheetScrollingPanel(gridPanel, cellWidth, cellHeight);
 
