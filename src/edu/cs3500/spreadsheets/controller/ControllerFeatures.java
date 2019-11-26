@@ -42,6 +42,11 @@ public interface ControllerFeatures {
   void clickOnCellAt(Point loc);
 
   /**
+   * Deletes the contents of the selected cell.
+   */
+  void deleteCellContents();
+
+  /**
    * Changed the currently highlighted cell using the arrow keys of a keyboard.
    *
    * @param x change in x direction

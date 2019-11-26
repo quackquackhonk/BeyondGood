@@ -232,6 +232,15 @@ public class SpreadsheetMVCController implements SpreadsheetController {
     }
   }
 
+  @Override
+  public void deleteCellContents() {
+    System.out.println("clearing cell contents");
+    // clears the input text
+    view.setInputText("");
+    // confirms the blank input
+    this.confirmInput();
+  }
+
   /**
    * Changed the currently highlighted cell using the arrow keys of a keyboard.
    *
