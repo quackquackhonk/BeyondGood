@@ -1,3 +1,46 @@
+*** CHANGELOG ********************************************************************************
+  Additional Interfaces:
+    - ControllerFeatures: Interface containing all the methods desired by a Controller to facilitate
+                          changes to the IView and IWorksheetModel.
+
+    - MouseRunnable: Interface to store methods to run based on specific mouse inputs.
+    - SpreadsheetController: Interface for Controllers that work with IWorkSheetModels. Simple
+                             interface just for adding an IView to dispaly the model.
+
+
+  Additional Classes:
+
+	SpreadsheetGUIViewEditable:
+  	- GUI view for spreadsheets that has basic functionality for Controllers to use to make visual changes.
+  	- SpreadsheetScrollingPanel is reused to visualize the spreadsheets.
+  	- Additional methods that facilitate visual changes such as highlighting cells were added to the
+  	  IView interface.
+  	- Controllers can pass this view "Feature" callbacks that facilitate communication between this view,
+  	  the Controller, and the model
+  	- "Feature" callbacks also set visual changes, such as highlighting cells.
+  	- There are two additional buttons to confirm or cancel the current input in the main textfield.
+  	  Confirming changes uses callbacks provided by the Controller to create a new cell in the model.
+  	  Cancelling resets the text input.
+  	- Additional buttons/text inputs for adding rows and columns are also implemented through "Feature" callbacks.
+
+  SpreadsheetMVCController:
+    - Controller class to facilitate communication between IWorkSheetModels and IViews.
+    - Communication is required, for example, to grab user inputted text from the view and passing
+      it to the model for an action.
+    - Is a "Feature", so passes itself to its IView to facilitate callback functionality
+    - Because it is a "Feature", it has no explicit knowledge of KeyEvents or Swing.
+
+  Mouse/Keyboard/ButtonListeners:
+    - Simple classes that setup Action/ButtonMaps for callbacks
+
+
+  ****** Changes to existing classes *******************************************************
+  - IView: Set/Get methods for IViews.
+           ex: Getting text from a textfield
+           ex: Setting currently highlighted cell
+           ex: Adding additional blank rows/columns to display, independently of the model
+
+
 *** VIEW ************************************************************************************
 
 -------- Interfaces --------------------------------
