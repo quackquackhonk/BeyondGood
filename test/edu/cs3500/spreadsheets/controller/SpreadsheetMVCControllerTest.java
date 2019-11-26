@@ -3,7 +3,7 @@ package edu.cs3500.spreadsheets.controller;
 import edu.cs3500.spreadsheets.model.Coord;
 import org.junit.Test;
 
-import java.awt.*;
+import java.awt.Point;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -13,9 +13,8 @@ import edu.cs3500.spreadsheets.model.IWriteWorkSheetModel;
 import edu.cs3500.spreadsheets.model.WorkSheetModel;
 import edu.cs3500.spreadsheets.model.WorksheetReader;
 import edu.cs3500.spreadsheets.view.IView;
-import edu.cs3500.spreadsheets.view.SpreadsheetGUIViewEditable;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Tests for the Controller.

@@ -2,12 +2,17 @@ package edu.cs3500.spreadsheets.view;
 
 import edu.cs3500.spreadsheets.model.Coord;
 
-import java.awt.*;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Font;
 import java.awt.event.AdjustmentListener;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
-import javax.swing.border.Border;
 
 /**
  * Custom ScrollPane for spreadsheets.

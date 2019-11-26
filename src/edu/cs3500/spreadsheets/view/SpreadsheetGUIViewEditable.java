@@ -17,7 +17,6 @@ import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.Consumer;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -165,11 +164,8 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
     this.add(scrollPane, BorderLayout.CENTER);
   }
 
-  /**
-   * Renders state of model.
-   */
   @Override
-  public void render() throws IOException {
+  public void render(){
     if (this.ready) {
       this.repaint();
     } else {

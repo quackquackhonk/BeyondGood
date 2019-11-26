@@ -7,7 +7,6 @@ import java.util.Map;
 /**
  * Class for handling button events. Contains a Map of String -> Runnable in order to run the
  * correct action based on the button that was pressed.
- *
  * Copied from MVC Lecture notes code.
  */
 public class ButtonListener implements ActionListener {

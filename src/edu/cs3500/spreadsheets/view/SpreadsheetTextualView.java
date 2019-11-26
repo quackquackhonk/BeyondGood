@@ -10,7 +10,6 @@ import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.function.Consumer;
 
 /**
  * Textual view for ISpreadSheetModels.
@@ -30,19 +29,21 @@ public class SpreadsheetTextualView implements IView {
     this.out = out;
   }
 
-  /**
-   * Renders state of model.
-   */
   @Override
-  public void render() throws IOException {
-    HashSet<Coord> allCells = model.activeCells();
-    for (Coord c : allCells) {
-      String cellText = model.getCellText(c);
-      if (!cellText.equals("")) {
-        String toAdd = c.toString() + " " + cellText;
-        out.append(toAdd);
-        out.append("\n");
+  public void render() {
+    try {
+      HashSet<Coord> allCells = model.activeCells();
+      for (Coord c : allCells) {
+        String cellText = model.getCellText(c);
+        if (!cellText.equals("")) {
+          String toAdd = c.toString() + " " + cellText;
+          out.append(toAdd);
+          out.append("\n");
+        }
       }
+    } catch (IOException e) {
+      System.out.println("Problem writing to output file.");
+      e.printStackTrace();
     }
   }
 

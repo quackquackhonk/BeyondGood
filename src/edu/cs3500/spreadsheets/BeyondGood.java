@@ -4,12 +4,10 @@ import edu.cs3500.spreadsheets.controller.SpreadsheetController;
 import edu.cs3500.spreadsheets.controller.SpreadsheetMVCController;
 import edu.cs3500.spreadsheets.model.IWriteWorkSheetModel;
 import edu.cs3500.spreadsheets.model.ViewCreator;
-import edu.cs3500.spreadsheets.model.ViewCreator.ViewType;
 import edu.cs3500.spreadsheets.model.WorkSheetModel;
 import edu.cs3500.spreadsheets.model.WorksheetReader;
 import edu.cs3500.spreadsheets.model.WorksheetReader.WorksheetBuilder;
 import edu.cs3500.spreadsheets.view.IView;
-import edu.cs3500.spreadsheets.view.SpreadsheetGUIView;
 
 import java.io.File;
 import java.io.FileNotFoundException;

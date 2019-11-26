@@ -1,11 +1,10 @@
 package edu.cs3500.spreadsheets.controller;
 
-import java.awt.*;
+import java.awt.Point;
 
 /**
  * Function object for handling mouse events. Allows for the passing in of the coordinates of
- * the
- * click when running.
+ * the click when running.
  */
 public interface MouseRunnable {
 

@@ -10,7 +10,6 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.function.Consumer;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -138,7 +137,7 @@ public class SpreadsheetGUIView extends JFrame implements IView {
   }
 
   @Override
-  public void render() throws IOException {
+  public void render() {
     this.repaint();
   }
 

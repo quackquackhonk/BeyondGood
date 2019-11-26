@@ -1,9 +1,5 @@
 package edu.cs3500.spreadsheets.controller;
 
-import java.awt.*;
-import java.io.IOException;
-import java.util.function.Consumer;
-
 import edu.cs3500.spreadsheets.model.Coord;
 import edu.cs3500.spreadsheets.view.IView;
 import edu.cs3500.spreadsheets.view.SpreadsheetGUIViewEditable;
@@ -11,22 +7,15 @@ import edu.cs3500.spreadsheets.view.SpreadsheetGUIViewEditable;
 public class MockView extends SpreadsheetGUIViewEditable implements IView {
 
   public StringBuilder log = new StringBuilder();
-  String colToAdd = "";
-  String rowToAdd = "";
 
   @Override
-  public void render() throws IOException {
+  public void render() {
     return;
   }
 
   @Override
   public void makeVisible() {
     return;
-  }
-
-  @Override
-  public void setCommandCallback(Consumer<String> callback) {
-    throw new UnsupportedOperationException("Not necessary for testing");
   }
 
   @Override

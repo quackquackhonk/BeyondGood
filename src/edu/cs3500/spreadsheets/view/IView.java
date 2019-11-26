@@ -6,7 +6,6 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.function.Consumer;
 
 import edu.cs3500.spreadsheets.model.Coord;
 
@@ -17,7 +16,7 @@ public interface IView {
   /**
    * Renders state of model.
    */
-  void render() throws IOException;
+  void render();
 
   /**
    * Make the view visible. This is usually called after the view is constructed.

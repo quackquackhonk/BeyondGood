@@ -1,6 +1,6 @@
 package edu.cs3500.spreadsheets.controller;
 
-import java.awt.*;
+import java.awt.Point;
 
 /**
  * Interface containing all the features desired by a Controller for the Spreadsheets. Features
