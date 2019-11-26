@@ -224,7 +224,7 @@ public class SpreadsheetMVCController implements SpreadsheetController {
     cellText = this.addEqualsIfRef(cellText);
 
     view.setInputText(cellText);
-    view.resetFocus();
+    //view.resetFocus();
     try {
       view.render();
     } catch (IOException e) {
@@ -249,9 +249,20 @@ public class SpreadsheetMVCController implements SpreadsheetController {
    */
   @Override
   public void cellSelectWithKey(int x, int y) {
+    Coord curSelect = view.getSelectedCell();
+    Coord newCoord = new Coord(Math.max(1, curSelect.col + x), Math.max(1, curSelect.row + y));
+    String cellText;
+    try {
+      cellText = model.getCellText(newCoord);
+    } catch (IllegalArgumentException n) {
+      cellText = "";
+    }
+    cellText = this.addEqualsIfRef(cellText);
+
+    view.setInputText(cellText);
     view.resetFocus();
     //System.out.println("key recieved");
-    view.cellSelectWithKey(x, y);
+    view.cellSelectWithKey(newCoord);
     try {
       view.render();
     } catch (IOException e) {

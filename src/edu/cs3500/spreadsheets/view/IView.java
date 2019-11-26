@@ -149,10 +149,9 @@ public interface IView {
   /**
    * Changed the currently highlighted cell using the arrow keys of a keyboard.
    *
-   * @param x change in x direction
-   * @param y change in y direction
+   * @param coord new selection based on keyboard input
    */
-  void cellSelectWithKey(int x, int y);
+  void cellSelectWithKey(Coord coord);
 
   /**
    * Reset focus of the view such that keyboard interactivity can occur.

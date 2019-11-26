@@ -370,15 +370,11 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
   /**
    * Changed the currently highlighted cell using the arrow keys of a keyboard.
    *
-   * @param x change in x direction
-   * @param y change in y direction
+   * @param coord new selection based on keyboard input
    */
   @Override
-  public void cellSelectWithKey(int x, int y) {
-    Coord curSelect = this.gridPanel.getSelectedCell();
-
-    Coord newCoord = new Coord(Math.max(1, curSelect.col + x), Math.max(1, curSelect.row + y));
-    this.gridPanel.setSelectedCell(newCoord);
+  public void cellSelectWithKey(Coord coord) {
+    this.gridPanel.setSelectedCell(coord);
   }
 
   /**
