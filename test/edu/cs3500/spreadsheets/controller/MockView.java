@@ -29,7 +29,7 @@ public class MockView extends SpreadsheetGUIViewEditable implements IView {
 
   @Override
   public void showErrorMessage(String error) {
-    return;
+    log.append("ERROR: " + error);
   }
 
   @Override

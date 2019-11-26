@@ -170,7 +170,6 @@ public class SpreadsheetMVCController implements SpreadsheetController {
       } catch (IOException e) {
         e.printStackTrace();
       }
-      view.showErrorMessage("added column at: " + colIdx);
     } else { // does not match
       view.showErrorMessage("Please enter a valid column name (alphabetical characters only)");
     }

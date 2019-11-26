@@ -145,7 +145,6 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
 
     System.out.println(getPreferredSize() + " gui size");
     int initPanelWidth = Math.max(getPreferredSize().width, this.maxCol * cellWidth);
-    //System.out.println(initPanelWidth);
     int initPanelHeight = Math.max(getPreferredSize().height, this.maxRow * cellHeight);
 
     // Three cell buffer

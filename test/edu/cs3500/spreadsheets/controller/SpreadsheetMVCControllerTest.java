@@ -43,6 +43,7 @@ public class SpreadsheetMVCControllerTest {
         er.printStackTrace();
       }
     }
+
     view = new MockView();
     controller = new SpreadsheetMVCController(model);
     controller.setView(view);
@@ -164,9 +165,17 @@ public class SpreadsheetMVCControllerTest {
     controller = new SpreadsheetMVCController(model);
     controller.setView(view);
     model.setCellAllowErrors(new Coord(0,0), "123");
+  }
 
 
-
+  @Test
+  public void testControllerAddColumn() {
+    this.init("good1.txt");
+    StringBuilder expectedOutput = new StringBuilder();
+    model = new MockWorksheetModel();
+    view = new MockView();
+    controller = new SpreadsheetMVCController(model);
+    controller.setView(view);
 
   }
 
