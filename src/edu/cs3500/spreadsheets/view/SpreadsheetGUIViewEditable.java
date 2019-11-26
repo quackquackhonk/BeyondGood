@@ -6,6 +6,7 @@ import edu.cs3500.spreadsheets.controller.KeyboardListener;
 import edu.cs3500.spreadsheets.controller.MouseEventListener;
 import edu.cs3500.spreadsheets.controller.MouseRunnable;
 import edu.cs3500.spreadsheets.model.Coord;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -17,6 +18,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Consumer;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -76,7 +78,7 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
     int rowEnd = this.getHeight() / cellWidth + 3;
 
     gridPanel = new GridPanel(numRow, numCol, cellWidth, cellHeight,
-        stringCells, 0, colEnd, 0, rowEnd);
+            stringCells, 0, colEnd, 0, rowEnd);
 
 
     // Add FormulaPanel, currently not editable.
@@ -149,16 +151,16 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
 
     // Three cell buffer
     gridPanel.setPreferredSize(
-        new Dimension(initPanelWidth + 3 * cellWidth, initPanelHeight + 3 * cellHeight));
+            new Dimension(initPanelWidth + 3 * cellWidth, initPanelHeight + 3 * cellHeight));
 
     scrollPane = new SpreadsheetScrollingPanel(gridPanel, cellWidth, cellHeight);
     this.scrollPane.setPreferredSize(new Dimension(currPanelWidth + 3 * cellWidth,
-        currPanelHeight + 3 * cellHeight));
+            currPanelHeight + 3 * cellHeight));
 
     // Three cell buffer
     gridPanel.setPreferredSize(
-        new Dimension(currPanelWidth + 3 * cellWidth,
-            currPanelHeight + 3 * cellHeight));
+            new Dimension(currPanelWidth + 3 * cellWidth,
+                    currPanelHeight + 3 * cellHeight));
     //this.gridPanel.addMouseListener(mouseEvent);
     this.add(scrollPane, BorderLayout.CENTER);
   }
@@ -302,7 +304,7 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
 
     // Three cell buffer
     gridPanel.setPreferredSize(
-        new Dimension(initPanelWidth + 3 * cellWidth, initPanelHeight + 3 * cellHeight));
+            new Dimension(initPanelWidth + 3 * cellWidth, initPanelHeight + 3 * cellHeight));
 
     this.scrollPane = new SpreadsheetScrollingPanel(gridPanel, cellWidth, cellHeight);
 

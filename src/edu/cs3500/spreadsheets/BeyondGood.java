@@ -1,5 +1,6 @@
 package edu.cs3500.spreadsheets;
 
+import edu.cs3500.spreadsheets.controller.SpreadsheetController;
 import edu.cs3500.spreadsheets.controller.SpreadsheetMVCController;
 import edu.cs3500.spreadsheets.model.IWriteWorkSheetModel;
 import edu.cs3500.spreadsheets.model.ViewCreator;
@@ -8,6 +9,7 @@ import edu.cs3500.spreadsheets.model.WorkSheetModel;
 import edu.cs3500.spreadsheets.model.WorksheetReader;
 import edu.cs3500.spreadsheets.model.WorksheetReader.WorksheetBuilder;
 import edu.cs3500.spreadsheets.view.IView;
+import edu.cs3500.spreadsheets.view.SpreadsheetGUIView;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -31,6 +33,7 @@ public class BeyondGood {
       if ((args[0].equals("-gui") || args[0].equals("-edit")) && args.length == 1) {
         //System.out.println("making blank gui");
         File file = new File("newSpreadsheet.txt");
+        file.delete();
         file.createNewFile();
         new FileReader(file);
         Readable fileReader;
@@ -42,6 +45,10 @@ public class BeyondGood {
         IView guiView = args[0].equals("-gui")
             ? ViewCreator.create(ViewCreator.ViewType.GUI, model)
             : ViewCreator.create(ViewCreator.ViewType.EDITGUI, model);
+        if (args[0].equals("-edit")) {
+          SpreadsheetController controller = new SpreadsheetMVCController(model);
+          controller.setView(guiView);
+        }
         guiView.render();
         guiView.makeVisible();
       } else if (validArgs(args)) {

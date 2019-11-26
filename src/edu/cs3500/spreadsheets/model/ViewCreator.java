@@ -22,7 +22,7 @@ public class ViewCreator {
       view = new SpreadsheetGUIView(model);
     } else if(viewType == ViewType.EDITGUI) {
       view = new SpreadsheetGUIViewEditable();
-      System.out.println("Made edit");
+      //System.out.println("Made edit");
     } else {
       throw new IllegalArgumentException("This isn't even possible lol");
     }
