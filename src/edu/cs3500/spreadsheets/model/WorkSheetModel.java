@@ -161,11 +161,11 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
 
     HashSet<Coord> checkNewMax = new HashSet<>(this.adjList.get(coord).get(1));
     checkNewMax.add(coord);
-    for(Coord c : checkNewMax) {
-      if(this.maxCol < c.col) {
+    for (Coord c : checkNewMax) {
+      if (this.maxCol < c.col) {
         this.maxCol = c.col;
       }
-      if(this.maxRow < c.row) {
+      if (this.maxRow < c.row) {
         this.maxRow = c.row;
       }
     }
@@ -269,19 +269,28 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
   @Override
   public String evaluateCellCheck(String coord) {
     Coord tar = this.getCoordFromString(coord);
-    if (!this.getProbCells(tar).isEmpty()) {
-      throw new IllegalArgumentException("Cell in cycle");
-    } else {
-      try {
-        Coord target = getCoordFromString(coord);
-        CellContents cell = this.sheet.get(target);
-        Value finalVal = cell.acceptEvalVisitor(new EvalVisitor());
-        //System.out.println(finalVal.toString());
-        return finalVal.toString();
-      } catch (NullPointerException n) {
-        throw new IllegalArgumentException("Can't evaluate cell or cell doesn't exist" + coord);
+
+    // Check if the dependencies for this cell has cycles. If none do, this cell isn't in a cycle.
+    try {
+      for (Coord c : this.adjList.get(coord).get(1)) {
+        if (getProbCells(c).size() != 0) {
+          throw new IllegalArgumentException("Cell in cycle");
+        }
       }
+    } catch (NullPointerException p) {
+      System.out.println("No dependencies yet");
     }
+
+    try {
+      Coord target = getCoordFromString(coord);
+      CellContents cell = this.sheet.get(target);
+      Value finalVal = cell.acceptEvalVisitor(new EvalVisitor());
+      //System.out.println(finalVal.toString());
+      return finalVal.toString();
+    } catch (NullPointerException n) {
+      throw new IllegalArgumentException("Can't evaluate cell or cell doesn't exist" + coord);
+    }
+
   }
 
   /**
@@ -404,11 +413,13 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
       if (visited.search(toCheck) != -1) {
         isCycle = true;
         output.add(origin);
+        System.out.println("ToCheck was cycle: " + toCheck);
         break;
       }
       visited.push(toCheck);
     }
     // Returns list of cells affected by cycle. Can be empty.
+    System.out.println("Cells in cycle: " + output);
     return output;
   }
 
