@@ -121,7 +121,6 @@ public class GridPanel extends JPanel {
 
     Coord location = new Coord(col+1, row+1);
     this.selectedCell = location;
-    this.repaint();
     return location;
   }
 
@@ -143,8 +142,6 @@ public class GridPanel extends JPanel {
   @Override
   protected void paintComponent(Graphics g) {
     super.paintComponent(g);
-    System.out.println(getMaxCol() + " maxCOl");
-    System.out.println(getMaxRow() + " maxROl");
     Font font = new Font("Arial", Font.PLAIN, (int) Math.floor(ch / 2));
 
     this.setPreferredSize(new Dimension((3+getMaxCol())*cw, (3+getMaxRow())*ch));
@@ -155,8 +152,8 @@ public class GridPanel extends JPanel {
     g2d.setFont(font);
     g2d.setColor(Color.pink);
 
-    for (int row = rs; row < re; row++) {
-      for (int col = cs; col < ce; col++) {
+    for (int row = Math.max(rs-10, 0); row < re+10; row++) {
+      for (int col = Math.max(cs-10,0); col < ce+10; col++) {
         String cellText = grid.getOrDefault(new Coord(col + 1, row + 1), "");
         g2d.setColor(Color.black);
         g2d.fillRect(col * cw, row * ch, cw, ch);

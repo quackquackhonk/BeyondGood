@@ -259,5 +259,10 @@ public class SpreadsheetMVCController implements SpreadsheetController {
     }
 
     view.setInputText(cellText);
+    try {
+      view.render();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 }
