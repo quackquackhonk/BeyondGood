@@ -278,7 +278,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
         }
       }
     } catch (NullPointerException p) {
-      System.out.println("No dependencies yet");
+      //System.out.println("No dependencies yet");
     }
 
     try {
@@ -419,7 +419,6 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
       visited.push(toCheck);
     }
     // Returns list of cells affected by cycle. Can be empty.
-    System.out.println("Cells in cycle: " + output);
     return output;
   }
 
@@ -474,7 +473,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
     } else {
       //System.out.println("Setting cell " + coord.toString());
       CellContents newCell = SheetBuilder.cellFromString(cellString);
-      System.out.println(newCell.getRaw() + coord);
+      //System.out.println(newCell.getRaw() + coord);
 
       boolean coordExists = this.getCellAdjList(coord) != null;
 
@@ -640,7 +639,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
       try {
         String toParse;
         CellContents cell;
-        System.out.println(contents);
+        //System.out.println(contents);
         String first = contents.substring(0, 1);
         // Parses CellContents if equal sign seen
         if (first.equals("=")) {
@@ -656,7 +655,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
         }
         return cell;
       } catch (IllegalArgumentException e) {
-        System.out.println(contents.length());
+        //System.out.println(contents.length());
         throw new IllegalArgumentException(e);
       }
     }

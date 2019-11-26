@@ -23,7 +23,6 @@ public class SpreadsheetMVCController implements SpreadsheetController {
    */
   public SpreadsheetMVCController(IWriteWorkSheetModel model) {
     this.model = model;
-    // TODO: set up observer for the model.
   }
 
   // Get active model cells, draw them
