@@ -10,6 +10,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
@@ -313,6 +314,7 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
     formCancel.setPreferredSize(new Dimension(45, cellHeight));
     this.pack();
     this.revalidate();
+    this.resetFocus();
     ready = true;
   }
 
@@ -374,8 +376,17 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
   public void cellSelectWithKey(int x, int y) {
     Coord curSelect = this.gridPanel.getSelectedCell();
 
-    Coord newCoord = new Coord(Math.max(0, curSelect.col + x), Math.max(0, curSelect.row + y));
+    Coord newCoord = new Coord(Math.max(1, curSelect.col + x), Math.max(1, curSelect.row + y));
     this.gridPanel.setSelectedCell(newCoord);
+  }
+
+  /**
+   * Reset focus of the view such that keyboard interactivity can occur.
+   */
+  @Override
+  public void resetFocus() {
+    this.setFocusable(true);
+    this.requestFocus();
   }
 
   /**
@@ -478,10 +489,28 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
   private KeyboardListener configureKeyboardListener(ControllerFeatures f) {
     KeyboardListener kbd = new KeyboardListener();
 
-    Map<Character, Runnable> keyTypedMap;
-    Map<Integer, Runnable> keyPressedMap;
-    Map<Integer, Runnable> keyReleasedMap;
+    Map<Character, Runnable> keyTypedMap = new HashMap<>();
+    Map<Integer, Runnable> keyPressedMap = new HashMap<>();;
+    Map<Integer, Runnable> keyReleasedMap = new HashMap<>();
 
+    keyPressedMap.put(KeyEvent.VK_UP, () -> f.cellSelectWithKey(0, -1));
+
+    keyPressedMap.put(KeyEvent.VK_DOWN, () -> f.cellSelectWithKey(0, 1));
+
+    keyPressedMap.put(KeyEvent.VK_LEFT, () -> f.cellSelectWithKey(-1, 0));
+
+    keyPressedMap.put(KeyEvent.VK_RIGHT, () -> f.cellSelectWithKey(1, 0));
+
+    keyReleasedMap.put(KeyEvent.VK_UP, () -> f.cellSelectWithKey(0, 0));
+
+    keyReleasedMap.put(KeyEvent.VK_DOWN, () -> f.cellSelectWithKey(0, 0));
+
+    keyReleasedMap.put(KeyEvent.VK_LEFT, () -> f.cellSelectWithKey(0, 0));
+
+    keyReleasedMap.put(KeyEvent.VK_RIGHT, () -> f.cellSelectWithKey(0, 0));
+
+    kbd.setKeyPressedMap(keyPressedMap);
+    kbd.setKeyReleasedMap(keyReleasedMap);
     return kbd;
   }
 

@@ -94,6 +94,7 @@ public class SpreadsheetMVCController implements SpreadsheetController {
     view.setupView(stringCells, model.getMaxCol(), model.getMaxRow());
     view.addFeatures(this);
     try {
+      view.resetFocus();
       view.render();
     } catch (IOException e) {
       e.printStackTrace();
@@ -122,6 +123,7 @@ public class SpreadsheetMVCController implements SpreadsheetController {
       }
     }
     try {
+      view.resetFocus();
       view.render();
     } catch (IOException e) {
       e.printStackTrace();
@@ -137,6 +139,7 @@ public class SpreadsheetMVCController implements SpreadsheetController {
     Coord target = view.getSelectedCell();
     String cellText;
     try {
+      view.resetFocus();
       cellText = model.getCellText(target);
     } catch (IllegalArgumentException n) {
       cellText = "";
@@ -165,6 +168,7 @@ public class SpreadsheetMVCController implements SpreadsheetController {
       view.resizeView(colIdx, model.getMaxRow());
       view.setColToAdd("");
       try {
+        view.resetFocus();
         view.render();
       } catch (IOException e) {
         e.printStackTrace();
@@ -190,6 +194,7 @@ public class SpreadsheetMVCController implements SpreadsheetController {
         view.resizeView(model.getMaxCol(), rowIdx);
         view.setRowToAdd("");
         try {
+          view.resetFocus();
           view.render();
         } catch (IOException e) {
           e.printStackTrace();
@@ -219,6 +224,7 @@ public class SpreadsheetMVCController implements SpreadsheetController {
     cellText = this.addEqualsIfRef(cellText);
 
     view.setInputText(cellText);
+    view.resetFocus();
     try {
       view.render();
     } catch (IOException e) {
@@ -234,6 +240,8 @@ public class SpreadsheetMVCController implements SpreadsheetController {
    */
   @Override
   public void cellSelectWithKey(int x, int y) {
+    view.resetFocus();
+    System.out.println("key recieved");
     view.cellSelectWithKey(x, y);
     try {
       view.render();

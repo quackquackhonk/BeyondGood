@@ -188,6 +188,14 @@ public class SpreadsheetTextualView implements IView {
   }
 
   /**
+   * Reset focus of the view such that keyboard interactivity can occur.
+   */
+  @Override
+  public void resetFocus() {
+
+  }
+
+  /**
    * Expand the range of cells to be displayed by the view to the new given ranges.
    *
    * @param maxCol

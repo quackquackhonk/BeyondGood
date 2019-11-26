@@ -153,6 +153,11 @@ public interface IView {
    * @param y change in y direction
    */
   void cellSelectWithKey(int x, int y);
+
+  /**
+   * Reset focus of the view such that keyboard interactivity can occur.
+   */
+  void resetFocus();
 }
 
 
