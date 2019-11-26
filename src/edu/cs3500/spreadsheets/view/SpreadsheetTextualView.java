@@ -46,109 +46,59 @@ public class SpreadsheetTextualView implements IView {
     }
   }
 
-  /**
-   * Make the view visible. This is usually called after the view is constructed
-   */
   @Override
   public void makeVisible() {
-    // Not necessary in textual view
+    throw new UnsupportedOperationException("Textual view does not need to be made visible");
   }
 
-  /**
-   * Provide the view with a callback option to process a command.
-   *
-   * @param callback object
-   */
-  @Override
-  public void setCommandCallback(Consumer<String> callback) {
-
-  }
-
-  /**
-   * Transmit an error message to the view, in case the command could not be processed correctly.
-   *
-   * @param error message.
-   */
   @Override
   public void showErrorMessage(String error) {
     throw new UnsupportedOperationException("Textual view processes all cells and saves errors");
   }
 
-  /**
-   * this is to force the view to have a method to set up the keyboard. The name has been chosen
-   * deliberately. This is the same method signature to add a key listener in Java Swing.
-   * <p>
-   * Thus our Swing-based implementation of this interface will already have such a method.
-   *
-   * @param listener
-   */
   @Override
   public void addKeyListener(KeyListener listener) {
-
+    throw new UnsupportedOperationException("Cannot add key listeners to textual view");
   }
 
-  /**
-   * Forces view to have a method to set up listeners for mouse events. For Swing views, this method
-   * will already be implemented through Java Swing. For non-swing views, this will need to be
-   * written.
-   *
-   * @param listener the MouseListener to add.
-   */
   @Override
   public void addMouseListener(MouseListener listener) {
-
+    throw new UnsupportedOperationException("Cannot add mouse listeners to textual view");
   }
 
-  /**
-   * this is to force the view to have a method to set up actions for buttons. All the buttons must
-   * be given this action listener
-   * <p>
-   * Thus our Swing-based implementation of this interface will already have such a method.
-   *
-   * @param listener
-   */
   @Override
   public void addActionListener(ActionListener listener) {
-
+    throw new UnsupportedOperationException("Cannot add action listeners to textual view");
   }
 
-  /**
-   * Gets the text inputted by th user that may be used to create a new cell.
-   */
   @Override
   public String getInputText() {
-    // Text only View doesn't set input text
-    return null;
+    throw new UnsupportedOperationException("Textual view does not set input text");
   }
 
   @Override
   public Coord coordFromLoc(int x, int y) {
-    // TODO: put something here.
-    return null;
+    throw new UnsupportedOperationException("Textual view cannot convert a pixel coord to a Coord");
   }
 
   @Override
   public Coord getSelectedCell() {
-    return null;
-    // No selection in text view.
+    throw new UnsupportedOperationException("Textual view does not select cells");
   }
 
   @Override
   public void setupView(HashMap<Coord, String> stringCells, int maxCol, int maxRow) {
-    // textual view doesn't need setup.
+    throw new UnsupportedOperationException("Textual view does not need setup");
   }
 
   @Override
   public void updateView(Coord coord, String cell) {
-    // Read only view not updated.
+    throw new UnsupportedOperationException("Textual view never updates");
   }
 
-  /**
-   * Reverts input state prior to user modification.
-   */
   @Override
   public void resetInput() {
-    // No input to reset.
+    throw new UnsupportedOperationException("Textual view has no input to reset");
   }
 
   @Override
@@ -173,43 +123,26 @@ public class SpreadsheetTextualView implements IView {
 
   @Override
   public void addFeatures(ControllerFeatures f) {
-    // NO features to add
+    throw new UnsupportedOperationException("Textual view has no features");
   }
 
-  /**
-   * Changed the currently highlighted cell using the arrow keys of a keyboard.
-   *
-   * @param coord new selection based on keyboard input
-   */
   @Override
   public void cellSelectWithKey(Coord coord) {
-    // Text view doesn't change selection
+    throw new UnsupportedOperationException("Textual view has no selected cell");
   }
 
-  /**
-   * Reset focus of the view such that keyboard interactivity can occur.
-   */
   @Override
   public void resetFocus() {
-
+    throw new UnsupportedOperationException("Textual view does not have focus");
   }
 
-  /**
-   * Expand the range of cells to be displayed by the view to the new given ranges.
-   *
-   * @param maxCol
-   * @param maxRow
-   */
   @Override
   public void resizeView(int maxCol, int maxRow) {
-    // Read only view is not resized ever.
+    throw new UnsupportedOperationException("Textual view cannot be resized");
   }
 
-  /**
-   * Sets the default input text that the user can then modify.
-   */
   @Override
   public void setInputText(String s) {
-    // Text only View doesn't set input text
+    throw new UnsupportedOperationException("Textual view has no input");
   }
 }

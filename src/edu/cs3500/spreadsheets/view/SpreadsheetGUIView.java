@@ -137,60 +137,39 @@ public class SpreadsheetGUIView extends JFrame implements IView {
     this.add(scrollPane, BorderLayout.CENTER);
   }
 
-  /**
-   * Renders state of model.
-   */
   @Override
   public void render() throws IOException {
     this.repaint();
   }
 
-  /**
-   * Default size of the frame.
-   *
-   * @return dimensions of the frame.
-   */
   @Override
   public Dimension getPreferredSize() {
     return new Dimension(1000, 600);
   }
 
-  /**
-   * Make the view visible. This is usually called after the view is constructed
-   */
   @Override
   public void makeVisible() {
     this.setVisible(true);
   }
 
   @Override
-  public void setCommandCallback(Consumer<String> callback) {
-    throw new UnsupportedOperationException("Noneditable GUI view does not support command " +
-            "callbacks.");
-  }
-
-  /**
-   * Transmit an error message to the view, in case the command could not be processed correctly.
-   * @param error message.
-   */
-  @Override
   public void showErrorMessage(String error) {
-    // Implemented in the future.
+    throw new UnsupportedOperationException("Read-only views has no reason to throw errors");
   }
 
   @Override
   public void addActionListener(ActionListener listener) {
-
+    throw new UnsupportedOperationException("Read-only view has no listeners");
   }
 
   @Override
   public void setInputText(String s) {
-    return;
+    throw new UnsupportedOperationException("Read-only view has no input mechanism");
   }
 
   @Override
   public String getInputText() {
-    return null;
+    throw new UnsupportedOperationException("Read-only view has no input mechanism");
   }
 
   @Override
@@ -205,7 +184,8 @@ public class SpreadsheetGUIView extends JFrame implements IView {
 
   @Override
   public void setupView(HashMap<Coord, String> stringCells, int maxCol, int maxRow) {
-    // TODO
+    throw new UnsupportedOperationException("Read-only view has no setup, since it contains a " +
+            "read-only model");
   }
 
   @Override
@@ -213,9 +193,6 @@ public class SpreadsheetGUIView extends JFrame implements IView {
     throw new UnsupportedOperationException("Read-only views cannot be updated");
   }
 
-  /**
-   * Reverts input state prior to user modification.
-   */
   @Override
   public void resetInput() {
     throw new UnsupportedOperationException("Non-editable views have no input to reset");
@@ -243,35 +220,21 @@ public class SpreadsheetGUIView extends JFrame implements IView {
 
   @Override
   public void addFeatures(ControllerFeatures f) {
-    // NO features to add
+    throw new UnsupportedOperationException("Read-only view does not add features");
   }
 
-  /**
-   * Changed the currently highlighted cell using the arrow keys of a keyboard.
-   *
-   * @param coord new selection based on keyboard input
-   */
   @Override
   public void cellSelectWithKey(Coord coord) {
-    // Read only GUI can't change selection
+    throw new UnsupportedOperationException("Read-only view does not select cells");
   }
 
-  /**
-   * Reset focus of the view such that keyboard interactivity can occur.
-   */
   @Override
   public void resetFocus() {
-
+    throw new UnsupportedOperationException("Read-only view does not have focus");
   }
 
-  /**
-   * Expand the range of cells to be displayed by the view to the new given ranges.
-   *
-   * @param maxCol
-   * @param maxRow
-   */
   @Override
   public void resizeView(int maxCol, int maxRow) {
-    // Read only view can't be expanded.
+    throw new UnsupportedOperationException("Read-only view cannot be resized");
   }
 }

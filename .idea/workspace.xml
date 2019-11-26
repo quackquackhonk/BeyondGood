@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="013926d2-f87d-4d22-a068-7b9fcc73e8c6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/BeyondGood_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/BeyondGood_jar.xml" afterDir="false" />
+    <list default="true" id="013926d2-f87d-4d22-a068-7b9fcc73e8c6" name="Default Changelist" comment="Removed commandCallback from view and cleaned up textual view">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/BeyondGood.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/BeyondGood.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/view/SpreadsheetGUIViewEditable$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/view/SpreadsheetGUIViewEditable$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/view/SpreadsheetGUIViewEditable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/view/SpreadsheetGUIViewEditable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/BeyondGood.jar" beforeDir="false" afterPath="$PROJECT_DIR$/resources/BeyondGood.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/README" beforeDir="false" afterPath="$PROJECT_DIR$/resources/README" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/BeyondGood.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/BeyondGood.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/ViewCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/ViewCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/IView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/IView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetGUIView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetGUIView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetGUIViewEditable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetGUIViewEditable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetTextualView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetTextualView.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -312,7 +307,7 @@
       <workItem from="1573706698492" duration="246000" />
       <workItem from="1574530041849" duration="4409000" />
       <workItem from="1574731161710" duration="1102000" />
-      <workItem from="1574796391762" duration="394000" />
+      <workItem from="1574796391762" duration="1025000" />
     </task>
     <task id="LOCAL-00001" summary="added GUI class">
       <created>1573484804770</created>
@@ -622,7 +617,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574795440883</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Added ability to created a blank editable GUI from command line args">
+      <created>1574796847554</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1574796847555</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -671,7 +673,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Removed print statements" />
     <MESSAGE value="Removed more print statements" />
     <MESSAGE value="Created a .jar for the project" />
     <MESSAGE value="- Style fixes" />
@@ -696,6 +697,7 @@
     <MESSAGE value="- default cell selected is A1" />
     <MESSAGE value="delete code" />
     <MESSAGE value="Made new .jar" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made new .jar" />
+    <MESSAGE value="Added ability to created a blank editable GUI from command line args" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added ability to created a blank editable GUI from command line args" />
   </component>
 </project>

@@ -195,11 +195,6 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
     this.setVisible(true);
   }
 
-  @Override
-  public void setCommandCallback(Consumer<String> callback) {
-    // TODO: figure out what this is supposed to do.
-  }
-
   /**
    * Transmit an error message to the view, in case the command could not be processed correctly.
    *
