@@ -3,6 +3,7 @@ package edu.cs3500.spreadsheets.controller;
 import edu.cs3500.spreadsheets.model.Coord;
 import edu.cs3500.spreadsheets.model.IWriteWorkSheetModel;
 import edu.cs3500.spreadsheets.view.IView;
+
 import java.awt.Point;
 import java.io.IOException;
 import java.util.HashMap;
@@ -93,12 +94,8 @@ public class SpreadsheetMVCController implements SpreadsheetController {
     this.view = view;
     view.setupView(stringCells, model.getMaxCol(), model.getMaxRow());
     view.addFeatures(this);
-    try {
-      view.resetFocus();
-      view.render();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    view.resetFocus();
+    view.render();
     view.makeVisible();
 
   }
@@ -122,12 +119,8 @@ public class SpreadsheetMVCController implements SpreadsheetController {
         System.out.println("Updating " + c);
       }
     }
-    try {
-      view.resetFocus();
-      view.render();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    view.resetFocus();
+    view.render();
   }
 
   /**
@@ -167,12 +160,8 @@ public class SpreadsheetMVCController implements SpreadsheetController {
       int colIdx = Coord.colNameToIndex(toAdd);
       view.resizeView(colIdx, model.getMaxRow());
       view.setColToAdd("");
-      try {
-        view.resetFocus();
-        view.render();
-      } catch (IOException e) {
-        e.printStackTrace();
-      }
+      view.resetFocus();
+      view.render();
     } else { // does not match
       view.showErrorMessage("Please enter a valid column name (alphabetical characters only)");
     }
@@ -193,12 +182,8 @@ public class SpreadsheetMVCController implements SpreadsheetController {
       } else {
         view.resizeView(model.getMaxCol(), rowIdx);
         view.setRowToAdd("");
-        try {
-          view.resetFocus();
-          view.render();
-        } catch (IOException e) {
-          e.printStackTrace();
-        }
+        view.resetFocus();
+        view.render();
       }
     } catch (NumberFormatException e) {
       view.showErrorMessage("Please enter a valid row name (numerical characters only)");
@@ -225,11 +210,7 @@ public class SpreadsheetMVCController implements SpreadsheetController {
 
     view.setInputText(cellText);
     //view.resetFocus();
-    try {
-      view.render();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    view.render();
   }
 
   @Override
@@ -263,11 +244,7 @@ public class SpreadsheetMVCController implements SpreadsheetController {
     view.resetFocus();
     //System.out.println("key recieved");
     view.cellSelectWithKey(newCoord);
-    try {
-      view.render();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    view.render();
   }
 
   /**
@@ -282,7 +259,7 @@ public class SpreadsheetMVCController implements SpreadsheetController {
     final Pattern singleCellRef = Pattern.compile("([A-Za-z]+)([1-9][0-9]*)");
     Matcher singleMatch = singleCellRef.matcher(cellText);
     final Pattern multiCellRef =
-        Pattern.compile("([A-Za-z]+)([1-9][0-9]*)([:])([A-Za-z]+)([1-9][0-9]*)");
+            Pattern.compile("([A-Za-z]+)([1-9][0-9]*)([:])([A-Za-z]+)([1-9][0-9]*)");
     Matcher multiMatch = multiCellRef.matcher(cellText);
     if (singleMatch.matches() || multiMatch.matches()) {
       cellText = "=" + cellText;

@@ -1,6 +1,7 @@
 package edu.cs3500.spreadsheets.view;
 
 import edu.cs3500.spreadsheets.controller.ControllerFeatures;
+
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
@@ -31,9 +32,9 @@ public interface IView {
   void showErrorMessage(String error);
 
   /**
-   * Forces view to have a method to set up listeners for buttons. For Swing views, this method
-   * will already be implemented through Java Swing. For non-swing views, this will need to be
-   * written.
+   * Forces view to have a method to set up listeners for buttons. For Swing views, this method will
+   * already be implemented through Java Swing. For non-swing views, this will need to be written.
+   *
    * @param listener the ActionListener to add.
    */
   void addActionListener(ActionListener listener);
@@ -42,15 +43,16 @@ public interface IView {
    * Forces view to have a method to set up listeners for key events. For Swing views, this method
    * will already be implemented through Java Swing. For non-swing views, this will need to be
    * written.
+   *
    * @param listener the KeyListener to add.
    */
   void addKeyListener(KeyListener listener);
 
   /**
-   * Forces view to have a method to set up listeners for mouse events. For Swing views, this
-   * method
+   * Forces view to have a method to set up listeners for mouse events. For Swing views, this method
    * will already be implemented through Java Swing. For non-swing views, this will need to be
    * written.
+   *
    * @param listener the MouseListener to add.
    */
   void addMouseListener(MouseListener listener);
@@ -85,8 +87,8 @@ public interface IView {
    * Initializes view by passing in the cells to display and the range of cells to display.
    *
    * @param stringCells All cells in the sheet.
-   * @param maxCol render cells up to this column
-   * @param maxRow render cells up to this row
+   * @param maxCol      render cells up to this column
+   * @param maxRow      render cells up to this row
    */
   void setupView(HashMap<Coord, String> stringCells, int maxCol, int maxRow);
 
@@ -94,7 +96,7 @@ public interface IView {
    * Update the view with new cells.
    *
    * @param coord location of cell.
-   * @param cell contents of new cell in String form
+   * @param cell  contents of new cell in String form
    */
   void updateView(Coord coord, String cell);
 
@@ -110,30 +112,35 @@ public interface IView {
 
   /**
    * Gets the column to add from it's respective text field.
+   *
    * @return the column to add.
    */
   String getColToAdd();
 
   /**
    * Sets the text in the column adding text field.
+   *
    * @param s the text to set
    */
   void setColToAdd(String s);
 
   /**
    * Gets the row to add from its respective text field.
+   *
    * @return the row to add.
    */
   String getRowToAdd();
 
   /**
    * Sets the text in the row adding text field.
+   *
    * @param s the text to set
    */
   void setRowToAdd(String s);
 
   /**
    * Adds the feature functionality based on the given ControllerFeatures
+   *
    * @param f the features to add
    */
   void addFeatures(ControllerFeatures f);

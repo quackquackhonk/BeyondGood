@@ -20,7 +20,7 @@ public class ViewCreator {
     IView view = null;
     if (viewType == ViewType.GUI) {
       view = new SpreadsheetGUIView(model);
-    } else if(viewType == ViewType.EDITGUI) {
+    } else if (viewType == ViewType.EDITGUI) {
       view = new SpreadsheetGUIViewEditable();
       //System.out.println("Made edit");
     } else {

@@ -7,10 +7,9 @@ import java.util.Map;
 
 /**
  * Class for handling all key events in the controller. Has multiple maps in order to run the
- * correct action based on the specific key event.
- * Copied from MVC Lecture notes code.
+ * correct action based on the specific key event. Copied from MVC Lecture notes code.
  */
-  public class KeyboardListener implements KeyListener {
+public class KeyboardListener implements KeyListener {
   private Map<Character, Runnable> keyTypedMap = new HashMap<>();
   private Map<Integer, Runnable> keyPressedMap = new HashMap<>();
   private Map<Integer, Runnable> keyReleasedMap = new HashMap<>();

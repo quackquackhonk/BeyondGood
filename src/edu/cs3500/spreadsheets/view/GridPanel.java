@@ -7,7 +7,9 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+
 import javax.swing.JPanel;
+
 import java.util.HashMap;
 
 /**
@@ -33,7 +35,7 @@ public class GridPanel extends JPanel {
    * Constructs GUI JPanel dimensions.
    */
   public GridPanel(int numRow, int numCol, int cw, int ch, HashMap<Coord, String> cells,
-      int colStart, int colEnd, int rowStart, int rowEnd) {
+                   int colStart, int colEnd, int rowStart, int rowEnd) {
     super();
     this.grid = cells;
     this.numRow = numRow;
@@ -44,7 +46,7 @@ public class GridPanel extends JPanel {
     this.cs = colStart;
     this.rs = rowStart;
     this.re = rowEnd;
-    this.selectedCell = new Coord(1,1);
+    this.selectedCell = new Coord(1, 1);
   }
 
   // Change the currently highlighted cell to input Coord.
@@ -54,7 +56,7 @@ public class GridPanel extends JPanel {
 
   // Returns Coord of last cell highlighted by the user.
   Coord getSelectedCell() {
-    if(this.selectedCell != null) {
+    if (this.selectedCell != null) {
       return new Coord(this.selectedCell.col, this.selectedCell.row);
     } else {
       return null;
@@ -118,7 +120,7 @@ public class GridPanel extends JPanel {
     int col = x / cw;
     int row = y / ch;
 
-    Coord location = new Coord(col+1, row+1);
+    Coord location = new Coord(col + 1, row + 1);
     this.selectedCell = location;
     return location;
   }
@@ -146,8 +148,8 @@ public class GridPanel extends JPanel {
 
     // Resize for potential new rows
     Dimension curDim = new Dimension(this.getSize());
-    int newX = Math.max(curDim.width, (3+getMaxCol())*cw);
-    int newY = Math.max(curDim.height, ((3+getMaxRow())*ch));
+    int newX = Math.max(curDim.width, (3 + getMaxCol()) * cw);
+    int newY = Math.max(curDim.height, ((3 + getMaxRow()) * ch));
     this.setPreferredSize(new Dimension(newX, newY));
 
     int yOffset = (int) (font.getSize() * 1.4);
@@ -156,8 +158,8 @@ public class GridPanel extends JPanel {
     g2d.setFont(font);
     g2d.setColor(Color.pink);
 
-    for (int row = Math.max(rs-10, 0); row < re+10; row++) {
-      for (int col = Math.max(cs-10,0); col < ce+10; col++) {
+    for (int row = Math.max(rs - 10, 0); row < re + 10; row++) {
+      for (int col = Math.max(cs - 10, 0); col < ce + 10; col++) {
         String cellText = grid.getOrDefault(new Coord(col + 1, row + 1), "");
         g2d.setColor(Color.black);
         g2d.fillRect(col * cw, row * ch, cw, ch);
@@ -165,16 +167,16 @@ public class GridPanel extends JPanel {
         Color lineColor = Color.pink;
 
         boolean on = selectedCell != null
-            && row == this.selectedCell.row-1
-            && col == this.selectedCell.col-1;
+                && row == this.selectedCell.row - 1
+                && col == this.selectedCell.col - 1;
 
         boolean right = selectedCell != null
-            && row == this.selectedCell.row-1
-            && col == this.selectedCell.col;
+                && row == this.selectedCell.row - 1
+                && col == this.selectedCell.col;
 
         boolean below = selectedCell != null
-            && row == this.selectedCell.row
-            && col == this.selectedCell.col-1;
+                && row == this.selectedCell.row
+                && col == this.selectedCell.col - 1;
 
         // Draws top border
         if (on) {

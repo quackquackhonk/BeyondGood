@@ -3,12 +3,14 @@ package edu.cs3500.spreadsheets.view;
 import edu.cs3500.spreadsheets.controller.ControllerFeatures;
 import edu.cs3500.spreadsheets.model.Coord;
 import edu.cs3500.spreadsheets.model.IReadWorkSheetModel;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.HashSet;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -80,14 +82,14 @@ public class SpreadsheetGUIView extends JFrame implements IView {
     int rowEnd = this.getHeight() / cellWidth + 3;
 
     gridPanel = new GridPanel(numRow, numCol, cellWidth, cellHeight,
-        stringCells, 0, colEnd, 0, rowEnd);
+            stringCells, 0, colEnd, 0, rowEnd);
     this.scrollPane = new SpreadsheetScrollingPanel(gridPanel, cellWidth, cellHeight);
     this.scrollPane.setPreferredSize(new Dimension(initPanelWidth + 3 * cellWidth,
-        initPanelHeight + 3 * cellHeight));
+            initPanelHeight + 3 * cellHeight));
 
     // Three cell buffer
     gridPanel.setPreferredSize(
-        new Dimension(initPanelWidth + 3 * cellWidth, initPanelHeight + 3 * cellHeight));
+            new Dimension(initPanelWidth + 3 * cellWidth, initPanelHeight + 3 * cellHeight));
     this.add(scrollPane, BorderLayout.CENTER);
 
     // Add FormulaPanel, currently not editable.
@@ -124,14 +126,14 @@ public class SpreadsheetGUIView extends JFrame implements IView {
     int rowEnd = gridPanel.getRowEnd();
 
     gridPanel = new GridPanel(numRow, numCol, cellWidth,
-        cellHeight, stringCells, colStart, colEnd, rowStart, rowEnd);
+            cellHeight, stringCells, colStart, colEnd, rowStart, rowEnd);
     scrollPane = new SpreadsheetScrollingPanel(gridPanel, cellWidth, cellHeight);
     this.setPreferredSize(new Dimension(currPanelWidth + 3 * cellWidth,
-        currPanelHeight + 3 * cellHeight));
+            currPanelHeight + 3 * cellHeight));
     // Three cell buffer
     gridPanel.setPreferredSize(
-        new Dimension(currPanelWidth + 3 * cellWidth,
-            currPanelHeight + 3 * cellHeight));
+            new Dimension(currPanelWidth + 3 * cellWidth,
+                    currPanelHeight + 3 * cellHeight));
     this.add(scrollPane, BorderLayout.CENTER);
   }
 

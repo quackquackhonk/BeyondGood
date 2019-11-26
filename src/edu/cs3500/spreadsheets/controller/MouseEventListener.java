@@ -7,9 +7,9 @@ import java.util.Map;
 
 /**
  * Class for handling all MouseEvents in the controller. Has maps of Runnables as to execute the
- * correct action based on the specific type of MouseEvent.
- * Only "clicking" events have maps. There's no need for entering and exiting to have maps since
- * they have only handle one specific case for mouse handling.
+ * correct action based on the specific type of MouseEvent. Only "clicking" events have maps.
+ * There's no need for entering and exiting to have maps since they have only handle one specific
+ * case for mouse handling.
  */
 public class MouseEventListener implements MouseListener {
   private Map<Integer, MouseRunnable> mouseClickedMap = new HashMap<>();
@@ -25,8 +25,9 @@ public class MouseEventListener implements MouseListener {
   }
 
   /**
-   * Sets the mouseClicked map to the given map. Moused clicked events are integers representing
-   * the button that was clicked.
+   * Sets the mouseClicked map to the given map. Moused clicked events are integers representing the
+   * button that was clicked.
+   *
    * @param map the mouseClicked map.
    */
   public void setMouseClickedMap(Map<Integer, MouseRunnable> map) {
@@ -34,8 +35,9 @@ public class MouseEventListener implements MouseListener {
   }
 
   /**
-   * Sets the mousePressed map to the given map. Moused pressed events are integers representing
-   * the button that was pressed.
+   * Sets the mousePressed map to the given map. Moused pressed events are integers representing the
+   * button that was pressed.
+   *
    * @param map the mousePressed map.
    */
   public void setMousePressedmap(Map<Integer, MouseRunnable> map) {
@@ -45,6 +47,7 @@ public class MouseEventListener implements MouseListener {
   /**
    * Sets the mouseReleased map to the given map. Moused released events are integers representing
    * the button that was released.
+   *
    * @param map the mouseReleased map.
    */
   public void setMouseReleasedMap(Map<Integer, MouseRunnable> map) {
@@ -53,6 +56,7 @@ public class MouseEventListener implements MouseListener {
 
   /**
    * Sets the mouseEnteredRunnable to the given runnable.
+   *
    * @param r the Runnable to set.
    */
   public void setMouseEnteredRunnable(Runnable r) {
@@ -61,6 +65,7 @@ public class MouseEventListener implements MouseListener {
 
   /**
    * Sets the mouseExitedRunnable to the given runnable.
+   *
    * @param r the Runnable to set.
    */
   public void setMouseExitedRunnable(Runnable r) {

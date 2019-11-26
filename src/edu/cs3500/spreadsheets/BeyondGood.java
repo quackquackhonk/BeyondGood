@@ -41,8 +41,8 @@ public class BeyondGood {
         IWriteWorkSheetModel model;
         model = WorksheetReader.read(builder, fileReader);
         IView guiView = args[0].equals("-gui")
-            ? ViewCreator.create(ViewCreator.ViewType.GUI, model)
-            : ViewCreator.create(ViewCreator.ViewType.EDITGUI, model);
+                ? ViewCreator.create(ViewCreator.ViewType.GUI, model)
+                : ViewCreator.create(ViewCreator.ViewType.EDITGUI, model);
         if (args[0].equals("-edit")) {
           SpreadsheetController controller = new SpreadsheetMVCController(model);
           controller.setView(guiView);
@@ -70,8 +70,8 @@ public class BeyondGood {
         } else if (args.length == 3) {
           //System.out.println("making gui");
           IView guiView = args[2].equals("-gui")
-              ? ViewCreator.create(ViewCreator.ViewType.GUI, model)
-              : ViewCreator.create(ViewCreator.ViewType.EDITGUI, model);
+                  ? ViewCreator.create(ViewCreator.ViewType.GUI, model)
+                  : ViewCreator.create(ViewCreator.ViewType.EDITGUI, model);
 
           SpreadsheetMVCController controller = new SpreadsheetMVCController(model);
           controller.setView(guiView);

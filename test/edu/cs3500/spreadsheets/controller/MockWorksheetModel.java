@@ -7,8 +7,8 @@ import java.util.HashSet;
 
 /**
  * Mock model to confirm inputs passed to it by the controller are correct.
-  */
-public class MockWorksheetModel extends WorkSheetModel  {
+ */
+public class MockWorksheetModel extends WorkSheetModel {
 
   public StringBuilder log;
 
@@ -37,11 +37,6 @@ public class MockWorksheetModel extends WorkSheetModel  {
   @Override
   public void dragChange(Coord start, Coord finish) {
     log.append(start + " " + finish).append("\n");
-  }
-
-  @Override
-  public void removeCell(Coord target) {
-    log.append("remove " + target).append("\n");
   }
 
   @Override

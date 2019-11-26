@@ -1,6 +1,7 @@
 package edu.cs3500.spreadsheets.controller;
 
 import edu.cs3500.spreadsheets.model.Coord;
+
 import org.junit.Test;
 
 import java.awt.Point;
@@ -27,7 +28,7 @@ public class SpreadsheetMVCControllerTest {
   IView view;
   SpreadsheetController controller;
 
-  private void init(String filename){
+  private void init(String filename) {
     File file = new File(filename);
     Readable fileReader;
     try {
@@ -124,9 +125,9 @@ public class SpreadsheetMVCControllerTest {
 
     controller.confirmInput();
     expectedOutput.append("set input text to 123\n"
-        + "updated view by adding 123.000000 at coord A1\n"
-        + "updated view by adding 148.000000 at coord F1\n"
-        + "updated view by adding 125.000000 at coord Y50");
+            + "updated view by adding 123.000000 at coord A1\n"
+            + "updated view by adding 148.000000 at coord F1\n"
+            + "updated view by adding 125.000000 at coord Y50");
 
     MockView testView = (MockView) view;
     assertEquals(expectedOutput.toString().trim(), testView.log.toString().trim());
@@ -145,13 +146,13 @@ public class SpreadsheetMVCControllerTest {
     //model.getCellText(new Coord(5, 1));
 
     expectedOutput.append("clicked on (400,0)\n"
-        + "selected cell F1\n"
-        + "set input text to =(SUM A1:D1)\n"
-        + "set input text to 123\n"
-        // Controller creates new cell and passes this to view.
-        // This tests information can be passed from the controller to the view correctly.
-        + "updated view by adding 123.000000 at coord F1\n"
-        + "updated view by adding false at coord J1");
+            + "selected cell F1\n"
+            + "set input text to =(SUM A1:D1)\n"
+            + "set input text to 123\n"
+            // Controller creates new cell and passes this to view.
+            // This tests information can be passed from the controller to the view correctly.
+            + "updated view by adding 123.000000 at coord F1\n"
+            + "updated view by adding false at coord J1");
 
     MockView testView = (MockView) view;
     assertEquals(expectedOutput.toString().trim(), testView.log.toString().trim());
@@ -166,7 +167,7 @@ public class SpreadsheetMVCControllerTest {
     model = new MockWorksheetModel(expectedOutput);
     controller = new SpreadsheetMVCController(model);
     controller.setView(view);
-    model.setCellAllowErrors(new Coord(1,1), "123");
+    model.setCellAllowErrors(new Coord(1, 1), "123");
   }
 
   @Test
@@ -180,13 +181,13 @@ public class SpreadsheetMVCControllerTest {
 
     controller.addColumn();
     expectedOutput.append("ERROR: Please enter a valid column name (alphabetical characters only)" +
-                    "\n");
+            "\n");
 
     view.setColToAdd("2192132");
     expectedOutput.append("set addColField to 2192132\n");
     controller.addColumn();
     expectedOutput.append("ERROR: Please enter a valid column name (alphabetical characters only)" +
-                    "\n");
+            "\n");
 
     view.setColToAdd("Z");
     expectedOutput.append("set addColField to Z\n");
@@ -252,7 +253,7 @@ public class SpreadsheetMVCControllerTest {
     controller.clickOnCellAt(new Point(80, 0));
 
     assertEquals("A1 was passed\n"
-        + "B1 was passed", expectedOutput.toString().trim());
+            + "B1 was passed", expectedOutput.toString().trim());
   }
 
   // Test that the Controller clears the input text of the GUI view properly
@@ -267,8 +268,8 @@ public class SpreadsheetMVCControllerTest {
     //model.getCellText(new Coord(5, 1));
 
     expectedOutput.append("set input text to 123\n"
-        + "reset input\n"
-        + "set input text to 3.000000");
+            + "reset input\n"
+            + "set input text to 3.000000");
 
     MockView testView = (MockView) view;
     assertEquals(expectedOutput.toString().trim(), testView.log.toString().trim());

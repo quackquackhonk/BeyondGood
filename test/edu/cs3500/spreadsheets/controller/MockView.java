@@ -52,7 +52,7 @@ public class MockView extends SpreadsheetGUIViewEditable implements IView {
   @Override
   public void resizeView(int maxCol, int maxRow) {
     super.resizeView(maxCol, maxRow);
-    log.append("resized view with new maxCol: " +  maxCol + " and new maxRow: " + maxRow + "\n");
+    log.append("resized view with new maxCol: " + maxCol + " and new maxRow: " + maxRow + "\n");
   }
 
   @Override

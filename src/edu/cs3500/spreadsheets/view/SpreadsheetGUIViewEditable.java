@@ -164,7 +164,7 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
   }
 
   @Override
-  public void render(){
+  public void render() {
     if (this.ready) {
       this.repaint();
     } else {
@@ -321,6 +321,7 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
   /**
    * Creates an empty MouseListener that does nothing given any mouse event. Used as the default
    * stored mouse event in the view.
+   *
    * @return an empty MouseListener.
    */
   private MouseListener defaultMouseListener() {
@@ -353,8 +354,9 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
   }
 
   /**
-   * Creates a ButtonListener with all the functionality of the given feature passed in.
-   * Basically "wires" the buttons in this view to the functionality provided by the controller.
+   * Creates a ButtonListener with all the functionality of the given feature passed in. Basically
+   * "wires" the buttons in this view to the functionality provided by the controller.
+   *
    * @param f the features from the controller.
    * @return a ButtonListener connection the controller to the view
    */
@@ -381,6 +383,7 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
    * Creates a new MouseEventListener with all the specified functionality that this controller
    * needs. This MouseListener can then be passed into the view so that the view can start listening
    * for those specific events.
+   *
    * @param f the features from the Controller
    * @return the configured MouseEventListener.
    */
@@ -401,6 +404,7 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
    * Creates a new KeyboardListener with all the specified keyboard functionality that this
    * controller needs. This KeyboardListener can then be passed into the view so that the view can
    * start listening for those specific events.
+   *
    * @param f the features from the controller.
    * @return the configured KeyboardListener.
    */
