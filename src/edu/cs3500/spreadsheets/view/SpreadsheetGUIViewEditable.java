@@ -348,8 +348,18 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
   }
 
   @Override
+  public void setColToAdd(String s) {
+    this.addColField.setText(s);
+  }
+
+  @Override
   public String getRowToAdd() {
     return this.addRowField.getText();
+  }
+
+  @Override
+  public void setRowToAdd(String s) {
+    this.addRowField.setText(s);
   }
 
   @Override

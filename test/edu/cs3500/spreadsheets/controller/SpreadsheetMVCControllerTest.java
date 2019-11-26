@@ -177,7 +177,60 @@ public class SpreadsheetMVCControllerTest {
     controller.setView(view);
 
     controller.addColumn();
-    expectedOutput.append("ERROR: Please enter a valid column name (alphabetical characters only)");
+    expectedOutput.append("ERROR: Please enter a valid column name (alphabetical characters only)" +
+                    "\n");
+
+    view.setColToAdd("2192132");
+    expectedOutput.append("set addColField to 2192132\n");
+    controller.addColumn();
+    expectedOutput.append("ERROR: Please enter a valid column name (alphabetical characters only)" +
+                    "\n");
+
+    view.setColToAdd("Z");
+    expectedOutput.append("set addColField to Z\n");
+    controller.addColumn();
+    expectedOutput.append("resized view with new maxCol: 26 and new maxRow: 0\n");
+    expectedOutput.append("set addColField to \n");
+    view.setColToAdd("A");
+    expectedOutput.append("set addColField to A\n");
+    controller.addColumn();
+    // this means that it was not resized.
+    expectedOutput.append("resized view with new maxCol: 1 and new maxRow: 0\n");
+    expectedOutput.append("set addColField to \n");
+
+    MockView testView = (MockView) view;
+    assertEquals(expectedOutput.toString(), testView.log.toString());
+  }
+
+  @Test
+  public void testControllerAddRow() {
+    StringBuilder expectedOutput = new StringBuilder();
+    model = new MockWorksheetModel();
+    view = new MockView();
+    controller = new SpreadsheetMVCController(model);
+    controller.setView(view);
+
+    controller.addRow();
+    expectedOutput.append("ERROR: Please enter a valid row name (numerical characters only)" +
+            "\n");
+
+    view.setRowToAdd("ABC");
+    expectedOutput.append("set addRowField to ABC\n");
+    controller.addRow();
+    expectedOutput.append("ERROR: Please enter a valid row name (numerical characters only)" +
+            "\n");
+
+    view.setRowToAdd("26");
+    expectedOutput.append("set addRowField to 26\n");
+    controller.addRow();
+    expectedOutput.append("resized view with new maxCol: 0 and new maxRow: 26\n");
+    expectedOutput.append("set addRowField to \n");
+    view.setRowToAdd("1");
+    expectedOutput.append("set addRowField to 1\n");
+    controller.addRow();
+    // this means that it was not resized.
+    expectedOutput.append("resized view with new maxCol: 0 and new maxRow: 1\n");
+    expectedOutput.append("set addRowField to \n");
 
     MockView testView = (MockView) view;
     assertEquals(expectedOutput.toString(), testView.log.toString());

@@ -31,7 +31,7 @@ public class MockView extends SpreadsheetGUIViewEditable implements IView {
 
   @Override
   public void showErrorMessage(String error) {
-    log.append("ERROR: " + error);
+    log.append("ERROR: " + error + "\n");
   }
 
   @Override
@@ -64,6 +64,18 @@ public class MockView extends SpreadsheetGUIViewEditable implements IView {
   public void resizeView(int maxCol, int maxRow) {
     super.resizeView(maxCol, maxRow);
     log.append("resized view with new maxCol: " +  maxCol + " and new maxRow: " + maxRow + "\n");
+  }
+
+  @Override
+  public void setColToAdd(String s) {
+    super.setColToAdd(s);
+    log.append("set addColField to " + s + "\n");
+  }
+
+  @Override
+  public void setRowToAdd(String s) {
+    super.setRowToAdd(s);
+    log.append("set addRowField to " + s + "\n");
   }
 
 }

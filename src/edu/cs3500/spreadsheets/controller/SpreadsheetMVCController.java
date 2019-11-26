@@ -163,8 +163,8 @@ public class SpreadsheetMVCController implements SpreadsheetController {
     // valid col name
     if (m.matches()) {
       int colIdx = Coord.colNameToIndex(toAdd);
-      // TODO: ADD COLUMN
       view.resizeView(colIdx, model.getMaxRow());
+      view.setColToAdd("");
       try {
         view.render();
       } catch (IOException e) {
@@ -189,16 +189,15 @@ public class SpreadsheetMVCController implements SpreadsheetController {
         view.showErrorMessage("Row index must be greater than 0");
       } else {
         view.resizeView(model.getMaxCol(), rowIdx);
+        view.setRowToAdd("");
         try {
           view.render();
         } catch (IOException e) {
           e.printStackTrace();
         }
-        view.showErrorMessage("ADDED ROW AT: " + rowIdx);
-
       }
     } catch (NumberFormatException e) {
-      view.showErrorMessage(toAdd + " is not a valid row index. Please enter a valid number.");
+      view.showErrorMessage("Please enter a valid row name (numerical characters only)");
     }
   }
 
