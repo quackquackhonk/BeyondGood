@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
-  <artifact type="jar" build-on-make="true" name="Asn5 Starter:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/Asn5_Starter_jar</output-path>
+  <artifact type="jar" build-on-make="true" name="BeyondGood:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/BeyondGood_jar</output-path>
     <root id="archive" name="Asn5 Starter.jar">
       <element id="module-output" name="Asn5 Starter" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar" path-in-jar="/" />
