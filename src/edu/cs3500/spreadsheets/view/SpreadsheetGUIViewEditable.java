@@ -11,6 +11,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
@@ -262,7 +263,7 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
    */
   @Override
   public Coord coordFromLoc(int x, int y) {
-    this.formText.requestFocus();
+    //this.formText.requestFocus();
     this.prevText = this.formText.getText();
     Coord cell = this.scrollPane.coordFromLoc(x, y);
     //this.repaint();
@@ -490,9 +491,7 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
   private KeyboardListener configureKeyboardListener(ControllerFeatures f) {
     KeyboardListener kbd = new KeyboardListener();
 
-    Map<Character, Runnable> keyTypedMap = new HashMap<>();
-
-    Map<Integer, Runnable> keyPressedMap = new HashMap<>();;
+    Map<Integer, Runnable> keyPressedMap = new HashMap<>();
     Map<Integer, Runnable> keyReleasedMap = new HashMap<>();
 
     keyPressedMap.put(KeyEvent.VK_UP, () -> f.cellSelectWithKey(0, -1));
@@ -511,12 +510,9 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
 
     keyReleasedMap.put(KeyEvent.VK_RIGHT, () -> f.cellSelectWithKey(0, 0));
 
-
     keyPressedMap.put(KeyEvent.VK_DELETE, f::deleteCellContents);
 
     kbd.setKeyPressedMap(keyPressedMap);
-
-
     kbd.setKeyPressedMap(keyPressedMap);
     kbd.setKeyReleasedMap(keyReleasedMap);
     return kbd;

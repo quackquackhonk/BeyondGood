@@ -2,6 +2,7 @@ package edu.cs3500.spreadsheets.controller;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -11,9 +12,11 @@ import java.util.Map;
  * Copied from MVC Lecture notes code.
  */
 public class KeyboardListener implements KeyListener {
-  private Map<Character, Runnable> keyTypedMap; // pressed and released
-  private Map<Integer, Runnable> keyPressedMap; // pressed (could be held, could be released)
-  private Map<Integer, Runnable> keyReleasedMap; // key was released (was held down before)
+  private Map<Character, Runnable> keyTypedMap = new HashMap<>(); // pressed and released
+  private Map<Integer, Runnable> keyPressedMap = new HashMap<>(); // pressed (could be held, could be
+  // released)
+  private Map<Integer, Runnable> keyReleasedMap = new HashMap<>(); // key was released (was held down
+  // before)
 
   /**
    * Set the map for key typed events. Key typed events in Java Swing are characters.

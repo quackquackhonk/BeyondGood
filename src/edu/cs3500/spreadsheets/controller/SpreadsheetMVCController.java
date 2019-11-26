@@ -250,7 +250,7 @@ public class SpreadsheetMVCController implements SpreadsheetController {
   @Override
   public void cellSelectWithKey(int x, int y) {
     view.resetFocus();
-    System.out.println("key recieved");
+    //System.out.println("key recieved");
     view.cellSelectWithKey(x, y);
     try {
       view.render();
