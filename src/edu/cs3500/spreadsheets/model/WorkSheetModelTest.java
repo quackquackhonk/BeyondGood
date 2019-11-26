@@ -46,6 +46,20 @@ public class WorkSheetModelTest {
 
   }
 
+  @Test
+  public void checkBuildAdjListHasCycleSelfRange2() {
+    WorkSheetModel.SheetBuilder builder = new WorkSheetModel.SheetBuilder();
+    builder.createCell(1, 1, "=(SUM A2:A3)");
+    builder.createCell(1, 2, "4");
+    builder.createCell(1, 3, "4");
+    builder.createCell(1,4,"=(SUM A2:A3 A1)");
+
+    IWriteWorkSheetModel model = builder.createWorksheet();
+    model.setupModel();
+    assertEquals(model.evaluateCellCheck("A4"), "#Reference");
+
+  }
+
   // Can't have lone range cell
   @Test(expected = IllegalArgumentException.class)
   public void checkBuildAdjListHasCycleSelfRangeSum() {
