@@ -190,6 +190,9 @@ public class SpreadsheetMVCController implements SpreadsheetController {
     } catch (IllegalArgumentException n) {
       cellText = "";
     }
+
+    cellText = this.addEqualsIfRef(cellText);
+
     view.setInputText(cellText);
   }
 
@@ -247,6 +250,23 @@ public class SpreadsheetMVCController implements SpreadsheetController {
       cellText = "";
     }
 
+    cellText = this.addEqualsIfRef(cellText);
+
+    view.setInputText(cellText);
+    try {
+      view.render();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  /**
+   * Appends an '=' onto the beginning of the given string if it is only a cell reference (single
+   * or multi-cell)
+   * @param cellText the string to append.
+   * @return cellText or "=" + cellText.
+   */
+  private String addEqualsIfRef(String cellText) {
     // check if this is ONLY a reference, append = to beginning.
     final Pattern singleCellRef = Pattern.compile("([A-Za-z]+)([1-9][0-9]*)");
     Matcher singleMatch = singleCellRef.matcher(cellText);
@@ -256,12 +276,6 @@ public class SpreadsheetMVCController implements SpreadsheetController {
     if (singleMatch.matches() || multiMatch.matches()) {
       cellText = "=" + cellText;
     }
-
-    view.setInputText(cellText);
-    try {
-      view.render();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    return cellText;
   }
 }
