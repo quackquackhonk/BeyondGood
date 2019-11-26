@@ -4,6 +4,9 @@ import edu.cs3500.spreadsheets.model.Coord;
 import edu.cs3500.spreadsheets.view.IView;
 import edu.cs3500.spreadsheets.view.SpreadsheetGUIViewEditable;
 
+/**
+ * Mock View for testing.
+ */
 public class MockView extends SpreadsheetGUIViewEditable implements IView {
 
   public StringBuilder log = new StringBuilder();

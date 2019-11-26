@@ -159,17 +159,6 @@ public class SpreadsheetMVCControllerTest {
     assertEquals(model.getCellText(new Coord(6, 1)), "123.000000");
   }
 
-  // Controller to model
-  @Test
-  public void testControllerSetsViewCell() {
-    StringBuilder expectedOutput = new StringBuilder();
-    view = new MockView();
-    model = new MockWorksheetModel(expectedOutput);
-    controller = new SpreadsheetMVCController(model);
-    controller.setView(view);
-    model.setCellAllowErrors(new Coord(1, 1), "123");
-  }
-
   @Test
   public void testControllerAddColumn() {
     this.init("good1.txt");

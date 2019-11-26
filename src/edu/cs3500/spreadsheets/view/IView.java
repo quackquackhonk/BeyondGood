@@ -5,7 +5,6 @@ import edu.cs3500.spreadsheets.controller.ControllerFeatures;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
-import java.io.IOException;
 import java.util.HashMap;
 
 import edu.cs3500.spreadsheets.model.Coord;

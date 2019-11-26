@@ -328,27 +328,32 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
     return new MouseListener() {
       @Override
       public void mouseClicked(MouseEvent e) {
-
+        // needed to add no mouse functionality
+        return;
       }
 
       @Override
       public void mousePressed(MouseEvent e) {
-
+        // needed to add no mouse functionality
+        return;
       }
 
       @Override
       public void mouseReleased(MouseEvent e) {
-
+        // needed to add no mouse functionality
+        return;
       }
 
       @Override
       public void mouseEntered(MouseEvent e) {
-
+        // needed to add no mouse functionality
+        return;
       }
 
       @Override
       public void mouseExited(MouseEvent e) {
-
+        // needed to add no mouse functionality
+        return;
       }
     };
   }
