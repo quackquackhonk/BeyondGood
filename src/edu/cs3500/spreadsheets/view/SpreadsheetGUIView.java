@@ -249,11 +249,10 @@ public class SpreadsheetGUIView extends JFrame implements IView {
   /**
    * Changed the currently highlighted cell using the arrow keys of a keyboard.
    *
-   * @param x change in x direction
-   * @param y change in y direction
+   * @param coord new selection based on keyboard input
    */
   @Override
-  public void cellSelectWithKey(int x, int y) {
+  public void cellSelectWithKey(Coord coord) {
     // Read only GUI can't change selection
   }
 
