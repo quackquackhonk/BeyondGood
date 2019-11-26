@@ -142,10 +142,14 @@ public class GridPanel extends JPanel {
   @Override
   protected void paintComponent(Graphics g) {
     super.paintComponent(g);
-    System.out.println(this.getPreferredSize() + " grid size");
+
     Font font = new Font("Arial", Font.PLAIN, (int) Math.floor(ch / 2));
 
-    this.setPreferredSize(new Dimension((3+getMaxCol())*cw, (3+getMaxRow())*ch));
+    // Resize for potential new rows
+    Dimension curDim = new Dimension(this.getSize());
+    int newX = Math.max(curDim.width, (3+getMaxCol())*cw);
+    int newY = Math.max(curDim.height, ((3+getMaxRow())*ch));
+    this.setPreferredSize(new Dimension(newX, newY));
 
     int yOffset = (int) (font.getSize() * 1.4);
     Dimension prefSize = this.getPreferredSize();
