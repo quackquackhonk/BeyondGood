@@ -93,7 +93,6 @@ public class SpreadsheetMVCController implements SpreadsheetController {
     this.view = view;
     view.setupView(stringCells, model.getMaxCol(), model.getMaxRow());
     view.addFeatures(this);
-    System.out.println("View setup");
     try {
       view.render();
     } catch (IOException e) {

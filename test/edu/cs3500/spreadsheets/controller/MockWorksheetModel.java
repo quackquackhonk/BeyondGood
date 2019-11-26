@@ -26,7 +26,7 @@ public class MockWorksheetModel extends WorkSheetModel  {
    */
   @Override
   public HashSet<Coord> setCellAllowErrors(Coord coord, String cell) {
-    log.append(coord + " " + cell);
+    log.append(coord + " " + cell+ "\n");
     return null;
   }
 
@@ -38,7 +38,7 @@ public class MockWorksheetModel extends WorkSheetModel  {
    */
   @Override
   public void updateCell(Coord location, String value) {
-    log.append(location + " " + value);
+    log.append(location + " " + value + "\n");
   }
 
   /**
@@ -48,7 +48,7 @@ public class MockWorksheetModel extends WorkSheetModel  {
    */
   @Override
   public void evaluateIndCell(String coord) {
-    log.append(coord);
+    log.append(coord).append("\n");
 
   }
 
@@ -60,7 +60,7 @@ public class MockWorksheetModel extends WorkSheetModel  {
    */
   @Override
   public void dragChange(Coord start, Coord finish) {
-    log.append(start + " " + finish);
+    log.append(start + " " + finish).append("\n");
   }
 
   /**
@@ -79,7 +79,7 @@ public class MockWorksheetModel extends WorkSheetModel  {
    */
   @Override
   public void removeCell(Coord target) {
-    log.append("remove " + target);
+    log.append("remove " + target).append("\n");
   }
 
   /**
@@ -92,7 +92,7 @@ public class MockWorksheetModel extends WorkSheetModel  {
   @Override
   public void setCell(int col, int row, String s) {
 
-    log.append(col + " " + row + " " + s);
+    log.append(col + " " + row + " " + s).append("\n");
   }
 
   /**
@@ -144,7 +144,7 @@ public class MockWorksheetModel extends WorkSheetModel  {
    */
   @Override
   public String getCellText(Coord coord) {
-    log.append(coord + " was passed");
+    log.append(coord + " was passed\n");
     return coord + " was passed";
   }
 

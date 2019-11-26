@@ -165,6 +165,39 @@ public class SpreadsheetMVCControllerTest {
     controller.clickOnCellAt(new Point(0, 0));
     controller.clickOnCellAt(new Point(80, 0));
 
-    assertEquals("A1 was passedB1 was passed", expectedOutput.toString().trim());
+    assertEquals("A1 was passed\n"
+        + "B1 was passed", expectedOutput.toString().trim());
+  }
+
+  // Test that the Controller clears the input text of the GUI view properly
+  @Test
+  public void testClearInputInitialVal() {
+    this.init("good1.txt");
+    StringBuilder expectedOutput = new StringBuilder();
+
+    view.setInputText("123");
+    controller.clearInput();
+
+    //model.getCellText(new Coord(5, 1));
+
+    expectedOutput.append("set input text to 123\n"
+        + "reset input\n"
+        + "set input text to");
+
+    MockView testView = (MockView) view;
+    assertEquals(expectedOutput.toString().trim(), testView.log.toString().trim());
+  }
+
+  // Test that the Controller clears the input text of the GUI view properly
+  @Test
+  public void testClearInput() {
+    this.init("good1.txt");
+    StringBuilder expectedOutput = new StringBuilder();
+    controller.clearInput();
+
+    expectedOutput.append("reset input\n").append("set input text to");
+
+    MockView testView = (MockView) view;
+    assertEquals(expectedOutput.toString().trim(), testView.log.toString().trim());
   }
 }
