@@ -124,7 +124,10 @@ public class SpreadsheetMVCControllerTest {
     view.setInputText("123");
 
     controller.confirmInput();
-    expectedOutput.append("set input text to 123");
+    expectedOutput.append("set input text to 123\n"
+        + "updated view by adding 123.000000 at coord A1\n"
+        + "updated view by adding 148.000000 at coord F1\n"
+        + "updated view by adding 125.000000 at coord Y50");
 
     MockView testView = (MockView) view;
     assertEquals(expectedOutput.toString().trim(), testView.log.toString().trim());
@@ -266,7 +269,7 @@ public class SpreadsheetMVCControllerTest {
 
     expectedOutput.append("set input text to 123\n"
         + "reset input\n"
-        + "set input text to");
+        + "set input text to 3.000000");
 
     MockView testView = (MockView) view;
     assertEquals(expectedOutput.toString().trim(), testView.log.toString().trim());
@@ -279,7 +282,9 @@ public class SpreadsheetMVCControllerTest {
     StringBuilder expectedOutput = new StringBuilder();
     controller.clearInput();
 
-    expectedOutput.append("reset input\n").append("set input text to");
+    // The default selected cell has value 3. The UNCONFIRMED user text is cleared and the
+    // current text is redisplayed.
+    expectedOutput.append("reset input\n").append("set input text to 3.000000");
 
     MockView testView = (MockView) view;
     assertEquals(expectedOutput.toString().trim(), testView.log.toString().trim());

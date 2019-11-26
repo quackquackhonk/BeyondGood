@@ -45,4 +45,13 @@ public interface ControllerFeatures {
    * Deletes the contents of the selected cell.
    */
   void deleteCellContents();
+
+  /**
+   * Changed the currently highlighted cell using the arrow keys of a keyboard.
+   *
+   * @param x change in x direction
+   * @param y change in y direction
+   */
+  void cellSelectWithKey(int x, int y);
+
 }
