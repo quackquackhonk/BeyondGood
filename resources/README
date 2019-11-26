@@ -47,7 +47,7 @@ GridPanel
 
 ---------- Interfaces ------------------------
 IWorkSheetModel:
-	- This interface is parameterized by the user's implementation of "cell contents". Therefore future models that 
+	- This interface is parameterized by the user's implementation of "cell contents". Therefore future models that
 	  represent their cells differently should work.
 
 	- Contains all methods that should work on any representation of a spreadsheet.
