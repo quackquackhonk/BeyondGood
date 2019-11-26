@@ -245,7 +245,6 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
     this.formText.setText(s);
   }
 
-
   /**
    * Gets the text the user has inputted in the input field.
    */
@@ -358,8 +357,6 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
     this.addActionListener(this.configureButtonListener(f));
     this.addKeyListener(this.configureKeyboardListener(f));
     this.addMouseListener(this.configureMouseListener(f));
-
-    
   }
 
   /**
