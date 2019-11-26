@@ -161,7 +161,7 @@ public class SpreadsheetMVCControllerTest {
   public void testControllerSetsViewCell() {
     StringBuilder expectedOutput = new StringBuilder();
     view = new MockView();
-    model = new MockWorksheetModel();
+    model = new MockWorksheetModel(expectedOutput);
     controller = new SpreadsheetMVCController(model);
     controller.setView(view);
     model.setCellAllowErrors(new Coord(0,0), "123");
@@ -171,7 +171,7 @@ public class SpreadsheetMVCControllerTest {
   public void testControllerAddColumn() {
     this.init("good1.txt");
     StringBuilder expectedOutput = new StringBuilder();
-    model = new MockWorksheetModel();
+    model = new MockWorksheetModel(expectedOutput);
     view = new MockView();
     controller = new SpreadsheetMVCController(model);
     controller.setView(view);
@@ -205,7 +205,7 @@ public class SpreadsheetMVCControllerTest {
   @Test
   public void testControllerAddRow() {
     StringBuilder expectedOutput = new StringBuilder();
-    model = new MockWorksheetModel();
+    model = new MockWorksheetModel(expectedOutput);
     view = new MockView();
     controller = new SpreadsheetMVCController(model);
     controller.setView(view);
@@ -234,6 +234,55 @@ public class SpreadsheetMVCControllerTest {
 
     MockView testView = (MockView) view;
     assertEquals(expectedOutput.toString(), testView.log.toString());
+  }
+
+  // Input from view to Controller verified as working by previous test testConfirmInput()
+  // Test that Controller sends info to the view properly.
+  @Test
+  public void testControllerPassesToModel() {
+    StringBuilder expectedOutput = new StringBuilder();
+    view = new MockView();
+    model = new MockWorksheetModel(expectedOutput);
+    controller = new SpreadsheetMVCController(model);
+    controller.setView(view);
+
+    controller.clickOnCellAt(new Point(0, 0));
+    controller.clickOnCellAt(new Point(80, 0));
+
+    assertEquals("A1 was passed\n"
+        + "B1 was passed", expectedOutput.toString().trim());
+  }
+
+  // Test that the Controller clears the input text of the GUI view properly
+  @Test
+  public void testClearInputInitialVal() {
+    this.init("good1.txt");
+    StringBuilder expectedOutput = new StringBuilder();
+
+    view.setInputText("123");
+    controller.clearInput();
+
+    //model.getCellText(new Coord(5, 1));
+
+    expectedOutput.append("set input text to 123\n"
+        + "reset input\n"
+        + "set input text to");
+
+    MockView testView = (MockView) view;
+    assertEquals(expectedOutput.toString().trim(), testView.log.toString().trim());
+  }
+
+  // Test that the Controller clears the input text of the GUI view properly
+  @Test
+  public void testClearInput() {
+    this.init("good1.txt");
+    StringBuilder expectedOutput = new StringBuilder();
+    controller.clearInput();
+
+    expectedOutput.append("reset input\n").append("set input text to");
+
+    MockView testView = (MockView) view;
+    assertEquals(expectedOutput.toString().trim(), testView.log.toString().trim());
   }
 
 }
