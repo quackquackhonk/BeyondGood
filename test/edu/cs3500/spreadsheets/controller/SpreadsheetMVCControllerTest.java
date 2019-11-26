@@ -1,18 +1,21 @@
 package edu.cs3500.spreadsheets.controller;
 
-import static org.junit.Assert.assertEquals;
-
 import edu.cs3500.spreadsheets.model.Coord;
-import edu.cs3500.spreadsheets.model.IWriteWorkSheetModel;
-import edu.cs3500.spreadsheets.model.WorkSheetModel;
-import edu.cs3500.spreadsheets.model.WorksheetReader;
-import edu.cs3500.spreadsheets.view.IView;
-import java.awt.Point;
+import org.junit.Test;
+
+import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import org.junit.Test;
+
+import edu.cs3500.spreadsheets.model.IWriteWorkSheetModel;
+import edu.cs3500.spreadsheets.model.WorkSheetModel;
+import edu.cs3500.spreadsheets.model.WorksheetReader;
+import edu.cs3500.spreadsheets.view.IView;
+import edu.cs3500.spreadsheets.view.SpreadsheetGUIViewEditable;
+
+import static org.junit.Assert.*;
 
 /**
  * Tests for the Controller.
@@ -20,12 +23,12 @@ import org.junit.Test;
 public class SpreadsheetMVCControllerTest {
 
   WorksheetReader.WorksheetBuilder<IWriteWorkSheetModel> builder
-      = new WorkSheetModel.SheetBuilder();
+          = new WorkSheetModel.SheetBuilder();
   IWriteWorkSheetModel model;
   IView view;
   SpreadsheetController controller;
 
-  private void init(String filename) {
+  private void init(String filename){
     File file = new File(filename);
     Readable fileReader;
     try {
@@ -40,6 +43,7 @@ public class SpreadsheetMVCControllerTest {
         er.printStackTrace();
       }
     }
+
     view = new MockView();
     controller = new SpreadsheetMVCController(model);
     controller.setView(view);
@@ -59,8 +63,8 @@ public class SpreadsheetMVCControllerTest {
     // click on empty cell
     controller.clickOnCellAt(new Point(100, 100));
     expectedOutput.append("clicked on (100,100)\n" +
-        "selected cell B4\n" +
-        "set input text to \n");
+            "selected cell B4\n" +
+            "set input text to \n");
 
     controller.clickOnCellAt(new Point(440, 20));
     expectedOutput.append("clicked on (440,20)\n");
@@ -152,52 +156,84 @@ public class SpreadsheetMVCControllerTest {
     assertEquals(model.getCellText(new Coord(6, 1)), "123.000000");
   }
 
-  // Input from view to Controller verified as working by previous test testConfirmInput()
-  // Test that Controller sends info to the view properly.
+  // Controller to model
   @Test
-  public void testControllerPassesToModel() {
+  public void testControllerSetsViewCell() {
     StringBuilder expectedOutput = new StringBuilder();
     view = new MockView();
-    model = new MockWorksheetModel(expectedOutput);
+    model = new MockWorksheetModel();
+    controller = new SpreadsheetMVCController(model);
+    controller.setView(view);
+    model.setCellAllowErrors(new Coord(0,0), "123");
+  }
+
+  @Test
+  public void testControllerAddColumn() {
+    this.init("good1.txt");
+    StringBuilder expectedOutput = new StringBuilder();
+    model = new MockWorksheetModel();
+    view = new MockView();
     controller = new SpreadsheetMVCController(model);
     controller.setView(view);
 
-    controller.clickOnCellAt(new Point(0, 0));
-    controller.clickOnCellAt(new Point(80, 0));
+    controller.addColumn();
+    expectedOutput.append("ERROR: Please enter a valid column name (alphabetical characters only)" +
+                    "\n");
 
-    assertEquals("A1 was passed\n"
-        + "B1 was passed", expectedOutput.toString().trim());
-  }
+    view.setColToAdd("2192132");
+    expectedOutput.append("set addColField to 2192132\n");
+    controller.addColumn();
+    expectedOutput.append("ERROR: Please enter a valid column name (alphabetical characters only)" +
+                    "\n");
 
-  // Test that the Controller clears the input text of the GUI view properly
-  @Test
-  public void testClearInputInitialVal() {
-    this.init("good1.txt");
-    StringBuilder expectedOutput = new StringBuilder();
-
-    view.setInputText("123");
-    controller.clearInput();
-
-    //model.getCellText(new Coord(5, 1));
-
-    expectedOutput.append("set input text to 123\n"
-        + "reset input\n"
-        + "set input text to");
-
-    MockView testView = (MockView) view;
-    assertEquals(expectedOutput.toString().trim(), testView.log.toString().trim());
-  }
-
-  // Test that the Controller clears the input text of the GUI view properly
-  @Test
-  public void testClearInput() {
-    this.init("good1.txt");
-    StringBuilder expectedOutput = new StringBuilder();
-    controller.clearInput();
-
-    expectedOutput.append("reset input\n").append("set input text to");
+    view.setColToAdd("Z");
+    expectedOutput.append("set addColField to Z\n");
+    controller.addColumn();
+    expectedOutput.append("resized view with new maxCol: 26 and new maxRow: 0\n");
+    expectedOutput.append("set addColField to \n");
+    view.setColToAdd("A");
+    expectedOutput.append("set addColField to A\n");
+    controller.addColumn();
+    // this means that it was not resized.
+    expectedOutput.append("resized view with new maxCol: 1 and new maxRow: 0\n");
+    expectedOutput.append("set addColField to \n");
 
     MockView testView = (MockView) view;
-    assertEquals(expectedOutput.toString().trim(), testView.log.toString().trim());
+    assertEquals(expectedOutput.toString(), testView.log.toString());
   }
+
+  @Test
+  public void testControllerAddRow() {
+    StringBuilder expectedOutput = new StringBuilder();
+    model = new MockWorksheetModel();
+    view = new MockView();
+    controller = new SpreadsheetMVCController(model);
+    controller.setView(view);
+
+    controller.addRow();
+    expectedOutput.append("ERROR: Please enter a valid row name (numerical characters only)" +
+            "\n");
+
+    view.setRowToAdd("ABC");
+    expectedOutput.append("set addRowField to ABC\n");
+    controller.addRow();
+    expectedOutput.append("ERROR: Please enter a valid row name (numerical characters only)" +
+            "\n");
+
+    view.setRowToAdd("26");
+    expectedOutput.append("set addRowField to 26\n");
+    controller.addRow();
+    expectedOutput.append("resized view with new maxCol: 0 and new maxRow: 26\n");
+    expectedOutput.append("set addRowField to \n");
+    view.setRowToAdd("1");
+    expectedOutput.append("set addRowField to 1\n");
+    controller.addRow();
+    // this means that it was not resized.
+    expectedOutput.append("resized view with new maxCol: 0 and new maxRow: 1\n");
+    expectedOutput.append("set addRowField to \n");
+
+    MockView testView = (MockView) view;
+    assertEquals(expectedOutput.toString(), testView.log.toString());
+  }
+
 }

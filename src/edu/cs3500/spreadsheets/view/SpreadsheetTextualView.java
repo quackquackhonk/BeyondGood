@@ -157,7 +157,17 @@ public class SpreadsheetTextualView implements IView {
   }
 
   @Override
+  public void setColToAdd(String s) {
+    throw new UnsupportedOperationException("Read-only views cannot add columns");
+  }
+
+  @Override
   public String getRowToAdd() {
+    throw new UnsupportedOperationException("Read-only views cannot add rows");
+  }
+
+  @Override
+  public void setRowToAdd(String s) {
     throw new UnsupportedOperationException("Read-only views cannot add rows");
   }
 

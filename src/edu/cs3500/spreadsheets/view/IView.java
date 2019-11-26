@@ -116,9 +116,33 @@ public interface IView {
    */
   void resizeView(int maxCol, int maxRow);
 
+  /**
+   * Gets the column to add from it's respective text field.
+   * @return the column to add.
+   */
   String getColToAdd();
 
+  /**
+   * Sets the text in the column adding text field.
+   * @param s the text to set
+   */
+  void setColToAdd(String s);
+
+  /**
+   * Gets the row to add from its respective text field.
+   * @return the row to add.
+   */
   String getRowToAdd();
 
+  /**
+   * Sets the text in the row adding text field.
+   * @param s the text to set
+   */
+  void setRowToAdd(String s);
+
+  /**
+   * Adds the feature functionality based on the given ControllerFeatures
+   * @param f the features to add
+   */
   void addFeatures(ControllerFeatures f);
 }
