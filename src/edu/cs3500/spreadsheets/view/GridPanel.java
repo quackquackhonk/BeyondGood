@@ -178,6 +178,11 @@ public class GridPanel extends JPanel {
             && col == this.selectedCell.col-1;
 
         // Draws top border
+        if (on) {
+          g2d.setColor(Color.darkGray);
+          g2d.fillRect(col * cw, row * ch, cw, ch);
+        }
+
         lineColor = on || below ? Color.white : Color.pink;
         g2d.setColor(lineColor);
         g2d.drawLine(col * cw, row * ch, col * cw + cw, row * ch);
