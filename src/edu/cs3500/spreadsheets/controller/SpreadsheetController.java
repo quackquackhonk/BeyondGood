@@ -11,7 +11,7 @@ public interface SpreadsheetController extends ControllerFeatures {
    * Sets the view that the controller has control over and initializes the IView for potential
    * interaction.
    *
-   * @param view the view to control.
+   * @param view the view for the controller to use.
    */
   void setView(IView view);
 

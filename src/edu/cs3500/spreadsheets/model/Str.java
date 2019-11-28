@@ -73,4 +73,26 @@ public class Str implements Value<String> {
   public Dbl getDbl() {
     throw new IllegalArgumentException("not a Dbl");
   }
+
+  /**
+   * Return this Str.
+   *
+   * @return Str will return itself, Bool/Dbl throw exceptions.
+   * @throws IllegalArgumentException if Value is not a Str
+   */
+  @Override
+  public Str getStr() throws IllegalArgumentException {
+    return this;
+  }
+
+  /**
+   * Return this Bool.
+   *
+   * @return Bool will return itself, Bool/Dbl throw exceptions.
+   * @throws IllegalArgumentException if Value is not a Str
+   */
+  @Override
+  public Bool getBool() throws IllegalArgumentException {
+    throw new IllegalArgumentException("not a Bool");
+  }
 }

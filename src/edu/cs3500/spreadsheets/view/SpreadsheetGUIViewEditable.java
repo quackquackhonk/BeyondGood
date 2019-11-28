@@ -25,7 +25,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
- * GUI view for IReadWorkSheetModels.
+ * Editable GUI view for IReadWorkSheetModels.
  */
 public class SpreadsheetGUIViewEditable extends JFrame implements IView {
 
@@ -67,7 +67,8 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
     this.setLayout(new BorderLayout());
     this.setSize(this.getPreferredSize());
 
-    // Determine number of rows and columns GridPanel needs to display given Frame dimensions
+    // Determine number of rows and columns GridPanel needs to display given Frame dimensions.
+    // Add 3 cell buffer.
     int numRow = this.getPreferredSize().width / cellWidth + 3;
     int numCol = this.getPreferredSize().height / cellHeight + 3;
     //System.out.println(numRow);
@@ -79,7 +80,7 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
             stringCells, 0, colEnd, 0, rowEnd);
 
 
-    // Add FormulaPanel, currently not editable.
+    // Add FormulaPanel for users to create new cells.
     JPanel formulaBarPanel = new JPanel();
     formulaBarPanel.setLayout(new FlowLayout());
     formConfirm = new JButton("✔");
@@ -119,15 +120,16 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
 
     this.add(formulaBarPanel, BorderLayout.NORTH);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    // Handles when users resize the window using "maximize" button
     this.addWindowStateListener(we -> createScrollPanel(this.stringCells));
     this.pack();
   }
 
   /**
-   * Handles the events for when the frame is resized. Removes the scrollPane and recreates it based
+   * Handles the events for when the frame is resized using maximize. Removes the scrollPane and recreates it based
    * on the current size of the window.
    *
-   * @param stringCells the hashmap of strings for the gridpanel to render.
+   * @param stringCells the HashMap of cells currently in the view
    */
   private void createScrollPanel(HashMap<Coord, String> stringCells) {
     this.remove(this.scrollPane);
@@ -143,7 +145,6 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
     int rowStart = gridPanel.getRowStart();
     int rowEnd = gridPanel.getRowEnd();
 
-    System.out.println(getPreferredSize() + " gui size");
     int initPanelWidth = Math.max(getPreferredSize().width, this.maxCol * cellWidth);
     int initPanelHeight = Math.max(getPreferredSize().height, this.maxRow * cellHeight);
 
@@ -213,11 +214,8 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
 
   @Override
   public Coord coordFromLoc(int x, int y) {
-    //this.formText.requestFocus();
     this.prevText = this.formText.getText();
-    Coord cell = this.scrollPane.coordFromLoc(x, y);
-    //this.repaint();
-    return cell;
+    return this.scrollPane.coordFromLoc(x, y);
   }
 
   @Override
@@ -234,9 +232,7 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
 
     // Size the grid panel to be as wide/tall as the furthest out cells + some buffer.
     // If this size is smaller than the Frame size, use the frame size instead.
-    //System.out.println(model.getMaxRow());
     int initPanelWidth = Math.max(getPreferredSize().width, this.maxCol * cellWidth);
-    //System.out.println(initPanelWidth);
     int initPanelHeight = Math.max(getPreferredSize().height, this.maxRow * cellHeight);
 
     // Three cell buffer

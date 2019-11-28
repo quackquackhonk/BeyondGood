@@ -3,88 +3,91 @@ package edu.cs3500.spreadsheets.model;
 import java.util.HashSet;
 
 /**
- * Represents a Read-only Worksheet Model. Mainly for use in the view. Only includes getter methods
+ * Represents a Read-only Worksheet Model. Contains getter methods
  * that report the state of the model. No methods can mutate the model.
  */
 public interface IReadWorkSheetModel<CellContents> {
 
   /**
-   * Returns the set of Coords initiated or depended on by other Coords.
+   * Returns the set of all cells in the model.
    *
    * @return active Coords
    */
   HashSet<Coord> activeCells();
 
   /**
-   * Prints result of evaluated cell at given coordinate.
+   * Returns the evaluated value of a CellContents as a String.
    *
-   * @param coord represents a String coordinate
+   * @param coord represents a Coord in string form.
    */
   String evaluateCell(String coord);
 
   /**
-   * Returns a String of the evaluated Cell at the given column and row.
+   * Returns the evaluated value of a CellContents as a String.
    */
   String evaluateCell(int col, int row);
 
   /**
-   * Evaluates a cell into a string, throws errors if in a cycle or poorly formatted.
+   * Evaluates the CellContents at the input into a string.
    *
    * @param coord target cell
+   * @throws IllegalArgumentException if cell is in a cycle or formatted incorrectly.
    * @return evaluated cell contents.
    */
   String evaluateCellCheck(String coord);
 
   /**
    * Returns the raw text of the cell at given Coordinate.
+   * Raw = the String used to create the cell, not its evaluated result.
+   * ex: =(SUM 1 2), not 3.
    *
+   * @throws IllegalArgumentException if no cell at given Coord
    * @param coord is a coordinate
    */
-  String getCellText(Coord coord);
+  String getCellText(Coord coord) throws IllegalArgumentException;
 
   /**
-   * Returns the raw text.
+   * Returns the raw text of the cell.
    */
   String getCellText(int col, int row);
 
   /**
-   * Return cell at a provided location.
+   * Return CellContents at a provided Coord.
    *
    * @param location is the coordinates of the cell
-   * @return the {@Cell} at the provided location
-   * @throws IllegalStateException    if the model was not checked
-   * @throws IllegalArgumentException if the location of the cell is invalid
+   * @return the CellContents at the provided location
+   * @throws IllegalArgumentException if no cell exists at given Coord.
    */
-  CellContents getCell(Coord location) throws IllegalStateException;
+  CellContents getCell(Coord location) throws IllegalArgumentException;
 
   /**
-   * Does the model have any cells in error. Includes cycles and invalid formulas.
+   * Returns if the model have any cells that can't evaluate or are in cycles.
    */
   Boolean hasErrors();
 
   /**
-   * Returns the max width of sheet.
+   * Returns the highest row number out of all cells in the sheet.
    *
    * @return the width of the row
    */
   int getMaxRow();
 
   /**
-   * Returns the min width of sheet.
+   * Returns the lowest row number out of all cells in the sheet.
    *
-   * @return the width of the row
+   * @return returns
    */
-  int getMinRowWidth();
+  int getMinRow();
 
   /**
-   * Returns the min height of sheet.
+   * Returns the lowest column number out of all cells in the sheet.
    *
-   * @return the height of the col
+   * @return highest column number in sheet
    */
-  int getMinColHeight();
+  int getMinCol();
 
   /**
-   * Returns the max height of the sheet.
+   * Returns the highest row number out of all cells in the sheet.
    *
    * @return the height of the col
    */

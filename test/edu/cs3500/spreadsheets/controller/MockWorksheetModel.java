@@ -24,22 +24,6 @@ public class MockWorksheetModel extends WorkSheetModel {
   }
 
   @Override
-  public void updateCell(Coord location, String value) {
-    log.append(location).append(" ").append(value).append("\n");
-  }
-
-  @Override
-  public void evaluateIndCell(String coord) {
-    log.append(coord).append("\n");
-
-  }
-
-  @Override
-  public void dragChange(Coord start, Coord finish) {
-    log.append(start + " " + finish).append("\n");
-  }
-
-  @Override
   public void setCell(int col, int row, String s) {
     log.append(col + " " + row + " " + s).append("\n");
   }
@@ -89,13 +73,13 @@ public class MockWorksheetModel extends WorkSheetModel {
   }
 
   @Override
-  public int getMinRowWidth() {
-    return super.getMinRowWidth();
+  public int getMinRow() {
+    return super.getMinRow();
   }
 
   @Override
-  public int getMinColHeight() {
-    return super.getMinColHeight();
+  public int getMinCol() {
+    return super.getMinCol();
   }
 
   @Override

@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 
 /**
- * Custom ScrollPane for spreadsheets.
+ * Custom ScrollPane for spreadsheets. Contains the GridPanel, scrollbars, and col/row headers.
  */
 public class SpreadsheetScrollingPanel extends JPanel {
 
@@ -155,6 +155,7 @@ public class SpreadsheetScrollingPanel extends JPanel {
     this.verticalScroll.setVisibleAmount(this.verticalScroll.getBlockIncrement());
   }
 
+  // Returns the Coord based on mouse position
   Coord coordFromLoc(int x, int y) {
     return this.grid.coordFromLoc(x, y);
   }

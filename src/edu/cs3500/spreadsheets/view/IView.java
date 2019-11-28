@@ -14,12 +14,12 @@ import edu.cs3500.spreadsheets.model.Coord;
  */
 public interface IView {
   /**
-   * Renders state of model.
+   * Repaint the view.
    */
   void render();
 
   /**
-   * Make the view visible. This is usually called after the view is constructed.
+   * Make the view visible. If this isn't called, the result of render() isn't visible.
    */
   void makeVisible();
 
@@ -57,17 +57,18 @@ public interface IView {
   void addMouseListener(MouseListener listener);
 
   /**
-   * Sets default user input.
+   * Sets the text in the formula bar text box.
    */
   void setInputText(String s);
 
   /**
-   * Gets the text the user has inputted in the input field.
+   * Gets the text from the formula bar text box.
    */
   String getInputText();
 
   /**
    * Determine corresponding Coord from x position and y position on the worksheet.
+   * X position and y position can correspond a mouse's position.
    *
    * @param x x position
    * @param y y position
@@ -83,7 +84,7 @@ public interface IView {
   Coord getSelectedCell();
 
   /**
-   * Initializes view by passing in the cells to display and the range of cells to display.
+   * Initializes view by passing in the cells it needs display and the range of cells to display.
    *
    * @param stringCells All cells in the sheet.
    * @param maxCol      render cells up to this column
@@ -92,7 +93,7 @@ public interface IView {
   void setupView(HashMap<Coord, String> stringCells, int maxCol, int maxRow);
 
   /**
-   * Update the view with new cells.
+   * Update the view with a single new cell instead of passing in ALL cells.
    *
    * @param coord location of cell.
    * @param cell  contents of new cell in String form
@@ -100,7 +101,7 @@ public interface IView {
   void updateView(Coord coord, String cell);
 
   /**
-   * Reverts input state prior to user modification.
+   * Resets the text in the formula bar textbox to what it was before.
    */
   void resetInput();
 
@@ -110,35 +111,35 @@ public interface IView {
   void resizeView(int maxCol, int maxRow);
 
   /**
-   * Gets the column to add from it's respective text field.
+   * Gets the String in the the "add column" text box.
    *
    * @return the column to add.
    */
   String getColToAdd();
 
   /**
-   * Sets the text in the column adding text field.
+   * Sets the String in the the "add column" text box.
    *
    * @param s the text to set
    */
   void setColToAdd(String s);
 
   /**
-   * Gets the row to add from its respective text field.
+   * Gets the String in the the "add row" text box.
    *
    * @return the row to add.
    */
   String getRowToAdd();
 
   /**
-   * Sets the text in the row adding text field.
+   * Sets the String in the the "add row" text box.
    *
    * @param s the text to set
    */
   void setRowToAdd(String s);
 
   /**
-   * Adds the feature functionality based on the given ControllerFeatures
+   * Add ControllerFeatures to the view to facilitate Controller/View communication.
    *
    * @param f the features to add
    */

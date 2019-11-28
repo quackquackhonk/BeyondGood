@@ -85,4 +85,26 @@ public class Bool implements Value<Boolean> {
   public Dbl getDbl() {
     throw new IllegalArgumentException("not a Dbl");
   }
+
+  /**
+   * Return this Str.
+   *
+   * @return Str will return itself, Bool/Dbl throw exceptions.
+   * @throws IllegalArgumentException if Value is not a Str
+   */
+  @Override
+  public Str getStr() throws IllegalArgumentException {
+    throw new IllegalArgumentException("Not a Str");
+  }
+
+  /**
+   * Return this Bool.
+   *
+   * @return Bool will return itself, Bool/Dbl throw exceptions.
+   * @throws IllegalArgumentException if Value is not a Str
+   */
+  @Override
+  public Bool getBool() throws IllegalArgumentException {
+    return this;
+  }
 }

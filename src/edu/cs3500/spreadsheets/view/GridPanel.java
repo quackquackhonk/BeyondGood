@@ -13,7 +13,8 @@ import javax.swing.JPanel;
 import java.util.HashMap;
 
 /**
- * GUI JPanel for rendering cells in a spreadsheet.
+ * Class to draw the cells and grid of a spreadsheet. Displays cells within a given row/col range
+ * and stores currently highlighted cell.
  */
 public class GridPanel extends JPanel {
 
@@ -25,14 +26,20 @@ public class GridPanel extends JPanel {
 
   // Column start/end + Row start/end.
   // Only draw within these bounds.
+
+  // Col Start and Col End
   private int cs;
   private int ce;
+
+  // Row Start and Row End
   private int rs;
   private int re;
+
+  // Cell to highlight
   private Coord selectedCell;
 
   /**
-   * Constructs GUI JPanel dimensions.
+   * Constructs Grid JPanel dimensions.
    */
   public GridPanel(int numRow, int numCol, int cw, int ch, HashMap<Coord, String> cells,
                    int colStart, int colEnd, int rowStart, int rowEnd) {

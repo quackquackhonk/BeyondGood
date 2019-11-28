@@ -79,4 +79,26 @@ public class Blank implements Value {
     throw new IllegalArgumentException();
   }
 
+  /**
+   * Return this Str.
+   *
+   * @return Str will return itself, Bool/Dbl throw exceptions.
+   * @throws IllegalArgumentException if Value is not a Str
+   */
+  @Override
+  public Str getStr() throws IllegalArgumentException {
+    throw new IllegalArgumentException();
+  }
+
+  /**
+   * Return this Bool.
+   *
+   * @return Bool will return itself, Bool/Dbl throw exceptions.
+   * @throws IllegalArgumentException if Value is not a Str
+   */
+  @Override
+  public Bool getBool() throws IllegalArgumentException {
+    throw new IllegalArgumentException();
+  }
+
 }

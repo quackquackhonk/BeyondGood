@@ -3,7 +3,6 @@ package edu.cs3500.spreadsheets.model;
 import edu.cs3500.spreadsheets.model.WorksheetReader.WorksheetBuilder;
 import edu.cs3500.spreadsheets.sexp.Parser;
 import edu.cs3500.spreadsheets.sexp.Sexp;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -64,7 +63,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
    * @return the width of the row
    */
   @Override
-  public int getMinRowWidth() {
+  public int getMinRow() {
     return minRow;
   }
 
@@ -74,7 +73,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
    * @return the height of the col
    */
   @Override
-  public int getMinColHeight() {
+  public int getMinCol() {
     return minCol;
   }
 
@@ -87,20 +86,6 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
   public int getMaxCol() {
     return maxCol;
   }
-
-  @Override
-  public void shiftCells(CellContents c, int x, int y) {
-    // we will use for future assignments
-
-  }
-
-
-  @Override
-  public void dragChange(Coord start, Coord finish) {
-    // we will use for future assignments
-
-  }
-
 
   /**
    * Creates and sets cell at given Coordinate regardless of errors it creates, returns set of cells
@@ -175,14 +160,8 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
     return toUpdate;
   }
 
-  @Override
-  public void updateCell(Coord location, String value) {
-    // we will use for future assignments
-
-  }
-
   /**
-   * Prints result of evaluated cell at given coordinate. coord
+   * Returns
    */
   @Override
   public String evaluateCell(String coord) {
@@ -198,7 +177,6 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
     } catch (NullPointerException n) {
       throw new IllegalArgumentException("Can't evaluate cell or cell doesn't exist" + coord);
     }
-
   }
 
   /**
@@ -238,6 +216,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
     Coord target = getCoordFromString(coord);
     CellContents cell = getCell(target);
     Value finalVal = cell == null ? new Blank() : cell.acceptEvalVisitor(new EvalVisitor());
+    System.out.println(finalVal.toString());
   }
 
   /**
@@ -269,7 +248,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
    * @param coord location of cell.
    */
   @Override
-  public String evaluateCellCheck(String coord) {
+  public String evaluateCellCheck(String coord) throws IllegalArgumentException {
     Coord tar = this.getCoordFromString(coord);
 
     // Check if the dependencies for this cell has cycles. If none do, this cell isn't in a cycle.
@@ -292,7 +271,6 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
     } catch (NullPointerException n) {
       throw new IllegalArgumentException("Can't evaluate cell or cell doesn't exist" + coord);
     }
-
   }
 
   /**
@@ -323,7 +301,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
             String[] coordComps = coordParser.checkCoord(strCoord);
 
             buildCell(Coord.colNameToIndex(coordComps[0]),
-                    Integer.parseInt(coordComps[1]), new Blank());
+                Integer.parseInt(coordComps[1]), new Blank());
           }
         }
       } catch (IllegalArgumentException e) {
@@ -414,26 +392,24 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
     return output;
   }
 
-  /**
-   * Build a cell at a given location provided with col and row numbers. col  represents the col
-   * number row  represents the row number cont the content of the cell
-   *
-   * @throws IllegalStateException    if the model was not checked
-   * @throws IllegalArgumentException if the location of the cell is invalid
-   */
   @Override
-  public void buildCell(int col, int row, CellContents cont) {
-    minCol = Math.min(col, minCol);
-    maxCol = Math.max(col, maxCol);
-    minRow = Math.min(row, minRow);
-    maxRow = Math.max(row, maxRow);
+  public void buildCell(int col, int row, CellContents cont) throws IllegalArgumentException {
+    try {
+      Coord coord = new Coord(col, row);
+      minCol = Math.min(col, minCol);
+      maxCol = Math.max(col, maxCol);
+      minRow = Math.min(row, minRow);
+      maxRow = Math.max(row, maxRow);
 
-    Coord coord = new Coord(col, row);
-    this.sheet.put(coord, cont);
-    ArrayList<HashSet<Coord>> childDeps = new ArrayList<>();
-    childDeps.add(new HashSet<>());
-    childDeps.add(new HashSet<>());
-    this.adjList.put(coord, childDeps);
+      this.sheet.put(coord, cont);
+      ArrayList<HashSet<Coord>> childDeps = new ArrayList<>();
+      childDeps.add(new HashSet<>());
+      childDeps.add(new HashSet<>());
+      this.adjList.put(coord, childDeps);
+    } catch (IllegalArgumentException p) {
+      throw new IllegalArgumentException("Invalid Coordinate with negative values");
+    }
+
   }
 
   // Returns the adjacency list of the given coord. Returns null if sheet doesn't contain coord.
@@ -448,7 +424,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
 
   /*
    * Creates and sets a cell at coordinate in input string if valid.
-   * -Create cell, store old one.
+   * -Creates cell, store old one.
    * - get dependencies of new cell
    * - Get children of setCell's coord if has any
    * - Check for cycles
@@ -520,7 +496,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
     }
   }
 
-  // Builds adjacency list for all cells in sheet.
+  // Builds adjacency list for all cells in the sheet. Used once by setupModel();
   protected void buildAdjList() {
     Set<Coord> toCheck = this.sheet.keySet();
     // Gets Coord dependencies of currentCoord
@@ -548,8 +524,8 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
             SexpVisitParser coordParser = new SexpVisitParser();
             String[] coordComps = coordParser.checkCoord(strCoord);
             buildCell(Coord.colNameToIndex(coordComps[0]),
-                    Integer.parseInt(coordComps[1]),
-                    new Blank());
+                Integer.parseInt(coordComps[1]),
+                new Blank());
             this.adjList.get(coordDep).get(0).add(currentCoord);
           }
         }
@@ -607,7 +583,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
    * A factory class to build model.
    */
   public static final class SheetBuilder implements
-          WorksheetReader.WorksheetBuilder<IWriteWorkSheetModel> {
+      WorksheetReader.WorksheetBuilder<IWriteWorkSheetModel> {
 
     IWriteWorkSheetModel model;
 
@@ -669,7 +645,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
       } catch (IllegalArgumentException e) {
         // Catch IAE thrown by parser
         System.out.println("Error in cell " +
-                Coord.colIndexToName(col) + row + ": Unparsable Sexpression");
+            Coord.colIndexToName(col) + row + ": Unparsable Sexpression");
       }
       return new SheetBuilder(this.model);
     }

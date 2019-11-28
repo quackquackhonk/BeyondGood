@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class GREATERTHAN extends Ops {
   /**
-   * Constructs a GREATERTHAN cell that stores.
+   * Constructs a GREATERTHAN cell that stores CellContents it needs to evaluate.
    *
    * @param params - params.
    */

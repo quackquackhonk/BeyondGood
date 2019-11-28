@@ -1,7 +1,8 @@
 package edu.cs3500.spreadsheets.model;
 
 /**
- * An abstracted function object for evaluating cells.
+ * A function object for evaluating CellContents. Calls relevant evaluation methods in the
+ * model based on type of CellContents.
  */
 
 public interface IEvalVisitor<Value> {

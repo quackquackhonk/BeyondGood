@@ -11,7 +11,7 @@ public interface MouseRunnable {
   /**
    * Runs the MouseRunnable function with the given point as the location.
    *
-   * @param loc the point that the event occured on.
+   * @param loc the point that the event occurred on.
    */
   void run(Point loc);
 

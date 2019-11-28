@@ -10,61 +10,44 @@ import java.util.HashSet;
 public interface IWriteWorkSheetModel<CellContents> extends IReadWorkSheetModel<CellContents> {
 
   /**
-   * Creates and sets cell at given Coordinate regardless of errors it creates, returns set of cells
-   * dependent on new cell.
-   */
-  HashSet<Coord> setCellAllowErrors(Coord coord, String cell);
-
-  /**
-   * Replaces cell at the given location with the cell created from the provided value.
+   * Creates and sets cell at given Coord, regardless of the errors it causes/has in the
+   * IWriteWorkSheetModel. Useful for Controllers that need to create cells from user input that may
+   * cause errors.  Updates adjacency lists for all affected cells.
    *
-   * @param location is the coordinates of the cell
-   * @param value    is the row input, parsable as an s-expression
+   * @throws IllegalArgumentException if Coord is null
    */
-  void updateCell(Coord location, String value);
+  HashSet<Coord> setCellAllowErrors(Coord coord, String cell) throws IllegalArgumentException;
 
   /**
-   * Prints result of evaluated cell at given coordinate.
+   * Prints (System.out.println) result of evaluated cell at given coordinate.
    *
    * @param coord is string coordinate
    */
   void evaluateIndCell(String coord);
 
   /**
-   * Shifts given cell contents based on x and y axis.
-   *
-   * @param c is a content to be shifted
-   * @param x is a column
-   * @param y is a row
-   */
-  void shiftCells(CellContents c, int x, int y);
-
-  /**
-   * Applies origin cell to all cells within range.
-   *
-   * @param start  starting coordinate
-   * @param finish ending coordinate
-   */
-  void dragChange(Coord start, Coord finish);
-
-  /**
-   * Checks the validity of the model.
+   * Checks the validity of the model. A valid model has no cycles and all cells can evaluate.
    */
   void setupModel();
 
   /**
-   * Build a cell at a given location provided with col and row numbers.
+   * Build a cell at a given location provided with col and row numbers. Used mostly by builder and
+   * DOESN'T CREATE/UPDATE EXISTING ADJACENCY LISTS.
    *
    * @param col      represents the col number
    * @param row      represents the row number
    * @param contents the content of the cell
-   * @throws IllegalStateException    if the model was not checked
    * @throws IllegalArgumentException if the location of the cell is invalid
    */
-  void buildCell(int col, int row, CellContents contents);
+  void buildCell(int col, int row, CellContents contents) throws IllegalArgumentException;
 
   /**
-   * Sets a cell given raw String containing a coordinate and raw cell contents.
+   * Sets a cell given raw String containing a coordinate and raw cell contents. Updates adjacency
+   * lists of affected cells, and throws IllegalArgumentException if new cell causes an
+   * cycles/errors.
+   *
+   * @throws IllegalArgumentException if new cell causes cycles, cannot evaluate, or causes other
+   *                                  cells not to evaluate.
    */
-  void setCell(int col, int row, String s);
+  void setCell(int col, int row, String s) throws IllegalArgumentException;
 }
