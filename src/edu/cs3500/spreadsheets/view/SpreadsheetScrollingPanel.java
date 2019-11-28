@@ -124,6 +124,7 @@ public class SpreadsheetScrollingPanel extends JPanel {
 
   /**
    * Sets the bounds and layout for the grid, viewport, and two scrollbars.
+   * Called during any window resizing/scroll events.
    */
   public void doLayout() {
     Dimension size = getSize();
@@ -173,7 +174,7 @@ public class SpreadsheetScrollingPanel extends JPanel {
     }
 
     /**
-     * Recalculates layout based on scroll event. Moves grid accordingly.
+     * Recalculates layout based on scroll event/window. Moves grid accordingly.
      */
     public void doLayout() {
       int x = horizontalScroll.getValue();
@@ -279,7 +280,7 @@ public class SpreadsheetScrollingPanel extends JPanel {
     }
 
     /**
-     * Recalculates bounds based on scroll event.
+     * Resize based on scroll event / window event.
      */
     public void doLayout() {
       int y = verticalScroll.getValue();
