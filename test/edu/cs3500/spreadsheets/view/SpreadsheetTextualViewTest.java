@@ -6,6 +6,8 @@ import static org.junit.Assert.assertEquals;
 import edu.cs3500.spreadsheets.model.IWriteWorkSheetModel;
 import edu.cs3500.spreadsheets.model.WorkSheetModel;
 
+import edu.cs3500.spreadsheets.view.IView;
+import edu.cs3500.spreadsheets.view.SpreadsheetTextualView;
 import java.io.IOException;
 
 import org.junit.Test;
