@@ -28,13 +28,20 @@ public interface IReadWorkSheetModel<CellContents> {
   String evaluateCell(int col, int row);
 
   /**
+   * Returns the evaluated value of a CellContents as a String.
+   */
+  Value evaluateCellValue(Coord c);
+
+  /**
    * Evaluates the CellContents at the input into a string.
    *
    * @param coord target cell
    * @throws IllegalArgumentException if cell is in a cycle or formatted incorrectly.
    * @return evaluated cell contents.
    */
-  String evaluateCellCheck(String coord);
+  Value evaluateCellCheck(String coord);
+
+  String evaluateCellCheckString(String coord);
 
   /**
    * Returns the raw text of the cell at given Coordinate.
@@ -55,10 +62,9 @@ public interface IReadWorkSheetModel<CellContents> {
    * Return CellContents at a provided Coord.
    *
    * @param location is the coordinates of the cell
-   * @return the CellContents at the provided location
-   * @throws IllegalArgumentException if no cell exists at given Coord.
+   * @return the CellContents at the provided location. Null if nothing there.
    */
-  CellContents getCell(Coord location) throws IllegalArgumentException;
+  CellContents getCell(Coord location);
 
   /**
    * Returns if the model have any cells that can't evaluate or are in cycles.

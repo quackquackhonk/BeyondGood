@@ -36,7 +36,7 @@ public class SpreadsheetMVCController implements SpreadsheetController {
     // Display cycle/formula errors
     for (Coord c : modelCells) {
       try {
-        String cellResult = model.evaluateCellCheck(c.toString());
+        String cellResult = model.evaluateCellCheckString(c.toString());
         // only add the cell if it is not empty
         if (!cellResult.equals("")) {
           stringCells.put(c, cellResult);
@@ -61,7 +61,7 @@ public class SpreadsheetMVCController implements SpreadsheetController {
     System.out.println(cells + " recalculating");
     for (Coord c : cells) {
       try {
-        String cellResult = model.evaluateCellCheck(c.toString());
+        String cellResult = model.evaluateCellCheckString(c.toString());
         System.out.println(cellResult + " is result");
         // only add the cell if it is not empty
 

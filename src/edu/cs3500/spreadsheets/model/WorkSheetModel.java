@@ -189,7 +189,25 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
   @Override
   public String evaluateCell(int col, int row) {
     Coord c = new Coord(col, row);
-    return this.evaluateCell(c.toString());
+    return this.evaluateCellValue(c).toString();
+  }
+
+  /**
+   * Returns the evaluated value of a CellContents as a String.
+   *
+   * @param c
+   */
+  @Override
+  public Value evaluateCellValue(Coord c) {
+    if (!this.isValid) {
+      throw new IllegalArgumentException("Model has incorrect cells");
+    }
+    try {
+      CellContents cell = getCell(c);
+      return cell.acceptEvalVisitor(new EvalVisitor());
+    } catch (NullPointerException n) {
+      throw new IllegalArgumentException("Can't evaluate cell or cell doesn't exist" + c);
+    }
   }
 
   /**
@@ -225,7 +243,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
    * @return the CC at the coordinate.
    */
   @Override
-  public CellContents getCell(Coord loc) throws IllegalArgumentException {
+  public CellContents getCell(Coord loc) {
     try {
       CellContents cell = this.sheet.get(loc);
       return cell.stringParams().equals("") ? null : cell;
@@ -248,7 +266,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
    * @param coord location of cell.
    */
   @Override
-  public String evaluateCellCheck(String coord) throws IllegalArgumentException {
+  public Value evaluateCellCheck(String coord) throws IllegalArgumentException {
     Coord tar = this.getCoordFromString(coord);
 
     // Check if the dependencies for this cell has cycles. If none do, this cell isn't in a cycle.
@@ -265,12 +283,16 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
     try {
       Coord target = getCoordFromString(coord);
       CellContents cell = this.sheet.get(target);
-      Value finalVal = cell.acceptEvalVisitor(new EvalVisitor());
+      return cell.acceptEvalVisitor(new EvalVisitor());
       //System.out.println(finalVal.toString());
-      return finalVal.toString();
     } catch (NullPointerException n) {
       throw new IllegalArgumentException("Can't evaluate cell or cell doesn't exist" + coord);
     }
+  }
+
+  @Override
+  public String evaluateCellCheckString(String coord) {
+    return this.evaluateCellCheck(coord).toString();
   }
 
   /**

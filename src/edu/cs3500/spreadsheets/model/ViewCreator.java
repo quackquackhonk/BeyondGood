@@ -26,6 +26,7 @@ public class ViewCreator {
     } else {
       throw new IllegalArgumentException("This isn't even possible lol");
     }
+
     return view;
   }
 

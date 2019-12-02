@@ -47,7 +47,7 @@ public class SpreadsheetGUIView extends JFrame implements IView {
     // Display cycle/formula errors
     for (Coord c : modelCells) {
       try {
-        String cellResult = model.evaluateCellCheck(c.toString());
+        String cellResult = model.evaluateCellCheckString(c.toString());
         // only add the cell if it is not empty
         if (!cellResult.equals("")) {
           stringCells.put(c, cellResult);

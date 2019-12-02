@@ -1,6 +1,7 @@
 package edu.cs3500.spreadsheets.controller;
 
 import edu.cs3500.spreadsheets.model.Coord;
+import edu.cs3500.spreadsheets.model.Value;
 import edu.cs3500.spreadsheets.model.WorkSheetModel;
 
 import java.util.HashSet;
@@ -44,7 +45,12 @@ public class MockWorksheetModel extends WorkSheetModel {
   }
 
   @Override
-  public String evaluateCellCheck(String coord) {
+  public String evaluateCellCheckString(String coord) {
+    return super.evaluateCellCheckString(coord);
+  }
+
+  @Override
+  public Value evaluateCellCheck(String coord) {
     return super.evaluateCellCheck(coord);
   }
 

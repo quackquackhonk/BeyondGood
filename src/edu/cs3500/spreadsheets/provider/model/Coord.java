@@ -3,8 +3,7 @@ package edu.cs3500.spreadsheets.provider.model;
 import java.util.Objects;
 
 /**
- * A value type representing coordinates in a Worksheet
- */
+ * A value type representing coordinates in a Worksheet */
 public class Coord {
   public final int row;
   public final int col;
