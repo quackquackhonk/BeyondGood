@@ -11,6 +11,8 @@ import edu.cs3500.spreadsheets.provider.view.SpreadsheetEditableGraphicView;
 import edu.cs3500.spreadsheets.provider.view.SpreadsheetView;
 import edu.cs3500.spreadsheets.view.IView;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.HashSet;
 
 public class AdapterMVCController extends SpreadsheetMVCController implements Features,
     IController {
@@ -36,7 +38,13 @@ public class AdapterMVCController extends SpreadsheetMVCController implements Fe
    */
   @Override
   public void confirm() {
-    super.confirmInput();
+    String input = view.getInputString();
+    Coord location = view.getSelectCoord();
+    if (location != null && input != null) {
+      model.setCell(location.col, location.row, input);
+    }
+    view.resetFocus();
+    view.repaint();
   }
 
   /**
@@ -94,7 +102,7 @@ public class AdapterMVCController extends SpreadsheetMVCController implements Fe
    */
   @Override
   public void deleteCellContent() {
-    super.deleteCellContents();
+
   }
 
   /**
@@ -122,6 +130,7 @@ public class AdapterMVCController extends SpreadsheetMVCController implements Fe
    */
   @Override
   public void run() throws IOException {
+    view.addFeatures(this);
     view.repaint();
     view.render();
   }

@@ -2,33 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="013926d2-f87d-4d22-a068-7b9fcc73e8c6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/controller/AdapterMVCController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/SpreadsheetAdapterModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/ccToCellAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/vToCellValueAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/AdapterGuiView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/BeyondGood.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/BeyondGood.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/controller/SpreadsheetMVCController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/controller/SpreadsheetMVCController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/IReadWorkSheetModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/IReadWorkSheetModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/ViewCreator$ViewType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/ViewCreator$ViewType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/ViewCreator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/ViewCreator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel$EvalVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel$EvalVisitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel$SheetBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel$SheetBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/view/SpreadsheetGUIView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/view/SpreadsheetGUIView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/Asn5 Starter/edu/cs3500/spreadsheets/controller/MockWorksheetModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/Asn5 Starter/edu/cs3500/spreadsheets/controller/MockWorksheetModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/META-INF/Asn5 Starter.kotlin_module" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/BeyondGood.jar" beforeDir="false" afterPath="$PROJECT_DIR$/resources/BeyondGood.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/BeyondGood.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/BeyondGood.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/controller/AdapterMVCController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/controller/AdapterMVCController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/controller/SpreadsheetMVCController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/controller/SpreadsheetMVCController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/IReadWorkSheetModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/IReadWorkSheetModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/ViewCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/ViewCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/WorkSheetModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/WorkSheetModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/WorksheetAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/provider/model/Coord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/provider/model/Coord.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetGUIView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetGUIView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/edu/cs3500/spreadsheets/controller/MockWorksheetModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/edu/cs3500/spreadsheets/controller/MockWorksheetModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/SpreadsheetAdapterModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/SpreadsheetAdapterModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/ccToCellAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/ccToCellAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/provider/view/SpreadsheetEditableGraphicView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/provider/view/SpreadsheetEditableGraphicView.java" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,6 +33,7 @@
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
+        <option value="KwhoaKai &lt;31353758+kwhoakai@users.noreply.github.com&gt;" />
         <option value="-" />
       </list>
     </option>
@@ -65,6 +49,11 @@
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="Downloaded.Files.Path.Enabled" value="false" />
@@ -78,12 +67,12 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -107,25 +96,14 @@
       <command value="blankSheetGui" />
     </option>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
   <component name="RunManager" selected="Application.guiProvider">
-    <configuration name="Unnamed" type="AndroidJUnit" nameIsGenerated="true">
+    <configuration name="Unnamed" type="AndroidJUnit" factoryName="Android JUnit" nameIsGenerated="true">
       <module name="Asn5 Starter" />
       <option name="MAIN_CLASS_NAME" value="" />
       <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
       <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -325,6 +303,18 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -344,13 +334,6 @@
       <workItem from="1574796391762" duration="1341000" />
       <workItem from="1574797868617" duration="982000" />
       <workItem from="1574799065617" duration="667000" />
-    </task>
-    <task id="LOCAL-00004" summary="- font auto-sizing/spacing">
-      <created>1573583452586</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1573583452586</updated>
     </task>
     <task id="LOCAL-00005" summary="- font auto-sizing/spacing">
       <created>1573594861737</created>
@@ -688,7 +671,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575236693854</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="- Added adapter classes for:&#10;    - GUI view&#10;    - Controller&#10;    - Model&#10;    - CellContents&#10;    - Value&#10;&#10;- Probably need to add a view adapter too">
+      <created>1575249718167</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1575249718167</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -737,7 +727,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="- Fixed math for Point to Coord method" />
     <MESSAGE value="- Highlight cell on click&#10;- Add cells to model with confirm button&#10;- Clear text field with clear button" />
     <MESSAGE value="- Javadoc" />
     <MESSAGE value="Fixed bug where MouseEvents would no longer be recognized after maximizing the window." />
@@ -762,6 +751,50 @@
     <MESSAGE value="J A V A S T Y L E" />
     <MESSAGE value="- MORE COMMENTS" />
     <MESSAGE value="- Added provider package with their code and fixed paths" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Added provider package with their code and fixed paths" />
+    <MESSAGE value="- Added adapter classes for:&#10;    - GUI view&#10;    - Controller&#10;    - Model&#10;    - CellContents&#10;    - Value&#10;&#10;- Probably need to add a view adapter too" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Added adapter classes for:&#10;    - GUI view&#10;    - Controller&#10;    - Model&#10;    - CellContents&#10;    - Value&#10;&#10;- Probably need to add a view adapter too" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1575269465669">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1575269465669" />
+    <state width="1493" height="131" key="GridCell.Tab.0.bottom" timestamp="1575319654981">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="131" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1575319654981" />
+    <state width="3380" height="257" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1575273087254" />
+    <state width="1493" height="131" key="GridCell.Tab.0.center" timestamp="1575319654981">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="131" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1575319654981" />
+    <state width="3380" height="257" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1575273087254" />
+    <state width="1493" height="131" key="GridCell.Tab.0.left" timestamp="1575319654981">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="131" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1575319654981" />
+    <state width="3380" height="257" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1575273087254" />
+    <state width="1493" height="131" key="GridCell.Tab.0.right" timestamp="1575319654981">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="131" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1575319654981" />
+    <state width="3380" height="257" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1575273087254" />
+    <state x="278" y="55" key="SettingsEditor" timestamp="1575269653275">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="278" y="55" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1575269653275" />
+    <state x="708" y="337" key="com.intellij.ide.util.TipDialog" timestamp="1575301332536">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="708" y="337" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1575301332536" />
+    <state x="1586" y="573" key="com.intellij.ide.util.TipDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1575273047319" />
+    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1575301910027">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1575301910027" />
+    <state x="426" y="188" width="672" height="677" key="run.anything.popup" timestamp="1575318968442">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="426" y="188" width="672" height="677" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1575318968442" />
   </component>
 </project>

@@ -1,27 +1,21 @@
 package edu.cs3500.spreadsheets.provider.view;
 
-import java.awt.Dimension;
-import java.awt.BorderLayout;
-import java.awt.Font;
-
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.swing.JToolBar;
-import javax.swing.JButton;
-import javax.swing.JTextField;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-
 import edu.cs3500.spreadsheets.provider.controller.Features;
-import edu.cs3500.spreadsheets.provider.view.listener.ButtonListener;
-import edu.cs3500.spreadsheets.provider.view.listener.KeyboardListener;
 import edu.cs3500.spreadsheets.provider.model.Cell;
 import edu.cs3500.spreadsheets.provider.model.Coord;
 import edu.cs3500.spreadsheets.provider.model.ViewOnlyModel;
-import edu.cs3500.spreadsheets.provider.view.SpreadsheetView;
+import edu.cs3500.spreadsheets.provider.view.listener.ButtonListener;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.JToolBar;
 
 /**
  * An editable graphic view for spreadsheet. Contains a tool bar for user to edit the content of
@@ -99,18 +93,13 @@ public class SpreadsheetEditableGraphicView extends JFrame implements Spreadshee
 
   @Override
   public void addFeatures(Features features) {
+    System.out.println("Adding feat");
     Map<String, Runnable> buttonClickedMap = new HashMap<String, Runnable>();
     ButtonListener buttonListener = new ButtonListener();
-    buttonClickedMap.put("Confirm Button", () -> {
-      features.confirm();
-    });
-    buttonClickedMap.put("Reject Button", () -> {
-      features.reject();
-
-    });
+    buttonClickedMap.put("Confirm Button", features::confirm);
+    buttonClickedMap.put("Reject Button", features::reject);
     buttonListener.setButtonClickedActionMap(buttonClickedMap);
     this.addActionListener(buttonListener);
-
 
     sPanel.addMouseListener(features);
 

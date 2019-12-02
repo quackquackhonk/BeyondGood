@@ -31,6 +31,7 @@ public class SpreadsheetAdapterModel implements SpreadsheetModel {
     Coord target = new Coord(x,y);
     CellContents cell = this.model.getCell(new Coord(x, y));
     if(cell != null) {
+      //System.out.println(cell);
       return new ccToCellAdapter(cell, this.model.evaluateCellCheck(target.toString()));
     } else {
       return null;

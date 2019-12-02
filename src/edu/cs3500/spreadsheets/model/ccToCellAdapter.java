@@ -37,4 +37,9 @@ public class ccToCellAdapter implements Cell {
   public String getRowContent() {
     return this.cell.getRaw();
   }
+
+  @Override
+  public String toString() {
+    return value.toString();
+  }
 }
