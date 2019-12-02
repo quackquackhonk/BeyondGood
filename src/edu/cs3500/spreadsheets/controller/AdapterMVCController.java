@@ -52,7 +52,8 @@ public class AdapterMVCController extends SpreadsheetMVCController implements Fe
    */
   @Override
   public void reject() {
-    super.clearInput();
+    String currentRaw = model.getCellAt(view.getSelectCoord()).getRowContent();
+    view.setInputString(currentRaw);
   }
 
   /**
@@ -62,7 +63,7 @@ public class AdapterMVCController extends SpreadsheetMVCController implements Fe
    */
   @Override
   public void selectCell(Coord c) {
-    //super.clickOnCellAt();
+    view.setSelectedCoord(c);
   }
 
   /**
@@ -70,7 +71,9 @@ public class AdapterMVCController extends SpreadsheetMVCController implements Fe
    */
   @Override
   public void moveSelectCellUp() {
-    super.cellSelectWithKey(0, -1);
+    Coord curCell = view.getSelectCoord();
+    view.setSelectedCoord(new Coord(curCell.col, curCell.row-1));
+    view.repaint();
   }
 
   /**
@@ -78,7 +81,9 @@ public class AdapterMVCController extends SpreadsheetMVCController implements Fe
    */
   @Override
   public void moveSelectCellDown() {
-    super.cellSelectWithKey(0, 1);
+    Coord curCell = view.getSelectCoord();
+    view.setSelectedCoord(new Coord(curCell.col, curCell.row+1));
+    view.repaint();
   }
 
   /**
@@ -86,7 +91,9 @@ public class AdapterMVCController extends SpreadsheetMVCController implements Fe
    */
   @Override
   public void moveSelectCellLeft() {
-    super.cellSelectWithKey(-1, 0);
+    Coord curCell = view.getSelectCoord();
+    view.setSelectedCoord(new Coord(curCell.col-1, curCell.row));
+    view.repaint();
   }
 
   /**
@@ -94,7 +101,9 @@ public class AdapterMVCController extends SpreadsheetMVCController implements Fe
    */
   @Override
   public void moveSelectCellRight() {
-    super.cellSelectWithKey(1, 0);
+    Coord curCell = view.getSelectCoord();
+    view.setSelectedCoord(new Coord(curCell.col+1, curCell.row));
+    view.repaint();
   }
 
   /**
@@ -102,7 +111,9 @@ public class AdapterMVCController extends SpreadsheetMVCController implements Fe
    */
   @Override
   public void deleteCellContent() {
-
+    Coord target = view.getSelectCoord();
+    model.removeCell(target);
+    view.repaint();
   }
 
   /**

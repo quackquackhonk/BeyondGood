@@ -292,7 +292,18 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
 
   @Override
   public String evaluateCellCheckString(String coord) {
-    return this.evaluateCellCheck(coord).toString();
+    try {
+      return this.evaluateCellCheck(coord).toString();
+    } catch (IllegalArgumentException i) {
+      String msg = i.getMessage();
+      String output = "";
+      if (msg.contains("cycle")) {
+        msg = "#REF!";
+      } else if (msg.contains("Formula")) {
+        msg = "#VALUE!";
+      }
+      return msg;
+    }
   }
 
   /**
@@ -841,7 +852,8 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
       double total = 0;
       ArrayList<CellContents> cont = s.getInnerCells();
       if (cont.isEmpty()) {
-        throw new IllegalArgumentException("Can't sum 0 arguments");
+        return new Dbl(0);
+        //throw new IllegalArgumentException("Can't sum 0 arguments");
       }
       if (cont.size() == 1) {
         CellContents single = cont.get(0);
@@ -890,6 +902,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
       ArrayList<CellContents> cont = s.getInnerCells();
 
       if (cont.isEmpty()) {
+        //return new Dbl(1);
         throw new IllegalArgumentException("Can't multiply 0 arguments");
       }
       if (cont.size() == 1) {
