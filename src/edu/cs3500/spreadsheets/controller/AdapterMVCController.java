@@ -12,8 +12,6 @@ import edu.cs3500.spreadsheets.provider.view.SpreadsheetEditableGraphicView;
 import edu.cs3500.spreadsheets.provider.view.SpreadsheetView;
 import edu.cs3500.spreadsheets.view.IView;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.HashSet;
 
 public class AdapterMVCController extends SpreadsheetMVCController implements Features,
     IController {

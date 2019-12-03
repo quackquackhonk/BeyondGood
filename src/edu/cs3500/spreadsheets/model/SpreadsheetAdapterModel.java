@@ -38,7 +38,10 @@ public class SpreadsheetAdapterModel implements SpreadsheetModel {
     } catch(IllegalArgumentException e) {
       if (e.getMessage().contains("Formula")) {
         toRet = new ccToCellAdapter(cell, new Str("#VALUE!"));
-      } else {
+      } else if (e.getMessage().contains("cycle")) {
+        toRet = new ccToCellAdapter(cell, new Str("#REF!"));
+      }
+      else {
         System.out.println(e.getMessage());
         e.printStackTrace();
       }
