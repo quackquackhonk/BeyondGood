@@ -30,12 +30,20 @@ public class SpreadsheetAdapterModel implements SpreadsheetModel {
   public Cell getCellAt(int x, int y) {
     Coord target = new Coord(x,y);
     CellContents cell = this.model.getCell(new Coord(x, y));
-    if(cell != null) {
-      //System.out.println(cell);
-      return new ccToCellAdapter(cell, this.model.evaluateCellCheck(target.toString()));
-    } else {
-      return null;
+    Cell toRet = null;
+    try {
+      if(cell != null) {
+        toRet = new ccToCellAdapter(cell, this.model.evaluateCellCheck(target.toString()));
+      }
+    } catch(IllegalArgumentException e) {
+      if (e.getMessage().contains("Formula")) {
+        toRet = new ccToCellAdapter(cell, new Str("#VALUE!"));
+      } else {
+        System.out.println(e.getMessage());
+        e.printStackTrace();
+      }
     }
+    return toRet;
   }
 
   /**

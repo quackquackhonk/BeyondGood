@@ -34,7 +34,6 @@ public interface SpreadsheetView {
    */
   void addActionListener(ActionListener listener);
 
-
   /**
    * Get the string which user inputs.
    *
