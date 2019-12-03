@@ -3,12 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="013926d2-f87d-4d22-a068-7b9fcc73e8c6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel$EvalVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel$EvalVisitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel$SheetBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel$SheetBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/BeyondGood.jar" beforeDir="false" afterPath="$PROJECT_DIR$/resources/BeyondGood.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/controller/AdapterMVCController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/controller/AdapterMVCController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/SpreadsheetAdapterModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/SpreadsheetAdapterModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/provider/view/SpreadsheetView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/provider/view/SpreadsheetView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/provider/view/SpreadsheetEditableGraphicView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/provider/view/SpreadsheetEditableGraphicView.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -334,14 +332,7 @@
       <workItem from="1574797868617" duration="982000" />
       <workItem from="1574799065617" duration="667000" />
       <workItem from="1575324548891" duration="29000" />
-      <workItem from="1575398851463" duration="509000" />
-    </task>
-    <task id="LOCAL-00008" summary="Success.">
-      <created>1573616911826</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1573616911826</updated>
+      <workItem from="1575398851463" duration="1400000" />
     </task>
     <task id="LOCAL-00009" summary="Success.">
       <created>1573622374223</created>
@@ -679,7 +670,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575319885178</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="Added ability to catch invalid formulas (summing strings)">
+      <created>1575399404390</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1575399404391</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -738,7 +736,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="- Javadoc" />
     <MESSAGE value="Fixed bug where MouseEvents would no longer be recognized after maximizing the window." />
     <MESSAGE value="Added UI components to support for inserting rows and columns into the spreadsheet" />
     <MESSAGE value="Added ControllerFeatures interface to allow for easier addition of functionality to the controller. SpreadsheetController extends ControllerFeatures." />
@@ -763,7 +760,8 @@
     <MESSAGE value="- Added provider package with their code and fixed paths" />
     <MESSAGE value="- Added adapter classes for:&#10;    - GUI view&#10;    - Controller&#10;    - Model&#10;    - CellContents&#10;    - Value&#10;&#10;- Probably need to add a view adapter too" />
     <MESSAGE value="- Added confirm method in adapter controller" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Added confirm method in adapter controller" />
+    <MESSAGE value="Added ability to catch invalid formulas (summing strings)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added ability to catch invalid formulas (summing strings)" />
   </component>
   <component name="WindowStateProjectService">
     <state x="421" y="19" key="CommitChangelistDialog2" timestamp="1575319884420">

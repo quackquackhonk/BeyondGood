@@ -133,7 +133,7 @@ public class SpreadsheetEditableGraphicView extends JFrame implements Spreadshee
     Cell cell = model.getCellAt(selectedCoord.col, selectedCoord.row);
     if (cell != null) {
       String s = cell.getRowContent();
-      s = s.substring(s.indexOf(' ') + 1);
+      //s = s.substring(s.indexOf(' ') + 1);
       setInputString(s);
     } else {
       setInputString("");

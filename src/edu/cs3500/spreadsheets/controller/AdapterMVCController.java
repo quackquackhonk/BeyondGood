@@ -4,6 +4,7 @@ import edu.cs3500.spreadsheets.model.IWriteWorkSheetModel;
 import edu.cs3500.spreadsheets.model.SpreadsheetAdapterModel;
 import edu.cs3500.spreadsheets.provider.controller.Features;
 import edu.cs3500.spreadsheets.provider.controller.IController;
+import edu.cs3500.spreadsheets.provider.model.Cell;
 import edu.cs3500.spreadsheets.provider.model.Coord;
 import edu.cs3500.spreadsheets.provider.model.SpreadsheetModel;
 import edu.cs3500.spreadsheets.provider.model.ViewOnlyModel;
@@ -64,6 +65,14 @@ public class AdapterMVCController extends SpreadsheetMVCController implements Fe
   @Override
   public void selectCell(Coord c) {
     view.setSelectedCoord(c);
+    Cell toDisplay = model.getCellAt(c);
+    String cont;
+    if (toDisplay == null) {
+      cont = "";
+    } else {
+      cont = toDisplay.getRowContent();
+    }
+    view.setInputString(cont);
   }
 
   /**
@@ -72,7 +81,7 @@ public class AdapterMVCController extends SpreadsheetMVCController implements Fe
   @Override
   public void moveSelectCellUp() {
     Coord curCell = view.getSelectCoord();
-    view.setSelectedCoord(new Coord(curCell.col, curCell.row-1));
+    this.selectCell(new Coord(curCell.col, curCell.row-1));
     view.repaint();
   }
 
@@ -82,7 +91,7 @@ public class AdapterMVCController extends SpreadsheetMVCController implements Fe
   @Override
   public void moveSelectCellDown() {
     Coord curCell = view.getSelectCoord();
-    view.setSelectedCoord(new Coord(curCell.col, curCell.row+1));
+    this.selectCell(new Coord(curCell.col, curCell.row+1));
     view.repaint();
   }
 
@@ -92,7 +101,7 @@ public class AdapterMVCController extends SpreadsheetMVCController implements Fe
   @Override
   public void moveSelectCellLeft() {
     Coord curCell = view.getSelectCoord();
-    view.setSelectedCoord(new Coord(curCell.col-1, curCell.row));
+    this.selectCell(new Coord(curCell.col-1, curCell.row));
     view.repaint();
   }
 
@@ -102,7 +111,7 @@ public class AdapterMVCController extends SpreadsheetMVCController implements Fe
   @Override
   public void moveSelectCellRight() {
     Coord curCell = view.getSelectCoord();
-    view.setSelectedCoord(new Coord(curCell.col+1, curCell.row));
+    this.selectCell(new Coord(curCell.col+1, curCell.row));
     view.repaint();
   }
 

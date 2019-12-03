@@ -54,13 +54,7 @@ public class SpreadsheetAdapterModel implements SpreadsheetModel {
    */
   @Override
   public Cell getCellAt(edu.cs3500.spreadsheets.provider.model.Coord c) {
-    Coord target = new Coord(c.col,c.row);
-    CellContents cell = this.model.getCell(target);
-    if(cell != null) {
-      return new ccToCellAdapter(cell, this.model.evaluateCellCheck(target.toString()));
-    } else {
-      return null;
-    }
+    return this.getCellAt(c.col, c.row);
   }
 
   /**
