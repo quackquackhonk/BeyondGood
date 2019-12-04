@@ -41,7 +41,6 @@ public class BeyondGood {
       if ((args[0].equals("-gui") || args[0].equals("-edit") || args[0].equals("-provider")) && args.length == 1) {
         //System.out.println("making blank gui");
         File file = new File("newSpreadsheet.txt");
-        new FileReader(file);
         Readable fileReader;
         WorksheetBuilder<IWriteWorkSheetModel> builder = new WorkSheetModel.SheetBuilder();
         fileReader = new FileReader(file);

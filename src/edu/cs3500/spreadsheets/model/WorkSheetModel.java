@@ -18,8 +18,6 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
   HashMap<Coord, CellContents> sheet;
   HashMap<Coord, ArrayList<HashSet<Coord>>> adjList;
   boolean isValid;
-  int numRow;
-  int numCol;
   int maxRow;
   int minRow;
   int maxCol;
