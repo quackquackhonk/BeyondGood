@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="013926d2-f87d-4d22-a068-7b9fcc73e8c6" name="Default Changelist" comment="Commented it out oopsie">
-      <change afterPath="$PROJECT_DIR$/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/BeyondGood_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Asn5_Starter_jar.xml" afterDir="false" />
+    <list default="true" id="013926d2-f87d-4d22-a068-7b9fcc73e8c6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Asn5_Starter_jar/Asn5 Starter.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/BeyondGood.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/BeyondGood.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel$EvalVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel$EvalVisitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel$SheetBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel$SheetBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/provider/view/SpreadsheetEditableGraphicView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/provider/view/SpreadsheetEditableGraphicView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/BeyondGood.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/BeyondGood.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/BeyondGood.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/WorkSheetModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/WorkSheetModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReadMe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/codeReview" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/experienceReview" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/README" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/IReadWorkSheetModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/IReadWorkSheetModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetGUIViewEditable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/SpreadsheetGUIViewEditable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/workingFeatures" beforeDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -339,13 +336,7 @@
       <workItem from="1574799065617" duration="667000" />
       <workItem from="1575324548891" duration="29000" />
       <workItem from="1575398851463" duration="1400000" />
-    </task>
-    <task id="LOCAL-00010" summary="- Drag to full screen works&#10;- Jump to full screen still has horizontal gap">
-      <created>1573623769899</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1573623769899</updated>
+      <workItem from="1575495695010" duration="765000" />
     </task>
     <task id="LOCAL-00011" summary="- JavDocs, removed unused classes">
       <created>1573684274901</created>
@@ -683,7 +674,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575400400800</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="Built project">
+      <created>1575487291725</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1575487291726</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -742,7 +740,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added UI components to support for inserting rows and columns into the spreadsheet" />
     <MESSAGE value="Added ControllerFeatures interface to allow for easier addition of functionality to the controller. SpreadsheetController extends ControllerFeatures." />
     <MESSAGE value="- Add row/columns" />
     <MESSAGE value="- fix full screen" />
@@ -767,7 +764,8 @@
     <MESSAGE value="- Added confirm method in adapter controller" />
     <MESSAGE value="Added ability to catch invalid formulas (summing strings)" />
     <MESSAGE value="- Catch and display cycles&#10;- getRaw()" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Catch and display cycles&#10;- getRaw()" />
+    <MESSAGE value="Built project" />
+    <option name="LAST_COMMIT_MESSAGE" value="Built project" />
   </component>
   <component name="WindowStateProjectService">
     <state x="421" y="19" key="CommitChangelistDialog2" timestamp="1575400399925">

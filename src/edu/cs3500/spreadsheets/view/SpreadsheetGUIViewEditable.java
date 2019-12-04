@@ -126,8 +126,8 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
   }
 
   /**
-   * Handles the events for when the frame is resized using maximize. Removes the scrollPane and recreates it based
-   * on the current size of the window.
+   * Handles the events for when the frame is resized using maximize. Removes the scrollPane
+   * and recreates it based on the current size of the window.
    *
    * @param stringCells the HashMap of cells currently in the view
    */
@@ -150,7 +150,8 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
 
     // Three cell buffer
     gridPanel.setPreferredSize(
-            new Dimension(initPanelWidth + 3 * cellWidth, initPanelHeight + 3 * cellHeight));
+            new Dimension(initPanelWidth + 3 * cellWidth,
+                    initPanelHeight + 3 * cellHeight));
 
     scrollPane = new SpreadsheetScrollingPanel(gridPanel, cellWidth, cellHeight);
     this.scrollPane.setPreferredSize(new Dimension(currPanelWidth + 3 * cellWidth,
@@ -237,7 +238,8 @@ public class SpreadsheetGUIViewEditable extends JFrame implements IView {
 
     // Three cell buffer
     gridPanel.setPreferredSize(
-            new Dimension(initPanelWidth + 3 * cellWidth, initPanelHeight + 3 * cellHeight));
+            new Dimension(initPanelWidth + 3 * cellWidth,
+                    initPanelHeight + 3 * cellHeight));
 
     this.scrollPane = new SpreadsheetScrollingPanel(gridPanel, cellWidth, cellHeight);
 

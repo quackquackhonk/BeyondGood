@@ -36,20 +36,24 @@ public interface IReadWorkSheetModel<CellContents> {
    * Evaluates the CellContents at the input into a string.
    *
    * @param coord target cell
-   * @throws IllegalArgumentException if cell is in a cycle or formatted incorrectly.
    * @return evaluated cell contents.
+   * @throws IllegalArgumentException if cell is in a cycle or formatted incorrectly.
    */
   Value evaluateCellCheck(String coord);
 
+  /**
+   * Evaluates the CellContents at the input into a Stirng
+   * @param coord the target cell.
+   * @return
+   */
   String evaluateCellCheckString(String coord);
-
   /**
    * Returns the raw text of the cell at given Coordinate.
    * Raw = the String used to create the cell, not its evaluated result.
    * ex: =(SUM 1 2), not 3.
    *
-   * @throws IllegalArgumentException if no cell at given Coord
    * @param coord is a coordinate
+   * @throws IllegalArgumentException if no cell at given Coord
    */
   String getCellText(Coord coord) throws IllegalArgumentException;
 
