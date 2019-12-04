@@ -6,14 +6,14 @@ import edu.cs3500.spreadsheets.model.Coord;
 import edu.cs3500.spreadsheets.provider.model.SpreadsheetModel;
 
 /**
- * Class adapter for making our model work with Provider's view. Takes in an instance of our model
- * and translates target implementation methods.
+ * Follows the class adapter pattern for making our model work with Provider's view.
+ * Takes in an instance of our model and translates target implementation methods.
  */
 public class SpreadsheetAdapterModel implements SpreadsheetModel {
   private IWriteWorkSheetModel<CellContents> model;
 
   /**
-   * Constructs adapter class. Takes in a WorkSheetModel.
+   * Constructs the adapter class. Takes in our WorkSheetModel.
    */
   public SpreadsheetAdapterModel(IWriteWorkSheetModel<CellContents> model) {
     this.model = model;

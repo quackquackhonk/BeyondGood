@@ -13,6 +13,11 @@ import edu.cs3500.spreadsheets.provider.view.SpreadsheetView;
 import edu.cs3500.spreadsheets.view.IView;
 import java.io.IOException;
 
+/**
+ * Adapter class implementer provider interfaces. Has a field for implementations of their model and
+ * their view. We designed our own adapter classes to work with this view and their model
+ * interface.
+ */
 public class AdapterMVCController extends SpreadsheetMVCController implements Features,
     IController {
 
@@ -79,7 +84,7 @@ public class AdapterMVCController extends SpreadsheetMVCController implements Fe
   @Override
   public void moveSelectCellUp() {
     Coord curCell = view.getSelectCoord();
-    this.selectCell(new Coord(curCell.col, curCell.row-1));
+    this.selectCell(new Coord(curCell.col, curCell.row - 1));
     view.repaint();
   }
 
@@ -89,7 +94,7 @@ public class AdapterMVCController extends SpreadsheetMVCController implements Fe
   @Override
   public void moveSelectCellDown() {
     Coord curCell = view.getSelectCoord();
-    this.selectCell(new Coord(curCell.col, curCell.row+1));
+    this.selectCell(new Coord(curCell.col, curCell.row + 1));
     view.repaint();
   }
 
@@ -99,7 +104,7 @@ public class AdapterMVCController extends SpreadsheetMVCController implements Fe
   @Override
   public void moveSelectCellLeft() {
     Coord curCell = view.getSelectCoord();
-    this.selectCell(new Coord(curCell.col-1, curCell.row));
+    this.selectCell(new Coord(curCell.col - 1, curCell.row));
     view.repaint();
   }
 
@@ -109,7 +114,7 @@ public class AdapterMVCController extends SpreadsheetMVCController implements Fe
   @Override
   public void moveSelectCellRight() {
     Coord curCell = view.getSelectCoord();
-    this.selectCell(new Coord(curCell.col+1, curCell.row));
+    this.selectCell(new Coord(curCell.col + 1, curCell.row));
     view.repaint();
   }
 

@@ -4,7 +4,8 @@ import edu.cs3500.spreadsheets.provider.model.Cell;
 import edu.cs3500.spreadsheets.provider.model.CellValue;
 
 /**
- * Interface for adapting CellContents to Cells for Provider code.
+ * Interface for adapting CellContents to Cells for Provider code. Uses the object adapter pattern
+ * translate their functionality onto our own CellContents implementation.
  */
 public class ccToCellAdapter implements Cell {
   CellContents cell;

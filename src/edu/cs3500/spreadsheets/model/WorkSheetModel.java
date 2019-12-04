@@ -898,12 +898,12 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
      */
     @Override
     public Value visitPRODUCT(PRODUCT s) {
+      System.out.println(s.toString());
       double total = 1;
       ArrayList<CellContents> cont = s.getInnerCells();
 
       if (cont.isEmpty()) {
-        //return new Dbl(1);
-        throw new IllegalArgumentException("Can't multiply 0 arguments");
+        throw new IllegalArgumentException("Formula - empty argument");
       }
       if (cont.size() == 1) {
         // References to nonexistant cells / nulls are null
@@ -911,7 +911,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
         ArrayList<CellContents> singleCont = single.forOps(this);
 
         if (singleCont.size() == 0) {
-          return new Dbl(1);
+          return null;
         }
         if (singleCont.size() == 1) {
           try {
@@ -921,13 +921,21 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
           }
         } else {
           PRODUCT rangeProd = new PRODUCT(singleCont);
-          return rangeProd.acceptEvalVisitor(this).getDbl();
+          if(rangeProd != null) {
+            return rangeProd.acceptEvalVisitor(this).getDbl();
+          } else {
+            return new Dbl(0);
+          }
         }
       } else {
         for (CellContents c : cont) {
           PRODUCT toMult = new PRODUCT(c.forOps(this));
-          Dbl dblMult = toMult.acceptEvalVisitor(this).getDbl();
-          total *= dblMult.evaluate();
+
+          if(toMult != null) {
+            Dbl dblMult = toMult.acceptEvalVisitor(this).getDbl();
+            total *= dblMult.evaluate();
+          }
+
         }
       }
       return new Dbl(total);
@@ -970,10 +978,10 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
             return newLess.acceptEvalVisitor(this);
           }
         } catch (IllegalArgumentException e) {
-          throw new IllegalArgumentException("Parameters aren't both numeric");
+          throw new IllegalArgumentException("Formula - Parameters aren't both numeric");
         }
       } else {
-        throw new IllegalArgumentException("Incorrect number of parameters");
+        throw new IllegalArgumentException("Formula - Incorrect number of parameters");
       }
     }
 
@@ -1013,7 +1021,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
           return newLess.acceptEvalVisitor(this);
         }
       } else {
-        throw new IllegalArgumentException("Incorrect number of parameters");
+        throw new IllegalArgumentException("Formula - Incorrect number of parameters");
       }
     }
 

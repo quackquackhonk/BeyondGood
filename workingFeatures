@@ -1,0 +1,17 @@
+We were able to implement all the features required by the provider code.
+This was accomplished using adapter classes for our model, cell, and controller classes, without making changes to our
+implementations.
+
+Features that work with their view (These are all the features required):
+	- Infinite scrolling
+	- Window resizing
+	- Adding new cells with or without errors
+	- Displaying cycle or evaluation errors without crashing the program
+	- Highliting cells by mouse
+	- Cancel changes to a cell and revert to previous cell text
+
+
+
+Additional features that our view has (that still work):
+	- Moving the selected cell by keyboard
+	- Removing cells with the delete key

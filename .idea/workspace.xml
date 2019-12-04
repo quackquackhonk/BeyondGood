@@ -3,10 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="013926d2-f87d-4d22-a068-7b9fcc73e8c6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel$EvalVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Asn5 Starter/edu/cs3500/spreadsheets/model/WorkSheetModel$EvalVisitor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/BeyondGood.jar" beforeDir="false" afterPath="$PROJECT_DIR$/resources/BeyondGood.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/controller/AdapterMVCController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/controller/AdapterMVCController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/SpreadsheetAdapterModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/SpreadsheetAdapterModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/provider/view/SpreadsheetEditableGraphicView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/provider/view/SpreadsheetEditableGraphicView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/WorkSheetModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/WorkSheetModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/ccToCellAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/ccToCellAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/vToCellValueAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/vToCellValueAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/view/AdapterGuiView.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -332,13 +336,6 @@
       <workItem from="1574799065617" duration="667000" />
       <workItem from="1575324548891" duration="29000" />
       <workItem from="1575398851463" duration="1400000" />
-    </task>
-    <task id="LOCAL-00009" summary="Success.">
-      <created>1573622374223</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1573622374223</updated>
     </task>
     <task id="LOCAL-00010" summary="- Drag to full screen works&#10;- Jump to full screen still has horizontal gap">
       <created>1573623769899</created>
@@ -676,7 +673,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575399404391</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="- Catch and display cycles&#10;- getRaw()">
+      <created>1575400400799</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1575400400800</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -735,7 +739,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed bug where MouseEvents would no longer be recognized after maximizing the window." />
     <MESSAGE value="Added UI components to support for inserting rows and columns into the spreadsheet" />
     <MESSAGE value="Added ControllerFeatures interface to allow for easier addition of functionality to the controller. SpreadsheetController extends ControllerFeatures." />
     <MESSAGE value="- Add row/columns" />
@@ -760,37 +763,54 @@
     <MESSAGE value="- Added adapter classes for:&#10;    - GUI view&#10;    - Controller&#10;    - Model&#10;    - CellContents&#10;    - Value&#10;&#10;- Probably need to add a view adapter too" />
     <MESSAGE value="- Added confirm method in adapter controller" />
     <MESSAGE value="Added ability to catch invalid formulas (summing strings)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added ability to catch invalid formulas (summing strings)" />
+    <MESSAGE value="- Catch and display cycles&#10;- getRaw()" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Catch and display cycles&#10;- getRaw()" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="421" y="19" key="CommitChangelistDialog2" timestamp="1575319884420">
+    <state x="421" y="19" key="CommitChangelistDialog2" timestamp="1575400399925">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="421" y="19" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1575319884420" />
+    <state x="421" y="19" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1575400399925" />
     <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1575269465669">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1575269465669" />
-    <state width="1493" height="236" key="GridCell.Tab.0.bottom" timestamp="1575400338708">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="3397" height="203" key="GridCell.Tab.0.bottom" timestamp="1575441169009">
+      <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="1493" height="236" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1575400338708" />
-    <state width="3380" height="257" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1575273087254" />
-    <state width="1493" height="236" key="GridCell.Tab.0.center" timestamp="1575400338708">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1493" height="122" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1575400810460" />
+    <state width="3397" height="203" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1575441169009" />
+    <state width="3397" height="203" key="GridCell.Tab.0.center" timestamp="1575441169008">
+      <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="1493" height="236" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1575400338708" />
-    <state width="3380" height="257" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1575273087254" />
-    <state width="1493" height="236" key="GridCell.Tab.0.left" timestamp="1575400338707">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1493" height="122" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1575400810459" />
+    <state width="3397" height="203" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1575441169008" />
+    <state width="3397" height="203" key="GridCell.Tab.0.left" timestamp="1575441169008">
+      <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="1493" height="236" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1575400338707" />
-    <state width="3380" height="257" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1575273087254" />
-    <state width="1493" height="236" key="GridCell.Tab.0.right" timestamp="1575400338708">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1493" height="122" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1575400810459" />
+    <state width="3397" height="203" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1575441169008" />
+    <state width="3397" height="203" key="GridCell.Tab.0.right" timestamp="1575441169009">
+      <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="1493" height="236" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1575400338708" />
-    <state width="3380" height="257" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1575273087254" />
+    <state width="1493" height="122" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1575400810460" />
+    <state width="3397" height="203" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1575441169009" />
+    <state width="3397" height="463" key="GridCell.Tab.1.bottom" timestamp="1575439137742">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="3397" height="463" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1575439137742" />
+    <state width="3397" height="463" key="GridCell.Tab.1.center" timestamp="1575439137741">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="3397" height="463" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1575439137741" />
+    <state width="3397" height="463" key="GridCell.Tab.1.left" timestamp="1575439137741">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="3397" height="463" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1575439137741" />
+    <state width="3397" height="463" key="GridCell.Tab.1.right" timestamp="1575439137741">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="3397" height="463" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1575439137741" />
     <state x="483" y="129" key="MultipleFileMergeDialog" timestamp="1575400311622">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -799,10 +819,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="278" y="55" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1575269653275" />
-    <state x="362" y="146" key="Vcs.Push.Dialog.v2" timestamp="1575319890197">
+    <state x="362" y="146" key="Vcs.Push.Dialog.v2" timestamp="1575400403405">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="362" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1575319890197" />
+    <state x="362" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1575400403405" />
     <state x="708" y="337" key="com.intellij.ide.util.TipDialog" timestamp="1575301332536">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
