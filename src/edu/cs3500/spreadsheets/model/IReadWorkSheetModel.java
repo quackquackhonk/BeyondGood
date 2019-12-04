@@ -42,7 +42,7 @@ public interface IReadWorkSheetModel<CellContents> {
   Value evaluateCellCheck(String coord);
 
   /**
-   * Evaluates the CellContents at the input into a Stirng
+   * Evaluates the CellContents at the input into a String.
    * @param coord the target cell.
    * @return the evaluated cell contents.
    */

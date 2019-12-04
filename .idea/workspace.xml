@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="013926d2-f87d-4d22-a068-7b9fcc73e8c6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/IReadWorkSheetModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/cs3500/spreadsheets/model/IReadWorkSheetModel.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -330,14 +329,7 @@
       <workItem from="1574799065617" duration="667000" />
       <workItem from="1575324548891" duration="29000" />
       <workItem from="1575398851463" duration="1400000" />
-      <workItem from="1575495695010" duration="935000" />
-    </task>
-    <task id="LOCAL-00012" summary="Updated the name of getMaxRowWidth and getMaxColHeight to make more sense in the context of the model">
-      <created>1573692674764</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1573692674764</updated>
+      <workItem from="1575495695010" duration="1071000" />
     </task>
     <task id="LOCAL-00013" summary="Added window maximize listener">
       <created>1573698098555</created>
@@ -675,7 +667,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575496561706</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="Fixed comments">
+      <created>1575496724202</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1575496724203</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
