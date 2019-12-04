@@ -6,14 +6,14 @@ import edu.cs3500.spreadsheets.provider.model.CellValue;
  * Class to adapt Values to CellValues.  Implements provider interface and delegates their methods
  * to an instance of our own Value implementation.
  */
-public class vToCellValueAdapter implements CellValue {
+public class VToCellValueAdapter implements CellValue {
   Value value;
 
   /**
    * Constructs the adapter object. Translates CellValue methods to Value methods.
-   * @param v
+   * @param v the value to adapt.
    */
-  public vToCellValueAdapter(Value v) {
+  public VToCellValueAdapter(Value v) {
     this.value = v;
   }
 

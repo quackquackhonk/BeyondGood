@@ -7,13 +7,14 @@ import edu.cs3500.spreadsheets.provider.model.CellValue;
  * Interface for adapting CellContents to Cells for Provider code. Uses the object adapter pattern
  * translate their functionality onto our own CellContents implementation.
  */
-public class ccToCellAdapter implements Cell {
+public class CCToCellAdapter implements Cell {
   CellContents cell;
   Value value;
+
   /**
    * Constructs CellContents to Cell adapter object.
    */
-  public ccToCellAdapter (CellContents cell, Value value) {
+  public CCToCellAdapter(CellContents cell, Value value) {
     this.cell = cell;
     this.value = value;
   }
@@ -26,7 +27,7 @@ public class ccToCellAdapter implements Cell {
   @Override
   public CellValue getValue() {
 
-    return new vToCellValueAdapter(this.value);
+    return new VToCellValueAdapter(this.value);
   }
 
   /**

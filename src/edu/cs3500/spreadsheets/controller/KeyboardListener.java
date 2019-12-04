@@ -49,8 +49,9 @@ public class KeyboardListener implements KeyListener {
    */
   @Override
   public void keyTyped(KeyEvent e) {
-    if (keyTypedMap.containsKey(e.getKeyChar()))
+    if (keyTypedMap.containsKey(e.getKeyChar())) {
       keyTypedMap.get(e.getKeyChar()).run();
+    }
   }
 
   /**
@@ -61,8 +62,9 @@ public class KeyboardListener implements KeyListener {
    */
   @Override
   public void keyPressed(KeyEvent e) {
-    if (keyPressedMap.containsKey(e.getKeyCode()))
+    if (keyPressedMap.containsKey(e.getKeyCode())) {
       keyPressedMap.get(e.getKeyCode()).run();
+    }
   }
 
   /**
@@ -73,7 +75,8 @@ public class KeyboardListener implements KeyListener {
    */
   @Override
   public void keyReleased(KeyEvent e) {
-    if (keyReleasedMap.containsKey(e.getKeyCode()))
+    if (keyReleasedMap.containsKey(e.getKeyCode())) {
       keyReleasedMap.get(e.getKeyCode()).run();
+    }
   }
 }

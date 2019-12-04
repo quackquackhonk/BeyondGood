@@ -1,8 +1,6 @@
 package edu.cs3500.spreadsheets.model;
 
-import edu.cs3500.spreadsheets.model.WorkSheetModel.EvalVisitor;
 import edu.cs3500.spreadsheets.provider.model.Cell;
-import edu.cs3500.spreadsheets.model.Coord;
 import edu.cs3500.spreadsheets.provider.model.SpreadsheetModel;
 
 /**
@@ -32,14 +30,14 @@ public class SpreadsheetAdapterModel implements SpreadsheetModel {
     CellContents cell = this.model.getCell(new Coord(x, y));
     Cell toRet = null;
     try {
-      if(cell != null) {
-        toRet = new ccToCellAdapter(cell, this.model.evaluateCellCheck(target.toString()));
+      if (cell != null) {
+        toRet = new CCToCellAdapter(cell, this.model.evaluateCellCheck(target.toString()));
       }
-    } catch(IllegalArgumentException e) {
+    } catch (IllegalArgumentException e) {
       if (e.getMessage().contains("Formula")) {
-        toRet = new ccToCellAdapter(cell, new Str("#VALUE!"));
+        toRet = new CCToCellAdapter(cell, new Str("#VALUE!"));
       } else if (e.getMessage().contains("cycle")) {
-        toRet = new ccToCellAdapter(cell, new Str("#REF!"));
+        toRet = new CCToCellAdapter(cell, new Str("#REF!"));
       }
       else {
         System.out.println(e.getMessage());

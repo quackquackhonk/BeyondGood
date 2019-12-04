@@ -4,21 +4,13 @@ import edu.cs3500.spreadsheets.controller.AdapterMVCController;
 import edu.cs3500.spreadsheets.controller.SpreadsheetController;
 import edu.cs3500.spreadsheets.controller.SpreadsheetMVCController;
 import edu.cs3500.spreadsheets.model.IWriteWorkSheetModel;
-import edu.cs3500.spreadsheets.model.SpreadsheetAdapterModel;
 import edu.cs3500.spreadsheets.model.ViewCreator;
 import edu.cs3500.spreadsheets.model.WorkSheetModel;
 import edu.cs3500.spreadsheets.model.WorksheetReader;
 import edu.cs3500.spreadsheets.model.WorksheetReader.WorksheetBuilder;
-import edu.cs3500.spreadsheets.provider.controller.Features;
 import edu.cs3500.spreadsheets.provider.controller.IController;
-import edu.cs3500.spreadsheets.provider.model.SpreadsheetModel;
-import edu.cs3500.spreadsheets.provider.model.ViewOnlyModel;
-import edu.cs3500.spreadsheets.provider.view.SpreadsheetEditableGraphicView;
-import edu.cs3500.spreadsheets.provider.view.SpreadsheetView;
 import edu.cs3500.spreadsheets.view.IView;
 
-import edu.cs3500.spreadsheets.view.SpreadsheetGUIView;
-import edu.cs3500.spreadsheets.view.SpreadsheetGUIViewEditable;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -38,7 +30,8 @@ public class BeyondGood {
    */
   public static void main(String[] args) {
     try {
-      if ((args[0].equals("-gui") || args[0].equals("-edit") || args[0].equals("-provider")) && args.length == 1) {
+      if ((args[0].equals("-gui") || args[0].equals("-edit")
+              || args[0].equals("-provider")) && args.length == 1) {
         //System.out.println("making blank gui");
         File file = new File("newSpreadsheet.txt");
         Readable fileReader;
@@ -47,7 +40,7 @@ public class BeyondGood {
         WorksheetReader.read(builder, fileReader);
         IWriteWorkSheetModel model = WorksheetReader.read(builder, fileReader);
 
-        if(!args[0].equals("-provider")) {
+        if (!args[0].equals("-provider")) {
           IView guiView = args[0].equals("-gui")
               ? ViewCreator.create(ViewCreator.ViewType.GUI, model)
               : ViewCreator.create(ViewCreator.ViewType.EDITGUI, model);
@@ -58,7 +51,8 @@ public class BeyondGood {
           guiView.render();
           guiView.makeVisible();
         } else {
-          // Factory and view return our interfaces, need controller, view, and model adapter classes.
+          // Factory and view return our interfaces,
+          // need controller, view, and model adapter classes.
           IView view = ViewCreator.create(ViewCreator.ViewType.EDITGUI, model);
           IController controller = new AdapterMVCController(model, view);
           controller.run();
@@ -103,7 +97,8 @@ public class BeyondGood {
   // Validates input arguments
   private static boolean validArgs(String[] args) {
     if (args == null || args.length > 4 ||
-            !(args[0].equals("-in") || args[0].equals("-gui") || args[0].equals("-edit") || args[0].equals("-provider")) ||
+            !(args[0].equals("-in") || args[0].equals("-gui")
+                    || args[0].equals("-edit") || args[0].equals("-provider")) ||
             !(args[2].equals("-save") || args[2].equals("-eval") || (args[2].equals("-edit")) ||
                     args[2].equals("-gui") || args[2].equals("-provider"))) {
       System.out.println("Null or incorrect number of arguments");

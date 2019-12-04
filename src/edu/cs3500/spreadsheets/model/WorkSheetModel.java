@@ -158,9 +158,6 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
     return toUpdate;
   }
 
-  /**
-   * Returns
-   */
   @Override
   public String evaluateCell(String coord) {
     if (!this.isValid) {
@@ -190,11 +187,6 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
     return this.evaluateCellValue(c).toString();
   }
 
-  /**
-   * Returns the evaluated value of a CellContents as a String.
-   *
-   * @param c
-   */
   @Override
   public Value evaluateCellValue(Coord c) {
     if (!this.isValid) {
@@ -208,9 +200,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
     }
   }
 
-  /**
-   * Returns the raw text of the cell at given Coordinate.
-   */
+
   @Override
   public String getCellText(Coord coord) {
     CellContents cell = getCell(coord);
@@ -235,11 +225,6 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
     System.out.println(finalVal.toString());
   }
 
-  /**
-   * Return cell at a provided location. loc is the coordinates of the cell.
-   *
-   * @return the CC at the coordinate.
-   */
   @Override
   public CellContents getCell(Coord loc) {
     try {
@@ -919,7 +904,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
           }
         } else {
           PRODUCT rangeProd = new PRODUCT(singleCont);
-          if(rangeProd != null) {
+          if (rangeProd != null) {
             return rangeProd.acceptEvalVisitor(this).getDbl();
           } else {
             return new Dbl(0);
@@ -929,7 +914,7 @@ public class WorkSheetModel implements IWriteWorkSheetModel<CellContents> {
         for (CellContents c : cont) {
           PRODUCT toMult = new PRODUCT(c.forOps(this));
 
-          if(toMult != null) {
+          if (toMult != null) {
             Dbl dblMult = toMult.acceptEvalVisitor(this).getDbl();
             total *= dblMult.evaluate();
           }
