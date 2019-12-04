@@ -44,9 +44,10 @@ public interface IReadWorkSheetModel<CellContents> {
   /**
    * Evaluates the CellContents at the input into a Stirng
    * @param coord the target cell.
-   * @return
+   * @return the evaluated cell contents.
    */
   String evaluateCellCheckString(String coord);
+
   /**
    * Returns the raw text of the cell at given Coordinate.
    * Raw = the String used to create the cell, not its evaluated result.
